@@ -20,9 +20,6 @@ Set up new machine
  - `rvm install 2.0.1`
 * Clone all the repos! https://github.com/jmberros?tab=repositories
 * `sudo vi /etc/hosts` and add all the servers you're using ATM
-* Install oh-my-zsh: `git clone 
-* `vi ~/.zshrc` and add all the aliases:
-```
-...
-```
+* Install oh-my-zsh: `
+* 
 * `gem install bundle` and inside every repo create a new gemset `rvm gemset create <repo_name> && bundle install`
