@@ -10,14 +10,13 @@ Set up new machine
  - `sudo apt-get install guake terminator git vim vim-gtk tree curl zsh compizconfig-settings-manager grc`
 * Oh my ZSH! `sudo-apt get install zsh && curl -L http://install.ohmyz.sh | sh && chsh -s /bin/zsh`
 * Set up vim with solarized theme or tomorrow theme
- - https://github.com/chriskempson/tomorrow-theme
- - git clone tomorrow-theme && cp ... ~/.vim/colors & ..
- - http://ethanschoonover.com/solarized
- - `wget http://ethanschoonover.com/solarized/files/solarized.zip && unzip solarized.zip && mkdir ~/.vim && mkdir ~/.vim/colors && cp solarized/vim-colors-solarized/colors/solarized.vim ~/.vim/colors`
+ - `mkdir -p ~/.vim/colors`
+ - `cd Downloads && git clone https://github.com/chriskempson/tomorrow-theme && cp tomorrow-theme/vim/colors/*.vim ~/.vim/colors`
+ - `wget http://ethanschoonover.com/solarized/files/solarized.zip && unzip solarized.zip && cp solarized/vim-colors-solarized/colors/solarized.vim ~/.vim/colors`
  - tell terminator to use solarized as default colorscheme: ``
 * Install rvm with latest ruby http://rvm.io/rvm/install:
  - `\curl -sSL https://get.rvm.io | bash`
- - `rvm install 2.0.1`
+ - `rvm install 2.0.0`
 * Generate and add SSH key to github (just CTRL-V in the key field):
 ```
 mkdir ~/.ssh
