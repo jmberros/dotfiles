@@ -25,4 +25,4 @@ Set up new machine
 ```
 ...
 ```
-* 
+* `gem install bundle` and inside every repo create a new gemset `rvm gemset create <repo_name> && bundle install`
