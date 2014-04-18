@@ -32,9 +32,8 @@ git config --global user.email "juanmaberros@gmail.com"
 git config --global user.name "Juan Manuel Berros"
 git config --global push.default simple
 ```
-* Clone this repo and the rc files in it to your home dir: `mkdir ~/repos && cd ~/repos && git clone git@github.com:jmberros/dotfiles.git && cd dotfiles && cp ./.vimrc ~ && cp ./.pryrc ~ && cp ./.zshrc ~ && cp ./.my.cnf ~ && cp ./.grcat ~`
+* Clone this repo and the rc files in it to your home dir: `mkdir ~/repos && cd ~/repos && git clone git@github.com:jmberros/dotfiles.git && cd dotfiles && cp ./.vimrc ~ && cp ./.pryrc ~ && cp ./.zshrc ~ && cp ./.my.cnf ~ && cp ./.grcat ~ && sudo cp ./hosts /etc/hosts`
 * Install Vim plugins: `vim +PluginInstall +qall`
 * Clone all the repos in `~/repos`! https://github.com/jmberros?tab=repositories
-* `sudo vi /etc/hosts` and add all the servers you're using ATM
 * Install oh-my-zsh: `curl -L http://install.ohmyz.sh | sh && chsh -s /bin/zsh`
 * `gem install bundler` and inside every repo create a new gemset and run bundle install: `rvm gemset create <repo_name> && bundle install`
