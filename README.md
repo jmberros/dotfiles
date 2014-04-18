@@ -7,10 +7,11 @@ Set up new machine
  - Log out and log in choosing Gnome with Compiz
 * Install google-chrome and synch
 * Install everything that is cool:
- - `sudo apt-get install guake terminator git vim tree curl`
+ - `sudo apt-get install guake terminator git vim vim-gtk tree curl`
 * Oh my ZSH! `sudo-apt get install zsh && curl -L http://install.ohmyz.sh | sh && chsh -s /bin/zsh`
 * Set up vim with solarized theme or tomorrow theme
  - https://github.com/chriskempson/tomorrow-theme
+ - git clone tomorrow-theme && cp ... ~/.vim/colors & ..
  - http://ethanschoonover.com/solarized
  - `wget http://ethanschoonover.com/solarized/files/solarized.zip && unzip solarized.zip && mkdir ~/.vim && mkdir ~/.vim/colors && cp solarized/vim-colors-solarized/colors/solarized.vim ~/.vim/colors`
  - tell terminator to use solarized as default colorscheme: ``
