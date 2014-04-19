@@ -11,7 +11,7 @@ Set up new machine
 * Oh my ZSH! `sudo-apt get install zsh && curl -L http://install.ohmyz.sh | sh && chsh -s /bin/zsh`
 * Set up vim with solarized theme or tomorrow theme
  - `mkdir -p ~/.vim/colors`
- - `cd Downloads && git clone https://github.com/chriskempson/tomorrow-theme && cp tomorrow-theme/vim/colors/*.vim ~/.vim/colors`
+ - `cd ~/Downloads && git clone https://github.com/chriskempson/tomorrow-theme && cp tomorrow-theme/vim/colors/*.vim ~/.vim/colors`
  - `wget http://ethanschoonover.com/solarized/files/solarized.zip && unzip solarized.zip && cp solarized/vim-colors-solarized/colors/solarized.vim ~/.vim/colors`
  - tell terminator to use solarized as default colorscheme: ``
 * Install rvm with latest ruby http://rvm.io/rvm/install:
@@ -32,8 +32,12 @@ git config --global user.email "juanmaberros@gmail.com"
 git config --global user.name "Juan Manuel Berros"
 git config --global push.default simple
 ```
+* Install oh-my-zsh: `curl -L http://install.ohmyz.sh | sh && chsh -s /bin/zsh`
 * Clone this repo and the rc files in it to your home dir: `mkdir ~/repos && cd ~/repos && git clone git@github.com:jmberros/dotfiles.git && cd dotfiles && cp ./.vimrc ~ && cp ./.pryrc ~ && cp ./.zshrc ~ && cp ./.my.cnf ~ && cp ./.grcat ~ && sudo cp ./hosts /etc/hosts`
 * Install Vim plugins: `vim +PluginInstall +qall`
+
+Programming
+========
+* Choose either mysql or maria db and install it
 * Clone all the repos in `~/repos`! https://github.com/jmberros?tab=repositories
-* Install oh-my-zsh: `curl -L http://install.ohmyz.sh | sh && chsh -s /bin/zsh`
 * `gem install bundler` and inside every repo create a new gemset and run bundle install: `rvm gemset create <repo_name> && bundle install`
