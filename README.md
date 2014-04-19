@@ -8,6 +8,7 @@ Set up new machine
 * Install google-chrome and synch
 * Install everything that is cool:
  - `sudo apt-get install guake terminator git vim vim-gtk tree curl zsh compizconfig-settings-manager compizconfig-plugins compizconfig-plugins-extra grc`
+* `gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'`
 * Oh my ZSH! `sudo-apt get install zsh && curl -L http://install.ohmyz.sh | sh && chsh -s /bin/zsh`
 * Set up vim with solarized theme or tomorrow theme
  - `mkdir -p ~/.vim/colors`
