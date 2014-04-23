@@ -1,0 +1,47 @@
+[global_config]
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  title_transmit_bg_color = "#d30102"
+  focus = system
+[keybindings]
+[profiles]
+  [[default]]
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    use_system_font = False
+    cursor_color = "#eee8d5"
+    foreground_color = "#eee8d5"
+    font = Monospace 11
+    background_color = "#002b36"
+  [[solarized-dark]]
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    use_system_font = False
+    cursor_color = "#eee8d5"
+    foreground_color = "#eee8d5"
+    font = Monospace 11
+    background_color = "#002b36"
+  [[tomorrow-night]]
+    scrollbar_position = hidden
+    palette = "#000000:#912226:#778900:#ae7b00:#1d2594:#682a9b:#2b6651:#929593:#666666:#cc6666:#b5bd68:#f0c674:#81a2be:#b294bb:#8abeb7:#ecebec"
+    use_system_font = False
+    cursor_color = "#c5c8c6"
+    foreground_color = "#c5c8c6"
+    show_titlebar = False
+    font = Monospace 11
+    background_color = "#1d1f21"
+    scrollback_infinite = True
+  [[solarized-light]]
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    use_system_font = False
+    cursor_color = "#002b36"
+    foreground_color = "#002b36"
+    font = Monospace 11
+    background_color = "#eee8d5"
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = tomorrow-night
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
