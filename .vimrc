@@ -31,6 +31,8 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-surround'
+Plugin 'tmhedberg/matchit'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -48,6 +50,11 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 runtime macros/matchit.vim
+
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
 
 set modifiable
 set hidden
@@ -72,6 +79,12 @@ map <S-Tab> :bp<CR>
 map :bd :bp<bar>sp<bar>bn<bar>bd
 map <Home> ^
 imap <Home> <Esc>^i
+
+" Match braces and similar
+noremap % v%
+
+" Avoid accidental EX mode
+nnoremap Q <nop>
 
 autocmd FileType ruby setlocal sw=2 ts=2 sts=2
 
