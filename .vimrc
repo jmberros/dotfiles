@@ -13,26 +13,60 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+
+" Navigation
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-" plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'tpope/vim-rails.git'
-Plugin 'tpope/vim-endwise'
-" Plugin 'fholgado/minibufexpl.vim'
+Plugin 'fholgado/minibufexpl.vim'
 Plugin 'jlanzarotta/bufexplorer'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+
+" Syntax
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-rails.git'
 Plugin 'groenewege/vim-less'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'kien/ctrlp.vim'
-Plugin 'thoughtbot/vim-rspec'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'jelera/vim-javascript-syntax'
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'chriskempson/base16-vim' " Colorscheme
+
+" I'm not sure why I have these
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'kana/vim-textobj-user'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tmhedberg/matchit' " I think other plugins use this
+
+" Code helpers
+Plugin 'tpope/vim-endwise' " Ruby do - end / if - end
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'} " Expands CSS syntax to HTML
+Plugin 'vim-scripts/closetag.vim'
+Plugin 'Raimondi/delimitMate' " Autocompletion for quotes, brakets, parens
+Plugin 'AndrewRadev/splitjoin.vim' " gS to split lines, gJ to join them
+
+" Vim enhancement
 Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'airblade/vim-gitgutter'
-Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-surround'
-Plugin 'tmhedberg/matchit'
+Plugin 'kana/vim-textobj-user'
+Plugin 'henrik/vim-indexed-search' " Ads N of M results to searches
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'ervandew/supertab' " Tab for autocompletion
+Plugin 'vim-scripts/LargeFile' " Disables some feats when editing large files
+
+" Integration
+Plugin 'thoughtbot/vim-rspec' " Run tests from Rspecwithout leaving Vim
+Plugin 'tpope/vim-fugitive' " Git integration
+Plugin 'rking/ag.vim' " Ag integration, to search like ack
+Plugin 'airblade/vim-gitgutter' " Shows git diff +/-/~ besides the line number
+
+"Plugin 'ecomba/vim-ruby-refactoring'
+"Plugin 'tpope/vim-unimpaired'
+"Plugin 'vim-rubyhash'
+"Plugin 'tpope/vim-ragtag'
+
+
+" Supertab completion settings
+let g:SuperTabDefaultCompletionType = "<c-n>"
+inoremap <expr> <Space> pumvisible() ? "\<C-y>" : " "
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -48,6 +82,11 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+set wildignore+=*public/system/*
+let g:ctrlp_custom_ignore = 'public.system'
+map <C-b> :CtrlPBuffer<CR>
+map <C-m> :CtrlPMRU<CR>
 
 runtime macros/matchit.vim
 
@@ -67,12 +106,13 @@ set linebreak
 set nolist
 
 function! StartUp()
-    if 0 == argc()
-        NERDTree
-    end
+    "if 0 == argc()
+        "NERDTree
+    "end
 endfunction
 
 autocmd VimEnter * call StartUp()
+
 map <Tab> :bn<CR>
 map <S-Tab> :bp<CR>
 " don't close windows when closing buffers
@@ -100,6 +140,7 @@ let g:airline#extensions#branch#empty_message = ''
 set t_Co=256              " enable 256-color mode.
 syntax enable             " enable syntax highlighting (previously syntax on).
 set background=dark
+" let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme Tomorrow-Night
 " colorscheme solarized
 set cul                   " highlight current line
