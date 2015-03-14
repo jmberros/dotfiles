@@ -63,6 +63,11 @@ Plugin 'airblade/vim-gitgutter' " Shows git diff +/-/~ besides the line number
 "Plugin 'vim-rubyhash'
 "Plugin 'tpope/vim-ragtag'
 
+" Invisible characters
+set listchars=tab:▸\ ,trail:·,nbsp:_,extends:❯,precedes:❮
+
+" Use only 1 space after "." when joining lines instead of 2
+set nojoinspaces
 
 " Supertab completion settings
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -113,6 +118,41 @@ endfunction
 
 autocmd VimEnter * call StartUp()
 
+" Autocomplete ids and classes in CSS
+autocmd FileType css,scss,less set iskeyword=@,48-57,_,-,?,!,192-255
+
+" Add the '-' as a keyword in erb files
+autocmd FileType eruby set iskeyword=@,48-57,_,192-255,$,-
+
+" Make those debugger statements painfully obvious
+au BufEnter *.rb syn match error contained "\<binding.pry\>"
+au BufEnter *.rb syn match error contained "\<debugger\>"
+
+" Improve vim's scrolling speed
+set ttyfast
+set ttyscroll=3
+set lazyredraw
+
+set splitright                  " open vertical splits on the right
+set splitbelow                  " open the horizontal split below
+
+" Lines with equal indent form a fold.
+set foldmethod=indent
+set foldlevel=1
+set foldnestmax=10
+" Open all folds by default
+set nofoldenable
+
+set undofile                    " Save undo's after file closes
+set undodir=~/.vim/undo         " where to save undo histories
+set undolevels=1000             " How many undos
+set undoreload=10000            " number of lines to save for undo
+
+cnoreabbrev W w
+cnoreabbrev Q q
+
+
+
 map <Tab> :bn<CR>
 map <S-Tab> :bp<CR>
 " don't close windows when closing buffers
@@ -128,13 +168,37 @@ nnoremap Q <nop>
 
 autocmd FileType ruby setlocal sw=2 ts=2 sts=2
 
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
+" The 'Press ENTER or type command to continue' prompt is jarring and usually unnecessary.
+set shortmess=atI
+
+nnoremap <leader><leader> :b#<cr> " Go to last buffer quickly
+nnoremap <leader>V :e $MYVIMRC<cr> " Go to ~/.vimrc quickly
+
+" C-c send enter in insert mode.
+inoremap <C-c> <Esc>
+
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
 
 " enable/disable fugitive/lawrencium integration >
 let g:airline#extensions#branch#enabled = 1
 " change the text for when no branch is detected >
 let g:airline#extensions#branch#empty_message = ''
+
+" Remove fugitive buffers after using them!
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
+" http://sourceforge.net/mailarchive/forum.php?thread_name=AANLkTinkbdoZ8eNR1X2UobLTeww1jFrvfJxTMfKSq-L%2B%40mail.gmail.com&forum_name=tmux-users
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+autocmd VimResized * :wincmd =
 
 " Looks
 set t_Co=256              " enable 256-color mode.
