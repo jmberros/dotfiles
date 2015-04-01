@@ -16,8 +16,8 @@ Plugin 'gmarik/Vundle.vim'
 
 " Navigation
 Plugin 'scrooloose/nerdtree'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'jlanzarotta/bufexplorer'
+"Plugin 'fholgado/minibufexpl.vim'
+"Plugin 'jlanzarotta/bufexplorer'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 
@@ -51,6 +51,7 @@ Plugin 'henrik/vim-indexed-search' " Ads N of M results to searches
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'ervandew/supertab' " Tab for autocompletion
 Plugin 'vim-scripts/LargeFile' " Disables some feats when editing large files
+Plugin 'kshenoy/vim-signature' " Marks enhanced
 
 " Integration
 Plugin 'thoughtbot/vim-rspec' " Run tests from Rspecwithout leaving Vim
@@ -63,6 +64,9 @@ Plugin 'airblade/vim-gitgutter' " Shows git diff +/-/~ besides the line number
 "Plugin 'vim-rubyhash'
 "Plugin 'tpope/vim-ragtag'
 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
 " Invisible characters
 set listchars=tab:▸\ ,trail:·,nbsp:_,extends:❯,precedes:❮
 
@@ -73,8 +77,6 @@ set nojoinspaces
 let g:SuperTabDefaultCompletionType = "<c-n>"
 inoremap <expr> <Space> pumvisible() ? "\<C-y>" : " "
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -110,13 +112,13 @@ set wrap
 set linebreak
 set nolist
 
-function! StartUp()
+"function! StartUp()
     "if 0 == argc()
         "NERDTree
     "end
-endfunction
+"endfunction
 
-autocmd VimEnter * call StartUp()
+"autocmd VimEnter * call StartUp()
 
 " Autocomplete ids and classes in CSS
 autocmd FileType css,scss,less set iskeyword=@,48-57,_,-,?,!,192-255
@@ -169,7 +171,7 @@ nnoremap Q <nop>
 autocmd FileType ruby setlocal sw=2 ts=2 sts=2
 
 " The 'Press ENTER or type command to continue' prompt is jarring and usually unnecessary.
-set shortmess=atI
+set shortmess=at
 
 nnoremap <leader><leader> :b#<cr> " Go to last buffer quickly
 nnoremap <leader>V :e $MYVIMRC<cr> " Go to ~/.vimrc quickly
@@ -180,10 +182,23 @@ inoremap <C-c> <Esc>
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 
+let g:airline_powerline_fonts=1
+
 " enable/disable fugitive/lawrencium integration >
-let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#enabled = 0
 " change the text for when no branch is detected >
 let g:airline#extensions#branch#empty_message = ''
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Airline themes I like:
+" laederon, lucius, molokai, monochrome, powelineish, ~solarized, !tomorrow,
+" wombat, zenburn
+let g:airline_theme = 'molokai'
 
 " Remove fugitive buffers after using them!
 autocmd BufReadPost fugitive://* set bufhidden=delete
