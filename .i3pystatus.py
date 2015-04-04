@@ -27,13 +27,6 @@ status.register("load",
     format="{avg1} - {avg5}"
     )
 
-status.register("cpu_usage_graph",
-    #format="{usage} {cpu_graph}",
-    #graph_width='10',
-    #graph_style="blocks",
-    start_color="#66d13c", # limegreen
-    end_color="#ff6347")
-
 #status.register("uptime",
     #format="Uptime {uptime}")
 
@@ -63,7 +56,8 @@ status.register("battery",
         "FULL": "Bat Full!",
     },
     critical_color="#ff6347", # tomato
-    color="#fff321", # lemon
+    #color="#fff321", # lemon
+    color="#f4f47c", # dolly
     #status={
         #"DIS": "↓",
         #"CHR": "↑",
@@ -138,5 +132,15 @@ status.register("wireless",
 
 status.register("uname",
     format="{nodename}")
+
+status.register("cpu_usage_graph",
+    #format="{usage} {cpu_graph}",
+    #graph_width='10',
+    #graph_style="blocks",
+    #start_color="#66d13c", # limegreen
+    start_color="#222222",
+    #end_color="#fff321", # lemon
+    end_color="#f4f47c", # dolly
+    )
 
 status.run()
