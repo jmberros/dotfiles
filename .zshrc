@@ -5,44 +5,53 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
 #ZSH_THEME="random"
 #ZSH_THEME="crunch"
+#ZSH_THEME="awesomepanda"
+ZSH_THEME="daveverwer"
+##ZSH_THEME="blinks"
+##ZSH_THEME="cypher"
+##ZSH_THEME="afowler"
+##ZSH_THEME="wezm+"
+##ZSH_THEME="daveverwer"
+#ZSH_THEME="tjkirch"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ls='ls --color=auto'
+# Edit dotfiles
+alias zshconfig="vi ~/.zshrc"
+alias ohmyzsh="vi ~/.oh-my-zsh"
+alias vimrc="vi ~/.vimrc"
+alias tmuxconf="vi ~/.tmux.conf"
+alias i3config="vi ~/.i3/config"
+
+# Utils
+alias l='ls --color -h --group-directories-first'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
 alias s='clear; git status'
 alias df='df -h'
 alias du='du -c -h'
 alias ..='cd ..'
 alias be='bundle exec'
 alias rsync='rsync -vzh'
+alias tree='tree -C' # color tree output
+alias list-screens="xrandr"
+alias hdmi-screen-above="xrandr --output HDMI1 --auto --above LVDS1"
+alias list-wifi="nmcli dev wifi list"
+alias wifi-connect-to="nmcli dev wifi connect"
 
 # ssh to servers
-alias tools='ssh -A sumavisos@tools'
-alias parsers5='ssh -A sumavisos@parsers5'
-alias pepita='ssh -A sumavisos@pepita'
-alias ramona='ssh -A sumavisos@ramona'
-alias clementina='ssh -A sumavisos@clementina'
-alias kf='cd /home/juan/repos/keywords-factory'
-alias dsv='ssh -A sumavisos@dsv'
-alias dsv-db='ssh -A sumavisos@dsv-db'
-
-# start consoles and servers locally
-alias kfconsole='cd /home/juan/repos/keywords-factory && bundle exec padrino console'
-alias psconsole='cd /home/juan/repos/panel-sem && bundle exec padrino console'
-alias psserver='ps; bundle exec padrino start -p3000'
-alias kfserver='kf; bundle exec padrino start -p4567'
-
-alias panel_data="rsync --ignore-existing -vzh sumavisos@clementina:~/exchange_rates/\* ~/exchange_rates && rsync --ignore-existing -vzh sumavisos@clementina:~/arbitrage_stats/\* ~/arbitrage_stats" 
+#alias tools='ssh -A sumavisos@tools'
+#alias parsers5='ssh -A sumavisos@parsers5'
+#alias pepita='ssh -A sumavisos@pepita'
+#alias ramona='ssh -A sumavisos@ramona'
+#alias clementina='ssh -A sumavisos@clementina'
+#alias kf='cd /home/juan/repos/keywords-factory'
+#alias dsv='ssh -A sumavisos@dsv'
+#alias dsv-db='ssh -A sumavisos@dsv-db'
 
 # RVM is a function motherfucker!
 source ~/.rvm/scripts/rvm
@@ -84,4 +93,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+PATH=$PATH:$HOME/bin
+
+[[ $TERM = "screen" ]] && rvm use default # Tmux + Rvm + Zsh 'fix' http://blog.gonzih.me/blog/2011/09/15/tmux---rvm---zsh-fix/
+source ~/.nvm/nvm.sh
