@@ -56,6 +56,7 @@ status.register("battery",
         "FULL": "Bat Full!",
     },
     critical_color="#ff6347", # tomato
+    charging_color="#66d13c", # limegreen
     #color="#fff321", # lemon
     color="#f4f47c", # dolly
     #status={
