@@ -30,6 +30,10 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'jelera/vim-javascript-syntax'
 " Plugin 'pangloss/vim-javascript'
 " Plugin 'chriskempson/base16-vim' " Colorscheme
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'hdima/python-syntax'
+Plugin 'godlygeek/tabular' " Apparently needed for vi-markdown
+Plugin 'plasticboy/vim-markdown'
 
 " I'm not sure why I have these
 Plugin 'vim-ruby/vim-ruby'
@@ -112,13 +116,13 @@ set wrap
 set linebreak
 set nolist
 
-"function! StartUp()
-    "if 0 == argc()
-        "NERDTree
-    "end
-"endfunction
+function! StartUp()
+    if 0 == argc()
+        NERDTree
+    end
+endfunction
 
-"autocmd VimEnter * call StartUp()
+autocmd VimEnter * call StartUp()
 
 " Autocomplete ids and classes in CSS
 autocmd FileType css,scss,less set iskeyword=@,48-57,_,-,?,!,192-255
@@ -220,10 +224,18 @@ set t_Co=256              " enable 256-color mode.
 syntax enable             " enable syntax highlighting (previously syntax on).
 set background=dark
 " let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme Tomorrow-Night
-" colorscheme solarized
-set cul                   " highlight current line
 
+let hour = strftime("%H")
+if 6 <= hour && hour < 18
+  set background=light
+  "colorscheme solarized
+  colorscheme Tomorrow
+else
+  set background=dark
+  colorscheme Tomorrow-Night
+endif
+
+set cul                   " highlight current line
 set number                " show line numbers
 set laststatus=2          " last window always has a statusline
 set hlsearch
@@ -274,4 +286,5 @@ let g:syntastic_ruby_checkers = ["rubocop"]
 let g:syntastic_mode_map = { "mode": "active",
                            \ "active_filetypes": ["ruby", "css", "html", "erb"] }
 
+let python_highlight_builtins = 1
 
