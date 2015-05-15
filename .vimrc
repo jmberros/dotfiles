@@ -1,25 +1,19 @@
-set nocompatible              " be iMproved, required
 filetype off                  " required
+set nocompatible              " be iMproved, required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-
 " Navigation
 Plugin 'scrooloose/nerdtree'
-"Plugin 'fholgado/minibufexpl.vim'
-"Plugin 'jlanzarotta/bufexplorer'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
+"Plugin 'fholgado/minibufexpl.vim'
+"Plugin 'jlanzarotta/bufexplorer'
 
 " Syntax
 Plugin 'scrooloose/syntastic'
@@ -28,12 +22,14 @@ Plugin 'groenewege/vim-less'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'jelera/vim-javascript-syntax'
-" Plugin 'pangloss/vim-javascript'
-" Plugin 'chriskempson/base16-vim' " Colorscheme
 Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'hdima/python-syntax'
 Plugin 'godlygeek/tabular' " Apparently needed for vi-markdown
 Plugin 'plasticboy/vim-markdown'
+Plugin 'nvie/vim-flake8' " python spelling and style checker
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'chriskempson/base16-vim' " Colorscheme
+" Plugin 'hdima/python-syntax'
+" Plugin 'klen/python-mode' " autocompletion was TOO slow
 
 " I'm not sure why I have these
 Plugin 'vim-ruby/vim-ruby'
@@ -49,6 +45,7 @@ Plugin 'AndrewRadev/splitjoin.vim' " gS to split lines, gJ to join them
 
 " Vim enhancement
 Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'nelstrom/vim-markdown-preview'
 Plugin 'tpope/vim-surround'
 Plugin 'kana/vim-textobj-user'
 Plugin 'henrik/vim-indexed-search' " Ads N of M results to searches
@@ -56,6 +53,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'ervandew/supertab' " Tab for autocompletion
 Plugin 'vim-scripts/LargeFile' " Disables some feats when editing large files
 Plugin 'kshenoy/vim-signature' " Marks enhanced
+"Plugin 'nelstrom/vim-markdown-folding'
+"Plugin 'davidhalter/jedi-vim'
 
 " Integration
 Plugin 'thoughtbot/vim-rspec' " Run tests from Rspecwithout leaving Vim
@@ -63,101 +62,133 @@ Plugin 'tpope/vim-fugitive' " Git integration
 Plugin 'rking/ag.vim' " Ag integration, to search like ack
 Plugin 'airblade/vim-gitgutter' " Shows git diff +/-/~ besides the line number
 
+Plugin 'tpope/vim-unimpaired'
 "Plugin 'ecomba/vim-ruby-refactoring'
-"Plugin 'tpope/vim-unimpaired'
 "Plugin 'vim-rubyhash'
 "Plugin 'tpope/vim-ragtag'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
-" Invisible characters
-set listchars=tab:▸\ ,trail:·,nbsp:_,extends:❯,precedes:❮
 
-" Use only 1 space after "." when joining lines instead of 2
-set nojoinspaces
 
-" Supertab completion settings
-let g:SuperTabDefaultCompletionType = "<c-n>"
-inoremap <expr> <Space> pumvisible() ? "\<C-y>" : " "
 
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
-set wildignore+=*public/system/*
-let g:ctrlp_custom_ignore = 'public.system'
-map <C-b> :CtrlPBuffer<CR>
-map <C-m> :CtrlPMRU<CR>
+" # General configuration # "
 
-runtime macros/matchit.vim
+let mapleader="," " change the leader from \\ to ,
 
-augroup reload_vimrc " {
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }
-
+set nojoinspaces " Use only 1 space after "." when joining lines instead of 2
 set modifiable
 set hidden
-
 set wildignore+=public/system
-" if you want word wrapping, but only want line breaks inserted when you
-" explicitly press the Enter key
 set wrap
 set linebreak
 set nolist
-
-function! StartUp()
-    if 0 == argc()
-        NERDTree
-    end
-endfunction
-
-autocmd VimEnter * call StartUp()
-
-" Autocomplete ids and classes in CSS
-autocmd FileType css,scss,less set iskeyword=@,48-57,_,-,?,!,192-255
-
-" Add the '-' as a keyword in erb files
-autocmd FileType eruby set iskeyword=@,48-57,_,192-255,$,-
-
-" Make those debugger statements painfully obvious
-au BufEnter *.rb syn match error contained "\<binding.pry\>"
-au BufEnter *.rb syn match error contained "\<debugger\>"
 
 " Improve vim's scrolling speed
 set ttyfast
 set ttyscroll=3
 set lazyredraw
 
-set splitright                  " open vertical splits on the right
-set splitbelow                  " open the horizontal split below
+set splitright " open vertical splits on the right
+set splitbelow " open the horizontal split below
 
 " Lines with equal indent form a fold.
 set foldmethod=indent
 set foldlevel=1
 set foldnestmax=10
-" Open all folds by default
-set nofoldenable
+set nofoldenable " Open all folds by default
 
-set undofile                    " Save undo's after file closes
-set undodir=~/.vim/undo         " where to save undo histories
-set undolevels=1000             " How many undos
-set undoreload=10000            " number of lines to save for undo
+set undofile " Save undo's after file closes
+set undodir=~/.vim/undo " where to save undo histories
+set undolevels=1000 " How many undos
+set undoreload=10000 " number of lines to save for undo
+
+filetype plugin indent on
+
+set shortmess=at " Avoid the 'Press ENTER or type command to continue' prompt
+set foldlevelstart=0
+
+set t_Co=256              " enable 256-color mode.
+syntax enable             " enable syntax highlighting (previously syntax on).
+set background=dark
+set cul                   " highlight current line
+set number                " show line numbers
+set laststatus=2          " last window always has a statusline
+set hlsearch
+set incsearch             " But do highlight as you type your search.
+set ignorecase            " Make searches case-insensitive.
+set ruler                 " Always show info along bottom.
+set showmatch
+set autoindent            " auto-indent
+set shiftround            " always indent/outdent to te nearest tabstop
+set tabstop=2 shiftwidth=2 expandtab
+set softtabstop=2         " unify
+set shiftround            " always indent/outdent to the nearest tabstop
+set smarttab              " use tabs at the start of a line, spaces elsewhere
+set mouse=a
+set showcmd
+set scrolloff=5
+set colorcolumn=80
+
+"let hour = strftime("%H")
+"if 14 <= hour && hour < 18
+  "set background=light
+  "colorscheme solarized
+  "colorscheme Tomorrow
+"else
+  set background=dark
+  "colorscheme Tomorrow-Night
+  colorscheme Tomorrow-Night-Eighties
+"endif
+
+" No swap files
+set nobackup
+set noswapfile
+set nowritebackup
+
+" Open new split panes to right and bottom
+set splitbelow
+set splitright
+
+" Avoid hitting F1 by mistake
+:imap <F1> <Esc>
+:map <F1> <Esc>
+:nmap <F1> <nop>
+:inoremap <F1> <C-c>
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+
+
+
+
+" # Useful mappings # "
+
+" Move between windows, so instead of ctrl-w then j, it’s just ctrl-j:
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+nnoremap <leader>b :call <SID>InsertBreakpoint()<CR>
+
+" Supertab completion settings
+inoremap <expr> <Space> pumvisible() ? "\<C-y>" : " "
 
 cnoreabbrev W w
 cnoreabbrev Q q
 
-
+" Bubble lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
 
 map <Tab> :bn<CR>
 map <S-Tab> :bp<CR>
@@ -166,16 +197,8 @@ map :bd :bp<bar>sp<bar>bn<bar>bd
 map <Home> ^
 imap <Home> <Esc>^i
 
-" Match braces and similar
-noremap % v%
-
-" Avoid accidental EX mode
-nnoremap Q <nop>
-
-autocmd FileType ruby setlocal sw=2 ts=2 sts=2
-
-" The 'Press ENTER or type command to continue' prompt is jarring and usually unnecessary.
-set shortmess=at
+noremap % v% " Match braces and similar
+nnoremap Q <nop> " Avoid accidental EX mode
 
 nnoremap <leader><leader> :b#<cr> " Go to last buffer quickly
 nnoremap <leader>V :e $MYVIMRC<cr> " Go to ~/.vimrc quickly
@@ -183,25 +206,71 @@ nnoremap <leader>V :e $MYVIMRC<cr> " Go to ~/.vimrc quickly
 " C-c send enter in insert mode.
 inoremap <C-c> <Esc>
 
+" Make zO recursively open whatever top level fold we're in
+nnoremap zO zCzO
+
+
+
+
+
+
+" # Auto commands # "
+
+autocmd FileType css,scss,less set iskeyword=@,48-57,_,-,?,!,192-255
+autocmd FileType ruby setlocal sw=2 ts=2 sts=2
+autocmd FileType eruby set iskeyword=@,48-57,_,192-255,$,-
+autocmd FileType python setlocal sw=4 ts=4 sts=4
+
+" Make those debugger statements painfully obvious
+au BufEnter *.rb syn match error contained "\<binding.pry\>"
+au BufEnter *.rb syn match error contained "\<debugger\>"
+au BufEnter *.py syn match error contained "\<set_trace\>"
+
+" autocmd VimEnter * call StartUp()
+" function! StartUp()
+    " if 0 == argc()
+        " NERDTree
+    " end
+" endfunction
+
+" set wildignore+=*public/system/* " Ignore rails PortalRH big folder
+" let g:ctrlp_custom_ignore = 'public.system'
+
+" augroup reload_vimrc " {
+    " autocmd!
+    " autocmd BufWritePost $MYVIMRC source $MYVIMRC
+" augroup END " }
+
+autocmd VimResized * :wincmd =
+
+
+
+
+
+
+
+" # Plugins cutomization # "
+
+runtime macros/matchit.vim
+
+nnoremap <C-b> :CtrlPBuffer<CR>
+" nnoremap <C-m> :CtrlPMRU<CR> " This made the ENTER key trigger :CtrlPMRU
+
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 
+" Airline
 let g:airline_powerline_fonts=1
-
 " enable/disable fugitive/lawrencium integration >
 let g:airline#extensions#branch#enabled = 0
 " change the text for when no branch is detected >
 let g:airline#extensions#branch#empty_message = ''
-
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
-
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
-
-" Airline themes I like:
-" laederon, lucius, molokai, monochrome, powelineish, ~solarized, !tomorrow,
-" wombat, zenburn
+" Airline themes that look ok: laederon, lucius, molokai, monochrome,
+" powelineish, ~solarized, !tomorrow, wombat, zenburn
 let g:airline_theme = 'molokai'
 
 " Remove fugitive buffers after using them!
@@ -217,74 +286,30 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-autocmd VimResized * :wincmd =
-
-" Looks
-set t_Co=256              " enable 256-color mode.
-syntax enable             " enable syntax highlighting (previously syntax on).
-set background=dark
-" let base16colorspace=256  " Access colors present in 256 colorspace
-
-let hour = strftime("%H")
-if 6 <= hour && hour < 18
-  set background=light
-  "colorscheme solarized
-  colorscheme Tomorrow
-else
-  set background=dark
-  colorscheme Tomorrow-Night
-endif
-
-set cul                   " highlight current line
-set number                " show line numbers
-set laststatus=2          " last window always has a statusline
-set hlsearch
-:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-set incsearch             " But do highlight as you type your search.
-set ignorecase            " Make searches case-insensitive.
-set ruler                 " Always show info along bottom.
-set showmatch
-set autoindent            " auto-indent
-set shiftround            " always indent/outdent to te nearest tabstop
-set tabstop=2 shiftwidth=2 expandtab
-set softtabstop=2         " unify
-set shiftround            " always indent/outdent to the nearest tabstop
-set smarttab              " use tabs at the start of a line, spaces elsewhere
-set mouse=a
-set showcmd
-set scrolloff=5
-
-" So instead of ctrl-w then j, it’s just ctrl-j:
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Open new split panes to right and bottom, which feels more natural than
-" Vim’s default:
-set splitbelow
-set splitright
-
-:imap <F1> <Esc>
-:map <F1> <Esc>
-:nmap <F1> <nop>
-:inoremap <F1> <C-c>
-set nobackup
-set noswapfile
-set nowritebackup
-
-let mapleader="," " change the leader from \\ to ,
-set colorcolumn=80
-
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
 
 let g:syntastic_ruby_checkers = ["rubocop"]
 let g:syntastic_mode_map = { "mode": "active",
-                           \ "active_filetypes": ["ruby", "css", "html", "erb"] }
+                           \ "active_filetypes": ["python", "ruby", "css", "html", "erb"] }
 
 let python_highlight_builtins = 1
+
+" Flake8 for Python customization
+autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+"autocmd BufWritePost *.py call Flake8()
+"let g:flake8_show_in_file=1
+let g:flake8_show_in_gutter=1
+
+" Py-mode customization
+let g:pymode_rope = 0
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_autoimport = 0
+let g:pymode_syntax_all = 1
+let g:pymode_trim_whitespaces = 1
+let g:pymode_options_max_line_length = 79
+let g:pymode_syntax_highlight_self = g:pymode_syntax_all
+let g:jedi#completions_command = '<c-n>'
+let g:jedi#popup_on_dot = 0
+
+let g:NERDSpaceDelims = 1 " Useful for Python PEP 8 specs
 
