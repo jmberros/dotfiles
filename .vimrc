@@ -152,23 +152,20 @@ set nowritebackup
 set splitbelow
 set splitright
 
-" Avoid hitting F1 by mistake
-:imap <F1> <Esc>
-:map <F1> <Esc>
-:nmap <F1> <nop>
-:inoremap <F1> <C-c>
-
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
 
 
 
 
 
 " # Useful mappings # "
+
+nnoremap <Space> :noh<CR>
+
+" Avoid hitting F1 by mistake
+:imap <F1> <Esc>
+:map <F1> <Esc>
+:nmap <F1> <nop>
+:inoremap <F1> <C-c>
 
 " Move between windows, so instead of ctrl-w then j, it’s just ctrl-j:
 nnoremap <C-J> <C-W><C-J>
@@ -236,10 +233,10 @@ au BufEnter *.py syn match error contained "\<set_trace\>"
 " set wildignore+=*public/system/* " Ignore rails PortalRH big folder
 " let g:ctrlp_custom_ignore = 'public.system'
 
-" augroup reload_vimrc " {
-    " autocmd!
-    " autocmd BufWritePost $MYVIMRC source $MYVIMRC
-" augroup END " }
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
 
 autocmd VimResized * :wincmd =
 
@@ -290,6 +287,12 @@ endif
 let g:syntastic_ruby_checkers = ["rubocop"]
 let g:syntastic_mode_map = { "mode": "active",
                            \ "active_filetypes": ["python", "ruby", "css", "html", "erb"] }
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 let python_highlight_builtins = 1
 
