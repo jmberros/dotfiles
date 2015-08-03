@@ -78,6 +78,7 @@ call vundle#end()            " required
 
 let mapleader="," " change the leader from \\ to ,
 
+set clipboard=unnamed
 set nojoinspaces " Use only 1 space after "." when joining lines instead of 2
 set modifiable
 set hidden
