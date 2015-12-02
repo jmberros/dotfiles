@@ -26,4 +26,8 @@ shit for i3pystatus:
 sudo apt-get install python3.5-dev
 pip3 install i3pystatus netifaces colour 
 
+fonts for airline/powerline:
+  git clone git@github.com:powerline/fonts.git
+  ./install.sh
+
 
