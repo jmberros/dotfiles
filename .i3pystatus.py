@@ -17,19 +17,26 @@ status.register("clock",
 #
 # Note: requires libpulseaudio from PyPI
 status.register("pulseaudio",
-    format="♪ {volume}",)
+    format="🔊 {volume}",)
+
+status.register("pomodoro",
+                sound="/home/juan/Dropbox/glass_ping.mp3")
+
+status.register("radiotray",
+                color="#f9ef8d")
 
 status.register("now_playing",
     player="clementine",
     color="#FF5CAD",
-    format='{artist}: "{title}" @ {album} {song_elapsed}/{song_length}')
+    # format='{artist}: "{title}" @ {album} {song_elapsed}/{song_length}')
+    format='{artist}: "{title}" {song_elapsed}/{song_length}')
 
 # Shows the average load of the last minute and the last 5 minutes
 # (the default value for format is used)
 status.register("load",
     color="#bbbbbb",
     critical_limit=8,
-    format="{avg1} - {avg5}"
+    format="💻 {avg1} / {avg5} / {avg15}"
     )
 
 #status.register("uptime",
@@ -139,7 +146,7 @@ status.register("disk",
     path="/",
     color="#bbbbbb",
     #format="{used} / {total}G [ {avail}G ]",)
-    format="{avail}G (/)",)
+    format="{avail}G ({total}G)",)
 
 status.register("disk",
     color="#bbbbbb",
