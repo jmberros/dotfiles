@@ -1,5 +1,6 @@
 from i3pystatus import IntervalModule
 from dbus import SessionBus
+from re import search
 
 
 class Radiotray(IntervalModule):
@@ -17,13 +18,18 @@ class Radiotray(IntervalModule):
         ("color", "Text color"),
     )
 
-    format = "♫ {song}"
+    format = "♫ {song} @ '{radio}'"
 
     def run(self):
         radiotray = SessionBus().get_object("net.sourceforge.radiotray",
                                             "/net/sourceforge/radiotray")
+
+        radio_full_name = str(radiotray.getCurrentRadio())
+        matches = search("~ ([^\(]*)", radio_full_name)
+        radio_short_name = matches.group(1).rstrip() if matches else radio_full_name
+
         cdict = {
-            "radio": str(radiotray.getCurrentRadio()),
+            "radio": radio_short_name,
             "song": str(radiotray.getCurrentMetaData()),
         }
 
