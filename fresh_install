@@ -1,0 +1,29 @@
+after installing ubuntu:
+
+google-chrome
+
+sudo apt-get zsh install git-core python-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui
+
+oh-my-zsh
+r-base ?
+tmux ? .tmuxconf
+
+copy .vimrc .i3/config .i3pystatus.py .zshrc to ~
+
+# copy fstab to automount HDDs:
+# check disks with sudo fdisk -l or sudo blkid in case you need UUIDs
+/dev/sdb1   /media/500gb    auto    auto,users  0 0
+/dev/sdc3   /media/600gb    auto    auto,users    0 0
+
+pip install pandas numpy matplotlib biopython
+
+in case it's not in i3 config:
+setxkbmap -option caps:swapescape
+
+
+shit for i3pystatus:
+
+sudo apt-get install python3.5-dev
+pip3 install i3pystatus netifaces colour 
+
+
