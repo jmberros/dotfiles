@@ -20,14 +20,15 @@ status.register("pulseaudio",
     format="🔊 {volume}",)
 
 status.register("pomodoro",
-                sound="/home/juan/Dropbox/glass_ping.mp3")
+                sound="/home/juan/Dropbox/glass_ping.wav")
 
 status.register("radiotray",
                 color="#f9ef8d")
 
 status.register("now_playing",
     player="clementine",
-    color="#FF5CAD",
+    color="#ffc080",
+    # color="#FF5CAD",
     # format='{artist}: "{title}" @ {album} {song_elapsed}/{song_length}')
     format='{artist}: "{title}" {song_elapsed}/{song_length}')
 
@@ -142,21 +143,21 @@ status.register("network",
 # Shows disk usage of /
 # Format:
 # 42/128G [86G]
-status.register("disk",
-    path="/",
-    color="#bbbbbb",
-    #format="{used} / {total}G [ {avail}G ]",)
-    format="{avail}G ({total}G)",)
+#  status.register("disk",
+    #  path="/",
+    #  color="#bbbbbb",
+    #  #format="{used} / {total}G [ {avail}G ]",)
+    #  format="{avail}G ({total}G)",)
 
-status.register("disk",
-    color="#bbbbbb",
-    path="/media/500gb",
-    format="{avail}G ({total}G)")
+#  status.register("disk",
+    #  color="#bbbbbb",
+    #  path="/media/500gb",
+    #  format="{avail}G ({total}G)")
 
-status.register("disk",
-    color="#bbbbbb",
-    path="/media/600gb",
-    format="{avail}G ({total}G)")
+#  status.register("disk",
+    #  color="#bbbbbb",
+    #  path="/media/600gb",
+    #  format="{avail}G ({total}G)")
 
 #status.register("shell",
     #color="#bbbbbb",

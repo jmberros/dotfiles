@@ -15,7 +15,8 @@ copy .vimrc .i3/config .i3pystatus.py .zshrc to ~
 /dev/sdb1   /media/500gb    auto    auto,users  0 0
 /dev/sdc3   /media/600gb    auto    auto,users    0 0
 
-pip install pandas numpy matplotlib biopython
+# pip install pandas numpy matplotlib biopython
+bajarse Anaconda e instalar directo de ahí el environment
 
 in case it's not in i3 config:
 setxkbmap -option caps:swapescape
@@ -29,5 +30,8 @@ pip3 install i3pystatus netifaces colour
 fonts for airline/powerline:
   git clone git@github.com:powerline/fonts.git
   ./install.sh
+
+jupyter themes:
+  git@github.com:dunovank/jupyter-themes.git
 
 
