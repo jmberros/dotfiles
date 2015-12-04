@@ -1,23 +1,11 @@
-127.0.0.1	      juanita.localdomain localhost
-127.0.1.1	      juanita
+127.0.0.1	localhost
+127.0.1.1	beleriand
 
-# Old Servers
-50.22.230.36    tools # sumavisos
-108.168.167.123 parsers # sumavisos / oblogo
-108.168.167.126 pepita # sumavisos / cocotete55#
-
-# DSV
-184.173.130.92  dsv # root / RGfa32Vk // sumavisos / cocotete
-184.173.130.93  dsv-db # root / B2gx9SX3 // sumavisos / cocotete
-127.0.0.1       recipesonline.us.local.coco
-127.0.0.1       eduzearch.com.local.coco
-127.0.0.1       consultaemprego.com.local.coco
-127.0.0.1       pt.eduzearch.com.local.coco
-127.0.0.1       videotun.com.local.coco
-
-# Keywords Factory & SEM Panel
-184.173.130.91  ramona # root / cocoteteramona # sumavisos / tetecoco
-184.173.130.94  clementina # sumavisos / cocotete
+127.0.0.1 www.clarin.com
+127.0.0.1 tweetdeck.twitter.com
+127.0.0.1 www.twitter.com
+127.0.0.1 www.lanacion.com
+127.0.0.1 www.pagina12.com.ar
 
 
 # The following lines are desirable for IPv6 capable hosts
