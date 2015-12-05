@@ -4,7 +4,7 @@ after installing ubuntu:
 * google-chrome
 * dropbox
 * install some stuff:
-  sudo apt-get zsh install git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl
+  sudo apt-get zsh install git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common
 
 * set ssh-keys to clone repos:
   https://help.github.com/articles/generating-ssh-keys/
@@ -75,6 +75,33 @@ after installing ubuntu:
 = Después de reiniciar y loguearse en i3:
 
 * cp ~/repos/dotfiles/.i3.config ~/.i3/config
+
+* Transmission setup
+  sudo vi /etc/transmission-daemon/settings.json 
+  y copiarle lo que haya en ~/repos/dotfiles/settings.json
+  ( es posible que desde transgui tengas que cambiar a mano los directorios
+  de dl, /media/600gb/transmission-daemon/{in}complete )
+  sudo service transmission-daemon start
+
+* Instalar ruby para los cronjobs
+  rbenv (ver instrucciones online)
+  ruby-build (ver online)
+  sudo apt-get install libssl-dev libreadline-dev zlib1g-dev
+  rbenv isntall 2.2.3
+  rbenv local 2.2.3
+  rbenv rehash
+  ruby --version
+  rbenv-gemset (ver online)
+  gem install nokogiri pony colorize
+
+* look for .smpt_credentials in your mail archive and save it to
+  ~/.smtp_credentials
+
+* cronjobs!
+  crontab -e y copiar lo que haya en ~/repos/dotfiles/crontab
+
+  cd ~/repos
+  git@github.com:jmberros/last-episode.git
 
 
 ----
