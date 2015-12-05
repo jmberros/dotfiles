@@ -52,6 +52,10 @@ after installing ubuntu:
 
 ((in case it's not in i3 config: setxkbmap -option caps:swapescape))
 
+* dmenu with a reasonable font:
+  sudo update-alternatives --config dmenu
+  (choose 2, .xft version)
+
 * shit for i3pystatus:
   sudo apt-get install python3.5-dev
   pip3 install i3pystatus netifaces colour 
