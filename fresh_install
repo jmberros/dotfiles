@@ -43,6 +43,9 @@ after installing ubuntu:
   /dev/sdb1   /media/500gb    auto    auto,users  0 0
   /dev/sdc3   /media/600gb    auto    auto,users    0 0
 
+* Get rid of Nautilus desktop
+  gsettings set org.gnome.desktop.background show-desktop-icons false
+
 * bajarse Anaconda e instalar jupyter y r
 
 ((in case it's not in i3 config: setxkbmap -option caps:swapescape))
