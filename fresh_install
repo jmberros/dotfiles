@@ -45,6 +45,8 @@ after installing ubuntu:
 
 * Get rid of Nautilus desktop
   gsettings set org.gnome.desktop.background show-desktop-icons false
+  ( If this doesn't work, install dconf-tools and maybe libdconf1 and change
+  that option manually from the dconf-editor )
 
 * bajarse Anaconda e instalar jupyter y r
 
