@@ -1,37 +1,78 @@
 after installing ubuntu:
 
-google-chrome
 
-sudo apt-get zsh install git-core python-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui
+* google-chrome
+* dropbox
+* install some stuff:
+  sudo apt-get zsh install git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl
 
-oh-my-zsh
-r-base ?
-tmux ? .tmuxconf
+* set ssh-keys to clone repos:
+  https://help.github.com/articles/generating-ssh-keys/
+  ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+  [enter]
+  [enter]
+  [passphrase]
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_rsa
+  xclip -sel clip < ~/.ssh/id_rsa.pub
+* paste the copied key here:
+  https://github.com/settings/ssh
 
-copy .vimrc .i3/config .i3pystatus.py .zshrc to ~
+* install Vundle
+  mkdir ~/repos
+  cd ~/repos
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+* clone the dotfiles:
+  cs ~/repos
+  git clone git@github.com:jmberros/dotfiles.git
+  cd ~/repos/dotfiles
+  cp .vimrc .i3pystatus.py .zshrc ~/
+
+* copy vim themes:
+  cp -r ~/repos/dotfiles/vim_colors ~/.vim/colors  
+
+* vim +PluginInstall +qall
+
+* oh my zsh
+  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"  
 
 # copy fstab to automount HDDs:
 # check disks with sudo fdisk -l or sudo blkid in case you need UUIDs
-/dev/sdb1   /media/500gb    auto    auto,users  0 0
-/dev/sdc3   /media/600gb    auto    auto,users    0 0
+  sudo nano /etc/fstab
+  /dev/sdb1   /media/500gb    auto    auto,users  0 0
+  /dev/sdc3   /media/600gb    auto    auto,users    0 0
 
-# pip install pandas numpy matplotlib biopython
-bajarse Anaconda e instalar directo de ahí el environment
+* bajarse Anaconda e instalar jupyter y r
 
-in case it's not in i3 config:
-setxkbmap -option caps:swapescape
+((in case it's not in i3 config: setxkbmap -option caps:swapescape))
 
+* shit for i3pystatus:
+  sudo apt-get install python3.5-dev
+  pip3 install i3pystatus netifaces colour 
 
-shit for i3pystatus:
-
-sudo apt-get install python3.5-dev
-pip3 install i3pystatus netifaces colour 
-
-fonts for airline/powerline:
+* fonts for airline/powerline:
   git clone git@github.com:powerline/fonts.git
   ./install.sh
+  set your gnome-terminal profile to use Ubuntu mono for Powerline 12 and gray on black with a lighter gray
 
-jupyter themes:
+* Git aliases and config
+  git config --global user.email "juanmaberros@gmail.com"
+  git config --global user.name "Juan Manuel Berros"
+  git config --global alias.co checkout
+  git config --global alias.ci commit
+  git config --global alias.st status
+  git config --global alias.br branch
+  git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+  git config --global alias.type 'cat-file -t'
+  git config --global alias.dump 'cat-file -p'
+
+= Después de reiniciar y loguearse en i3:
+
+* cp ~/repos/dotfiles/.i3.config ~/.i3/config
+
+
+----
+* jupyter themes:
   git@github.com:dunovank/jupyter-themes.git
-
 
