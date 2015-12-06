@@ -107,6 +107,7 @@ after installing ubuntu:
   cd ~/repos
   git@github.com:jmberros/last-episode.git
 
+* Bajar soulseek y copiar el ejecutable a /usr/bin/soulseek
 
 ----
 * jupyter themes:
