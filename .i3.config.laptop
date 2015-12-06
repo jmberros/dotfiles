@@ -5,11 +5,18 @@ exec --no-startup-id ssh-add
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
+# Authentication prompt
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+
 set $mod Mod4
 
 # Simulate Alt-tab behavior
 bindsym Mod1+Tab focus right
 bindsym Mod1+Shift+Tab focus left
+
+# Taking a screenshot
+bindsym --release Print exec --no-startup-id gnome-screenshot
+bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -a
 
 # Pulse Audio controls
 # bindsym F10 exec pactl set-sink-volume 0 -5% #decrease sound volume
@@ -173,14 +180,27 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
+
+# Shutdown, logout, restart
+set $mode_system System (e) logout, (r) reboot, (s) shutdown
+mode "$mode_system" {
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # bindsym l exec --no-startup-id $Locker, mode "default"
+    # bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    # bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
 
 bindsym $mod+b border toggle
 new_window pixel 3
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 
 ## Original bar
 #bar {
