@@ -14,7 +14,17 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-5 8 * * * /bin/bash -l -c /home/juan/repos/last_episode/mail_calvin.rb > /dev/null
-0 * * * * /bin/bash -l -c '/home/juan/repos/last_episode/download_daily_shows.rb' > /dev/null
-0 8  * * * /bin/bash -l -c '/home/juan/repos/last_episode/daily_hackers_dictionary.rb' > /dev/null
-0 11 * * * /usr/bin/update-manager
+
+# Once a day
+# Mail me the hackers dictionary entry
+0 8  * * * /bin/bash -l -c 'export PATH="$HOME/.rbenv/bin:$PATH"; eval "$(rbenv init -)"; /home/juan/repos/last-episode/daily_hackers_dictionary.rb > /dev/null'
+
+# Mail me the C&H strip
+5 8 * * * /bin/bash -l -c 'export PATH="$HOME/.rbenv/bin:$PATH"; eval "$(rbenv init -)"; /home/juan/repos/last-episode/mail_calvin.rb > /dev/null'
+
+# Wake me up with music
+30 9 * * * /usr/bin/clementine -p
+
+# Every hour
+# Check for new episodes to download
+0 * * * * /bin/bash -l -c 'export PATH="$HOME/.rbenv/bin:$PATH"; eval "$(rbenv init -)"; /home/juan/repos/last-episode/download_daily_shows.rb > /dev/null'
