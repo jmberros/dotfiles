@@ -1,9 +1,8 @@
-from i3pystatus import Module
-from subprocess import call
+from i3pystatus import IntervalModule
 
 
-class UpdatesCheck(Module):
-    def init(self):
+class UpdatesCheck(IntervalModule):
+    def run(self):
         with open("/home/juan/.check_updates_status", "r") as f:
             status = f.read()
 

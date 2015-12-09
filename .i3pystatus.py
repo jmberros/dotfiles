@@ -3,6 +3,7 @@
 import subprocess
 
 from i3pystatus import Status
+from i3pystatus.updates import aptget
 
 status = Status(standalone=True)
 
@@ -12,6 +13,7 @@ status = Status(standalone=True)
 status.register("clock",
                 color="#cccccc",
                 format="%H:%M, %A %-d %B",)
+
 
 # Shows pulseaudio default sink volume
 #
@@ -40,8 +42,16 @@ status.register("load",
     format="💻 {avg1} / {avg5} / {avg15}"
     )
 
-#status.register("uptime",
-    #format="Uptime {uptime}")
+status.register("updates",
+                format = "{count} update(s) available",
+                format_no_updates = "",
+                backends = [aptget.AptGet()])
+
+status.register("mail_check")
+# status.register("updates_check")
+
+status.register("uptime",
+                format="Uptime {uptime}")
 
 # Shows your CPU temperature, if you have a Intel CPU
 #status.register("temp",
