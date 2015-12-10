@@ -20,10 +20,13 @@
 0 8  * * * /bin/bash -l -c 'export PATH="$HOME/.rbenv/bin:$PATH"; eval "$(rbenv init -)"; /home/juan/repos/last-episode/daily_hackers_dictionary.rb > /dev/null'
 
 # Mail me the C&H strip
-5 8 * * * /bin/bash -l -c 'export PATH="$HOME/.rbenv/bin:$PATH"; eval "$(rbenv init -)"; /home/juan/repos/last-episode/mail_calvin.rb > /dev/null'
+5 8 * * * /bin/bash -l -c 'export PATH="$HOME/.rbenv/bin:$PATH"; eval "$(rbenv init -)"; /home/juan/repos/last-episode/mail_calvin.rb > /dev/null 2> /dev/null'
 
-# Wake me up with music
-30 9 * * * /usr/bin/clementine -p
+# Wake up with music on weekends
+0 10 * * SAT,SUN /usr/bin/clementine -p
+
+# Wake up with VHM on the radio on weekdays
+0 9 * * 1-5 export DISPLAY=:0 && google-chrome --new-window 'http://www.continental.com.ar/player.aspx?id=' > /dev/null
 
 # Every hour
 # Check for new episodes to download
