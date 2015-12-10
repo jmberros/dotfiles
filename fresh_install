@@ -4,7 +4,7 @@ after installing ubuntu:
 * google-chrome
 * dropbox
 * install some stuff:
-  sudo apt-get zsh install git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common
+  sudo apt-get zsh install git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt
 
 * set ssh-keys to clone repos:
   https://help.github.com/articles/generating-ssh-keys/
