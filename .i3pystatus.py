@@ -28,6 +28,7 @@ status.register("pulseaudio",
                 format="🔊 {volume}",)
 
 status.register("pomodoro",
+                long_break_duration=30,
                 sound="/home/juan/Dropbox/glass_ping.wav")
 
 status.register("radiotray",
@@ -43,11 +44,11 @@ status.register("load",
                 critical_limit=8,
                 format="💻 {avg1} / {avg5}")
 
-status.register("mem_bar",
-                multi_colors=True,
-                color="#333333",
-                warn_color="#cccccc",
-                alert_color="#ffffff")
+#  status.register("mem_bar",
+                #  multi_colors=True,
+                #  color="#333333",
+                #  warn_color="#cccccc",
+                #  alert_color="#ffffff")
 
 status.register("network",
     interface="enp0s25",
