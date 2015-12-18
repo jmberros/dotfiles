@@ -109,6 +109,10 @@ after installing ubuntu:
 
 * Bajar soulseek y copiar el ejecutable a /usr/bin/soulseek
 
+* f.lux para atonar el monitor al momento del día:
+  https://justgetflux.com/
+  xflux -l -34.60 -g -58.38
+
 ----
 * jupyter themes:
   git@github.com:dunovank/jupyter-themes.git
