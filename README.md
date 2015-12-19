@@ -1,65 +1,139 @@
-# Setting up a decent environment
+# After installing Ubuntu
 
-* Download & Install the latest LTS Ubuntu
- - Set language as English (US) and keyboard layout as English (International AltGr deade keys)
+* Get google-chrome
+* Get dropbox
+* Install some stuff:
+  sudo apt-get zsh install git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades
 
-* ~~Restore gnome classic with Compiz: `sudo apt-get install gnome-session-flashback`~~
- - ~~Log out and log in choosing Gnome with Compiz~~
+* Set ssh-keys to clone repos:
+  https://help.github.com/articles/generating-ssh-keys/
 
-## Git to get these files
-* Install git, prolly with `sudo apt-get install git`, do the whole ssh-key thing (google that shit).
-* Generate and add SSH key to github (just CTRL-V in the key field):
 ```
-mkdir ~/.ssh
-ssh-keygen -t rsa -C "juanmaberros@gmail.com"
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+[enter]
+[enter]
+[passphrase]
+eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
-sudo apt-get install xclip
 xclip -sel clip < ~/.ssh/id_rsa.pub
-google-chrome https://github.com/settings/ssh
 ```
 
+* Paste the copied key here:
+  https://github.com/settings/ssh
+
+* Install Vundle
+
+```
+  mkdir ~/repos
+  cd ~/repos
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
+* Clone the dotfiles:
+
+```
+cs ~/repos
+git clone git@github.com:jmberros/dotfiles.git
+cd ~/repos/dotfiles
+cp .vimrc .i3pystatus.py .zshrc ~/
+```
+
+* Copy vim themes
+
+`cp -r ~/repos/dotfiles/vim_colors ~/.vim/colors`
+
+* Install Vim Plugins
+
+`vim +PluginInstall +qall`
+
+* Oh my zsh!
+
+`sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
+
+* Copy fstab to automount HDDs. Use `sudo fdisk -l` or `sudo blkid` in case you need UUIDs:
+
+```
+sudo nano /etc/fstab
+/dev/sdb1   /media/500gb    auto    auto,users  0 0
+/dev/sdc3   /media/600gb    auto    auto,users    0 0
+```
+
+* Get rid of Nautilus desktop. (If this doesn't work, install dconf-tools and maybe libdconf1 and change that option manually from the dconf-editor.)
+
+`gsettings set org.gnome.desktop.background show-desktop-icons false`
+
+* Bajarse Anaconda e instalar Jupyter y R.
+
+* ((in case it's not in i3 config: `setxkbmap -option caps:swapescape`))
+
+* Choose (2) here to get dmenu with a reasonable font: `sudo update-alternatives --config dmenu`
+
+* Shit for i3pystatus:
+```
+sudo apt-get install python3.5-dev
+pip3 install i3pystatus netifaces colour 
+```
+
+* Fonts for airline/powerline:
+```
+git clone git@github.com:powerline/fonts.git
+./install.sh
+```
+
+And set your gnome-terminal profile to use Ubuntu mono for Powerline 12 and gray on black with a lighter gray.
+
+* Git aliases and config
 ```
 git config --global user.email "juanmaberros@gmail.com"
 git config --global user.name "Juan Manuel Berros"
-git config --global push.default simple
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.br branch
+git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+git config --global alias.type 'cat-file -t'
+git config --global alias.dump 'cat-file -p'
 ```
-* Clone this repo and the rc files in it to your home dir:
+
+* Copy i3's config file: `cp ~/repos/dotfiles/.i3.config ~/.i3/config`
+
+# Reiniciar y loguearse en i3:
+
+* Transmission setup: `sudo vi /etc/transmission-daemon/settings.json`
+  y copiarle lo que haya en `~/repos/dotfiles/settings.json`
+  ( es posible que desde transgui tengas que cambiar a mano los directorios de dl, /media/600gb/transmission-daemon/{in}complete )
+
+  `sudo service transmission-daemon start`
+
+* Instalar ruby para los cronjobs:
+
 ```
-mkdir ~/repos && cd ~/repos && git clone git@github.com:jmberros/dotfiles.git && \
-cd dotfiles && cp ./.vimrc ~ && cp ./.pryrc ~ && cp ./.zshrc ~ && cp ./.my.cnf ~ && \
-cp ./.grcat ~ && sudo cp ./hosts /etc/hosts && cp ./tmux.conf ~ && \
-cp ./.i3.config ~/.i3/config && cp ./.i3status.conf ~
+rbenv (ver instrucciones online)
+ruby-build (ver online)
+sudo apt-get install libssl-dev libreadline-dev zlib1g-dev
+rbenv isntall 2.2.3
+rbenv local 2.2.3
+rbenv rehash
+ruby --version
+rbenv-gemset (ver online)
+gem install nokogiri pony colorize
 ```
-* Copy all the dotfiles from this repo to $HOME
 
-## Oh my ZSH
-* Oh my ZSH! `sudo-apt get install zsh && curl -L http://install.ohmyz.sh | sh && chsh -s /bin/zsh`
-* Tap that sweet config: `cp ~/repos/dotfiles/.zshrc ~/`
-* Install oh-my-zsh: `curl -L http://install.ohmyz.sh | sh && chsh -s /bin/zsh`
+* Look for .smpt_credentials in your mail archive and save it to
+  `~/.smtp_credentials`
 
-## Google-Chrome
-* Install google-chrome and synch your account.
+* Set up the cronjobs!
+  `crontab -e` y copiar lo que haya en `~/repos/dotfiles/crontab`
 
-## More stuff
-* Install everything that is cool:
+* Get your scripts from github:
+
 ```
-sudo apt-get install guake terminator vim vim-gtk tree curl compizconfig-settings-manager compizconfig-plugins compizconfig-plugins-extra grc nodejs meld i3 tmux
+  cd ~/repos
+  git@github.com:jmberros/last-episode.git
 ```
-* Set Terminator as your default terminal: `gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'`
 
-## Vim
-* Copy ~/.vimrc to $HOME and run (from the command line): `vim +PluginInstall +qall`
+* Bajar soulseek y copiar el ejecutable a `/usr/bin/soulseek`
 
-* Set up vim with solarized theme or tomorrow theme
- - `mkdir -p ~/.vim/colors`
- - `cd ~/Downloads && git clone https://github.com/chriskempson/tomorrow-theme && cp tomorrow-theme/vim/colors/*.vim ~/.vim/colors`
- - `wget http://ethanschoonover.com/solarized/files/solarized.zip && unzip solarized.zip && cp solarized/vim-colors-solarized/colors/solarized.vim ~/.vim/colors`
- - tell terminator to use solarized as default colorscheme: ``
-
-## Ruby
-* Install rvm with latest ruby http://rvm.io/rvm/install:
- - `\curl -sSL https://get.rvm.io | bash`
- - `rvm install 2.0.0`
-
-## DBs
-* Install MariaDB, Redis, ... ?
+* f.lux para atonar el monitor al momento del día:
+  https://justgetflux.com/ y correr
+  `xflux -l -34.60 -g -58.38`
