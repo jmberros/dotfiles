@@ -137,3 +137,21 @@ gem install nokogiri pony colorize
 * f.lux para atonar el monitor al momento del día:
   https://justgetflux.com/ y correr
   `xflux -l -34.60 -g -58.38`
+
+* Set unattended-upgrades:
+```
+sudo dpkg-reconfigure unattended-upgrades
+sudo vi /etc/apt/apt.conf.d/50unattended-upgrades
+# Add "Google\, Inc.:stable"; to Allowed-Origins
+# Uncomment updates in Allowed-Origins
+# Uncomment the 'Mail root' line
+sudo vi /etc/apt/apt.conf.d/20auto-upgrades
+# Add these lines:
+# Though I'm not quite sure if these go in the file 10periodic instead
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Unattended-Upgrade "1";
+APT::Periodic::Download-Upgradeable-Packages "1";
+APT::Periodic::AutocleanInterval "7";
+APT::Periodic::Verbose "1";
+```
+
