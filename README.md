@@ -155,3 +155,9 @@ APT::Periodic::AutocleanInterval "7";
 APT::Periodic::Verbose "1";
 ```
 
+* Enable reboot and shutdown from i3:
+```
+sudo visudo
+# Add this line to the file:
+juan     ALL = NOPASSWD: /sbin/reboot, /sbin/shutdown, /sbin/poweroff
+```
