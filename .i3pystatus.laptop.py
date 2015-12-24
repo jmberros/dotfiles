@@ -14,9 +14,17 @@ status.register("weather",
                 format="{current_temp} {humidity}%"
                 )
 
+status.register("battery",
+                format="{percentage:.0f}% {bar} {remaining}",
+                no_text_full=True,
+                full_color="#cccccc",
+                color="#ffff66",
+                charging_color="#99ff99",
+                critical_color="#ff0000")
+
 status.register("clock",
                 color="#cccccc",
-                format="%H:%M, %A %-d %B",)
+                format="%H:%M, %A %-d",)
 
 status.register("updates",
                 format = "{count} update(s) available",
@@ -31,8 +39,8 @@ status.register("pulseaudio",
 # status.register("pomodoro",
                 # sound="/home/juan/Dropbox/glass_ping.wav")
 
-status.register("radiotray",
-                color="#f9ef8d")
+# status.register("radiotray",
+                # color="#f9ef8d")
 
 status.register("now_playing",
                 player="clementine",
@@ -74,11 +82,11 @@ status.register("network",
 # Shows disk usage of /
 # Format:
 # 42/128G [86G]
-#  status.register("disk",
-    #  path="/",
-    #  color="#bbbbbb",
-    #  #format="{used} / {total}G [ {avail}G ]",)
-    #  format="{avail}G ({total}G)",)
+status.register("disk",
+     path="/",
+     color="#bbbbbb",
+     #format="{used} / {total}G [ {avail}G ]",)
+     format="{avail}G ({total}G)",)
 
 #  status.register("disk",
     #  color="#bbbbbb",
