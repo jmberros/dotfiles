@@ -30,6 +30,7 @@ Plugin 'nvie/vim-flake8' " python spelling and style checker
 " Plugin 'chriskempson/base16-vim' " Colorscheme
 " Plugin 'hdima/python-syntax'
 " Plugin 'klen/python-mode' " autocompletion was TOO slow
+Plugin 'Valloric/YouCompleteMe' " Best autocomplete plugin, suposedly
 
 " I'm not sure why I have these
 Plugin 'vim-ruby/vim-ruby'
@@ -53,6 +54,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'ervandew/supertab' " Tab for autocompletion
 Plugin 'vim-scripts/LargeFile' " Disables some feats when editing large files
 Plugin 'kshenoy/vim-signature' " Marks enhanced
+Plugin 'tmhedberg/SimpylFold' " No-BS Python code folding
 "Plugin 'nelstrom/vim-markdown-folding'
 "Plugin 'davidhalter/jedi-vim'
 
@@ -76,7 +78,7 @@ call vundle#end()            " required
 
 " # General configuration # "
 
-let mapleader="," " change the leader from \\ to ,
+" let mapleader="," " change the leader from \\ to ,
 
 set clipboard=unnamed
 set nojoinspaces " Use only 1 space after "." when joining lines instead of 2
@@ -132,6 +134,21 @@ set mouse=a
 set showcmd
 set scrolloff=5
 set colorcolumn=80
+set encoding=utf-8
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
 
 "let hour = strftime("%H")
 "if 14 <= hour && hour < 18
@@ -231,6 +248,9 @@ au BufEnter *.py syn match error contained "\<set_trace\>"
     " end
 " endfunction
 
+" Hide files in nerdtree
+let NERDTreeIgnore=['\.pyc$', '\~$']
+
 " set wildignore+=*public/system/* " Ignore rails PortalRH big folder
 " let g:ctrlp_custom_ignore = 'public.system'
 
@@ -248,6 +268,24 @@ autocmd VimResized * :wincmd =
 
 
 " # Plugins cutomization # "
+
+
+" YouCompleteMe tweaks:
+let g:ycm_autoclose_preview_window_after_completion=1
+" Leader+g goes to the definition of whatever you're stanting on
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" One issue with the goto definition above is that VIM by default doesn’t know
+" anything about virtualenv, so you have to make VIM and YouCompleteMe aware
+" of your virtualenv:
+" python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
 
 runtime macros/matchit.vim
 
@@ -295,7 +333,8 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-let python_highlight_builtins = 1
+let python_highlight_all=1
+" let python_highlight_builtins = 1
 
 " Flake8 for Python customization
 autocmd FileType python map <buffer> <F3> :call Flake8()<CR>

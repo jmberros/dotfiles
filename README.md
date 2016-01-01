@@ -3,7 +3,7 @@
 * Get google-chrome
 * Get dropbox
 * Install some stuff:
-  sudo apt-get zsh install git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades
+  sudo apt-get zsh install git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake
 
 * Set ssh-keys to clone repos:
   https://help.github.com/articles/generating-ssh-keys/
@@ -45,6 +45,9 @@ cp .vimrc .i3pystatus.py .zshrc ~/
 * Install Vim Plugins
 
 `vim +PluginInstall +qall`
+
+  YouCompleteMe plugin probably needs to be compiled. Go to its directory
+  and run ./install.sh
 
 * Oh my zsh!
 
@@ -161,3 +164,8 @@ sudo visudo
 # Add this line to the file:
 juan     ALL = NOPASSWD: /sbin/reboot, /sbin/shutdown, /sbin/poweroff
 ```
+
+* Some bioinformatics shit:
+  - install VCFtools: https://vcftools.github.io/examples.html
+  - install SAMtools and tabix
+  - pip install git+https://github.com/jamescasbon/PyVCF
