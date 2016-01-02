@@ -23,10 +23,10 @@ div.prompt, div.CodeMirror pre {
 }
 
 /* --- Juan's */
-/* original bg dark: #303845; mod: #222222 */
-/* origina bg light: #39414F; mod: #2a2a2a */
+/* original bg dark: #303845; mod: #2a2a2a */
+/* origina bg light: #39414F; mod: #333333 */
 div.inner_cell {
-    background-color: #222222; 
+    background-color: #2a2a2a; 
 }
 .CodeMirror-lines {
     padding: 0.7em;
@@ -87,8 +87,8 @@ div.notebook_list_header {
 }
 .dropdown-menu {
     border: 1px solid rgba(53, 87, 120, 0.95);
-    background-color: #2a2a2a;
-    background: #2a2a2a;
+    background-color: #333333;
+    background: #333333;
     box-shadow: none;
     padding-top: 0px;
     padding-bottom: 0px;
@@ -98,7 +98,7 @@ div.notebook_list_header {
     text-align: left;
 }
 .dropdown-menu:hover{
-    background-color: #2a2a2a;
+    background-color: #333333;
     border: 1px solid rgba(53, 87, 120, 0.95);
     box-shadow: none;
     padding-top: 0px;
@@ -106,7 +106,7 @@ div.notebook_list_header {
 }
 .modal-content {
     position: relative;
-    background-color: #2a2a2a;
+    background-color: #333333;
     border: 1px solid rgba(53, 87, 120, 0.15);
     border-radius: 3px;
     box-shadow: 0px 3px 9px rgba(53, 87, 120, 0.25);
@@ -124,7 +124,7 @@ div.notebook_list_header {
     white-space: nowrap;
 }
 .dropdown-menu > li > a {
-    border: 1px solid #2a2a2a;
+    border: 1px solid #333333;
     display: block;
     padding: none;
     clear: both;
@@ -133,16 +133,16 @@ div.notebook_list_header {
     line-height: 1.42857;
     color: #8997b0;
     white-space: nowrap;
-    background-color: #2a2a2a;
-    background: #2a2a2a;
+    background-color: #333333;
+    background: #333333;
 }
 .dropdown-menu > li > a:hover {
     background-clip: padding-box;
-    background-color: #2a2a2a;
-    border: 1px solid #2a2a2a;
+    background-color: #333333;
+    border: 1px solid #333333;
     color: #eeeeee;
     padding: none;
-    background: #2a2a2a;
+    background: #333333;
 }
 .dropdown-menu .divider {
     height: 2px;
@@ -179,7 +179,7 @@ div.notebook_list_header {
     font-size: 12pt;
     color: #8997b0;
     line-height: 100%;
-    background: #222222;
+    background: #2a2a2a;
 }
 body {
     font-family: "Helvetica", Helvetica, Arial, sans-serif;
@@ -210,14 +210,16 @@ body {
 }
 
 .notebook_app {
-    background-color: #262931;
+    /* background-color: #262931; */
+    background-color: #2a2a2a; /* Juan's */
 }
 .notebook_app #header {
     box-shadow: none !important;
 }
 #notebook-container {
     padding: 15px;
-    background-color: #262931;
+    /* background-color: #262931; */
+    background-color: #2a2a2a; /* Juan's */
     min-height: 0px;
     box-shadow: none;
     margin: 0;
@@ -244,7 +246,7 @@ div.output_html {color: #1e2429;}
 .rendered_html table, .rendered_html th, .rendered_html tr, .rendered_html td {
   border: 1px #a4b8cb solid;
   color: #a4b8cb;
-  background-color: #222222 !important;
+  background-color: #2a2a2a !important;
   align-content: left !important;
 }
 .navbar-default {
@@ -313,19 +315,19 @@ div.output_html {color: #1e2429;}
     border-radius: 2px;
     position: absolute;
     z-index: 1000;
-    background-color: #2a2a2a;
+    background-color: #333333;
 }
 
 .ipython_tooltip .tooltiptext pre {
     border: 0px none;
     border-radius: 0px;
-    background-color: #2a2a2a;
+    background-color: #333333;
     color: #CFD2D9;
 }
 /* Formatting code in markdown cells */
 div.text_cell_render {
     font-family: 'Helvetica', sans-serif;
-    background: #222222;
+    background: #2a2a2a;
     font-weight: 310;
     /* color: #8997b0; */
     color: #B3B290; /* Juan's mod */
@@ -334,7 +336,7 @@ div.text_cell_render {
 /* Formatting code in markdown cells */
 div.text_cell_render pre {
     color: #8997b0;
-    background-color: #222222;
+    background-color: #2a2a2a;
 }
 div.text_cell {
     max-width: 100%;
@@ -347,7 +349,7 @@ div.text_cell_render h4,
 div.text_cell_render h5,
 div.text_cell_render h6 {
     font-family: 'Helvetica', sans-serif;
-    background: #222222;
+    background: #2a2a2a;
     font-weight: 300;
     /* color: #8997b0; */
     color: #FFAD8B; /* Juan's mod */
@@ -361,7 +363,7 @@ div.output_html {color: #a4b8cb;}
 .rendered_html table, .rendered_html th, .rendered_html tr, .rendered_html td {
   border: 1px #a4b8cb solid;
   color: #a4b8cb;
-  background-color: #2a2a2a !important;
+  background-color: #333333 !important;
   align-content: left !important;
 }
 
@@ -393,7 +395,7 @@ button.close {
     font-size: 13pt;
     line-height: 1.6;
     color: #6ea3d4;
-    background-color: #222222;
+    background-color: #2a2a2a;
     background-image: none;
     border: 1px solid rgba(53, 87, 120, 0.95);
     border-radius: 2px;
@@ -420,12 +422,12 @@ span.ansicyan {color: #7bc6c0;}
 span.ansiyellow {color: #DDD7A3;}
 span.ansired {color: #DB797C;}
 
-div.output_stderr {background-color: #DB797C;}
-div.output_stderr pre {color: #D0D4E6;}
+div.output_stderr {background-color: #cc8080;} /* Juan's */
+div.output_stderr pre {color: #2a2a2a !important;} /* Juan's */
 
-.cm-s-ipython.CodeMirror {background: #222222; color: #D0D4E6; font-size:13pt !important;}
+.cm-s-ipython.CodeMirror {background: #2a2a2a; color: #D0D4E6; font-size:13pt !important;}
 .cm-s-ipython div.CodeMirror-selected {background: #3C4555 !important;}
-.cm-s-ipython .CodeMirror-gutters {background: #2a2a2a; border: 0px; border-radius:0px;}
+.cm-s-ipython .CodeMirror-gutters {background: #333333; border: 0px; border-radius:0px;}
 .cm-s-ipython .CodeMirror-linenumber {color: #5A647B !important; font-size: 11pt;}
 .cm-s-ipython .CodeMirror-cursor {border-left: 2px solid #0095ff !important;}
 
@@ -464,7 +466,16 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket { color: #eeeeee; background: 
 .cm-s-ipython .CodeMirror-nonmatchingbracket { color: #eeeeee; background: rgba(191, 97, 106, .65) !important; }
 
 
-div.cell { border: medium solid #262931; padding: 0px; border-radius: 0px; }
+div.cell {
+    border: medium solid #333333;
+    border-bottom: none;  /* Juan's */
+    padding: 0px;
+    border-radius: 0px;
+}
+div.cell:last-of-type {
+    border-bottom: medium solid #333333;
+}
+
 div.cell.selected { border: medium solid #3572C6; padding: 0px; border-radius: 0px; }
 .edit_mode div.cell.selected {border: medium solid rgba(53, 108, 180, .45) !important; padding: 0px; border-radius: 0px; }
 div.cell.edit_mode {border: medium solid rgba(53, 108, 180, .45) !important; padding: 0px; border-radius: 0px;}
@@ -490,7 +501,8 @@ div.prompt.input_prompt {
     /* font-weight: bold; */
     font-size: 10pt;
     color: #59BAFF;
-    background-color: #222222;
+    background-color: #2a2a2a;
+    width: 100px; /* Juan's */
     width: 1em;
     padding: 15px;
     /* padding-bottom: 0px; */
@@ -500,8 +512,8 @@ div.prompt.input_prompt {
 div.prompt.output_prompt {
     font-family: 'Hack', monospace;
     font-weight: bold;
-    background-color: #2a2a2a;
-    color: #2a2a2a;
+    background-color: #333333;
+    color: #333333;
     font-size: 9.5pt;
     width: 1em;
     margin-bottom: 8px;
@@ -514,7 +526,7 @@ div.out_prompt_overlay.prompt {
     font-size: 9.5pt;
     width: 1em;
     margin-bottom: 8px;
-    background-color: #2a2a2a;
+    background-color: #333333;
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -526,13 +538,13 @@ div.out_prompt_overlay.prompt {
     /* width: 1em; */
     /* border-radius: 2px; */
     /* margin-bottom: 8px; */
-    /* background-color: #2a2a2a; */
-    /* box-shadow: #222222 2px 2px 6px 4px inset; */
+    /* background-color: #333333; */
+    /* box-shadow: #2a2a2a 2px 2px 6px 4px inset; */
     /* -webkit-border-radius: 2px; */
     /* -moz-border-radius: 2px; */
 /* } */
 div.output_wrapper {
-    background-color:#2a2a2a;
+    background-color:#333333;
     margin-bottom: 0em;
     margin-top: 0em;
     border: 0px;
@@ -543,7 +555,8 @@ div.output_subarea.output_text.output_stream.output_stdout,div.output_subarea.ou
     margin-top: 8px;
     margin-left: 8px;
     margin-right: 8px;
-    background-color: #2a2a2a;
+    border-radius: 5px; /* Juan's */
+    /* background-color: #333333; */ /* Juan's commented out */
     color: #CFD2D9;
 }
 div.output_area pre {
