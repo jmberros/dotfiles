@@ -169,3 +169,8 @@ juan     ALL = NOPASSWD: /sbin/reboot, /sbin/shutdown, /sbin/poweroff
   - install VCFtools: https://vcftools.github.io/examples.html
   - install SAMtools and tabix
   - pip install git+https://github.com/jamescasbon/PyVCF
+
+* Jupyter custom themes:
+```
+cp ~/repos/dotfiles/_dot_jupyter/custom/* ~/.jupyter/custom
+```

@@ -1,0 +1,562 @@
+/*
+    Name:       Oceans16 Dark
+    Author:     Kyle Dunovan (http://github.com/dunovank)
+    Original Color Scheme by Gadzhi Kharkharov (https://github.com/kkga/spacegray)
+    CodeMirror & NB Style adapted from panditarevolution (https://github.com/panditarevolution/ipythonNotebook_customs)
+    CodeMirror template adapted for IPython Notebook by Nikhil Sonnad (https://github.com/nsonnad/base16-ipython-notebook)
+    Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
+*/
+
+
+/* Juan's modified version */
+
+body {background-color: #262931;}
+
+a {color: #8997b0; font-family: 'Helvetica', sans-serif; }
+div#notebook, div.CodeMirror, div.output_area pre, div.output_wrapper,
+
+div.prompt, div.CodeMirror pre {
+    font-family:'Hack', monospace;
+    /* font-size: 12pt; */
+    font-size: 10pt; /* Juan's */
+    line-height: 1.4; /* Juan's; original: (none) */
+}
+
+/* --- Juan's */
+/* original bg dark: #303845; mod: #222222 */
+/* origina bg light: #39414F; mod: #2a2a2a */
+div.inner_cell {
+    background-color: #222222; 
+}
+.CodeMirror-lines {
+    padding: 0.7em;
+}
+/* --- Juan's */
+
+/* Hiding the ipython log */
+div#ipython_notebook {display: none;}
+
+
+/* INTRO PAGE */
+.toolbar_info {color: #8997b0; font-size: 12pt; border: 0; font-family: 'Helvetica', sans-serif; text-shadow: none !important; }
+.list_container {color: #8997b0; font-size: 12pt; border: 0; font-family: 'Helvetica', sans-serif;text-shadow: none !important; }
+.breadcrumb>li {text-shadow:0 0px 0; color:#8997b0; font-family: 'Helvetica', sans-serif; font-size: 12pt}
+.list_container a {color: #8997b0; font-family: 'Helvetica', sans-serif; font-size: 12pt; border: 0; text-shadow: none !important; }
+.item_icon {color: #2c85f7;}
+
+
+/*<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>
+*****************************************
+ COMMENT THIS LINE OUT TO RESTORE TOOLBAR
+*****************************************
+ <<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>> */
+
+div#maintoolbar {
+    display: none !important;
+}
+
+div.list_container a:hover {color: #eeeeee;}
+.list_header {
+    font-weight: normal;
+    background-color: #2A2F3C;
+}
+div.list_container :hover {
+    background-color: #2A2F3C;
+    color: #eeeeee;
+}
+div.notebook_list_header {
+      background: #262931;
+}
+
+/* PANELS // LISTS // DROPDOWN MENUS*/
+.list_container > div {
+    border-bottom: 1px solid rgba(53, 87, 120, 0.55);
+    font-size: 12pt;
+}
+.panel-default {
+    border-color: rgba(53, 87, 120, 0.55);
+}
+.panel {
+    line-height: 22px;
+    fontsize: 12px;
+    margin-bottom: 18px;
+    background-color: #262931;
+    color: #8997b0;
+    border: 2px solid rgba(53, 87, 120, 0.55);
+    box-shadow: none;
+}
+.dropdown-menu {
+    border: 1px solid rgba(53, 87, 120, 0.95);
+    background-color: #2a2a2a;
+    background: #2a2a2a;
+    box-shadow: none;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    list-style: outside none none;
+    /* font-size: 12pt; */
+    font-size: 11pt; /* Juan's mod */
+    text-align: left;
+}
+.dropdown-menu:hover{
+    background-color: #2a2a2a;
+    border: 1px solid rgba(53, 87, 120, 0.95);
+    box-shadow: none;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.modal-content {
+    position: relative;
+    background-color: #2a2a2a;
+    border: 1px solid rgba(53, 87, 120, 0.15);
+    border-radius: 3px;
+    box-shadow: 0px 3px 9px rgba(53, 87, 120, 0.25);
+    background-clip: padding-box;
+    outline: 0px none;
+}
+.dropdown-header {
+    display: block;
+    padding: 3px 20px;
+    font-size: 12pt;
+    line-height: 1.42857;
+    color: #5c6b89;
+    text-decoration: underline;
+    text-decoration-color: rgba(53, 87, 120, 0.95);
+    white-space: nowrap;
+}
+.dropdown-menu > li > a {
+    border: 1px solid #2a2a2a;
+    display: block;
+    padding: none;
+    clear: both;
+    background-clip: padding-box;
+    font-weight: normal;
+    line-height: 1.42857;
+    color: #8997b0;
+    white-space: nowrap;
+    background-color: #2a2a2a;
+    background: #2a2a2a;
+}
+.dropdown-menu > li > a:hover {
+    background-clip: padding-box;
+    background-color: #2a2a2a;
+    border: 1px solid #2a2a2a;
+    color: #eeeeee;
+    padding: none;
+    background: #2a2a2a;
+}
+.dropdown-menu .divider {
+    height: 2px;
+    margin: 8px 0px;
+    overflow: hidden;
+    background-color: rgba(53, 87, 120, 0.95);
+}
+.dropdown-menu > .disabled > a, .dropdown-menu > .disabled > a:hover, .dropdown-menu > .disabled > a:focus {
+    color: #5A647B;
+}
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid rgba(53, 87, 120, 0.95);
+    min-height: 16.4286px;
+}
+#running .panel-group .panel .panel-heading {
+    background-color: #262931;
+    padding: 4px 7px;
+    line-height: 22px;
+}
+#running .panel-group .panel .panel-heading a:hover {
+    color: #2c85f7;
+}
+#running .panel-group .panel .panel-body .list_container .list_item {
+    border-bottom: 1px solid rgba(53, 87, 120, 0.55);
+}
+
+#project_name > .breadcrumb {
+    font-weight: normal;
+    color: #2c85f7;
+
+}
+.rendered_html pre, .rendered_html code {
+    font-size: 12pt;
+    color: #8997b0;
+    line-height: 100%;
+    background: #222222;
+}
+body {
+    font-family: "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.42857;
+    color: #8997b0;
+}
+
+#kernel_indicator {
+    float: right !important;
+    color: #2c85f7;
+}
+#kernel_indicator .kernel_indicator_name {
+    padding-left: 5px;
+    padding-right: 5px;
+    /* font-size: 13pt; */
+    font-size: 11pt; /* Juan's mod */
+}
+#modal_indicator {
+    float: right !important;
+    color: #2c85f7;
+
+}
+
+.CodeMirror pre {
+  font-family: 'Hack', monospace;
+  font-size: 13pt;
+}
+
+.notebook_app {
+    background-color: #262931;
+}
+.notebook_app #header {
+    box-shadow: none !important;
+}
+#notebook-container {
+    padding: 15px;
+    background-color: #262931;
+    min-height: 0px;
+    box-shadow: none;
+    margin: 0;
+    width: initial;
+}
+#header {
+    box-shadow: none;
+    background-color: #262931;
+    position: relative;
+    z-index: 100;
+}
+#header-container {
+    padding-bottom: 5px;
+    display: none !important;
+    box-shadow: none;
+}
+#header .header-bar {
+    background: #262931;
+}
+/* text in output area (i.e. print some_list) */
+div.output_html {color: #1e2429;}
+
+/* Formatting code in text, code*/
+.rendered_html table, .rendered_html th, .rendered_html tr, .rendered_html td {
+  border: 1px #a4b8cb solid;
+  color: #a4b8cb;
+  background-color: #222222 !important;
+  align-content: left !important;
+}
+.navbar-default {
+    background-color: #262931;
+    border-color: #262931;
+}
+#menubar .navbar {
+    border-top: 1px;
+    border-radius: 0 0 2px 2px;
+    margin-bottom: 0;
+    margin-top: 8px;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #8997b0;
+    /* font-size: 13pt; */
+    font-size: 11pt; /* Juan's mod */
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #ffffff;
+    background-color: rgba(53, 108, 180, .5);
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #ffffff;
+    background-color: rgba(53, 108, 180, .5);
+}
+.btn {
+    color: #8997b0;
+    background: #262931;
+    font-size: 12pt;
+    font-weight: normal;
+    border: 0 none !important;
+    box-shadow: none !important;
+    text-shadow: none;
+    vertical-align: 0px;
+}
+
+.btn-group > .btn-mini {
+    color: #8997b0;
+    background: #262931;
+    font-size: 11pt;
+    font-weight: normal;
+    border: 0 none !important;
+    box-shadow: none !important;
+    text-shadow: none;
+}
+.btn:hover {
+    color: #2c85f7;
+    background: #262931;
+    background-color: #262931;
+    background-image: none;
+}
+.btn-group > .btn-mini:hover {
+    color: #2c85f7;
+    background: #262931;
+    background-color: #262931;
+    background-image: none;
+}
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+.ipython_tooltip {
+    border: 2px solid #3572C6;
+    box-shadow: none;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 1000;
+    background-color: #2a2a2a;
+}
+
+.ipython_tooltip .tooltiptext pre {
+    border: 0px none;
+    border-radius: 0px;
+    background-color: #2a2a2a;
+    color: #CFD2D9;
+}
+/* Formatting code in markdown cells */
+div.text_cell_render {
+    font-family: 'Helvetica', sans-serif;
+    background: #222222;
+    font-weight: 310;
+    /* color: #8997b0; */
+    color: #B3B290; /* Juan's mod */
+    padding: 0.7em; /* Juan's mod */
+}
+/* Formatting code in markdown cells */
+div.text_cell_render pre {
+    color: #8997b0;
+    background-color: #222222;
+}
+div.text_cell {
+    max-width: 100%;
+    color: #8997b0;
+}
+div.text_cell_render h1,
+div.text_cell_render h2,
+div.text_cell_render h3,
+div.text_cell_render h4,
+div.text_cell_render h5,
+div.text_cell_render h6 {
+    font-family: 'Helvetica', sans-serif;
+    background: #222222;
+    font-weight: 300;
+    /* color: #8997b0; */
+    color: #FFAD8B; /* Juan's mod */
+    line-height: 80%;
+}
+
+/* text in output area (i.e. print some_list) */
+div.output_html {color: #a4b8cb;}
+
+/* Formatting code in text, code*/
+.rendered_html table, .rendered_html th, .rendered_html tr, .rendered_html td {
+  border: 1px #a4b8cb solid;
+  color: #a4b8cb;
+  background-color: #2a2a2a !important;
+  align-content: left !important;
+}
+
+button.close {
+    padding: 0px;
+    cursor: pointer;
+    background: transparent none repeat scroll 0% 0%;
+    border: 0px none;
+}
+.close {
+    float: right;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1;
+    color: #3572C6;
+    text-shadow: 0px 1px 0px rgba(53, 87, 120, 0.2);
+    opacity: 0.3;
+}
+.close:hover {
+    color: #0095ff;
+    text-shadow: 0px 1px 0px rgba(53, 87, 120, 0.2);
+    opacity: 0.9;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 32px;
+    padding: 6px 12px;
+    font-size: 13pt;
+    line-height: 1.6;
+    color: #6ea3d4;
+    background-color: #222222;
+    background-image: none;
+    border: 1px solid rgba(53, 87, 120, 0.95);
+    border-radius: 2px;
+    box-shadow: none;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid rgba(53, 87, 120, 0.95);
+}
+.input-form-control:hover:active {
+      background-color:  rgba(53, 87, 120, 0.95);
+      selected:  rgba(53, 87, 120, 0.95);
+}
+
+span.ansiblack {color: #2b303b;}
+span.ansiblue {color: #6ea3d4;}
+span.ansigray {color: #b4b7b4;}
+span.ansigreen {color: #8fc198;}
+span.ansipurple {color: #be8fc1;}
+span.ansicyan {color: #7bc6c0;}
+span.ansiyellow {color: #DDD7A3;}
+span.ansired {color: #DB797C;}
+
+div.output_stderr {background-color: #DB797C;}
+div.output_stderr pre {color: #D0D4E6;}
+
+.cm-s-ipython.CodeMirror {background: #222222; color: #D0D4E6; font-size:13pt !important;}
+.cm-s-ipython div.CodeMirror-selected {background: #3C4555 !important;}
+.cm-s-ipython .CodeMirror-gutters {background: #2a2a2a; border: 0px; border-radius:0px;}
+.cm-s-ipython .CodeMirror-linenumber {color: #5A647B !important; font-size: 11pt;}
+.cm-s-ipython .CodeMirror-cursor {border-left: 2px solid #0095ff !important;}
+
+/* Juan's mod color */
+/* .cm-s-ipython span.cm-comment {color: #6F7998; font-style: italic !important;} */
+.cm-s-ipython span.cm-comment {color: #71709C; font-style: italic !important;}
+
+.cm-s-ipython span.cm-atom {color: #D9A0FF;}
+.cm-s-ipython span.cm-number {color: #FFAD8B;}
+.cm-s-ipython span.cm-property {color: #59BAFF;}
+.cm-s-ipython span.cm-attribute {color: #FF9095;}
+.cm-s-ipython span.cm-keyword {color: #D9A0FF; font-weight: normal;}
+.cm-s-ipython span.cm-string {color: #8DD39A; font-weight: normal;}
+.cm-s-ipython span.cm-operator {color: #59BAFF; font-weight: normal;}
+.cm-s-ipython span.cm-builtin {color: #FF9095; font-weight: normal;}
+.cm-s-ipython span.cm-boolean {color: #FF9095;}
+.cm-s-ipython span.cm-variable {color: #D0D4E6;}
+.cm-s-ipython span.cm-variable-2 {color: #FF9095;}
+
+.cm-s-ipython span.cm-def {color: #59BAFF; font-weight: normal;}
+.cm-s-ipython span.cm-error {background: rgba(191, 97, 106, .3) !important;}
+.cm-s-ipython span.cm-tag {color: #59BAFF;}
+.cm-s-ipython span.cm-link {color: #FF9095;}
+.cm-s-ipython span.cm-storage {color: #D9A0FF;}
+.cm-s-ipython span.cm-entity {color: #FF9095;}
+.cm-s-ipython span.cm-class {color: #F4ECA9;}
+.cm-s-ipython span.cm-support {color: #59BAFF;}
+.cm-s-ipython span.cm-qualifier {color: #59BAFF;}
+.cm-s-ipython span.cm-property {color: #59BAFF;}
+
+
+
+div.CodeMirror span.CodeMirror-matchingbracket { color: #eeeeee; background: rgba(53, 108, 180, .75) !important ; }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: #eeeeee; background: rgba(191, 97, 106, .65) !important ; }
+.cm-s-ipython .CodeMirror-matchingbracket { color: #eeeeee; background: rgba(53, 108, 180, .75)  !important; }
+.cm-s-ipython .CodeMirror-nonmatchingbracket { color: #eeeeee; background: rgba(191, 97, 106, .65) !important; }
+
+
+div.cell { border: medium solid #262931; padding: 0px; border-radius: 0px; }
+div.cell.selected { border: medium solid #3572C6; padding: 0px; border-radius: 0px; }
+.edit_mode div.cell.selected {border: medium solid rgba(53, 108, 180, .45) !important; padding: 0px; border-radius: 0px; }
+div.cell.edit_mode {border: medium solid rgba(53, 108, 180, .45) !important; padding: 0px; border-radius: 0px;}
+
+div.prompt {
+    padding: 0.3em;
+    margin: 0px;
+    font-family: monospace;
+    text-align: left;
+    line-height: 1.21429em;
+    min-width: 11ex;
+    font-size: 9.5pt;
+}
+div.input_area {
+    margin-bottom: 0px;
+    border: 0px;
+    border-radius: 0px;
+}
+/*Input and output cells formatting*/
+div.prompt.input_prompt {
+    font-family: 'Hack', monospace;
+    border-right: 2px solid rgba(53, 108, 180, .4);
+    /* font-weight: bold; */
+    font-size: 10pt;
+    color: #59BAFF;
+    background-color: #222222;
+    width: 1em;
+    padding: 15px;
+    /* padding-bottom: 0px; */
+    /* margin-bottom: 0px; */
+    text-align: center;
+}
+div.prompt.output_prompt {
+    font-family: 'Hack', monospace;
+    font-weight: bold;
+    background-color: #2a2a2a;
+    color: #2a2a2a;
+    font-size: 9.5pt;
+    width: 1em;
+    margin-bottom: 8px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+div.out_prompt_overlay.prompt {
+    font-family: 'Hack', monospace;
+    font-weight: bold;
+    font-size: 9.5pt;
+    width: 1em;
+    margin-bottom: 8px;
+    background-color: #2a2a2a;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+}
+/* div.out_prompt_overlay.prompt:hover { */
+    /* font-family: 'Hack', monospace; */
+    /* font-weight: bold; */
+    /* font-size: 9pt; */
+    /* width: 1em; */
+    /* border-radius: 2px; */
+    /* margin-bottom: 8px; */
+    /* background-color: #2a2a2a; */
+    /* box-shadow: #222222 2px 2px 6px 4px inset; */
+    /* -webkit-border-radius: 2px; */
+    /* -moz-border-radius: 2px; */
+/* } */
+div.output_wrapper {
+    background-color:#2a2a2a;
+    margin-bottom: 0em;
+    margin-top: 0em;
+    border: 0px;
+}
+div.output_subarea.output_text.output_stream.output_stdout,div.output_subarea.output_text {
+    padding-top: 1em;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
+    background-color: #2a2a2a;
+    color: #CFD2D9;
+}
+div.output_area pre {
+    color: #CFD2D9;
+    /* font-size: 12pt; */
+    font-size: 10pt; /* Juan's */
+}
+div.output_subarea {
+    overflow-x: auto;
+    padding: 1.0em;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    flex: 1;
+    max-width: calc(100% - 14ex);
+}
