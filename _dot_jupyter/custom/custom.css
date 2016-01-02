@@ -497,13 +497,14 @@ div.input_area {
 /*Input and output cells formatting*/
 div.prompt.input_prompt {
     font-family: 'Hack', monospace;
-    border-right: 2px solid rgba(53, 108, 180, .4);
+    /* border-right: 2px solid rgba(53, 108, 180, .4); */
+    border-right: medium solid #333333; /* Juan's */
     /* font-weight: bold; */
     font-size: 10pt;
     color: #59BAFF;
     background-color: #2a2a2a;
     width: 100px; /* Juan's */
-    width: 1em;
+    /* width: 1em; */
     padding: 15px;
     /* padding-bottom: 0px; */
     /* margin-bottom: 0px; */
