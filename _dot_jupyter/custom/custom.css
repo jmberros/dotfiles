@@ -106,7 +106,8 @@ div.notebook_list_header {
 }
 .modal-content {
     position: relative;
-    background-color: #333333;
+    /* background-color: #333333; */
+    color: #222; /* Juan's */
     border: 1px solid rgba(53, 87, 120, 0.15);
     border-radius: 3px;
     box-shadow: 0px 3px 9px rgba(53, 87, 120, 0.25);
@@ -176,14 +177,16 @@ div.notebook_list_header {
 
 }
 .rendered_html pre, .rendered_html code {
-    font-size: 12pt;
+    /* font-size: 12pt; */
+    font-size: 10pt; /* Juan's */
     color: #8997b0;
     line-height: 100%;
     background: #2a2a2a;
 }
 body {
     font-family: "Helvetica", Helvetica, Arial, sans-serif;
-    font-size: 12pt;
+    /* font-size: 12pt; */
+    font-size: 10pt; /* Juan's */
     line-height: 1.42857;
     color: #8997b0;
 }
@@ -275,12 +278,19 @@ div.output_html {color: #1e2429;}
 .btn {
     color: #8997b0;
     background: #262931;
-    font-size: 12pt;
+    /* font-size: 12pt; */
+    font-size: 10pt; /* Juan's */
     font-weight: normal;
     border: 0 none !important;
     box-shadow: none !important;
     text-shadow: none;
     vertical-align: 0px;
+}
+.modal-content .btn { /* Juan's */
+    background-color: initial;
+    color: #222;
+    border: 2px solid #222 !important;
+    border-radius: 4px;
 }
 
 .btn-group > .btn-mini {
@@ -417,6 +427,24 @@ span.ansiblack {color: #2b303b;}
 span.ansiblue {color: #6ea3d4;}
 span.ansigray {color: #b4b7b4;}
 span.ansigreen {color: #8fc198;}
+
+/* Juan's */
+/* #pager-container span.ansigreen { color: darkgreen; } */
+/* #pager-container span.ansiblue { color: darkblue; } */
+/* #pager-container span.ansiyellow { color: #c4a000; } */
+/* #pager-container span.ansired { color: darkred; } */
+div#pager #pager-contents {
+    background-color: #222;
+}
+div#pager pre {
+    color: #d0d4e6;
+    line-height: 1.35em;
+    background-color: #2a2a2a;
+}
+div#pager #pager-button-area {
+    background-color: white;
+}
+
 span.ansipurple {color: #be8fc1;}
 span.ansicyan {color: #7bc6c0;}
 span.ansiyellow {color: #DDD7A3;}
