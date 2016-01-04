@@ -116,7 +116,7 @@ class NowPlaying(IntervalModule):
 
             if current_status in ["Stopped", "Paused"]:
                 self.output = {
-                    "full_text": "",
+                    "full_text": self.status["play"],
                     "color": self.color,
                 }
             else:
