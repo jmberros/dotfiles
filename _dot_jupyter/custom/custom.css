@@ -28,8 +28,13 @@ div.prompt, div.CodeMirror pre {
 div.inner_cell {
     background-color: #2a2a2a; 
 }
+
 .CodeMirror-lines {
     padding: 0.7em;
+}
+
+.completions {
+    box-shadow: 0px 6px 10px -1px #2a2a2a;
 }
 /* --- Juan's */
 
@@ -469,7 +474,11 @@ div.output_stderr pre {color: #2a2a2a !important;} /* Juan's */
 .cm-s-ipython span.cm-attribute {color: #FF9095;}
 .cm-s-ipython span.cm-keyword {color: #D9A0FF; font-weight: normal;}
 .cm-s-ipython span.cm-string {color: #8DD39A; font-weight: normal;}
-.cm-s-ipython span.cm-operator {color: #59BAFF; font-weight: normal;}
+/* .cm-s-ipython span.cm-operator {color: #59BAFF; font-weight: normal;} */
+.cm-s-ipython span.cm-operator {
+    color: #FB50E3;
+    font-weight: bold;
+} /* Juan's */
 .cm-s-ipython span.cm-builtin {color: #FF9095; font-weight: normal;}
 .cm-s-ipython span.cm-boolean {color: #FF9095;}
 .cm-s-ipython span.cm-variable {color: #D0D4E6;}
