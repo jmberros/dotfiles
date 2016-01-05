@@ -203,8 +203,10 @@ set completeopt=longest,menuone
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabMappingForward = "<C-p>"
 let g:SuperTabMappingBackward = "<C-n>"
-inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>\<Esc>"
-inoremap <expr> <Tab>      pumvisible() ? "\<C-Y>\<Space>" : "\<Tab>"
+inoremap <expr> <Esc>      pumvisible() ? "\<C-e>\<Esc>" : "\<Esc>"
+" This setting was cool but you don't always want a space after completion
+" inoremap <expr> <Tab>      pumvisible() ? "\<C-Y>\<Space>" : "\<Tab>"
+inoremap <expr> <Tab>      pumvisible() ? "\<C-Y>" : "\<Tab>"
 
 cnoreabbrev W w
 cnoreabbrev Q q
