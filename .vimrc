@@ -199,15 +199,12 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <leader>b :call <SID>InsertBreakpoint()<CR>
 
 " Supertab completion settings
-" set completeopt=longest,menuone
-inoremap <expr> <Tab> pumvisible() ? "\<C-y><Space>" : "<Tab>"
-inoremap <expr> <CR> pumvisible() ? "\<C-y><Space>" : "<CR>"
-" inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  " \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-" Autochoose the first option of the popup menu
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-inoremap <expr> <Esc> pumvisible() ? '<C-e>' : "<Esc>"
+set completeopt=longest,menuone
+let g:SuperTabLongestEnhanced = 1
+let g:SuperTabMappingForward = "<C-p>"
+let g:SuperTabMappingBackward = "<C-n>"
+inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>\<Esc>"
+inoremap <expr> <Tab>      pumvisible() ? "\<C-Y>\<Space>" : "\<Tab>"
 
 cnoreabbrev W w
 cnoreabbrev Q q
