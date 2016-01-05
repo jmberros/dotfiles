@@ -30,7 +30,9 @@ Plugin 'nvie/vim-flake8' " python spelling and style checker
 " Plugin 'chriskempson/base16-vim' " Colorscheme
 " Plugin 'hdima/python-syntax'
 " Plugin 'klen/python-mode' " autocompletion was TOO slow
-Plugin 'Valloric/YouCompleteMe' " Best autocomplete plugin, suposedly
+
+" Plugin 'Valloric/YouCompleteMe' " it used to capture space and interfere
+
 
 " I'm not sure why I have these
 Plugin 'vim-ruby/vim-ruby'
@@ -52,11 +54,12 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'henrik/vim-indexed-search' " Ads N of M results to searches
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'ervandew/supertab' " Tab for autocompletion
+Plugin 'vim-scripts/AutoComplPop'  " Automaticaly opens autocompletion
 Plugin 'vim-scripts/LargeFile' " Disables some feats when editing large files
 Plugin 'kshenoy/vim-signature' " Marks enhanced
 Plugin 'tmhedberg/SimpylFold' " No-BS Python code folding
 "Plugin 'nelstrom/vim-markdown-folding'
-"Plugin 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
 
 " Integration
 Plugin 'thoughtbot/vim-rspec' " Run tests from Rspecwithout leaving Vim
@@ -126,8 +129,8 @@ set ruler                 " Always show info along bottom.
 set showmatch
 set autoindent            " auto-indent
 set shiftround            " always indent/outdent to te nearest tabstop
-set tabstop=2 shiftwidth=2 expandtab
-set softtabstop=2         " unify
+set tabstop=4 shiftwidth=4 expandtab
+set softtabstop=4         " unify
 set shiftround            " always indent/outdent to the nearest tabstop
 set smarttab              " use tabs at the start of a line, spaces elsewhere
 set mouse=a
@@ -135,6 +138,8 @@ set showcmd
 set scrolloff=5
 set colorcolumn=80
 set encoding=utf-8
+
+set omnifunc=syntaxcomplete#Complete
 
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
@@ -145,7 +150,7 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix |
 
-au BufNewFile,BufRead *.js, *.html, *.css
+au BufNewFile,BufRead *.js, *.html, *.css, *.rb
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
@@ -194,7 +199,15 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <leader>b :call <SID>InsertBreakpoint()<CR>
 
 " Supertab completion settings
-inoremap <expr> <Space> pumvisible() ? "\<C-y>" : " "
+" set completeopt=longest,menuone
+inoremap <expr> <Tab> pumvisible() ? "\<C-y><Space>" : "<Tab>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y><Space>" : "<CR>"
+" inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  " \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+" Autochoose the first option of the popup menu
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <Esc> pumvisible() ? '<C-e>' : "<Esc>"
 
 cnoreabbrev W w
 cnoreabbrev Q q
@@ -271,7 +284,7 @@ autocmd VimResized * :wincmd =
 
 
 " YouCompleteMe tweaks:
-let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_completion=0
 " Leader+g goes to the definition of whatever you're stanting on
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " One issue with the goto definition above is that VIM by default doesn’t know
