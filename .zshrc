@@ -4,7 +4,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"  # I use this in the desktop
 #ZSH_THEME="awesomepanda"
 #ZSH_THEME="blinks"
 #ZSH_THEME="cypher"
@@ -12,7 +12,7 @@ ZSH_THEME="robbyrussell"
 #ZSH_THEME="random"
 #ZSH_THEME="wezm+"
 #ZSH_THEME="daveverwer"
-# ZSH_THEME="tjkirch"
+ZSH_THEME="tjkirch"  # I use this in the notbook
 
 # linux handy aliases
 alias ls='ls --color=auto --group-directories-first'
