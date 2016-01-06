@@ -171,7 +171,7 @@ juan     ALL = NOPASSWD: /sbin/reboot, /sbin/shutdown, /sbin/poweroff
 
 ```
 pip install git+https://github.com/jamescasbon/PyVCF
-pip install sklearn python-ternary ftputil humanize ipdb pep8
+pip install sklearn python-ternary ftputil humanize ipdb pep8 pyyaml
 
 ```
 
