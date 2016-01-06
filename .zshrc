@@ -24,8 +24,10 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias ..='cs ..'
-alias rsync='rsync -vzh'
 alias tmux="tmux -2"
+alias xclip="xclip -selection primary -f | xclip -selection clipboard"
+alias put="xsel -p"
+alias arrakis='ssh juan@arrakis.local'
 
 # coding and gitting
 alias be='bundle exec'
@@ -42,7 +44,7 @@ pswatch () {
 
 cs () {
   cd $1
-  ls
+  ls -lh --color=auto --group-directories-first
 }
 
 # Uncomment following line if you want to disable command autocorrection
@@ -66,6 +68,7 @@ export PATH=$HOME/bio/ViennaRNA-2.1.9/Utils:$PATH
 export PATH=$HOME/bio/RNAz-2.1/perl:$PATH
 export PATH=$HOME/bio/ncbi-blast-2.2.30+/bin:$PATH
 export PATH=$HOME/usr/bin:$PATH
+export PATH=$HOME/bin:$PATH
 export PATH=$HOME/repos/stem-loop/bin:$HOME/repos/stem-loop/StemLoop/bin:$PATH
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
@@ -75,3 +78,9 @@ export PYTHONSTARTUP=$HOME/.pythonrc
 
 export BLASTDB="/home/juan/bio/ncbi-blast-2.2.30+/db"
 
+# This is needed for VCFTtools:
+export PERL5LIB=/path/to/your/vcftools-directory/src/perl/
+
+export PATH=/home/juan/miniconda3/bin:$PATH
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
