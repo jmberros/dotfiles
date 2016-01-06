@@ -74,7 +74,7 @@ sudo nano /etc/fstab
 * Shit for i3pystatus:
 ```
 sudo apt-get install python3.5-dev
-pip3 install i3pystatus netifaces colour 
+pip3 install i3pystatus netifaces colour
 ```
 
 * Fonts for airline/powerline:
@@ -168,7 +168,12 @@ juan     ALL = NOPASSWD: /sbin/reboot, /sbin/shutdown, /sbin/poweroff
 * Some bioinformatics shit:
   - install VCFtools: https://vcftools.github.io/examples.html
   - install SAMtools and tabix
-  - pip install git+https://github.com/jamescasbon/PyVCF
+
+```
+pip install git+https://github.com/jamescasbon/PyVCF
+pip install sklearn python-ternary ftputil humanize ipdb pep8
+
+```
 
 * Jupyter custom themes:
 ```
