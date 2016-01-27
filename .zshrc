@@ -43,8 +43,14 @@ pswatch () {
 }
 
 cs () {
-  cd $1
-  ls -lh --color=auto --group-directories-first
+  cd $1 && ls -lh --color=auto --group-directories-first
+}
+
+backup () {
+  newname=$1.`date +%Y%m%d.%H%M.bak`;
+  mv $1 $newname;
+  echo "-> Backed up to '$newname'";
+  cp -p $newname $1;
 }
 
 # Uncomment following line if you want to disable command autocorrection
