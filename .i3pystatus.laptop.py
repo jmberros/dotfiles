@@ -8,14 +8,14 @@ from i3pystatus.updates import aptget
 
 status = Status(standalone=True)
 
-status.register("weather",
-                location_code="ARXX2499:1:AR",
-                interval=300,
-                format="{current_temp} {humidity}%"
-                )
+# status.register("weather",
+                # location_code="ARXX2499:1:AR",
+                # interval=300,
+                # format="{current_temp} {humidity}%"
+                # )
 
 status.register("battery",
-                format="{percentage:.0f}% {bar} {remaining}",
+                format="{percentage:.0f}% {bar}‖ {remaining}",
                 no_text_full=True,
                 full_color="#cccccc",
                 color="#ffff66",
@@ -24,12 +24,12 @@ status.register("battery",
 
 status.register("clock",
                 color="#cccccc",
-                format="%H:%M, %A %-d",)
+                format="%H:%M, %A %-d/%m",)
 
-status.register("updates",
-                format = "{count} update(s) available",
-                format_no_updates = "",
-                backends = [aptget.AptGet()])
+# status.register("updates",
+                # format = "{count} update(s) available",
+                # format_no_updates = "",
+                # backends = [aptget.AptGet()])
 
 status.register("mail_check")
 
@@ -45,7 +45,7 @@ status.register("pulseaudio",
 status.register("now_playing",
                 player="clementine",
                 color="#ffc080",
-                format='{artist}: "{title}" {song_elapsed}/{song_length}')
+                format='{artist}: "{title}"')
 
 status.register("load",
                 color="#bbbbbb",
@@ -53,14 +53,15 @@ status.register("load",
                 format="{avg1} / {avg5}")
 
 status.register("mem_bar",
+                format="{used_mem_bar}‖",
                 multi_colors=True,
-                color="#333333",
-                warn_color="#cccccc",
-                alert_color="#ffffff")
+                color="#FFFFFF",
+                warn_color="#FFFFFF",
+                alert_color="#FFFF11")
 
 status.register("network",
                 interface="eth0",
-                format_up="{bytes_sent} kB/s↑ {bytes_recv} kB/s↓",
+                format_up="{bytes_sent}↑ {bytes_recv}↓",
                 format_down="",
                 dynamic_color = True,
                 start_color="gray",
@@ -71,7 +72,7 @@ status.register("network",
                 interface="wlan0",
                 # color_up="#66d13c", # limegreen
                 # format_up="{essid} {quality:03.0f}%",
-                format_up="{bytes_sent} kB/s↑ {bytes_recv} kB/s↓ {essid} (qual: {quality:03.0f}%)",
+                format_up="{bytes_sent}↑ {bytes_recv}↓ {essid} [{quality:03.0f}%]",
                 format_down="{} {interface} DOWN",
                 dynamic_color = True,
                 start_color="#cccccc",
@@ -86,7 +87,7 @@ status.register("disk",
      path="/",
      color="#bbbbbb",
      #format="{used} / {total}G [ {avail}G ]",)
-     format="{avail}G ({total}G)",)
+     format="{avail}G")
 
 #  status.register("disk",
     #  color="#bbbbbb",
@@ -97,5 +98,12 @@ status.register("disk",
     #  color="#bbbbbb",
     #  path="/media/600gb",
     #  format="{avail}G ({total}G)")
+
+status.register("network",
+                interface="wlan0",
+                format_up="{tx_tot_Mbytes}↥ {rx_tot_Mbytes}↧",
+                format_down="",
+                start_color="#cccccc"
+                )
 
 status.run()
