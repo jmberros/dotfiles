@@ -43,7 +43,15 @@ pswatch () {
 }
 
 cs () {
-  cd $1 && ls -lh --color=auto --group-directories-first
+  cd $1;
+
+  if [ $? -eq 0 ]; then  # If dir exists!
+    if [ `ls | wc -l` -ge 15 ]; then
+      ls --color=auto --group-directories-first;
+    else
+      ls -lh --color=auto --group-directories-first;
+    fi
+  fi
 }
 
 backup () {
