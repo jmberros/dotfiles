@@ -4,7 +4,7 @@
 * Get dropbox
 * Install some stuff:
 ```
-sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake libiw-dev
+sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake libiw-dev xbacklight
 ```
 
 * Set ssh-keys to clone repos:

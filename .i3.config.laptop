@@ -42,6 +42,9 @@ bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 2%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 2%- unmute
 bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle; amixer sset Headphone toggle"
 
+bindsym XF86MonBrightnessUp exec xbacklight -inc 15
+bindsym XF86MonBrightnessDown exec xbacklight -dec 15
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
