@@ -59,6 +59,27 @@ sudo apt-get update
 sudo apt-get install i3
 ```
 
+* Get rid of Nautilus desktop. (If this doesn't work, install dconf-tools and maybe libdconf1 and change that option manually from the dconf-editor.)
+
+`gsettings set org.gnome.desktop.background show-desktop-icons false`
+
+* Git aliases and config
+```
+git config --global user.email "juanmaberros@gmail.com"
+git config --global user.name "Juan Manuel Berros"
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.br branch
+git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+git config --global alias.type 'cat-file -t'
+git config --global alias.dump 'cat-file -p'
+```
+
+* Copy i3's config file: `cp ~/repos/dotfiles/.i3.config ~/.i3/config`
+
+# Reiniciar y loguearse en i3:
+
 * Copy vim themes
 
 `cp -r ~/repos/dotfiles/vim_colors ~/.vim/colors`
@@ -77,10 +98,6 @@ sudo nano /etc/fstab
 /dev/sdb1   /media/500gb    auto    auto,users  0 0
 /dev/sdc3   /media/600gb    auto    auto,users    0 0
 ```
-
-* Get rid of Nautilus desktop. (If this doesn't work, install dconf-tools and maybe libdconf1 and change that option manually from the dconf-editor.)
-
-`gsettings set org.gnome.desktop.background show-desktop-icons false`
 
 * ((in case it's not in i3 config: `setxkbmap -option caps:swapescape`))
 
@@ -101,23 +118,6 @@ git clone git@github.com:powerline/fonts.git
 And set your gnome-terminal profile to use Ubuntu mono for Powerline 12 and gray on black with a lighter gray.
 
 * Bajarse Anaconda e instalar Jupyter y R.
-
-* Git aliases and config
-```
-git config --global user.email "juanmaberros@gmail.com"
-git config --global user.name "Juan Manuel Berros"
-git config --global alias.co checkout
-git config --global alias.ci commit
-git config --global alias.st status
-git config --global alias.br branch
-git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
-git config --global alias.type 'cat-file -t'
-git config --global alias.dump 'cat-file -p'
-```
-
-* Copy i3's config file: `cp ~/repos/dotfiles/.i3.config ~/.i3/config`
-
-# Reiniciar y loguearse en i3:
 
 * Transmission setup: `sudo vi /etc/transmission-daemon/settings.json`
   y copiarle lo que haya en `~/repos/dotfiles/settings.json`
