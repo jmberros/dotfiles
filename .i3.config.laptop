@@ -27,21 +27,20 @@ bindsym Mod1+Shift+Tab focus left
 bindsym --release Print exec --no-startup-id gnome-screenshot
 bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -a
 
-# Pulse Audio controls
+# This works for the Gfast laptop
 # bindsym F10 exec pactl set-sink-volume 0 -5% #decrease sound volume
 # bindsym F11 exec pactl set-sink-volume 0 +5% #increase sound volume
 # bindsym F12 exec pactl set-sink-mute 1 toggle # mute sound
-# bindsym F10 exec amixer sset Master 3-
-# bindsym F11 exec amixer sset Master 3+  
-# bindsym F12 exec amixer sset Master toggle
 
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
+# This works for the i7 Desktop
+# bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+# bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+# bindsym XF86AudioMute exec amixer -q set Master toggle
 
-# bindsym XF86AudioRaiseVolume exec amixer sset Master 3+
-# bindsym XF86AudioLowerVolume exec amixer sset Master 3-
-# bindsym XF86AudioMute exec "amixer sset Master toggle; amixer sset Headphone toggle"
+# This works for the Lenovo t450s
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 2%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 2%- unmute
+bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle; amixer sset Headphone toggle"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -52,7 +51,7 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 # chose a FreeType font, such as:
 #font pango: DejaVu Sans Mono 10
 #font pango: Ubuntu Mono
-font pango: Ubuntu Mono derivative for Powerline 11
+font pango: Ubuntu Mono derivative for Powerline 12
 #font pango: Anonymice Powerline 11
 #font pango: Literation Mono 11
 #font pango: Inconsolata for Poweline 10
@@ -64,6 +63,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+minus split v exec i3-sensible-terminal
 bindsym $mod+Shift+backslash split h exec i3-sensible-terminal
+bindsym $mod+backslash split h exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -174,16 +174,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym j resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 2 px or 2 ppt
+        bindsym k resize grow height 2 px or 2 ppt
+        bindsym j resize shrink height 2 px or 2 ppt
+        bindsym l resize grow width 2 px or 2 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 1 px or 1 ppt
+        bindsym Down resize grow height 1 px or 1 ppt
+        bindsym Up resize shrink height 1 px or 1 ppt
+        bindsym Right resize grow width 1 px or 1 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
