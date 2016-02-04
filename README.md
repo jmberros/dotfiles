@@ -3,7 +3,7 @@
 * Get google-chrome
 * Get dropbox
 * Install some stuff:
-  sudo apt-get zsh install git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake
+  sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake
 
 * Set ssh-keys to clone repos:
   https://help.github.com/articles/generating-ssh-keys/
