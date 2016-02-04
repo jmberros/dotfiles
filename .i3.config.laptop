@@ -3,7 +3,9 @@ exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id dropbox start
 exec --no-startup-id ssh-add
 exec --no-startup-id nm-applet
+exec --no-startup-id radiotray
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id setxkbmap -option caps:swapescape
 
 set $mod Mod4
 
@@ -65,7 +67,7 @@ bindsym $mod+Shift+backslash split h exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym $mod+Shift+x kill
+# bindsym $mod+Shift+x kill
 
 # rename current workspace with user input
 bindsym $mod+F2 exec i3-input -F 'rename workspace to "%s"'
@@ -204,7 +206,7 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+Shift+x mode "$mode_system"
 
 bindsym $mod+b border toggle
 new_window pixel 3

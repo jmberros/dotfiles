@@ -3,7 +3,9 @@
 * Get google-chrome
 * Get dropbox
 * Install some stuff:
-  sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake
+```
+sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake libiw-dev
+```
 
 * Set ssh-keys to clone repos:
   https://help.github.com/articles/generating-ssh-keys/
@@ -76,9 +78,28 @@ git config --global alias.type 'cat-file -t'
 git config --global alias.dump 'cat-file -p'
 ```
 
-* Copy i3's config file: `cp ~/repos/dotfiles/.i3.config ~/.i3/config`
+* Shit for i3pystatus:
+```
+sudo apt-get install python3.5-dev
+pip3 install psutil i3pystatus netifaces colour basiciw
+cp ~/repos/dotfiles/.i3pystatus.laptop.py ~
+```
 
 # Reiniciar y loguearse en i3:
+
+* After default creation of `~/.i3/config`, copy i3's config file: `cp ~/repos/dotfiles/.i3.config ~/.i3/config`
+
+* ((in case it's not in i3 config: `setxkbmap -option caps:swapescape`))
+
+* Choose (2) here to get dmenu with a reasonable font: `sudo update-alternatives --config dmenu`
+
+* Enable reboot and shutdown from i3:
+
+```
+sudo visudo
+# Add this line to the file:
+juan     ALL = NOPASSWD: /sbin/reboot, /sbin/shutdown, /sbin/poweroff
+```
 
 * Copy vim themes
 
@@ -97,16 +118,6 @@ git config --global alias.dump 'cat-file -p'
 sudo nano /etc/fstab
 /dev/sdb1   /media/500gb    auto    auto,users  0 0
 /dev/sdc3   /media/600gb    auto    auto,users    0 0
-```
-
-* ((in case it's not in i3 config: `setxkbmap -option caps:swapescape`))
-
-* Choose (2) here to get dmenu with a reasonable font: `sudo update-alternatives --config dmenu`
-
-* Shit for i3pystatus:
-```
-sudo apt-get install python3.5-dev
-pip3 install i3pystatus netifaces colour
 ```
 
 * Fonts for airline/powerline:
@@ -173,13 +184,6 @@ APT::Periodic::Unattended-Upgrade "1";
 APT::Periodic::Download-Upgradeable-Packages "1";
 APT::Periodic::AutocleanInterval "7";
 APT::Periodic::Verbose "1";
-```
-
-* Enable reboot and shutdown from i3:
-```
-sudo visudo
-# Add this line to the file:
-juan     ALL = NOPASSWD: /sbin/reboot, /sbin/shutdown, /sbin/poweroff
 ```
 
 * Some bioinformatics shit:
