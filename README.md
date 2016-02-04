@@ -21,6 +21,17 @@ xclip -sel clip < ~/.ssh/id_rsa.pub
 * Paste the copied key here:
   https://github.com/settings/ssh
 
+* Oh my zsh!
+
+`sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
+
+* remove Ubuntu default home directories
+
+```
+rmdir Desktop Documents Downloads Music Pictures Public Templates Videos
+mkdir ~/software
+```
+
 * Install Vundle
 
 ```
@@ -38,6 +49,16 @@ cd ~/repos/dotfiles
 cp .vimrc .i3pystatus.py .zshrc ~/
 ```
 
+* Install i3 WM
+
+```
+sudo echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" >> /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get --allow-unauthenticated install sur5r-keyring
+sudo apt-get update
+sudo apt-get install i3
+```
+
 * Copy vim themes
 
 `cp -r ~/repos/dotfiles/vim_colors ~/.vim/colors`
@@ -48,10 +69,6 @@ cp .vimrc .i3pystatus.py .zshrc ~/
 
   YouCompleteMe plugin probably needs to be compiled. Go to its directory
   and run ./install.sh
-
-* Oh my zsh!
-
-`sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
 
 * Copy fstab to automount HDDs. Use `sudo fdisk -l` or `sudo blkid` in case you need UUIDs:
 
@@ -64,8 +81,6 @@ sudo nano /etc/fstab
 * Get rid of Nautilus desktop. (If this doesn't work, install dconf-tools and maybe libdconf1 and change that option manually from the dconf-editor.)
 
 `gsettings set org.gnome.desktop.background show-desktop-icons false`
-
-* Bajarse Anaconda e instalar Jupyter y R.
 
 * ((in case it's not in i3 config: `setxkbmap -option caps:swapescape`))
 
@@ -84,6 +99,8 @@ git clone git@github.com:powerline/fonts.git
 ```
 
 And set your gnome-terminal profile to use Ubuntu mono for Powerline 12 and gray on black with a lighter gray.
+
+* Bajarse Anaconda e instalar Jupyter y R.
 
 * Git aliases and config
 ```
