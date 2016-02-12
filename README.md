@@ -4,7 +4,7 @@
 * Get dropbox
 * Install some stuff:
 ```
-sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake libiw-dev xbacklight
+sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake libiw-dev xbacklight libfreetype6-dev xautolock
 ```
 
 * Set ssh-keys to clone repos:
@@ -81,7 +81,7 @@ git config --global alias.dump 'cat-file -p'
 * Shit for i3pystatus:
 ```
 sudo apt-get install python3.5-dev
-pip3 install psutil i3pystatus netifaces colour basiciw
+pip3 install psutil i3pystatus netifaces colour basiciw pyvcf
 cp ~/repos/dotfiles/.i3pystatus.laptop.py ~
 ```
 
@@ -139,15 +139,22 @@ And set your gnome-terminal profile to use Ubuntu mono for Powerline 12 and gray
 * Instalar ruby para los cronjobs:
 
 ```
-rbenv (ver instrucciones online)
-ruby-build (ver online)
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+git clone git://github.com/jf/rbenv-gemset.git $HOME/.rbenv/plugins/rbenv-gemset
+```
+
+```
 sudo apt-get install libssl-dev libreadline-dev zlib1g-dev
-rbenv isntall 2.2.3
-rbenv local 2.2.3
+rbenv install -l  # Check for the last stable ruby
+rbenv install <version>
+rbenv local <version>
 rbenv rehash
 ruby --version
 rbenv-gemset (ver online)
-gem install nokogiri pony colorize
+gem install nokogiri pony colorize actionview pry
 ```
 
 * Look for .smpt_credentials in your mail archive and save it to
@@ -159,15 +166,21 @@ gem install nokogiri pony colorize
 * Get your scripts from github:
 
 ```
-  cd ~/repos
-  git@github.com:jmberros/last-episode.git
+cd ~/repos
+git clone git@github.com:jmberros/last-episode.git
 ```
 
-* Bajar soulseek y copiar el ejecutable a `/usr/bin/soulseek`
+* [Bajar soulseek](http://www.slsknet.org/news/node/1) y copiar el ejecutable a `/usr/bin/soulseek`
 
 * f.lux para atonar el monitor al momento del día:
   https://justgetflux.com/ y correr
-  `xflux -l -34.60 -g -58.38`
+
+```
+sudo add-apt-repository ppa:kilian/f.lux
+sudo apt-get update
+sudo apt-get install fluxgui
+xflux -l -34.60 -g -58.38
+```
 
 * Set unattended-upgrades:
 ```
@@ -187,12 +200,13 @@ APT::Periodic::Verbose "1";
 ```
 
 * Some bioinformatics shit:
-  - install VCFtools: https://vcftools.github.io/examples.html
-  - install SAMtools and tabix
+    - download and install [VCFtools](https://vcftools.github.io/examples.html), [SAMtools](http://sourceforge.net/projects/samtools/files/), and [tabix](http://sourceforge.net/projects/samtools/files/tabix/).
+    - for tabix, run `make` after extracting and copy the executable to `/usr/bin`; for the rest, `./configure`, `make`, `sudo make install`
 
 ```
 pip install git+https://github.com/jamescasbon/PyVCF
-pip install sklearn python-ternary ftputil humanize ipdb pep8 pyyaml
+pip install sklearn ftputil humanize ipdb pep8 pyyaml ipdb
+pip install git+https://github.com/marcharper/python-ternary.git
 
 ```
 
