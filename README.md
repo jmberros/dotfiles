@@ -237,3 +237,5 @@ sudo apt-get install bluez bluetooth
 ```
 nice -n 19 ionice -c3 rsync juan@beleriand.local:/media/600gb/music/ ~/ -avhz --delete
 ```
+
+* Remove zsh theme `ls` alias in `~/.oh-my-zsh/lib/theme-and-appearance.zsh`.
