@@ -214,3 +214,22 @@ pip install git+https://github.com/marcharper/python-ternary.git
 ```
 cp ~/repos/dotfiles/_dot_jupyter/custom/* ~/.jupyter/custom
 ```
+
+* To pair the Varmilo keyboard (After pluggin the Bluetooth dongle!), follow
+  the instructions [here](http://markrages.tumblr.com/post/124253167608/set-up-the-varmilo-vb87m-bluetooth-4-keyboard-in).
+```
+sudo add-apt-repository ppa:vidplace7/bluez5
+sudo apt-get update
+sudo apt-get install bluez bluetooth
+```
+  - Make sure the Varmilo Keyboard is turned on: Fn + Insert
+  - Then start `bluetoothctl` for an interactive prompt. Try with these commands:
+  - `power on`, `agent on` (or `agent KeyboardOnly`?), `pairable on`, `scan on`
+  - The `scan on` command should show you the MAC address for the keyboard!
+    Use that MAC address (autocomplete with TAB works, don't type the whole thing)
+    in this command: `pair MAC`, wait for the pairing to be successful
+    (it should print a **Passkey** on screen, type that number with the keyboard and hit ENTER!!)
+  - Once the pairing is successfull, try `connect MAC`.
+  - I needed to reboot the computer and then the keyboard was paired.
+  - Watch out for auto-turn off of the thing, make sure it's on while pairing/connecting.
+
