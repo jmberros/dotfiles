@@ -233,3 +233,7 @@ sudo apt-get install bluez bluetooth
   - I needed to reboot the computer and then the keyboard was paired.
   - Watch out for auto-turn off of the thing, make sure it's on while pairing/connecting.
 
+* Command to backup `beleriand`'s music dir (run from `arrakis`!):
+```
+nice -n 19 ionice -c3 rsync juan@beleriand.local:/media/600gb/music/ ~/ -avhz --delete
+```
