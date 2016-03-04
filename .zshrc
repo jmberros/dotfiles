@@ -28,6 +28,9 @@ alias tmux="tmux -2"
 alias xclip="xclip -selection primary -f | xclip -selection clipboard"
 alias put="xsel -p"
 alias arrakis='ssh juan@arrakis.local'
+alias rawk='ruby -lane'  # => awk
+alias rawk,='ruby -F, -lane'  # => awk -F,
+alias rawk:='ruby -F: -lane'  # => awk -F:
 
 # coding and gitting
 alias be='bundle exec'
@@ -88,6 +91,7 @@ export PATH=$HOME/repos/stem-loop/bin:$HOME/repos/stem-loop/StemLoop/bin:$PATH
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export EDITOR=vim
+export BROWSER=google-chrome
 export PYTHONSTARTUP=$HOME/.pythonrc
 
 export BLASTDB="/home/juan/bio/ncbi-blast-2.2.30+/db"
