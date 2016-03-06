@@ -129,6 +129,9 @@ git clone git@github.com:powerline/fonts.git
 And set your gnome-terminal profile to use Ubuntu mono for Powerline 12 and gray on black with a lighter gray.
 
 * Bajarse Anaconda e instalar Jupyter y R.
+```
+conda install jupyter numpy pandas biopython matplotlib scipy ternary lxml html5lib beautifulsoup4
+```
 
 * Transmission setup: `sudo vi /etc/transmission-daemon/settings.json`
   y copiarle lo que haya en `~/repos/dotfiles/settings.json`
