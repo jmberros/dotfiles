@@ -5,6 +5,7 @@
 * Install some stuff:
 ```
 sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake libiw-dev xbacklight libfreetype6-dev xautolock
+meld
 ```
 
 * Set ssh-keys to clone repos:
@@ -76,6 +77,14 @@ git config --global alias.br branch
 git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 git config --global alias.type 'cat-file -t'
 git config --global alias.dump 'cat-file -p'
+```
+
+* Git merge config:
+```
+[merge]
+    tool = mymeld
+[mergetool "mymeld"]
+    cmd = meld --diff $BASE $LOCAL --diff $BASE $REMOTE --diff $LOCAL $MERGED $REMOTE
 ```
 
 * Shit for i3pystatus:
