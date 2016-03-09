@@ -237,15 +237,15 @@ backend      : qt4agg
 # default fontsizes for ticklabels, and so on.  See
 # http://matplotlib.org/api/axes_api.html#module-matplotlib.axes
 #axes.hold           : True    # whether to clear the axes by default on
-#axes.facecolor      : white   # axes background color
-axes.edgecolor      : 777777   # axes edge color
-#axes.linewidth      : 1.0     # edge linewidth
+axes.facecolor      : white   # axes background color
+axes.edgecolor      : 888888   # axes edge color
+axes.linewidth      : 1     # edge linewidth
 #axes.grid           : False   # display grid or not
-axes.titlesize      : 16   # fontsize of the axes title
+axes.titlesize      : 18   # fontsize of the axes title
 #axes.labelsize      : medium  # fontsize of the x any y labels
 #axes.labelpad       : 5.0     # space between label and axis
 #axes.labelweight    : normal  # weight of the x and y labels
-axes.labelcolor     : 777777
+axes.labelcolor     : 444444
 #axes.axisbelow      : False   # whether axis gridlines and ticks are below
                                # the axes elements (lines, text, etc)
 
@@ -286,7 +286,7 @@ axes.labelcolor     : 777777
 #xtick.minor.width    : 0.5    # minor tick width in points
 xtick.major.pad      : 10      # distance to major tick label in points
 xtick.minor.pad      : 10      # distance to the minor tick label in points
-xtick.color          : 777777      # color of the tick labels
+xtick.color          : 888888      # color of the tick labels
 xtick.labelsize      : 11 # fontsize of the tick labels
 #xtick.direction      : in     # direction: in, out, or inout
 
@@ -296,7 +296,7 @@ xtick.labelsize      : 11 # fontsize of the tick labels
 #ytick.minor.width    : 0.5    # minor tick width in points
 ytick.major.pad      : 10      # distance to major tick label in points
 ytick.minor.pad      : 10      # distance to the minor tick label in points
-ytick.color          : 777777      # color of the tick labels
+ytick.color          : 888888      # color of the tick labels
 #ytick.labelsize      : medium # fontsize of the tick labels
 #ytick.direction      : in     # direction: in, out, or inout
 
