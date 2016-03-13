@@ -14,17 +14,17 @@ status = Status(standalone=True)
                 # format="{current_temp} {humidity}%"
                 # )
 
+status.register("clock",
+                color="#cccccc",
+                format="%A %-d/%m, %H:%M",)
+
 status.register("battery",
-                format="{percentage:.0f}% {bar}‖ {remaining}",
+                format="🗲 {percentage:.0f}% {bar}‖ ⌛ {remaining}",
                 no_text_full=True,
                 full_color="#cccccc",
                 color="#ffff66",
                 charging_color="#99ff99",
                 critical_color="#ff0000")
-
-status.register("clock",
-                color="#cccccc",
-                format="%H:%M, %A %-d/%m",)
 
 # status.register("updates",
                 # format = "{count} update(s) available",
@@ -34,30 +34,34 @@ status.register("clock",
 status.register("mail_check")
 
 status.register("pulseaudio",
-                format="vol: {volume}",)
+                format="🔉 {volume}",)
 
-# status.register("pomodoro",
-                # sound="/home/juan/Dropbox/glass_ping.wav")
+status.register("pomodoro",
+                sound="/home/juan/Dropbox/glass_ping.wav")
 
-# status.register("radiotray",
-                # color="#f9ef8d")
+#  status.register("radiotray",
+                #  color="#ff33cc")
 
 status.register("now_playing",
                 player="clementine",
                 color="#ffc080",
                 format='{artist}: "{title}"')
 
+#  status.register("mem_bar",
+                #  format="{used_mem_bar}‖",
+                #  multi_colors=True,
+                #  color="#FFFFFF",
+                #  warn_color="#FFFFFF",
+                #  alert_color="#FFFF11")
+
+status.register("mem",
+                divisor=10**9,
+                format="{used_mem} | {avail_mem} Gb")
+
 status.register("load",
                 color="#bbbbbb",
                 critical_limit=8,
-                format="{avg1} / {avg5}")
-
-status.register("mem_bar",
-                format="{used_mem_bar}‖",
-                multi_colors=True,
-                color="#FFFFFF",
-                warn_color="#FFFFFF",
-                alert_color="#FFFF11")
+                format="💻 {avg1} / {avg5}")
 
 status.register("network",
                 interface="eth0",
@@ -69,9 +73,7 @@ status.register("network",
                 color_down="#ff2222")
 
 status.register("network",
-                interface="wlan0",
-                # color_up="#66d13c", # limegreen
-                # format_up="{essid} {quality:03.0f}%",
+                interface="wlp3s0",
                 format_up="{bytes_sent}↑ {bytes_recv}↓ {essid} [{quality:03.0f}%]",
                 format_down="{} {interface} DOWN",
                 dynamic_color = True,
@@ -99,11 +101,7 @@ status.register("disk",
     #  path="/media/600gb",
     #  format="{avail}G ({total}G)")
 
-status.register("network",
-                interface="wlan0",
-                format_up="{tx_tot_Mbytes}↥ {rx_tot_Mbytes}↧",
-                format_down="",
-                start_color="#cccccc"
-                )
+status.register("capslock")
+# ^ text and color are also settings
 
 status.run()
