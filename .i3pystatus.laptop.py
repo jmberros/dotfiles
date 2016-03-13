@@ -56,7 +56,8 @@ status.register("now_playing",
 
 status.register("mem",
                 divisor=10**9,
-                format="{used_mem} | {avail_mem} Gb")
+                color="#4CAF50",
+                format="{used_mem} / {avail_mem} Gb")
 
 status.register("load",
                 color="#bbbbbb",
