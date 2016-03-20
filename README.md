@@ -244,6 +244,21 @@ sudo apt-get install bluez bluetooth
   - Once the pairing is successfull, try `connect MAC`.
   - I needed to reboot the computer and then the keyboard was paired.
   - Watch out for auto-turn off of the thing, make sure it's on while pairing/connecting.
+      
+I couldn't get a passkey to be displayed on my second attemp on this, so I first
+connected to the thing from the GUI bluetooth-wizard, selecting
+"Set up new device", choosing the keyboard, and then "Do not pair" and without passkey.
+This would connect it without pairing it. I later did a GUI-based pairing with the
+keys icon (though this could be done using `bluetoothctl # pair <MAC>` too.)
+The result was a non-functional pairing though ....
+
+I have no idea how I got it to display a passkey on the other run! Blueman does 
+display a PASSKEY when I connect the keyboard in beleriand ....
+
+I did got the message via Ubuntu notification ONLY when using the regular Unity
+session / WM, not i3.
+
+While you do stuff on the GUI, keep an eye on `bluetoothctl` to check what happens.
 
 * Command to backup `beleriand`'s music dir (run from `arrakis`!):
 ```
