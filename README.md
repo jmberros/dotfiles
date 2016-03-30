@@ -4,8 +4,7 @@
 * Get dropbox
 * Install some stuff:
 ```
-sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake libiw-dev xbacklight libfreetype6-dev xautolock
-meld
+sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake libiw-dev xbacklight libfreetype6-dev xautolock latexmk gummi texlive-lang-spanish meld
 ```
 
 * Set ssh-keys to clone repos:
@@ -108,6 +107,12 @@ cp ~/repos/dotfiles/.i3pystatus.laptop.py ~
 sudo visudo
 # Add this line to the file:
 juan     ALL = NOPASSWD: /sbin/reboot, /sbin/shutdown, /sbin/poweroff
+```
+
+* Renew Fonts
+```
+cp -R ~/repos/dotfiles/.fonts ~/
+fc-cache -f -v
 ```
 
 * Copy vim themes
@@ -217,9 +222,8 @@ APT::Periodic::Verbose "1";
 
 ```
 pip install git+https://github.com/jamescasbon/PyVCF
-pip install sklearn ftputil humanize ipdb pep8 pyyaml ipdb
+pip install sklearn ftputil humanize ipdb pep8 pyyaml ipdb lxml
 pip install git+https://github.com/marcharper/python-ternary.git
-
 ```
 
 * Jupyter custom themes:
