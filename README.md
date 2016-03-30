@@ -266,3 +266,9 @@ nice -n 19 ionice -c3 rsync juan@beleriand.local:/media/600gb/music/ ~/ -avhz --
 ```
 
 * Remove zsh theme `ls` alias in `~/.oh-my-zsh/lib/theme-and-appearance.zsh`.
+
+
+* To remap keys in the Lenovo laptop (HOME, END, PAGE DOWN|UP), I used this https://radu.cotescu.com/remapping-keys-in-ubuntu-14.04/. Edit the file and change the keys and their mappings, it's intuitive enough to figure it out along the way:
+```
+sudo vi /usr/share/X11/xkb/symbols/pc
+```

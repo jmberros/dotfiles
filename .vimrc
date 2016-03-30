@@ -11,7 +11,8 @@ Plugin 'gmarik/Vundle.vim'
 " Navigation
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'fholgado/minibufexpl.vim'
 "Plugin 'jlanzarotta/bufexplorer'
 
@@ -29,7 +30,8 @@ Plugin 'nvie/vim-flake8' " python spelling and style checker
 " Plugin 'pangloss/vim-javascript'
 " Plugin 'chriskempson/base16-vim' " Colorscheme
 " Plugin 'hdima/python-syntax'
-" Plugin 'klen/python-mode' " autocompletion was TOO slow
+Plugin 'klen/python-mode' " autocompletion was TOO slow
+Plugin 'kien/rainbow_parentheses.vim'
 
 " Plugin 'Valloric/YouCompleteMe' " it used to capture space and interfere
 
@@ -59,7 +61,7 @@ Plugin 'vim-scripts/LargeFile' " Disables some feats when editing large files
 Plugin 'kshenoy/vim-signature' " Marks enhanced
 Plugin 'tmhedberg/SimpylFold' " No-BS Python code folding
 "Plugin 'nelstrom/vim-markdown-folding'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 
 " Integration
 Plugin 'thoughtbot/vim-rspec' " Run tests from Rspecwithout leaving Vim
@@ -102,7 +104,7 @@ set splitbelow " open the horizontal split below
 
 " Lines with equal indent form a fold.
 set foldmethod=indent
-set foldlevel=1
+" set foldlevel=1
 set foldnestmax=10
 set nofoldenable " Open all folds by default
 
@@ -118,7 +120,7 @@ set foldlevelstart=0
 
 set t_Co=256              " enable 256-color mode.
 syntax enable             " enable syntax highlighting (previously syntax on).
-set background=dark
+set background=light
 set cul                   " highlight current line
 set number                " show line numbers
 set laststatus=2          " last window always has a statusline
@@ -150,21 +152,21 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix |
 
-au BufNewFile,BufRead *.js, *.html, *.css, *.rb
+au BufNewFile,BufRead *.js, *.html, *.css, *.rb, *.yml
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
 
-"let hour = strftime("%H")
-"if 14 <= hour && hour < 18
-  "set background=light
-  "colorscheme solarized
-  "colorscheme Tomorrow
-"else
+let hour = strftime("%H")
+if 7 <= hour && hour < 18
+  set background=light
+  " colorscheme solarized
+  colorscheme Tomorrow
+else
   set background=dark
-  "colorscheme Tomorrow-Night
+  " colorscheme Tomorrow-Night
   colorscheme Tomorrow-Night-Eighties
-"endif
+endif
 
 " No swap files
 set nobackup
@@ -316,9 +318,9 @@ let g:airline#extensions#branch#empty_message = ''
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
-" Airline themes that look ok: laederon, lucius, molokai, monochrome,
-" powelineish, ~solarized, !tomorrow, wombat, zenburn
-let g:airline_theme = 'molokai'
+" Airline themes that look ok: bubblegum, tomorrow, wombat, molokai,
+" powerlineish, 
+let g:airline_theme = 'bubblegum'
 
 " Remove fugitive buffers after using them!
 autocmd BufReadPost fugitive://* set bufhidden=delete
@@ -367,3 +369,29 @@ let g:jedi#popup_on_dot = 0
 
 let g:NERDSpaceDelims = 1 " Useful for Python PEP 8 specs
 
+
+" Rainbow parens
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+let g:rbpt_colorpairs = [
+    \ ['black',       'SeaGreen3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'RoyalBlue3'],
+    \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
