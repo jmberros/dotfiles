@@ -8,19 +8,20 @@ ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="awesomepanda"
 #ZSH_THEME="blinks"
 #ZSH_THEME="cypher"
-#ZSH_THEME="afowler"
+ZSH_THEME="afowler"  ### This on desktop
+#ZSH_THEME="cobalt2"
 #ZSH_THEME="random"
 #ZSH_THEME="wezm+"
 #ZSH_THEME="daveverwer"
-ZSH_THEME="tjkirch"  # I use this in the notbook
+# ZSH_THEME="tjkirch"  # I use this in the notbook
 
-# linux handy aliases
+# unix handy aliases
 alias ls='ls --color=auto --group-directories-first'
 alias sl='ls --color=auto --group-directories-first'
 alias l='ls --color=auto --group-directories-first'
 alias ll='ls -alF --color=auto --group-directories-first'
 alias la='ls -A --color=auto --group-directories-first'
-alias grep='grep --color=auto'
+alias grep='grep -i --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias ..='cs ..'
@@ -28,18 +29,66 @@ alias tmux="tmux -2"
 alias xclip="xclip -selection primary -f | xclip -selection clipboard"
 alias put="xsel -p"
 alias arrakis='ssh juan@arrakis.local'
-alias rawk='ruby -lane'  # => awk
-alias rawk,='ruby -F, -lane'  # => awk -F,
-alias rawk:='ruby -F: -lane'  # => awk -F:
+
+# replace AWK with Ruby
+alias rawk='ruby -lane'
+alias rawk,='ruby -F, -lane'
+alias rawk:='ruby -F: -lane'
+alias rawkt='ruby -F"\t" -lane'
+alias rawks='ruby -F"\s+" -lane'
+
+alias mv='mv -i'
+alias cp='cp -iv'
+
+alias mostusedcomms="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl |  head -n20"
 
 # coding and gitting
 alias be='bundle exec'
 alias s='clear; git status'
 
+push_branch() {
+    branch=`git rev-parse --symbolic-full-name --abbrev-ref HEAD`
+    git push $1 $branch
+}
+pull_branch() {
+    branch=`git rev-parse --symbolic-full-name --abbrev-ref HEAD`
+    git pull $1 $branch
+}
+autoload push_branch
+autoload pull_branch
+
+alias gpo='git push origin'
+alias gpom='git push origin master'
+alias gpob='push_branch origin'
+
+alias gfo='git fetch origin'
+alias gfu='git fetch upstream'
+alias gfot='git fetch origin --tags'
+alias gfut='git fetch upstream --tags'
+alias gpot='git push origin --tags'
+alias gput='git push upstream --tags'
+
+alias gpu='git push upstream'
+alias gpum='git push upstream master'
+alias gpub='push_branch upstream'
+
+alias glo='git pull origin'
+alias glom='git pull origin master'
+alias glob='pull_branch origin'
+alias glum='git pull upstream master'
+alias glub='pull_branch upstream'
+
+alias gadd='git add'
+
 # file [de]compressing
 
 # Uncomment to change how often before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
+#
+
+if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
+    source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+fi
 
 pswatch () {
   watch -n1 "ps aux | head -n1 && ps aux | grep '$1' | grep -v 'grep'"
