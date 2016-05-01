@@ -27,28 +27,31 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'godlygeek/tabular' " Apparently needed for vi-markdown
 Plugin 'plasticboy/vim-markdown'
 Plugin 'nvie/vim-flake8' " python spelling and style checker
-" Plugin 'pangloss/vim-javascript'
 " Plugin 'chriskempson/base16-vim' " Colorscheme
 " Plugin 'hdima/python-syntax'
 Plugin 'klen/python-mode' " autocompletion was TOO slow
-Plugin 'kien/rainbow_parentheses.vim'
-
-" Plugin 'Valloric/YouCompleteMe' " it used to capture space and interfere
-
+Plugin 'luochen1990/rainbow'
+Plugin 'Valloric/YouCompleteMe' " it used to capture space and interfere
 
 " I'm not sure why I have these
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tmhedberg/matchit' " I think other plugins use this
 
 " Code helpers
+" Plugin 'pangloss/vim-javascript'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'rstacruz/sparkup'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-endwise' " Ruby do - end / if - end
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'} " Expands CSS syntax to HTML
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'Raimondi/delimitMate' " Autocompletion for quotes, brakets, parens
 Plugin 'AndrewRadev/splitjoin.vim' " gS to split lines, gJ to join them
 
 " Vim enhancement
+" Plugin 'lervag/vimtex'  " Made some weird scroll jump :(
+Plugin 'matze/vim-tex-fold' " better latex folding
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'nelstrom/vim-markdown-preview'
 Plugin 'tpope/vim-surround'
@@ -56,12 +59,12 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'henrik/vim-indexed-search' " Ads N of M results to searches
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'ervandew/supertab' " Tab for autocompletion
-Plugin 'vim-scripts/AutoComplPop'  " Automaticaly opens autocompletion
+" Plugin 'vim-scripts/AutoComplPop'  " Automaticaly opens autocompletion
 Plugin 'vim-scripts/LargeFile' " Disables some feats when editing large files
 Plugin 'kshenoy/vim-signature' " Marks enhanced
 Plugin 'tmhedberg/SimpylFold' " No-BS Python code folding
 "Plugin 'nelstrom/vim-markdown-folding'
-"Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 
 " Integration
 Plugin 'thoughtbot/vim-rspec' " Run tests from Rspecwithout leaving Vim
@@ -157,16 +160,17 @@ au BufNewFile,BufRead *.js, *.html, *.css, *.rb, *.yml
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
 
-let hour = strftime("%H")
-if 7 <= hour && hour < 18
-  set background=light
-  " colorscheme solarized
-  colorscheme Tomorrow
-else
-  set background=dark
-  " colorscheme Tomorrow-Night
-  colorscheme Tomorrow-Night-Eighties
-endif
+" let hour = strftime("%H")
+" if 7 <= hour && hour < 18
+  " set background=light
+  " " colorscheme solarized
+  " colorscheme Tomorrow
+" else
+  " set background=dark
+  " " colorscheme Tomorrow-Night
+  " colorscheme Tomorrow-Night-Eighties
+" endif
+colorscheme Tomorrow-Night-Eighties
 
 " No swap files
 set nobackup
@@ -205,9 +209,13 @@ set completeopt=longest,menuone
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabMappingForward = "<C-p>"
 let g:SuperTabMappingBackward = "<C-n>"
-inoremap <expr> <Tab>      pumvisible() ? "\<C-Y>" : "\<Tab>"
-inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+" inoremap <expr> <Tab>      pumvisible() ? "\<C-Y>" : "\<Tab>"
+" inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+" inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+
+" Try to fix latex folding
+let g:tex_fold_override_foldtext = 1
+let g:tex_fold_additional_envs = ['section', 'subsection', 'subsubsection']
 
 cnoreabbrev W w
 cnoreabbrev Q q
@@ -248,7 +256,6 @@ autocmd FileType css,scss,less set iskeyword=@,48-57,_,-,?,!,192-255
 autocmd FileType ruby setlocal sw=2 ts=2 sts=2
 autocmd FileType eruby set iskeyword=@,48-57,_,192-255,$,-
 autocmd FileType python setlocal sw=4 ts=4 sts=4
-
 " Make those debugger statements painfully obvious
 au BufEnter *.rb syn match error contained "\<binding.pry\>"
 au BufEnter *.rb syn match error contained "\<debugger\>"
@@ -264,8 +271,13 @@ au BufEnter *.py syn match error contained "\<set_trace\>"
 " Hide files in nerdtree
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
+" Hide files from CTRLP
+set wildignore+=*.pyc
+let g:ctrlp_custom_ignore = {
+    \ 'file': '\v\.(pyc|ipynb)$',
+    \ }
+
 " set wildignore+=*public/system/* " Ignore rails PortalRH big folder
-" let g:ctrlp_custom_ignore = 'public.system'
 
 augroup reload_vimrc " {
     autocmd!
@@ -346,8 +358,16 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
+" This highlighting depends on python-mode
+highlight pythonSelf ctermfg=darkgray
+highlight pythonDot ctermfg=darkgrey
+highlight pythonFunction ctermfg=lightblue
+highlight pythonClass ctermfg=yellow
+highlight pythonDocstring cterm=italic ctermfg=lightgreen
+highlight Comment cterm=italic
 let python_highlight_all=1
 " let python_highlight_builtins = 1
+let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()  # XXX BREAKPOINT'
 
 " Flake8 for Python customization
 autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
@@ -370,28 +390,36 @@ let g:jedi#popup_on_dot = 0
 let g:NERDSpaceDelims = 1 " Useful for Python PEP 8 specs
 
 
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+\   'ctermfgs': ['brown', 'darkcyan', 'darkmagenta', 'blue', 'gray']
+\}
 " Rainbow parens
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-let g:rbpt_colorpairs = [
-    \ ['black',       'SeaGreen3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'RoyalBlue3'],
-    \ ]
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
+" let g:rbpt_colorpairs = [
+    " \ ['black',       'SeaGreen3'],
+    " \ ['Darkblue',    'SeaGreen3'],
+    " \ ['darkgray',    'DarkOrchid3'],
+    " \ ['darkgreen',   'firebrick3'],
+    " \ ['darkcyan',    'RoyalBlue3'],
+    " \ ['darkred',     'SeaGreen3'],
+    " \ ['darkmagenta', 'DarkOrchid3'],
+    " \ ['brown',       'firebrick3'],
+    " \ ['darkred',     'DarkOrchid3'],
+    " \ ['red',         'firebrick3'],
+    " \ ['gray',        'RoyalBlue3'],
+    " \ ['darkgreen',   'RoyalBlue3'],
+    " \ ['darkmagenta', 'DarkOrchid3'],
+    " \ ['Darkblue',    'firebrick3'],
+    " \ ['darkcyan',    'SeaGreen3'],
+    " \ ['brown',       'RoyalBlue3'],
+    " \ ]
+" let g:rbpt_max = 16
+" let g:rbpt_loadcmd_toggle = 0
+
+" " Disable autocomplete pop up for latex files, it's annoying
+" autocmd FileType tex :AcpDisable
+
