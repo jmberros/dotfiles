@@ -29,6 +29,10 @@ alias tmux="tmux -2"
 alias xclip="xclip -selection primary -f | xclip -selection clipboard"
 alias put="xsel -p"
 alias arrakis='ssh juan@arrakis.local'
+alias haploview='java -jar ~/software/Haploview.jar'
+alias picard-tools='java -jar ~/software/picard-tools-2.2.4/picard.jar'
+alias fastq='~/software/FastQC/fastqc'
+alias fastq-mcf='~/software/ea-utils.1.1.2-537/fastq-mcf'
 
 # replace AWK with Ruby
 alias rawk='ruby -lane'
