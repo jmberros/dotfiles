@@ -4,7 +4,7 @@
 * Get dropbox
 * Install some stuff:
 ```
-sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake libiw-dev xbacklight libfreetype6-dev xautolock latexmk gummi texlive-lang-spanish meld xdec
+sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake libiw-dev xbacklight libfreetype6-dev xautolock latexmk gummi texlive-lang-spanish meld xdec dh-autoreconf
 ```
 
 * Set ssh-keys to clone repos:
@@ -276,3 +276,16 @@ nice -n 19 ionice -c3 rsync juan@beleriand.local:/media/600gb/music/ ~/ -avhz --
 ```
 sudo vi /usr/share/X11/xkb/symbols/pc
 ```
+
+## Biotools
+
+* java
+* haploview (agregar alias al zshrc)
+* vcftools
+* samtools
+* bedtools
+* Gatk (agregar alias al zshrc)
+* Python con jupyter via conda
+* fastq-mcf (ea-utils)
+* picard tools
+

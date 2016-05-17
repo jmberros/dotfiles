@@ -10,7 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Navigation
 Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'fholgado/minibufexpl.vim'
@@ -273,11 +273,13 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 
 " Hide files from CTRLP
 set wildignore+=*.pyc
+set wildignore+=*/tmp/*,*.zip,*/build/*,*/dist/*
 let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/]\.(git|build|dist|tmp)$',
     \ 'file': '\v\.(pyc|ipynb)$',
     \ }
 
-" set wildignore+=*public/system/* " Ignore rails PortalRH big folder
+set wildignore+=*public/system/build/dist/egg-info* " Ignore rails PortalRH big folder
 
 augroup reload_vimrc " {
     autocmd!
