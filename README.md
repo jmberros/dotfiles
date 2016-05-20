@@ -147,6 +147,13 @@ And set your gnome-terminal profile to use Ubuntu mono for Powerline 12 and gray
 conda install jupyter numpy pandas biopython matplotlib scipy ternary lxml html5lib beautifulsoup4
 ```
 
+* IPython startup:
+```
+ipython profile create
+vi ~/.ipython/profile_default/ipython_config.py
+# ^ Add / uncomment stuff (pending)
+```
+
 * Transmission setup: `sudo vi /etc/transmission-daemon/settings.json`
   y copiarle lo que haya en `~/repos/dotfiles/settings.json`
   ( es posible que desde transgui tengas que cambiar a mano los directorios de dl, /media/600gb/transmission-daemon/{in}complete )
