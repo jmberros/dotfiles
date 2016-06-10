@@ -42,12 +42,12 @@ Plugin 'tmhedberg/matchit' " I think other plugins use this
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-Plugin 'rstacruz/sparkup'
+"Plugin 'rstacruz/sparkup'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-endwise' " Ruby do - end / if - end
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'Raimondi/delimitMate' " Autocompletion for quotes, brakets, parens
-Plugin 'AndrewRadev/splitjoin.vim' " gS to split lines, gJ to join them
+"Plugin 'AndrewRadev/splitjoin.vim' " gS to split lines, gJ to join them
 
 " Vim enhancement
 " Plugin 'lervag/vimtex'  " Made some weird scroll jump :(
@@ -69,7 +69,7 @@ Plugin 'tmhedberg/SimpylFold' " No-BS Python code folding
 " Integration
 Plugin 'thoughtbot/vim-rspec' " Run tests from Rspecwithout leaving Vim
 Plugin 'tpope/vim-fugitive' " Git integration
-Plugin 'rking/ag.vim' " Ag integration, to search like ack
+"Plugin 'rking/ag.vim' " Ag integration, to search like ack
 Plugin 'airblade/vim-gitgutter' " Shows git diff +/-/~ besides the line number
 
 Plugin 'tpope/vim-unimpaired'
@@ -93,6 +93,7 @@ set nojoinspaces " Use only 1 space after "." when joining lines instead of 2
 set modifiable
 set hidden
 set wildignore+=public/system
+set tw=79
 set wrap
 set linebreak
 set nolist
@@ -350,6 +351,7 @@ else
 endif
 
 
+let g:syntastic_python_checkers = ["pylint", "flake8"]
 let g:syntastic_ruby_checkers = ["rubocop"]
 let g:syntastic_mode_map = { "mode": "active",
                            \ "active_filetypes": ["python", "ruby", "css", "html", "erb"] }
@@ -378,6 +380,7 @@ autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 let g:flake8_show_in_gutter=1
 
 " Py-mode customization
+let g:pymode_options = 0  " Added so that nowrap is NOT set, I want text wrap!!
 let g:pymode_rope = 0
 let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
