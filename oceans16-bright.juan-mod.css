@@ -190,7 +190,7 @@ div.notebook_list_header {
     /* font-size: 12pt; */
     font-size: 10pt; /* Juan's */
     color: #8997b0;
-    line-height: 100%;
+    /* line-height: 100%; /* Juan's commented out */
     background: #2a2a2a;
 }
 body {
@@ -346,11 +346,12 @@ div.output_html {color: #1e2429;}
 }
 /* Formatting code in markdown cells */
 div.text_cell_render {
-    font-family: 'Helvetica', sans-serif;
+    /* font-family: serif; */
     background: #2a2a2a;
     font-weight: 310;
+    font-size: 10.5pt;
     /* color: #8997b0; */
-    color: #B3B290; /* Juan's mod */
+    color: #D0D4E6; /* Juan's mod */
     padding: 0.7em; /* Juan's mod */
 }
 /* Formatting code in markdown cells */
@@ -368,12 +369,12 @@ div.text_cell_render h3,
 div.text_cell_render h4,
 div.text_cell_render h5,
 div.text_cell_render h6 {
-    font-family: 'Helvetica', sans-serif;
+    /* font-family: 'Helvetica', sans-serif; */
     background: #2a2a2a;
     font-weight: 300;
     /* color: #8997b0; */
     color: #FFAD8B; /* Juan's mod */
-    line-height: 80%;
+    /* line-height: 100%; /* Juan's -- original was 80% */
 }
 
 /* text in output area (i.e. print some_list) */
@@ -518,8 +519,20 @@ div.cell:last-of-type {
     border-bottom: medium solid #333333;
 }
 
-div.cell.selected { border: medium solid #3572C6; padding: 0px; border-radius: 0px; }
-.edit_mode div.cell.selected {border: medium solid rgba(53, 108, 180, .45) !important; padding: 0px; border-radius: 0px; }
+div.cell.selected {
+    border: medium solid rgba(53, 108, 180, .5);
+    padding: 0px;
+    border-radius: 0px;
+} /* juan's mod, original below */
+/* div.cell.selected { border: medium solid #3572C6; padding: 0px; border-radius: 0px; } */
+
+.edit_mode div.cell.selected {
+    border: medium solid rgba(53, 108, 180, 1);
+    padding: 0px;
+    border-radius: 0px;
+} /* Juan's mod, original below
+/* .edit_mode div.cell.selected {border: medium solid rgba(53, 108, 180, .45) !important; padding: 0px; border-radius: 0px; } */
+
 div.cell.edit_mode {border: medium solid rgba(53, 108, 180, .45) !important; padding: 0px; border-radius: 0px;}
 
 div.prompt {
