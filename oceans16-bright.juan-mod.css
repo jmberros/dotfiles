@@ -29,6 +29,10 @@ div.inner_cell {
     background-color: #2a2a2a; 
 }
 
+.CodeMirror-gutter-elt.CodeMirror-linenumber {
+    left: -13px !important;
+}
+
 .CodeMirror-lines {
     padding: 0.7em;
 }

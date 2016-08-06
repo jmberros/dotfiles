@@ -17,11 +17,13 @@ Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'jlanzarotta/bufexplorer'
 
 " Syntax
+Plugin 'hallison/vim-rdoc'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-rails.git'
 Plugin 'groenewege/vim-less'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'slim-template/vim-slim.git'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'godlygeek/tabular' " Apparently needed for vi-markdown
@@ -42,7 +44,7 @@ Plugin 'tmhedberg/matchit' " I think other plugins use this
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-"Plugin 'rstacruz/sparkup'
+Plugin 'rstacruz/sparkup'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-endwise' " Ruby do - end / if - end
 Plugin 'vim-scripts/closetag.vim'
@@ -89,14 +91,12 @@ call vundle#end()            " required
 " let mapleader="," " change the leader from \\ to ,
 
 set clipboard=unnamed
-set nojoinspaces " Use only 1 space after "." when joining lines instead of 2
+set nojoinspaces " Use only 1 space after . when joining lines instead of 2
 set modifiable
 set hidden
 set wildignore+=public/system
-set tw=79
-set wrap
-set linebreak
-set nolist
+" set tw=79
+set wrap linebreak nolist
 
 " Improve vim's scrolling speed
 set ttyfast
@@ -129,7 +129,7 @@ set cul                   " highlight current line
 set number                " show line numbers
 set laststatus=2          " last window always has a statusline
 set hlsearch
-set incsearch             " But do highlight as you type your search.
+set incsearch             " Do highlight as you type your search.
 set ignorecase            " Make searches case-insensitive.
 set ruler                 " Always show info along bottom.
 set showmatch
@@ -151,7 +151,15 @@ au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+    " "\ set textwidth=79 |
+
+au BufNewFile,BufRead *.erb
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
@@ -365,12 +373,11 @@ map <Leader>a :call RunAllSpecs()<CR>
 " This highlighting depends on python-mode
 highlight pythonSelf ctermfg=darkgray
 highlight pythonDot ctermfg=darkgrey
-highlight pythonFunction ctermfg=lightblue
+highlight pythonFunction cterm=bold ctermfg=blue 
 highlight pythonClass ctermfg=yellow
-highlight pythonDocstring cterm=italic ctermfg=lightgreen
+highlight pythonDocstring cterm=italic ctermfg=darkgray
 highlight Comment cterm=italic
 let python_highlight_all=1
-" let python_highlight_builtins = 1
 let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()  # XXX BREAKPOINT'
 
 " Flake8 for Python customization
@@ -381,10 +388,10 @@ let g:flake8_show_in_gutter=1
 
 " Py-mode customization
 let g:pymode_options = 0  " Added so that nowrap is NOT set, I want text wrap!!
-let g:pymode_rope = 0
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_rope_autoimport = 0
+" let g:pymode_rope = 0
+" let g:pymode_rope_completion = 0
+" let g:pymode_rope_complete_on_dot = 0
+" let g:pymode_rope_autoimport = 0
 let g:pymode_syntax_all = 1
 let g:pymode_trim_whitespaces = 1
 let g:pymode_options_max_line_length = 79
@@ -393,6 +400,9 @@ let g:jedi#completions_command = '<c-n>'
 let g:jedi#popup_on_dot = 0
 
 let g:NERDSpaceDelims = 1 " Useful for Python PEP 8 specs
+
+" Remove trailing whitespace on save
+autocmd BufWritePre *.rb %s/\s\+$//e
 
 
 let g:rainbow_active = 1
