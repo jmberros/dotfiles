@@ -161,7 +161,7 @@ font.family         : serif
 # http://matplotlib.org/api/artist_api.html#module-matplotlib.text for more
 # information on text properties
 
-text.color          : #333333
+text.color          : dimGray
 
 ### LaTeX customizations. See http://wiki.scipy.org/Cookbook/Matplotlib/UsingTex
 #text.usetex         : False  # use latex for all text handling. The following fonts
@@ -239,14 +239,14 @@ text.color          : #333333
 # http://matplotlib.org/api/axes_api.html#module-matplotlib.axes
 #axes.hold           : True    # whether to clear the axes by default on
 #axes.facecolor      : white   # axes background color
-axes.edgecolor      : #333333   # axes edge color
+axes.edgecolor      : dimGray   # axes edge color
 #axes.linewidth      : 1.0     # edge linewidth
 #axes.grid           : False   # display grid or not
 #axes.titlesize      : large   # fontsize of the axes title
 #axes.labelsize      : medium  # fontsize of the x any y labels
 axes.labelpad       : 15.0     # space between label and axis
 #axes.labelweight    : normal  # weight of the x and y labels
-axes.labelcolor     : #333333
+axes.labelcolor     : dimGray
 #axes.axisbelow      : False   # whether axis gridlines and ticks are below
                                # the axes elements (lines, text, etc)
 
@@ -287,7 +287,7 @@ axes.labelcolor     : #333333
 #xtick.minor.width    : 0.5    # minor tick width in points
 #xtick.major.pad      : 4      # distance to major tick label in points
 #xtick.minor.pad      : 4      # distance to the minor tick label in points
-xtick.color          : #333333      # color of the tick labels
+xtick.color          : dimGray      # color of the tick labels
 #xtick.labelsize      : medium # fontsize of the tick labels
 #xtick.direction      : in     # direction: in, out, or inout
 
@@ -297,7 +297,7 @@ xtick.color          : #333333      # color of the tick labels
 #ytick.minor.width    : 0.5    # minor tick width in points
 #ytick.major.pad      : 4      # distance to major tick label in points
 #ytick.minor.pad      : 4      # distance to the minor tick label in points
-ytick.color          : #333333      # color of the tick labels
+ytick.color          : dimGray      # color of the tick labels
 #ytick.labelsize      : medium # fontsize of the tick labels
 #ytick.direction      : in     # direction: in, out, or inout
 
@@ -334,7 +334,7 @@ legend.scatterpoints : 1 # number of scatter points
 #figure.titleweight : normal   # weight of the figure title
 #figure.figsize   : 8, 6    # figure size in inches
 #figure.dpi       : 80      # figure dots per inch
-figure.facecolor : white    # figure facecolor; 0.75 is scalar gray
+#figure.facecolor : 0.75    # figure facecolor; 0.75 is scalar gray
 #figure.edgecolor : white   # figure edgecolor
 #figure.autolayout : False  # When True, automatically adjust subplot
                             # parameters to make the plot fit the figure
