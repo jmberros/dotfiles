@@ -29,6 +29,10 @@ div.inner_cell {
     background-color: #2a2a2a; 
 }
 
+img {
+    background-color: white;
+}
+
 .CodeMirror-gutter-elt.CodeMirror-linenumber {
     left: -13px !important;
 }
@@ -244,7 +248,6 @@ body {
 }
 #header {
     box-shadow: none;
-    background-color: #262931;
     position: relative;
     z-index: 100;
 }
@@ -253,8 +256,8 @@ body {
     display: none !important;
     box-shadow: none;
 }
-#header .header-bar {
-    background: #262931;
+#header,.header-bar {
+    background-color: #262931 !important;
 }
 /* text in output area (i.e. print some_list) */
 div.output_html {color: #1e2429;}
