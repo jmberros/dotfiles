@@ -34,6 +34,7 @@ Plugin 'nvie/vim-flake8' " python spelling and style checker
 Plugin 'klen/python-mode' " autocompletion was TOO slow
 Plugin 'luochen1990/rainbow'
 Plugin 'Valloric/YouCompleteMe' " it used to capture space and interfere
+Plugin 'jgdavey/vim-blockle'  " easily toggle between { ... } and do ... end
 
 " I'm not sure why I have these
 Plugin 'tpope/vim-dispatch'

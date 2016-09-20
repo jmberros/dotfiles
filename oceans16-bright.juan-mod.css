@@ -264,11 +264,18 @@ div.output_html {color: #1e2429;}
 
 /* Formatting code in text, code*/
 .rendered_html table, .rendered_html th, .rendered_html tr, .rendered_html td {
-  border: 1px #a4b8cb solid;
+  border-bottom: 1px #222222 solid;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   color: #a4b8cb;
-  background-color: #2a2a2a !important;
+  /* background-color: #2a2a2a !important; */
+  background-color: #333333 !important;
   align-content: left !important;
+  font-size: 12px;
+  padding: 7px;
 }
+
 .navbar-default {
     background-color: #262931;
     border-color: #262931;
@@ -397,13 +404,13 @@ div.text_cell_render h6 {
 /* text in output area (i.e. print some_list) */
 div.output_html {color: #a4b8cb;}
 
-/* Formatting code in text, code*/
-.rendered_html table, .rendered_html th, .rendered_html tr, .rendered_html td {
-  border: 1px #a4b8cb solid;
-  color: #a4b8cb;
-  background-color: #333333 !important;
-  align-content: left !important;
-}
+/* [> Formatting code in text, code<] */
+/* .rendered_html table, .rendered_html th, .rendered_html tr, .rendered_html td { */
+  /* border: 1px #a4b8cb solid; */
+  /* color: #a4b8cb; */
+  /* background-color: #333333 !important; */
+  /* align-content: left !important; */
+/* } */
 
 button.close {
     padding: 0px;
