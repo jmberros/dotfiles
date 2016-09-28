@@ -194,13 +194,17 @@ div.notebook_list_header {
     color: #2c85f7;
 
 }
+
+.rendered_html pre {
+    padding: 20px !important;
+}
+
 .rendered_html pre, .rendered_html code {
-    /* font-size: 12pt; */
     font-size: 10pt; /* Juan's */
-    color: #8997b0;
-    /* line-height: 100%; /* Juan's commented out */
+    color: #bfc7d6;
     background: #2a2a2a;
 }
+
 body {
     font-family: "Helvetica", Helvetica, Arial, sans-serif;
     /* font-size: 12pt; */
@@ -264,18 +268,11 @@ div.output_html {color: #1e2429;}
 
 /* Formatting code in text, code*/
 .rendered_html table, .rendered_html th, .rendered_html tr, .rendered_html td {
-  border-bottom: 1px #222222 solid;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+  border: 1px #a4b8cb solid;
   color: #a4b8cb;
-  /* background-color: #2a2a2a !important; */
-  background-color: #333333 !important;
+  background-color: #2a2a2a !important;
   align-content: left !important;
-  font-size: 12px;
-  padding: 7px;
 }
-
 .navbar-default {
     background-color: #262931;
     border-color: #262931;
@@ -371,24 +368,7 @@ div.text_cell_render h4,
 div.text_cell_render h5,
 div.text_cell_render h6,
 div.text_cell_render {
-    background: #444444;
-}
-
-div.text_cell .input_prompt {
-    background: #444444 !important;
-    border-right: none !important;
-}
-
-div.text_cell_render {
-    padding: 2em;
-    color: #e6e6e6;
-    font-family: serif;
-    font-size: 1.3em;
-}
-
-div.text_cell_render pre {
-    color: #8997b0;
-    background-color: #2a2a2a;
+    background: white;
 }
 
 div.text_cell_render h1,
@@ -397,20 +377,38 @@ div.text_cell_render h3,
 div.text_cell_render h4,
 div.text_cell_render h5,
 div.text_cell_render h6 {
-    font-weight: 300;
-    color: #FFAD8B;
+    /* font-weight: 300; */
+    font-family: sans-serif;
+    color: ForestGreen;
+}
+
+div.text_cell .input_prompt {
+    background: white !important;
+    border-right: none !important;
+}
+
+div.text_cell_render {
+    padding: 2em;
+    color: #444444;
+    font-family: serif;
+    font-size: 1.2em;
+}
+
+div.text_cell_render pre {
+    color: #8997b0;
+    background-color: #2a2a2a;
 }
 
 /* text in output area (i.e. print some_list) */
 div.output_html {color: #a4b8cb;}
 
-/* [> Formatting code in text, code<] */
-/* .rendered_html table, .rendered_html th, .rendered_html tr, .rendered_html td { */
-  /* border: 1px #a4b8cb solid; */
-  /* color: #a4b8cb; */
-  /* background-color: #333333 !important; */
-  /* align-content: left !important; */
-/* } */
+/* Formatting code in text, code*/
+.rendered_html table, .rendered_html th, .rendered_html tr, .rendered_html td {
+  border: 1px #a4b8cb solid;
+  color: #a4b8cb;
+  background-color: #333333 !important;
+  align-content: left !important;
+}
 
 button.close {
     padding: 0px;
