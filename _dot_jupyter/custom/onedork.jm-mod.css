@@ -1010,8 +1010,8 @@ div.out_prompt_overlay.prompt:hover {
 
 div.text_cell {
     /* Juan mod: some padding in the text cells plz!! */
-    padding-top: 25px !important;
-    padding-bottom: 15px !important;
+    padding-top: 10px !important;
+    padding-bottom: 5px !important;
     padding-left: 70px !important;  /* Align text with the code cells */
 }
 
