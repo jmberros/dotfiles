@@ -28,6 +28,13 @@
  font-style: italic;
  src: local('PT Serif'), url('fonts/pt-serif-italic.ttf') format('truetype');
 }
+
+pre.CodeMirror-line {
+    /* Juan mod: put a vertical line at 80 characters! */
+    width: 645px;
+    border-right: 3px solid white;
+}
+
 div#notebook {
  font-family: "Exo_2", sans-serif;
  font-size: 13pt;
@@ -42,6 +49,7 @@ div.body {
  background-color: #ffffff;
  background: #ffffff;
  line-height: 1.3;
+ overflow-y: hidden;
 }
 a {
  font-family: "Exo_2", sans-serif;
