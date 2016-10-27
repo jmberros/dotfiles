@@ -586,6 +586,17 @@ i.fa.fa-icon {
  color: #48a667;
  margin-right: -16px;
 }
+
+/* Juan doc section */
+div#pager #pager-contents {
+    background-color: black;
+}
+div#pager pre {
+    background-color: #24272e;
+    color: #b5c2d9;
+}
+/* Juan */
+
 .btn,
 .btn-default {
  font-family: "Lato", sans-serif;
@@ -914,7 +925,8 @@ div.prompt {
 }
 div.prompt.input_prompt {
  background-color: #282c34;
- border-right: 2px solid rgba(83,180,115,.5);
+ /* border-right: 2px solid rgba(83,180,115,.5);  Juan commented */
+ border-right: 2px solid #222; /* Juan mod */
  border-top-left-radius: 2px;
  border-top-right-radius: 0px;
  border-bottom-left-radius: 0px;
@@ -1721,6 +1733,7 @@ div.tooltiptext.bigtooltip {
  border-radius: 2px;
  font-style: normal;
  font-weight: normal;
+ margin-left: 5px;
 }
 .cm-s-ipython div.CodeMirror-selected {
  background: #2f3640;
