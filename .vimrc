@@ -275,7 +275,7 @@ function! StartUp()
 endfunction
 
 " Hide files in nerdtree
-let NERDTreeIgnore=['\.pyc$', '\~$']
+let NERDTreeIgnore=['\.pyc$', '\~$', 'pycache', 'egg.info']
 
 " Hide files from CTRLP
 set wildignore+=*.pyc
