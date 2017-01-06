@@ -30,8 +30,8 @@
 }
 
 pre.CodeMirror-line {
-    /* Juan mod: put a vertical line at 80 characters! */
-    width: 645px;
+    /* Juan mod: put a vertical line at 79 / 80 characters! */
+    width: 709px;
     border-right: 3px solid white;
 }
 
