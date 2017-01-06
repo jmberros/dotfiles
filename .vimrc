@@ -34,7 +34,7 @@ Plugin 'nvie/vim-flake8' " python spelling and style checker
 Plugin 'klen/python-mode' " autocompletion was TOO slow
 Plugin 'luochen1990/rainbow'
 Plugin 'Valloric/YouCompleteMe' " it used to capture space and interfere
-Plugin 'jgdavey/vim-blockle'  " easily toggle between { ... } and do ... end
+Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " I'm not sure why I have these
 Plugin 'tpope/vim-dispatch'
@@ -67,7 +67,7 @@ Plugin 'vim-scripts/LargeFile' " Disables some feats when editing large files
 Plugin 'kshenoy/vim-signature' " Marks enhanced
 Plugin 'tmhedberg/SimpylFold' " No-BS Python code folding
 "Plugin 'nelstrom/vim-markdown-folding'
-" Plugin 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
 
 " Integration
 Plugin 'thoughtbot/vim-rspec' " Run tests from Rspecwithout leaving Vim
@@ -148,6 +148,9 @@ set encoding=utf-8
 
 set omnifunc=syntaxcomplete#Complete
 
+" associate *.jinja templates with HTML for SparkUp plugin
+au BufRead,BufNewFile *.jinja set filetype=html.jinja
+
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -219,9 +222,6 @@ set completeopt=longest,menuone
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabMappingForward = "<C-p>"
 let g:SuperTabMappingBackward = "<C-n>"
-" inoremap <expr> <Tab>      pumvisible() ? "\<C-Y>" : "\<Tab>"
-" inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-" inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
 
 " Try to fix latex folding
 let g:tex_fold_override_foldtext = 1
@@ -255,28 +255,24 @@ inoremap <C-c> <Esc>
 " Make zO recursively open whatever top level fold we're in
 nnoremap zO zCzO
 
-
-
-
-
-
 " # Auto commands # "
 
 autocmd FileType css,scss,less set iskeyword=@,48-57,_,-,?,!,192-255
 autocmd FileType ruby setlocal sw=2 ts=2 sts=2
 autocmd FileType eruby set iskeyword=@,48-57,_,192-255,$,-
 autocmd FileType python setlocal sw=4 ts=4 sts=4
+
 " Make those debugger statements painfully obvious
 au BufEnter *.rb syn match error contained "\<binding.pry\>"
 au BufEnter *.rb syn match error contained "\<debugger\>"
 au BufEnter *.py syn match error contained "\<set_trace\>"
 
-" autocmd VimEnter * call StartUp()
-" function! StartUp()
-    " if 0 == argc()
-        " NERDTree
-    " end
-" endfunction
+autocmd VimEnter * call StartUp()
+function! StartUp()
+    if 0 == argc()
+        NERDTree
+    end
+endfunction
 
 " Hide files in nerdtree
 let NERDTreeIgnore=['\.pyc$', '\~$']
@@ -294,14 +290,10 @@ set wildignore+=*public/system/build/dist/egg-info* " Ignore rails PortalRH big 
 augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    autocmd BUfWritePost $MYVIMRC :AirlineRefresh
 augroup END " }
 
 autocmd VimResized * :wincmd =
-
-
-
-
-
 
 
 " # Plugins cutomization # "
@@ -311,22 +303,22 @@ autocmd VimResized * :wincmd =
 let g:ycm_autoclose_preview_window_after_completion=0
 " Leader+g goes to the definition of whatever you're stanting on
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" One issue with the goto definition above is that VIM by default doesn’t know
-" anything about virtualenv, so you have to make VIM and YouCompleteMe aware
-" of your virtualenv:
-" python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
+" " One issue with the goto definition above is that VIM by default doesn’t know
+" " anything about virtualenv, so you have to make VIM and YouCompleteMe aware
+" " of your virtualenv:
+" " python with virtualenv support
+" py << EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+  " project_base_dir = os.environ['VIRTUAL_ENV']
+  " activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  " execfile(activate_this, dict(__file__=activate_this))
+" EOF
 
 runtime macros/matchit.vim
 
-nnoremap <C-b> :CtrlPBuffer<CR>
+" nnoremap <C-b> :CtrlPBuffer<CR>
 " nnoremap <C-m> :CtrlPMRU<CR> " This made the ENTER key trigger :CtrlPMRU
 
 let g:miniBufExplMapWindowNavVim = 1
@@ -359,11 +351,12 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-
-let g:syntastic_python_checkers = ["pylint", "flake8"]
+let g:syntastic_python_checkers = ["flake8"]
 let g:syntastic_ruby_checkers = ["rubocop"]
 let g:syntastic_mode_map = { "mode": "active",
                            \ "active_filetypes": ["python", "ruby", "css", "html", "erb"] }
+" let g:syntastic_python_checker_args="--ignore=W391"  " Does't work if python-mode 
+let g:pymode_lint_ignore = "W391"  " Ignore blank line at the end of file
 
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -376,7 +369,7 @@ highlight pythonSelf ctermfg=darkgray
 highlight pythonDot ctermfg=darkgrey
 highlight pythonFunction cterm=bold ctermfg=blue 
 highlight pythonClass ctermfg=yellow
-highlight pythonDocstring cterm=italic ctermfg=darkgray
+highlight pythonDocstring cterm=italic ctermfg=blue
 highlight Comment cterm=italic
 let python_highlight_all=1
 let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()  # XXX BREAKPOINT'
@@ -404,38 +397,21 @@ let g:NERDSpaceDelims = 1 " Useful for Python PEP 8 specs
 
 " Remove trailing whitespace on save
 autocmd BufWritePre *.rb %s/\s\+$//e
+autocmd BufWritePre *.py %s/\s\+$//e
 
+
+" Tabs navigation
+nnoremap <C-PAGEDOWN> :tabnext<CR>
+nnoremap <C-PAGEUP> :tabprevious<CR>
 
 let g:rainbow_active = 1
 let g:rainbow_conf = {
 \   'ctermfgs': ['brown', 'darkcyan', 'darkmagenta', 'blue', 'gray']
 \}
-" Rainbow parens
-" au VimEnter * RainbowParenthesesToggle
-" au Syntax * RainbowParenthesesLoadRound
-" au Syntax * RainbowParenthesesLoadSquare
-" au Syntax * RainbowParenthesesLoadBraces
-" let g:rbpt_colorpairs = [
-    " \ ['black',       'SeaGreen3'],
-    " \ ['Darkblue',    'SeaGreen3'],
-    " \ ['darkgray',    'DarkOrchid3'],
-    " \ ['darkgreen',   'firebrick3'],
-    " \ ['darkcyan',    'RoyalBlue3'],
-    " \ ['darkred',     'SeaGreen3'],
-    " \ ['darkmagenta', 'DarkOrchid3'],
-    " \ ['brown',       'firebrick3'],
-    " \ ['darkred',     'DarkOrchid3'],
-    " \ ['red',         'firebrick3'],
-    " \ ['gray',        'RoyalBlue3'],
-    " \ ['darkgreen',   'RoyalBlue3'],
-    " \ ['darkmagenta', 'DarkOrchid3'],
-    " \ ['Darkblue',    'firebrick3'],
-    " \ ['darkcyan',    'SeaGreen3'],
-    " \ ['brown',       'RoyalBlue3'],
-    " \ ]
-" let g:rbpt_max = 16
-" let g:rbpt_loadcmd_toggle = 0
 
 " " Disable autocomplete pop up for latex files, it's annoying
 " autocmd FileType tex :AcpDisable
+
+" RUn the current file
+nnoremap <C-X> :!%:p<CR>
 
