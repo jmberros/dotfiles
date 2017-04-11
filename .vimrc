@@ -35,6 +35,8 @@ Plugin 'klen/python-mode' " autocompletion was TOO slow
 Plugin 'luochen1990/rainbow'
 Plugin 'Valloric/YouCompleteMe' " it used to capture space and interfere
 Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'lepture/vim-jinja'
+Plugin 'othree/html5.vim'
 
 " I'm not sure why I have these
 Plugin 'tpope/vim-dispatch'
@@ -183,7 +185,8 @@ au BufNewFile,BufRead *.js, *.html, *.css, *.rb, *.yml
   " " colorscheme Tomorrow-Night
   " colorscheme Tomorrow-Night-Eighties
 " endif
-colorscheme Tomorrow-Night-Eighties
+" colorscheme Tomorrow-Night-Eighties
+colorscheme jellybeans
 
 " No swap files
 set nobackup
@@ -356,7 +359,7 @@ let g:syntastic_ruby_checkers = ["rubocop"]
 let g:syntastic_mode_map = { "mode": "active",
                            \ "active_filetypes": ["python", "ruby", "css", "html", "erb"] }
 " let g:syntastic_python_checker_args="--ignore=W391"  " Does't work if python-mode 
-let g:pymode_lint_ignore = "W391"  " Ignore blank line at the end of file
+let g:pymode_lint_ignore = "W391,E501"  " Ignore blank line at the end of file
 
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -365,12 +368,12 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 " This highlighting depends on python-mode
-highlight pythonSelf ctermfg=darkgray
-highlight pythonDot ctermfg=darkgrey
-highlight pythonFunction cterm=bold ctermfg=blue 
-highlight pythonClass ctermfg=yellow
-highlight pythonDocstring cterm=italic ctermfg=blue
-highlight Comment cterm=italic
+" highlight pythonSelf ctermfg=darkgray
+" highlight pythonDot ctermfg=darkgrey
+" highlight pythonFunction ctermfg=yellow
+" highlight pythonClass cterm=bold ctermfg=yellow
+highlight pythonDocstring ctermfg=blue
+" highlight Comment cterm=italic
 let python_highlight_all=1
 let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()  # XXX BREAKPOINT'
 
