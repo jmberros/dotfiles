@@ -4,7 +4,7 @@
 * Get dropbox
 * Install some stuff:
 ```
-sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake libiw-dev xbacklight libfreetype6-dev xautolock latexmk gummi texlive-lang-spanish meld xdec dh-autoreconf
+sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake xbacklight libfreetype6-dev xautolock latexmk gummi texlive-lang-spanish meld xdec dh-autoreconf keychain
 ```
 
 * Set ssh-keys to clone repos:
@@ -86,14 +86,14 @@ git config --global alias.dump 'cat-file -p'
     cmd = meld --diff $BASE $LOCAL --diff $BASE $REMOTE --diff $LOCAL $MERGED $REMOTE
 ```
 
-* Shit for i3pystatus:
+## i3pystatus:
 ```
-sudo apt-get install python3.5-dev
-pip3 install psutil i3pystatus netifaces colour basiciw pyvcf
+sudo apt-get install libdbus-1-dev libdbus-glib-1-dev libiw-dev 
+pip3 install psutil i3pystatus netifaces colour basiciw dbus-python
 cp ~/repos/dotfiles/.i3pystatus.laptop.py ~
 ```
 
-# Reiniciar y loguearse en i3:
+## Reiniciar y loguearse en i3:
 
 * After default creation of `~/.i3/config`, copy i3's config file: `cp ~/repos/dotfiles/.i3.config ~/.i3/config`
 
@@ -142,6 +142,8 @@ git clone git@github.com:powerline/fonts.git
 
 And set your gnome-terminal profile to use Ubuntu mono for Powerline 12 and gray on black with a lighter gray.
 
+## Python
+
 * Bajarse Anaconda e instalar Jupyter y R.
 ```
 conda install jupyter numpy pandas biopython matplotlib scipy ternary lxml html5lib beautifulsoup4
@@ -154,32 +156,48 @@ vi ~/.ipython/profile_default/ipython_config.py
 # ^ Add / uncomment stuff (pending)
 ```
 
+## Ruby
+
+[DigitalOcean guide is perfect](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-16-04)
+
+## MySQL
+
+[DigitalOcean guide is great](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-16-04)
+
+Then log in with the root account whose password you set up during install,
+and create a juan user:
+
+```mysql
+> CREATE USER 'juan'@'localhost' IDENTIFIED BY 'password';
+> GRANT ALL PRIVILEGES ON * . * TO 'juan'@'localhost';
+```
+
+## Unattended-upgrades:
+
+```bash
+sudo dpkg-reconfigure unattended-upgrades
+sudo vi /etc/apt/apt.conf.d/50unattended-upgrades
+```
+* Add `"Google\, Inc.:stable";` to Allowed-Origins.
+* Uncomment updates in Allowed-Origins
+* Uncomment the 'Mail root' line
+
+* Add these lines to `sudo vi /etc/apt/apt.conf.d/20auto-upgrades`:
+```
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Unattended-Upgrade "1";
+APT::Periodic::Download-Upgradeable-Packages "1";
+APT::Periodic::AutocleanInterval "7";
+APT::Periodic::Verbose "1";
+```
+
+## Stuff for @beleriand
+
 * Transmission setup: `sudo vi /etc/transmission-daemon/settings.json`
   y copiarle lo que haya en `~/repos/dotfiles/settings.json`
   ( es posible que desde transgui tengas que cambiar a mano los directorios de dl, /media/600gb/transmission-daemon/{in}complete )
 
   `sudo service transmission-daemon start`
-
-* Instalar ruby para los cronjobs:
-
-```
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
-echo 'eval "$(rbenv init -)"' >> ~/.zshrc
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-git clone git://github.com/jf/rbenv-gemset.git $HOME/.rbenv/plugins/rbenv-gemset
-```
-
-```
-sudo apt-get install libssl-dev libreadline-dev zlib1g-dev
-rbenv install -l  # Check for the last stable ruby
-rbenv install <version>
-rbenv local <version>
-rbenv rehash
-ruby --version
-rbenv-gemset (ver online)
-gem install nokogiri pony colorize actionview pry
-```
 
 * Look for .smpt_credentials in your mail archive and save it to
   `~/.smtp_credentials`
@@ -204,23 +222,6 @@ sudo add-apt-repository ppa:kilian/f.lux
 sudo apt-get update
 sudo apt-get install fluxgui
 xflux -l -34.60 -g -58.38
-```
-
-* Set unattended-upgrades:
-```
-sudo dpkg-reconfigure unattended-upgrades
-sudo vi /etc/apt/apt.conf.d/50unattended-upgrades
-# Add "Google\, Inc.:stable"; to Allowed-Origins
-# Uncomment updates in Allowed-Origins
-# Uncomment the 'Mail root' line
-sudo vi /etc/apt/apt.conf.d/20auto-upgrades
-# Add these lines:
-# Though I'm not quite sure if these go in the file 10periodic instead
-APT::Periodic::Update-Package-Lists "1";
-APT::Periodic::Unattended-Upgrade "1";
-APT::Periodic::Download-Upgradeable-Packages "1";
-APT::Periodic::AutocleanInterval "7";
-APT::Periodic::Verbose "1";
 ```
 
 * Some bioinformatics shit:
