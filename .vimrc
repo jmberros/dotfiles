@@ -15,6 +15,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'fholgado/minibufexpl.vim'
 "Plugin 'jlanzarotta/bufexplorer'
+Plugin 'severin-lemaignan/vim-minimap'
 
 " Syntax
 Plugin 'hallison/vim-rdoc'
@@ -31,12 +32,18 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'nvie/vim-flake8' " python spelling and style checker
 " Plugin 'chriskempson/base16-vim' " Colorscheme
 " Plugin 'hdima/python-syntax'
-Plugin 'klen/python-mode' " autocompletion was TOO slow
 Plugin 'luochen1990/rainbow'
-Plugin 'Valloric/YouCompleteMe' " it used to capture space and interfere
-Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'lepture/vim-jinja'
-Plugin 'othree/html5.vim'
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'chriskempson/base16-vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+
+
+
+" Plugin 'klen/python-mode' " autocompletion was TOO slow
+Plugin 'davidhalter/jedi-vim'
+" Plugin 'Valloric/YouCompleteMe' " it used to capture space and interfere
+
 
 " I'm not sure why I have these
 Plugin 'tpope/vim-dispatch'
@@ -53,6 +60,7 @@ Plugin 'tpope/vim-endwise' " Ruby do - end / if - end
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'Raimondi/delimitMate' " Autocompletion for quotes, brakets, parens
 "Plugin 'AndrewRadev/splitjoin.vim' " gS to split lines, gJ to join them
+Plugin 'othree/html5.vim'
 
 " Vim enhancement
 " Plugin 'lervag/vimtex'  " Made some weird scroll jump :(
@@ -69,7 +77,6 @@ Plugin 'vim-scripts/LargeFile' " Disables some feats when editing large files
 Plugin 'kshenoy/vim-signature' " Marks enhanced
 Plugin 'tmhedberg/SimpylFold' " No-BS Python code folding
 "Plugin 'nelstrom/vim-markdown-folding'
-Plugin 'davidhalter/jedi-vim'
 
 " Integration
 Plugin 'thoughtbot/vim-rspec' " Run tests from Rspecwithout leaving Vim
@@ -97,7 +104,6 @@ set clipboard=unnamed
 set nojoinspaces " Use only 1 space after . when joining lines instead of 2
 set modifiable
 set hidden
-set wildignore+=public/system
 " set tw=79
 set wrap linebreak nolist
 
@@ -127,7 +133,6 @@ set foldlevelstart=0
 
 set t_Co=256              " enable 256-color mode.
 syntax enable             " enable syntax highlighting (previously syntax on).
-set background=light
 set cul                   " highlight current line
 set number                " show line numbers
 set laststatus=2          " last window always has a statusline
@@ -151,29 +156,26 @@ set encoding=utf-8
 set omnifunc=syntaxcomplete#Complete
 
 " associate *.jinja templates with HTML for SparkUp plugin
-au BufRead,BufNewFile *.jinja set filetype=html.jinja
+" au BufRead,BufNewFile *.jinja set filetype=html.jinja
+au BufNewFile,BufRead *.jinja set ft=jinja.html
 
 au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-    " "\ set textwidth=79 |
-
-au BufNewFile,BufRead *.erb
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-    \ set expandtab |
-    \ set autoindent |
     \ set fileformat=unix |
 
-au BufNewFile,BufRead *.js, *.html, *.css, *.rb, *.yml
+" au BufNewFile,BufRead *.erb
+    " \ set expandtab |
+    " \ set autoindent |
+    " \ set fileformat=unix |
+
+au BufNewFile,BufRead *.rb,*.coffee
     \ set tabstop=2 |
-    \ set softtabstop=2 |
     \ set shiftwidth=2 |
+    \ set softtabstop=2 |
+
+au BufNewFile,BufRead *.html,*.jinja,*.css,*.scss,*.erb,*.yml
+    \ set tabstop=2 |
+    \ set shiftwidth=2 |
+    \ set softtabstop=2 |
 
 " let hour = strftime("%H")
 " if 7 <= hour && hour < 18
@@ -185,7 +187,9 @@ au BufNewFile,BufRead *.js, *.html, *.css, *.rb, *.yml
   " " colorscheme Tomorrow-Night
   " colorscheme Tomorrow-Night-Eighties
 " endif
-" colorscheme Tomorrow-Night-Eighties
+
+set background=dark
+" colorscheme Tomorrow-Night
 colorscheme jellybeans
 
 " No swap files
@@ -281,6 +285,8 @@ endfunction
 let NERDTreeIgnore=['\.pyc$', '\~$', 'pycache', 'egg.info']
 
 " Hide files from CTRLP
+set wildignore+=public/system
+set wildignore+=software
 set wildignore+=*.pyc
 set wildignore+=*/tmp/*,*.zip,*/build/*,*/dist/*
 let g:ctrlp_custom_ignore = {
@@ -303,21 +309,9 @@ autocmd VimResized * :wincmd =
 
 
 " YouCompleteMe tweaks:
-let g:ycm_autoclose_preview_window_after_completion=0
+" let g:ycm_autoclose_preview_window_after_completion=0
 " Leader+g goes to the definition of whatever you're stanting on
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" " One issue with the goto definition above is that VIM by default doesn’t know
-" " anything about virtualenv, so you have to make VIM and YouCompleteMe aware
-" " of your virtualenv:
-" " python with virtualenv support
-" py << EOF
-" import os
-" import sys
-" if 'VIRTUAL_ENV' in os.environ:
-  " project_base_dir = os.environ['VIRTUAL_ENV']
-  " activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  " execfile(activate_this, dict(__file__=activate_this))
-" EOF
 
 runtime macros/matchit.vim
 
@@ -354,7 +348,8 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-let g:syntastic_python_checkers = ["flake8"]
+" let g:syntastic_python_python_exec = '/usr/bin/env python3'
+let g:syntastic_python_checkers = ["pyflakes"]
 let g:syntastic_ruby_checkers = ["rubocop"]
 let g:syntastic_mode_map = { "mode": "active",
                            \ "active_filetypes": ["python", "ruby", "css", "html", "erb"] }
@@ -369,13 +364,15 @@ map <Leader>a :call RunAllSpecs()<CR>
 
 " This highlighting depends on python-mode
 " highlight pythonSelf ctermfg=darkgray
-" highlight pythonDot ctermfg=darkgrey
-" highlight pythonFunction ctermfg=yellow
-" highlight pythonClass cterm=bold ctermfg=yellow
+highlight pythonDot ctermfg=gray   
+" highlight pythonFunction cterm=bold ctermfg=cyan
+" ^ ctermfg=blue 
+" highlight pythonClass ctermfg=yellow
 highlight pythonDocstring ctermfg=blue
+" ^ cterm=italic 
 " highlight Comment cterm=italic
 let python_highlight_all=1
-let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace()  # XXX BREAKPOINT'
+let g:pymode_breakpoint_cmd = 'import pdb; pdb.set_trace()  # XXX BREAKPOINT'
 
 " Flake8 for Python customization
 autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
@@ -385,22 +382,21 @@ let g:flake8_show_in_gutter=1
 
 " Py-mode customization
 let g:pymode_options = 0  " Added so that nowrap is NOT set, I want text wrap!!
-" let g:pymode_rope = 0
-" let g:pymode_rope_completion = 0
-" let g:pymode_rope_complete_on_dot = 0
-" let g:pymode_rope_autoimport = 0
 let g:pymode_syntax_all = 1
 let g:pymode_trim_whitespaces = 1
 let g:pymode_options_max_line_length = 79
 let g:pymode_syntax_highlight_self = g:pymode_syntax_all
-let g:jedi#completions_command = '<c-n>'
-let g:jedi#popup_on_dot = 0
+" let g:jedi#completions_command = '<c-n>'
+" let g:jedi#completions_enabled = 0
+" let g:jedi#popup_on_dot = 0
 
 let g:NERDSpaceDelims = 1 " Useful for Python PEP 8 specs
 
 " Remove trailing whitespace on save
 autocmd BufWritePre *.rb %s/\s\+$//e
 autocmd BufWritePre *.py %s/\s\+$//e
+autocmd BufWritePre *.jinja %s/\s\+$//e
+autocmd BufWritePre *.yml %s/\s\+$//e
 
 
 " Tabs navigation
