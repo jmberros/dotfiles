@@ -224,15 +224,23 @@ sudo apt-get install fluxgui
 xflux -l -34.60 -g -58.38
 ```
 
-* Some bioinformatics shit:
-    - download and install [VCFtools](https://vcftools.github.io/examples.html), [SAMtools](http://sourceforge.net/projects/samtools/files/), and [tabix](http://sourceforge.net/projects/samtools/files/tabix/).
-    - for tabix, run `make` after extracting and copy the executable to `/usr/bin`; for the rest, `./configure`, `make`, `sudo make install`
+## Bioinformatics:
 
+```bash
+sudo apt-get install bioperl libbz2-dev liblzma-dev
 ```
-pip install git+https://github.com/jamescasbon/PyVCF
-pip install sklearn ftputil humanize ipdb pep8 pyyaml ipdb lxml
-pip install git+https://github.com/marcharper/python-ternary.git
-```
+
+Install:
+- Samtools + Bcftools + HTSLib
+- GATK
+- PicardTools
+- MultiQC
+- cutadapt (`pip install cutadapt`)
+- SnpEff + SnpSift
+- VEP
+
+
+## Etc.
 
 * Jupyter custom themes:
 ```
