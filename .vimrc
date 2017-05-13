@@ -37,7 +37,7 @@ Plugin 'lepture/vim-jinja'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'chriskempson/base16-vim'
 Plugin 'nathanaelkane/vim-indent-guides'
-
+Plugin 'Vimjas/vim-python-pep8-indent'
 
 
 " Plugin 'klen/python-mode' " autocompletion was TOO slow
