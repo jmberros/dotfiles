@@ -23,7 +23,8 @@ plugins=(git rails ssh-agent bundler capistrano gem grb git-extras web-search wd
 # ZSH_THEME="af-magic" # @numenor
 # ZSH_THEME="avit" # @caladan
 # ZSH_THEME="daveverwer" # @arrakis
-ZSH_THEME="clean"  # @beleriand
+# ZSH_THEME="clean"  # @beleriand
+ZSH_THEME="steef"  # @solaris
 
 
 #################
