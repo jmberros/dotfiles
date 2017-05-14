@@ -30,7 +30,9 @@ status.register("pulseaudio",
 
 status.register("pomodoro",
                 long_break_duration=(20*60),
-                sound="/home/juan/Dropbox/glass_ping.wav")
+                sound="/home/juan/Dropbox/chinise-gong.wav")
+
+status.register("cpu_usage", format='🖥 {usage:02}%')
 
 status.register("load",
                 color="#bbbbbb",
