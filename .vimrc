@@ -37,12 +37,14 @@ Plugin 'lepture/vim-jinja'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'chriskempson/base16-vim'
 Plugin 'nathanaelkane/vim-indent-guides'
-
+Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'schickling/vim-bufonly'
 
 
 " Plugin 'klen/python-mode' " autocompletion was TOO slow
 Plugin 'davidhalter/jedi-vim'
 " Plugin 'Valloric/YouCompleteMe' " it used to capture space and interfere
+Plugin 'Shougo/neocomplete'
 
 
 " I'm not sure why I have these
@@ -127,6 +129,7 @@ set undolevels=1000 " How many undos
 set undoreload=10000 " number of lines to save for undo
 
 filetype plugin indent on
+" filetype indent on
 
 set shortmess=at " Avoid the 'Press ENTER or type command to continue' prompt
 set foldlevelstart=0
@@ -141,7 +144,7 @@ set incsearch             " Do highlight as you type your search.
 set ignorecase            " Make searches case-insensitive.
 set ruler                 " Always show info along bottom.
 set showmatch
-set autoindent            " auto-indent
+" set autoindent            " auto-indent
 set shiftround            " always indent/outdent to te nearest tabstop
 set tabstop=4 shiftwidth=4 expandtab
 set softtabstop=4         " unify
@@ -189,7 +192,7 @@ au BufNewFile,BufRead *.html,*.jinja,*.css,*.scss,*.erb,*.yml
 " endif
 
 set background=dark
-" colorscheme Tomorrow-Night
+" colorscheme Tomorrow-Night-Eighties
 colorscheme jellybeans
 
 " No swap files

@@ -89,7 +89,7 @@ git config --global alias.dump 'cat-file -p'
 ## i3pystatus:
 ```
 sudo apt-get install libdbus-1-dev libdbus-glib-1-dev libiw-dev 
-pip3 install psutil i3pystatus netifaces colour basiciw dbus-python
+pip install psutil i3pystatus netifaces colour basiciw dbus-python
 cp ~/repos/dotfiles/.i3pystatus.laptop.py ~
 ```
 
@@ -145,8 +145,9 @@ And set your gnome-terminal profile to use Ubuntu mono for Powerline 12 and gray
 ## Python
 
 * Bajarse Anaconda e instalar Jupyter y R.
-```
+```bash
 conda install jupyter numpy pandas biopython matplotlib scipy ternary lxml html5lib beautifulsoup4
+pip install html5lib q
 ```
 
 * IPython startup:
