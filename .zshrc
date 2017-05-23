@@ -10,7 +10,7 @@ COMPLETION_WAITING_DOTS="true"
 # export UPDATE_ZSH_DAYS=13
 
 # See: https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-plugins=(git rails ssh-agent bundler capistrano gem grb git-extras web-search wd zeus python pip npm last-working-dir jsontools)
+plugins=(git ssh-agent bundler capistrano gem grb git-extras web-search wd python pip npm last-working-dir)
 
 
 #################
@@ -41,6 +41,7 @@ alias beleriand='ssh -A juan@beleriand.local'
 alias solaris='mosh juan@solaris'
 
 # Common operations
+alias sc='cs'
 alias mv='mv -i'
 alias cp='cp -iv'
 alias ls='ls --color=auto --group-directories-first'
@@ -56,8 +57,6 @@ alias tmux="tmux -2"
 alias xclip="xclip -selection primary -f | xclip -selection clipboard"
 alias put="xsel -p"
 alias haploview='java -jar ~/software/Haploview.jar'
-alias gatk='java -jar ~/software/GATK/GenomeAnalysisTK.jar'
-alias fastqc='~/software/FastQC/fastqc'
 alias fastq-mcf='~/software/ea-utils.1.1.2-537/fastq-mcf'
 alias mostusedcomms="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl |  head -n20"
 
@@ -100,6 +99,13 @@ alias glum='git pull upstream master'
 alias glub='pull_branch upstream'
 alias gadd='git add'
 
+# Bioinformatics
+alias gatk='java -jar /home/juan/software/GenomeAnalysisTK-3.7/GenomeAnalysisTK-3.7.jar'
+alias picard='java -jar ~/software/picard-tools-2.9.1.jar'
+alias snpeff='java -jar ~/software/snpEff-4.3m/snpEff.jar'
+alias snpsift='java -jar ~/software/snpEff-4.3m/SnpSift.jar'
+alias vep='~/software/ensembl-tools-release-87/scripts/variant_effect_predictor/variant_effect_predictor.pl'
+
 
 #################
 #
@@ -107,6 +113,22 @@ alias gadd='git add'
 #
 #################
 
+
+view_vcf() {
+    grep -v '^##' $1 | sed 's/^#//' | column -t
+}
+
+view_vcf_no_INFO() {
+    view_vcf $1 | ruby -F"\s+" -lane 'puts ($F.first(7) + $F[8..-1]).join("\t")'
+}
+
+less_vcf() {
+    view_vcf $1 | less -S
+}
+
+less_vcf_no_INFO() {
+    view_vcf_no_INFO $1 | less -S
+}
 
 pswatch () {
   watch -n1 "ps aux | head -n1 && ps aux | grep '$1' | grep -v 'grep'"
@@ -161,8 +183,11 @@ export EDITOR=vim
 export BROWSER=google-chrome
 
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-export PATH=/home/juan/miniconda3/bin:$PATH  # Anaconda
+export PATH=/home/juan/anaconda3/bin:$PATH  # Anaconda
 export PATH="$HOME/.rbenv/bin:$PATH"  # Rb Env
 
 eval "$(rbenv init -)"
 
+# Variant Effect Predictor breaks without this:
+# export PERL5LIB=/home/juan/storage/paip_resources/vep_data_87:$PERL5LIB
+# export PATH=$PATH:/home/juan/storage/paip_resources/vep_data_87/htslib
