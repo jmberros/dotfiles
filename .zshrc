@@ -105,6 +105,7 @@ alias picard='java -jar ~/software/picard-tools-2.9.1.jar'
 alias snpeff='java -jar ~/software/snpEff-4.3m/snpEff.jar'
 alias snpsift='java -jar ~/software/snpEff-4.3m/SnpSift.jar'
 alias vep='~/software/ensembl-tools-release-87/scripts/variant_effect_predictor/variant_effect_predictor.pl'
+alias igv='~/software/IGV_2.3.93/igv.sh'
 
 
 #################
@@ -122,6 +123,14 @@ view_vcf_no_INFO() {
     view_vcf $1 | ruby -F"\s+" -lane 'puts ($F.first(7) + $F[8..-1]).join("\t")'
 }
 
+grep_variant_from_vcf() {
+    view_vcf $2 | grep -E "($1|CHROM)"
+}
+
+grep_variant_from_vcf_no_INFO() {
+    view_vcf_no_INFO $2 | grep -E "($1|CHROM)"
+}
+
 less_vcf() {
     view_vcf $1 | less -S
 }
@@ -133,6 +142,10 @@ less_vcf_no_INFO() {
 pswatch () {
   watch -n1 "ps aux | head -n1 && ps aux | grep '$1' | grep -v 'grep'"
 }
+
+# Doesn't work for some reason:
+# https://unix.stackexchange.com/questions/27236/zsh-autocomplete-ls-command-with-directories-only
+# compdef _dirs cs
 
 cs () {
   cd $1;
