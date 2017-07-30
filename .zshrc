@@ -119,7 +119,7 @@ view_vcf() {
 }
 
 view_vcf_no_INFO() {
-    view_vcf $1 | ruby -F"\s+" -lane 'puts ($F.first(7) + $F[8..-1]).join("\t")'
+    view_vcf $1 | ruby -F"\s+" -lane 'puts ($F.first(7) + $F[8..-1]).join("\t")' | column -t
 }
 
 less_vcf() {
@@ -127,7 +127,7 @@ less_vcf() {
 }
 
 less_vcf_no_INFO() {
-    view_vcf_no_INFO $1 | less -S
+    view_vcf_no_INFO $1 | column -t | less -S
 }
 
 pswatch () {
