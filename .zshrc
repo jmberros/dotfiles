@@ -6,11 +6,10 @@
 
 ZSH=$HOME/.oh-my-zsh
 # DISABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
-# export UPDATE_ZSH_DAYS=13
+COMPLETION_WAITING_DOTS="true" # export UPDATE_ZSH_DAYS=13
 
 # See: https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
-plugins=(git ssh-agent bundler capistrano gem grb git-extras web-search wd python pip npm last-working-dir)
+plugins=(git ssh-agent capistrano bundler gem grb git-extras web-search wd python pip npm last-working-dir)
 
 
 #################
@@ -67,6 +66,10 @@ alias rawk:='ruby -F: -lane'
 alias rawkt='ruby -F"\t" -lane'
 alias rawks='ruby -F"\s+" -lane'
 
+# Do not run feature specs by default:
+alias rspec_no_feature='bundle exec rspec --exclude-pattern "spec/features/*"'
+alias be='bundle exec'
+
 # Git related aliases
 push_branch() {
     branch=`git rev-parse --symbolic-full-name --abbrev-ref HEAD`
@@ -106,6 +109,8 @@ alias snpeff='java -jar ~/software/snpEff-4.3m/snpEff.jar'
 alias snpsift='java -jar ~/software/snpEff-4.3m/SnpSift.jar'
 alias vep='~/software/ensembl-tools-release-87/scripts/variant_effect_predictor/variant_effect_predictor.pl'
 alias igv='~/software/IGV_2.3.93/igv.sh'
+alias admixture='~/software/admixture_linux-1.3.0/admixture'
+alias plink='~/software/plink_linux_x86_64/plink'
 
 
 #################
@@ -120,7 +125,7 @@ view_vcf() {
 }
 
 view_vcf_no_INFO() {
-    view_vcf $1 | ruby -F"\s+" -lane 'puts ($F.first(7) + $F[8..-1]).join("\t")' | column -t
+    view_vcf $1 | ruby -F"\s+" -lane 'puts ($F.first(7) + $F[8..-1]).join("\t")'
 }
 
 grep_variant_from_vcf() {
@@ -136,7 +141,11 @@ less_vcf() {
 }
 
 less_vcf_no_INFO() {
-    view_vcf_no_INFO $1 | column -t | less -S
+    view_vcf_no_INFO $1 | less -S
+}
+
+bed_to_regions_format() {
+    awk '{ print $4 "\tchr" $1 ":" $2 "-" $3}' $1
 }
 
 pswatch () {
