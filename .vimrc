@@ -38,11 +38,13 @@ Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'chriskempson/base16-vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'schickling/vim-bufonly'
 
 
 " Plugin 'klen/python-mode' " autocompletion was TOO slow
 Plugin 'davidhalter/jedi-vim'
 " Plugin 'Valloric/YouCompleteMe' " it used to capture space and interfere
+Plugin 'Shougo/neocomplete'
 
 
 " I'm not sure why I have these
@@ -127,6 +129,7 @@ set undolevels=1000 " How many undos
 set undoreload=10000 " number of lines to save for undo
 
 filetype plugin indent on
+" filetype indent on
 
 set shortmess=at " Avoid the 'Press ENTER or type command to continue' prompt
 set foldlevelstart=0
@@ -141,7 +144,7 @@ set incsearch             " Do highlight as you type your search.
 set ignorecase            " Make searches case-insensitive.
 set ruler                 " Always show info along bottom.
 set showmatch
-set autoindent            " auto-indent
+" set autoindent            " auto-indent
 set shiftround            " always indent/outdent to te nearest tabstop
 set tabstop=4 shiftwidth=4 expandtab
 set softtabstop=4         " unify
@@ -189,7 +192,7 @@ au BufNewFile,BufRead *.html,*.jinja,*.css,*.scss,*.erb,*.yml
 " endif
 
 set background=dark
-" colorscheme Tomorrow-Night
+" colorscheme Tomorrow-Night-Eighties
 colorscheme jellybeans
 
 " No swap files
@@ -397,6 +400,47 @@ autocmd BufWritePre *.rb %s/\s\+$//e
 autocmd BufWritePre *.py %s/\s\+$//e
 autocmd BufWritePre *.jinja %s/\s\+$//e
 autocmd BufWritePre *.yml %s/\s\+$//e
+
+
+
+"
+"
+" neocomplete config:
+" 
+"
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+" Enable omni completion.
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" Enable heavy omni completion.
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+  " let g:neocomplete#sources#omni#input_patterns = {}
+" endif
+
+
+
 
 
 " Tabs navigation
