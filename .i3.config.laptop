@@ -1,27 +1,37 @@
 exec --no-startup-id gnome-settings-daemon
 # exec --no-startup-id unity-settings-daemon
 exec --no-startup-id dropbox start
-exec --no-startup-id ssh-add
+# exec --no-startup-id ssh-add
 exec --no-startup-id nm-applet
-exec --no-startup-id radiotray
+# exec --no-startup-id blueman-applet
+# exec --no-startup-id radiotray
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id setxkbmap -option caps:swapescape
+exec --no-startup-id xflux -l -34.60 -g -58.38
 
-set $mod Mod4
+#set $mod Mod4
+set $mod Mod1
 
 # Autostart screen lock after inactivity
 exec --no-startup-id xset dpms 300
-# exec --no-startup-id xautolock -time 1 -locker i3lock
-exec --no-startup-id xautolock -time 5 -locker "gnome-screensaver-command -l"
+exec --no-startup-id xautolock -time 6 -locker "gnome-screensaver-command -l"
 bindsym $mod+Shift+o exec "gnome-screensaver-command -l"
 
 
 # Authentication prompt
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
+# Autostart apps
+# exec --no-startup-id i3-msg 'workspace "2: code"; exec i3-sensible-terminal'
+# exec --no-startup-id i3-msg 'workspace "1: www"; exec google-chrome'
+# exec --no-startup-id i3-msg 'exec gnome-system-monitor'
+
+# Assign certain applications to specific workplaces
+# assign [class="Gnome-system-monitor"] "1: www"
+
 # Simulate Alt-tab behavior
-bindsym Mod1+Tab focus right
-bindsym Mod1+Shift+Tab focus left
+# bindsym Mod1+Tab focus right
+# bindsym Mod1+Shift+Tab focus left
 
 # Taking a screenshot
 bindsym --release Print exec --no-startup-id gnome-screenshot
@@ -38,12 +48,12 @@ bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -a
 # bindsym XF86AudioMute exec amixer -q set Master toggle
 
 # This works for the Lenovo t450s
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 2%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 2%- unmute
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 4%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 4%- unmute
 bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle; amixer sset Headphone toggle"
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 15
-bindsym XF86MonBrightnessDown exec xbacklight -dec 15
+bindsym XF86MonBrightnessUp exec xbacklight -inc 4
+bindsym XF86MonBrightnessDown exec xbacklight -dec 4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -77,7 +87,7 @@ bindsym $mod+F2 exec i3-input -F 'rename workspace to "%s"'
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run -b -i -fn 'Inconsolata:pixelsize=15'
-bindsym $mod+d exec dmenu_run -i -b -nb '#ccff00' -nf '#0b216d' -l 5 -fn 'Ubuntu Mono-14'
+bindsym $mod+d exec dmenu_run -i -b -nb '#ccff00' -nf '#0b216d' -l 5 -fn 'Ubuntu Mono-20'
 
 # change focus
 bindsym $mod+h focus left
@@ -177,16 +187,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 2 px or 2 ppt
-        bindsym k resize grow height 2 px or 2 ppt
-        bindsym j resize shrink height 2 px or 2 ppt
-        bindsym l resize grow width 2 px or 2 ppt
+        bindsym h resize shrink width 4 px or 4 ppt
+        bindsym k resize grow height 4 px or 4 ppt
+        bindsym j resize shrink height 4 px or 4 ppt
+        bindsym l resize grow width 4 px or 4 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 1 px or 1 ppt
-        bindsym Down resize grow height 1 px or 1 ppt
-        bindsym Up resize shrink height 1 px or 1 ppt
-        bindsym Right resize grow width 1 px or 1 ppt
+        bindsym Left resize shrink width 2 px or 2 ppt
+        bindsym Down resize grow height 2 px or 2 ppt
+        bindsym Up resize shrink height 2 px or 2 ppt
+        bindsym Right resize grow width 2 px or 2 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -222,7 +232,7 @@ new_window pixel 3
 
 # i3 Py Status Bar
 bar {
-    status_command    python3.4 ~/.i3pystatus.py
+    status_command    /home/juan/anaconda3/bin/python ~/.i3pystatus.py
     position          top
     #position          bottom
     workspace_buttons yes
