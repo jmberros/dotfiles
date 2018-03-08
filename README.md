@@ -4,7 +4,7 @@
 * Get dropbox
 * Install some stuff:
 ```
-sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake xbacklight libfreetype6-dev xautolock latexmk gummi texlive-lang-spanish meld xdec dh-autoreconf keychain
+sudo apt install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake xbacklight libfreetype6-dev xautolock latexmk gummi texlive-lang-spanish meld xdec dh-autoreconf keychain
 ```
 
 * Set ssh-keys to clone repos:
@@ -55,10 +55,10 @@ cp .vimrc .i3pystatus.py .zshrc ~/
 
 ```
 sudo echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" >> /etc/apt/sources.list
-sudo apt-get update
-sudo apt-get --allow-unauthenticated install sur5r-keyring
-sudo apt-get update
-sudo apt-get install i3
+sudo apt update
+sudo apt --allow-unauthenticated install sur5r-keyring
+sudo apt update
+sudo apt install i3
 ```
 
 * Get rid of Nautilus desktop. (If this doesn't work, install dconf-tools and maybe libdconf1 and change that option manually from the dconf-editor.)
@@ -88,7 +88,7 @@ git config --global alias.dump 'cat-file -p'
 
 ## i3pystatus:
 ```
-sudo apt-get install libdbus-1-dev libdbus-glib-1-dev libiw-dev 
+sudo apt install libdbus-1-dev libdbus-glib-1-dev libiw-dev 
 pip install psutil i3pystatus netifaces colour basiciw dbus-python
 cp ~/repos/dotfiles/.i3pystatus.laptop.py ~
 ```
@@ -220,15 +220,15 @@ git clone git@github.com:jmberros/last-episode.git
 
 ```
 sudo add-apt-repository ppa:kilian/f.lux
-sudo apt-get update
-sudo apt-get install fluxgui
+sudo apt update
+sudo apt install fluxgui
 xflux -l -34.60 -g -58.38
 ```
 
 ## Bioinformatics:
 
 ```bash
-sudo apt-get install bioperl libbz2-dev liblzma-dev
+sudo apt install bioperl libbz2-dev liblzma-dev
 ```
 
 Install:
@@ -252,8 +252,8 @@ cp ~/repos/dotfiles/_dot_jupyter/custom/* ~/.jupyter/custom
   the instructions [here](http://markrages.tumblr.com/post/124253167608/set-up-the-varmilo-vb87m-bluetooth-4-keyboard-in).
 ```
 sudo add-apt-repository ppa:vidplace7/bluez5
-sudo apt-get update
-sudo apt-get install bluez bluetooth
+sudo apt update
+sudo apt install bluez bluetooth
 ```
   - Make sure the Varmilo Keyboard is turned on: Fn + Insert
   - Then start `bluetoothctl` for an interactive prompt. Try with these commands:
