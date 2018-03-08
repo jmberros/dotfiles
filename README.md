@@ -4,7 +4,7 @@
 * Get dropbox
 * Install some stuff:
 ```
-sudo apt install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake xbacklight libfreetype6-dev xautolock latexmk gummi texlive-lang-spanish meld xdec dh-autoreconf keychain
+sudo apt install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake xbacklight libfreetype6-dev xautolock latexmk gummi texlive-lang-spanish meld xdec dh-autoreconf keychain tree
 ```
 
 * Set ssh-keys to clone repos:
@@ -20,8 +20,9 @@ ssh-add ~/.ssh/id_rsa
 xclip -sel clip < ~/.ssh/id_rsa.pub
 ```
 
-* Paste the copied key here:
+* Paste the copied key in github and gitlab:
   https://github.com/settings/ssh
+  https://gitlab.com/profile/keys
 
 * Oh my zsh!
 
@@ -89,17 +90,17 @@ git config --global alias.dump 'cat-file -p'
 ## i3pystatus:
 ```
 sudo apt install libdbus-1-dev libdbus-glib-1-dev libiw-dev 
-pip install psutil i3pystatus netifaces colour basiciw dbus-python
-cp ~/repos/dotfiles/.i3pystatus.laptop.py ~
+cp ~/repos/dotfiles/.i3pystatus.laptop.py ~/.i3pystatus.py
 ```
+
+* Antes de irte de Unity, configurá por default Nautilus para que muestre listas
+  en lugar de íconos.
 
 ## Reiniciar y loguearse en i3:
 
 * After default creation of `~/.i3/config`, copy i3's config file: `cp ~/repos/dotfiles/.i3.config ~/.i3/config`
 
 * ((in case it's not in i3 config: `setxkbmap -option caps:swapescape`))
-
-* Choose (2) here to get dmenu with a reasonable font: `sudo update-alternatives --config dmenu`
 
 * Enable reboot and shutdown from i3:
 
@@ -109,7 +110,7 @@ sudo visudo
 juan     ALL = NOPASSWD: /sbin/reboot, /sbin/shutdown, /sbin/poweroff
 ```
 
-* Renew Fonts
+* Add and Renew Fonts
 ```
 cp -R ~/repos/dotfiles/.fonts ~/
 fc-cache -f -v
@@ -127,6 +128,7 @@ fc-cache -f -v
   and run ./install.sh
 
 * Copy fstab to automount HDDs. Use `sudo fdisk -l` or `sudo blkid` in case you need UUIDs:
+  (this applies to @beleriand)
 
 ```
 sudo nano /etc/fstab
@@ -144,17 +146,28 @@ And set your gnome-terminal profile to use Ubuntu mono for Powerline 12 and gray
 
 ## Python
 
-* Bajarse Anaconda e instalar Jupyter y R.
+* Bajarse Anaconda e instalar varias librerías. Esto va a hacer andar a i3pstatus:
 ```bash
-conda install jupyter numpy pandas biopython matplotlib scipy ternary lxml html5lib beautifulsoup4
-pip install html5lib q
+conda install jupyter numpy pandas biopython matplotlib scipy lxml html5lib beautifulsoup4
+pip install html5lib q i3pystatus psutil i3pystatus netifaces colour # basiciw dbus-python
 ```
+
+Recargar i3 (usualmente Mod+Shift+R) para ver bien la barra de status.
 
 * IPython startup:
 ```
 ipython profile create
 vi ~/.ipython/profile_default/ipython_config.py
 # ^ Add / uncomment stuff (pending)
+```
+
+## Clone ur repos
+
+```bash
+cs ~/repos
+for URL in `cat ~/repos/dotfiles/repo_urls_to_clone.list`; do
+    git clone ${URL}
+done
 ```
 
 ## Ruby
@@ -248,6 +261,8 @@ Install:
 cp ~/repos/dotfiles/_dot_jupyter/custom/* ~/.jupyter/custom
 ```
 
+## Varmilo Keyboard with Bluetooth stuff
+
 * To pair the Varmilo keyboard (After pluggin the Bluetooth dongle!), follow
   the instructions [here](http://markrages.tumblr.com/post/124253167608/set-up-the-varmilo-vb87m-bluetooth-4-keyboard-in).
 ```
@@ -280,6 +295,8 @@ I did got the message via Ubuntu notification ONLY when using the regular Unity
 session / WM, not i3.
 
 While you do stuff on the GUI, keep an eye on `bluetoothctl` to check what happens.
+
+## More stuff
 
 * Command to backup `beleriand`'s music dir (run from `arrakis`!):
 ```
