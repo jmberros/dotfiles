@@ -186,6 +186,10 @@ and create a juan user:
 > GRANT ALL PRIVILEGES ON * . * TO 'juan'@'localhost';
 ```
 
+## R
+
+[DigitalOcean guide](https://www.digitalocean.com/community/tutorials/how-to-install-r-on-ubuntu-16-04-2)
+
 ## Unattended-upgrades:
 
 ```bash
