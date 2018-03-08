@@ -190,6 +190,14 @@ and create a juan user:
 
 [DigitalOcean guide](https://www.digitalocean.com/community/tutorials/how-to-install-r-on-ubuntu-16-04-2)
 
+```
+sudo apt get install libcurl4-openssl-dev libxml2-dev
+
+R
+
+> install.packages("tidyverse")
+```
+
 ## Unattended-upgrades:
 
 ```bash
