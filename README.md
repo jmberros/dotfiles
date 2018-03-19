@@ -317,10 +317,39 @@ nice -n 19 ionice -c3 rsync juan@beleriand.local:/media/600gb/music/ ~/ -avhz --
 
 * Remove zsh theme `ls` alias in `~/.oh-my-zsh/lib/theme-and-appearance.zsh`.
 
+## Laptop
 
 * To remap keys in the Lenovo laptop (HOME, END, PAGE DOWN|UP), I used this https://radu.cotescu.com/remapping-keys-in-ubuntu-14.04/. Edit the file and change the keys and their mappings, it's intuitive enough to figure it out along the way:
+
 ```
 sudo vi /usr/share/X11/xkb/symbols/pc
+
+# The result at line 77 should look like this:
+
+    key <HOME> {	[  Prior			]	}; # Changed
+    key <PGUP> {	[  Home		]	};         # Changed
+    key <DELE> {	[  Delete		]	};
+    key  <END> {	[  Next			]	};     # Changed
+    key <PGDN> {	[  End			]	};     # Changed
+```
+
+This will work after a reboot.
+
+* To get the lenovo backlight keys to work I used [this](https://askubuntu.com/questions/468277/screen-brightness-isnt-taking-effect-on-a-lenovo-z570/509850#509850):
+
+```
+sudo gedit /usr/share/X11/xorg.conf.d/20-intel.conf
+
+# Add this:
+
+Section "Device"
+    Identifier  "card0"
+    Driver      "intel"
+    Option      "Backlight"  "intel_backlight"
+    BusID       "PCI:0:2:0"
+EndSection
+
+# Save & log out
 ```
 
 ## Biotools
