@@ -12,7 +12,7 @@ set -g history-limit 5000
 setw -g mode-keys vi
 
 # disable mouse
-# setw -g mode-mouse off
+setw -g mode-mouse off
 
 # Keep window name fixed
 set-option -g allow-rename off
@@ -59,7 +59,7 @@ bind C-a send-prefix
 # bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
 
 # create 'v' alias for selecting text
-bind-key -t vi-copy v begin-selection
+# bind-key -t vi-copy v begin-selection
 
 # paste
 unbind C-p
@@ -98,7 +98,11 @@ set -g status-left '#[fg=green]#S#[fg=thistle] ➤#[default]'
 
 # show hostname, date, time, and battery in right status bar
 set -g status-right-length 130
-set-option -g status-right '#[fg=green,bg=black]#(tmux-mem-cpu-load --colors 2)#[default] #[fg=colour032]#H #(ifconfig | grep eth0 -b1 | grep inet | tr -s " " | cut -d " " -f3 | cut -d ":" -f2) #{online_status}online ⚡ #{battery_percentage} ⌚ %a %h-%d%l:%M%p'
+
+# set-option -g status-right '#[fg=green,bg=black]#(tmux-mem-cpu-load --colors 2)#[default] #[fg=colour032]#H #(ifconfig | grep eth0 -b1 | grep inet | tr -s " " | cut -d " " -f3 | cut -d ":" -f2) #{online_status}online #{prefix_highlight} ⌚ %a %h-%d%l:%M%p'
+
+set-option -g status-right '#{prefix_highlight} | ⇓#{download_speed} / ⇑#{upload_speed} | #{cpu_bg_color} CPU: #{cpu_percentage} #{cpu_icon} | %a %h-%d %H:%M'
+
  #[fg=red]#(battery discharging)#[default]#(battery charging)'
 
 
@@ -144,31 +148,28 @@ bind-key h select-pane -L
 unbind-key l
 bind-key l select-pane -R
 
-set -g mode-mouse on
-set -g mouse-select-pane on
-set -g mouse-resize-pane on
-set -g mouse-select-window on
-
+set-option -g mouse on
 # set -g visual-activity on
 # set -g monitor-activity on
 
 # List of plugins
 # Supports `github_username/repo` or full git URLs
-set -g @tpm_plugins "              \
-  tmux-plugins/tpm                 \
-  tmux-plugins/tmux-sensible       \
-  tmux-plugins/tmux-yank           \
-  tmux-plugins/tmux-battery        \
-  tmux-plugins/tmux-sensible       \
-  tmux-plugins/tmux-copycat        \
-  tmux-plugins/tmux-open           \
-  tmux-plugins/tmux-pain-control   \
-  tmux-plugins/tmux-sessionist     \
-  tmux-plugins/tmux-online-status  \
-  tmux-plugins/tmux-resurrect      \
-  thewtex/tmux-mem-cpu-load        \
-"
+set -g @plugin "tmux-plugins/tpm"
+set -g @plugin "tmux-plugins/tmux-sensible"
+set -g @plugin "tmux-plugins/tmux-yank"
+set -g @plugin "tmux-plugins/tmux-copycat"
+set -g @plugin "tmux-plugins/tmux-prefix-highlight"
+# set -g @plugin "tmux-plugins/tmux-battery"
+set -g @plugin "tmux-plugins/tmux-open"
+set -g @plugin "tmux-plugins/tmux-pain-control"
+set -g @plugin "tmux-plugins/tmux-net-speed"
+set -g @plugin "tmux-plugins/tmux-sessionist"
+set -g @plugin "tmux-plugins/tmux-online-status"
+set -g @plugin "tmux-plugins/tmux-resurrect"
+set -g @plugin "tmux-plugins/tmux-sidebar"
+set -g @plugin "tmux-plugins/tmux-cpu"
 
+# set -g @plugin "thewtex/tmux-mem-cpu-load"
 
 # Other examples:
 # github_username/plugin_name    \
@@ -177,4 +178,5 @@ set -g @tpm_plugins "              \
 
 # Initializes TMUX plugin manager.
 # Keep this line at the very bottom of tmux.conf.
-run-shell ~/.tmux/plugins/tpm/tpm
+# run-shell ~/.tmux/plugins/tpm/tpm
+run ~/.tmux/plugins/tpm/tpm

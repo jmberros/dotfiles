@@ -23,7 +23,7 @@ plugins=(git ssh-agent capistrano bundler gem grb git-extras wd python pip npm l
 # ZSH_THEME="avit" # @caladan
 # ZSH_THEME="daveverwer" # @arrakis
 # ZSH_THEME="clean"  # @beleriand
-ZSH_THEME="steef"  # @solaris
+ZSH_THEME="steeef"  # @solaris
 
 
 #################
@@ -53,7 +53,7 @@ alias grep='grep -i --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias ..='cs ..'
-alias tmux="tmux -2"
+# alias tmux="tmux -2"
 alias xclip="xclip -selection primary -f | xclip -selection clipboard"
 alias put="xsel -p"
 alias haploview='java -jar ~/software/Haploview.jar'
