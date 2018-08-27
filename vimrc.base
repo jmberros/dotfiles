@@ -193,7 +193,7 @@ au BufNewFile,BufRead *.html,*.jinja,*.css,*.scss,*.erb,*.yml
 
 set background=dark
 " colorscheme Tomorrow-Night-Eighties
-colorscheme jellybeans
+" colorscheme jellybeans
 
 " No swap files
 set nobackup
@@ -357,7 +357,7 @@ let g:syntastic_ruby_checkers = ["rubocop"]
 let g:syntastic_mode_map = { "mode": "active",
                            \ "active_filetypes": ["python", "ruby", "css", "html", "erb"] }
 " let g:syntastic_python_checker_args="--ignore=W391"  " Does't work if python-mode 
-let g:pymode_lint_ignore = "W391,E501"  " Ignore blank line at the end of file
+" let g:pymode_lint_ignore = "W391,E501"  " Ignore blank line at the end of file
 
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -375,7 +375,7 @@ highlight pythonDocstring ctermfg=blue
 " ^ cterm=italic 
 " highlight Comment cterm=italic
 let python_highlight_all=1
-let g:pymode_breakpoint_cmd = 'import pdb; pdb.set_trace()  # XXX BREAKPOINT'
+" let g:pymode_breakpoint_cmd = 'import pdb; pdb.set_trace()  # XXX BREAKPOINT'
 
 " Flake8 for Python customization
 autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
@@ -384,11 +384,11 @@ autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 let g:flake8_show_in_gutter=1
 
 " Py-mode customization
-let g:pymode_options = 0  " Added so that nowrap is NOT set, I want text wrap!!
-let g:pymode_syntax_all = 1
-let g:pymode_trim_whitespaces = 1
-let g:pymode_options_max_line_length = 79
-let g:pymode_syntax_highlight_self = g:pymode_syntax_all
+" let g:pymode_options = 0  " Added so that nowrap is NOT set, I want text wrap!!
+" let g:pymode_syntax_all = 1
+" let g:pymode_trim_whitespaces = 1
+" let g:pymode_options_max_line_length = 79
+" let g:pymode_syntax_highlight_self = g:pymode_syntax_all
 " let g:jedi#completions_command = '<c-n>'
 " let g:jedi#completions_enabled = 0
 " let g:jedi#popup_on_dot = 0
