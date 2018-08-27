@@ -94,12 +94,12 @@ set -g status-justify left
 
 # show session, window, pane in left status bar
 set -g status-left-length 70
-set -g status-left '#[fg=green]#S#[fg=thistle] ➤#[default]'
+# set -g status-left '#[fg=green]#S#[fg=thistle] ➤#[default]'
 
 # show hostname, date, time, and battery in right status bar
 set -g status-right-length 130
 
-set-option -g status-right '#{prefix_highlight} | #{online_status} / ⇓ #{download_speed} / ⇑ #{upload_speed} | #{cpu_bg_color} CPU: #{cpu_percentage} #{cpu_icon} | %a %h-%d %H:%M'
+# set-option -g status-right '#{prefix_highlight} | #{online_status} / ⇓ #{download_speed} / ⇑ #{upload_speed} | #{cpu_bg_color} CPU: #{cpu_percentage} #{cpu_icon} | %a %h-%d %H:%M'
 
 
 ###########################
@@ -107,6 +107,16 @@ set-option -g status-right '#{prefix_highlight} | #{online_status} / ⇓ #{downl
 ###########################
 
 set -g @themepack 'powerline/block/magenta'
+
+# ~~~~~~~~~~~~ 
+# Modify the chosen theme with these status lines:
+#
+# 
+# set -g status-left "#[fg=colour232,bg=colour125,bold] #S #[fg=colour125,bg=colour240,nobold]#[fg=colour233,bg=colour240] #(whoami) #[fg=colour240,bg=colour235]#[fg=colour240,bg=colour235] #I:#P #[fg=colour235,bg=colour233,nobold]#{prefix_highlight}"
+
+# set -g status-right "#[fg=colour235,bg=colour233]#[fg=colour240,bg=colour235] #{online_status} ⇓ #{download_speed}  ⇑ #{upload_speed} | #{cpu_bg_color} CPU: #{cpu_percentage} #{cpu_icon} #[fg=colour240,bg=colour235]#[fg=colour233,bg=colour240] %a %h-%d %H:%M #[fg=colour245,bg=colour240]#[fg=colour232,bg=colour245,bold] #H "
+#
+# ~~~~~~~~~~~~
 
 # # color status bar
 # set -g status-bg colour235
