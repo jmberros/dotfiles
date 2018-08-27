@@ -12,7 +12,7 @@ set -g history-limit 5000
 setw -g mode-keys vi
 
 # disable mouse
-setw -g mode-mouse off
+# setw -g mode-mouse off
 
 # Keep window name fixed
 set-option -g allow-rename off
@@ -84,7 +84,7 @@ bind r source-file ~/.tmux.conf \; display "Reloaded!"
 ###########################
 
 # enable UTF-8 support in status bar
-set -g status-utf8 on
+# set -g status-utf8 on
 
 # set refresh interval for status bar
 set -g status-interval 30
@@ -99,31 +99,29 @@ set -g status-left '#[fg=green]#S#[fg=thistle] ➤#[default]'
 # show hostname, date, time, and battery in right status bar
 set -g status-right-length 130
 
-# set-option -g status-right '#[fg=green,bg=black]#(tmux-mem-cpu-load --colors 2)#[default] #[fg=colour032]#H #(ifconfig | grep eth0 -b1 | grep inet | tr -s " " | cut -d " " -f3 | cut -d ":" -f2) #{online_status}online #{prefix_highlight} ⌚ %a %h-%d%l:%M%p'
-
-set-option -g status-right '#{prefix_highlight} | ⇓#{download_speed} / ⇑#{upload_speed} | #{cpu_bg_color} CPU: #{cpu_percentage} #{cpu_icon} | %a %h-%d %H:%M'
-
- #[fg=red]#(battery discharging)#[default]#(battery charging)'
+set-option -g status-right '#{prefix_highlight} | #{online_status} / ⇓ #{download_speed} / ⇑ #{upload_speed} | #{cpu_bg_color} CPU: #{cpu_percentage} #{cpu_icon} | %a %h-%d %H:%M'
 
 
 ###########################
 # Colors
 ###########################
 
-# color status bar
-set -g status-bg colour235
-set -g status-fg white
+set -g @themepack 'powerline/block/magenta'
 
-# highlight current window
-set-window-option -g window-status-current-fg colour016
-set-window-option -g window-status-current-bg colour028
-set-window-option -g window-status-current-attr bold
+# # color status bar
+# set -g status-bg colour235
+# set -g status-fg white
 
-# set color of active pane
-set -g pane-border-fg green
-set -g pane-border-bg black
-set -g pane-active-border-fg green
-set -g pane-active-border-bg black
+# # highlight current window
+# set-window-option -g window-status-current-fg colour016
+# set-window-option -g window-status-current-bg colour028
+# set-window-option -g window-status-current-attr bold
+
+# # set color of active pane
+# set -g pane-border-fg green
+# set -g pane-border-bg black
+# set -g pane-active-border-fg green
+# set -g pane-active-border-bg black
 
 set -g history-limit 10000
 
@@ -159,22 +157,18 @@ set -g @plugin "tmux-plugins/tmux-sensible"
 set -g @plugin "tmux-plugins/tmux-yank"
 set -g @plugin "tmux-plugins/tmux-copycat"
 set -g @plugin "tmux-plugins/tmux-prefix-highlight"
-# set -g @plugin "tmux-plugins/tmux-battery"
 set -g @plugin "tmux-plugins/tmux-open"
 set -g @plugin "tmux-plugins/tmux-pain-control"
 set -g @plugin "tmux-plugins/tmux-net-speed"
 set -g @plugin "tmux-plugins/tmux-sessionist"
 set -g @plugin "tmux-plugins/tmux-online-status"
-set -g @plugin "tmux-plugins/tmux-resurrect"
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @plugin "tmux-plugins/tmux-sidebar"
 set -g @plugin "tmux-plugins/tmux-cpu"
-
+set -g @plugin "jimeh/tmux-themepack"
 # set -g @plugin "thewtex/tmux-mem-cpu-load"
-
-# Other examples:
-# github_username/plugin_name    \
-# git@github.com/user/plugin     \
-# git@bitbucket.com/user/plugin  \
+# set -g @plugin "tmux-plugins/tmux-battery"
 
 # Initializes TMUX plugin manager.
 # Keep this line at the very bottom of tmux.conf.
