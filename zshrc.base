@@ -103,7 +103,7 @@ alias glum='git pull upstream master'
 alias glub='pull_branch upstream'
 alias gadd='git add'
 
-# Bioinformatics
+# Bioinformatics Aliases
 alias gatk='java -jar /home/juan/software/GenomeAnalysisTK-3.7/GenomeAnalysisTK-3.7.jar'
 alias picard='java -jar ~/software/picard-tools-2.9.1.jar'
 alias snpeff='java -jar ~/software/snpEff-4.3m/snpEff.jar'

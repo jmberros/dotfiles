@@ -1,0 +1,248 @@
+## Startup
+
+font pango:monospace 12
+
+exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id gnome-screensaver
+exec --no-startup-id xautolock -time 30 -locker "gnome-screensaver-command -l"
+exec --no-startup-id xset dpms 600
+exec --no-startup-id setxkbmap -option caps:swapescape
+exec --no-startup-id nm-applet
+
+## Authentication prompt:
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+
+## Other stuff:
+# exec --no-startup-id xflux -l -34.60 -g -58.38
+# exec --no-startup-id blueman-applet
+# exec --no-startup-id dropbox start
+# exec --no-startup-id ssh-add
+
+## Startup in workspaces:
+# exec --no-startup-id i3-msg 'exec clementine'
+# exec --no-startup-id i3-msg 'exec soulseek'
+# exec --no-startup-id i3-msg 'exec transmission-gtk'
+# exec --no-startup-id i3-msg 'exec gnome-system-monitor'
+
+# Assign certain applications to specific workplaces
+# assign [class="Gnome-system-monitor"] "1: www"
+# assign [class="Clementine"] "3: music"
+# assign [class="soulseek"] "9: ssk"
+# assign [class="Mendeleydesktop.x86_64"] "5: papers"
+# assign [class="Transgui"] "10: torrents"
+# assign [class="Transmission-gtk"] "10: torrents"
+
+set $mod Mod1
+# Mod1 = Alt; Mod4 = Windows key
+
+## Simulate Alt-tab behavior
+bindsym Mod1+Tab focus right
+bindsym Mod1+Shift+Tab focus left
+
+## Screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+## Lock the screen
+bindsym $mod+Control+l exec gnome-screensaver-command -l
+
+## Pulse Audio controls
+# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% # decrease sound volume
+# bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5% # increase sound volume
+# bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle # mute sound
+
+## Old volume controls
+# bindsym F10 exec pactl set-sink-volume 1 -5% #decrease sound volume
+# bindsym F11 exec pactl set-sink-volume 1 +5% #increase sound volume
+# bindsym $mod+F12 exec pactl set-sink-mute 1 toggle # mute sound
+
+## To bring back the display after it went sleeping, a hack around smth that shouldn't happen.
+bindsym $mod+F1 exec DISPLAY=:0 xset dpms force on
+
+## Taking a screenshot
+bindsym --release Print exec --no-startup-id gnome-screenshot
+bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -a
+
+## Window Titles font
+# font pango: Ubuntu Mono derivative for Powerline 11
+
+## Force "File Operations" window to float
+for_window [class="Nautilus" instance="file_progress"] floating enable
+for_window [class="gnome-calculator"] floating enable
+
+## Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+## start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+minus split v exec i3-sensible-terminal
+bindsym $mod+Shift+backslash split h exec i3-sensible-terminal
+bindsym $mod+backslash split h exec i3-sensible-terminal
+
+## kill focused window
+bindsym $mod+Shift+q kill
+
+## rename current workspace with user input
+bindsym $mod+F2 exec i3-input -F 'rename workspace to "%s"'
+
+## start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run -i -nb '#ccff00' -nf '#0b216d' -l 10 -fn 'Ubuntu Mono-14'
+# -b bottom; -i case insensitive; -l number of lines; -fn font;
+# -nb color background color; -nf foreground color;
+# bindsym $mod+x exec /usr/bin/dmenu_extended_run
+
+## There also is the (new) i3-dmenu-desktop which only displays applications
+## shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+## change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+## alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+## move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+## alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+## split in horizontal orientation
+bindsym $mod+v split h
+
+## split in vertical orientation
+bindsym $mod+z split v
+
+## enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+## change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+## toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+## change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+## focus the parent container
+bindsym $mod+a focus parent
+
+## focus the child container
+#bindsym $mod+z focus child
+
+## switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+## move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+## switch between the current workspace and the previously focused one
+# bindsym $mod+Tab workspace back_and_forth
+# bindsym $mod+Shift+Tab move container to workspace back_and_forth
+
+## next and prev workspaces
+bindsym $mod+n workspace next
+bindsym $mod+p workspace prev
+
+## reload the configuration file
+bindsym $mod+Shift+c reload
+
+## restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+## exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+b border toggle
+new_window pixel 4
+# new_window 1pixel
+
+## resize window
+mode "resize" {
+    bindsym h resize shrink width 5 px or 5 ppt
+    bindsym k resize grow height 5 px or 5 ppt
+    bindsym j resize shrink height 5 px or 5 ppt
+    bindsym l resize grow width 5 px or 5 ppt
+
+    bindsym Left resize shrink width 3 px or 3 ppt
+    bindsym Down resize grow height 3 px or 3 ppt
+    bindsym Up resize shrink height 3 px or 3 ppt
+    bindsym Right resize grow width 3 px or 3 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+## Shutdown, logout, restart
+set $mode_system System (e) logout, (r) reboot, (s) shutdown
+mode "$mode_system" {
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
+
+# Original bar
+# bar {
+#     status_command i3status
+# }
+# i3bar
+
+# i3 Py Status Bar
+bar {
+    status_command    ~/miniconda3/bin/python3.6 ~/.i3pystatus.py
+    position          bottom
+    workspace_buttons yes
+}
+
+# Colors
+# Default values
+
+# client.focused          #4285f4 #4285f4 #ffffff #2e9ef4  # Modified light blue
+# client.unfocused        #333333 #152c42 #888888 #292d2e # Modified blueish
+
+# client.focused          #4c7899 #285577 #ffffff #2e9ef4
+# client.focused          #e7ad3d #e7ad3d #ffffff #2e9ef4 # Modified orange
+# client.focused_inactive #333333 #5f676a #ffffff #484e50
+# client.unfocused        #333333 #222222 #888888 #292d2e
+# client.urgent           #2f343a #900000 #ffffff #900000
+# client.placeholder      #000000 #0c0c0c #ffffff #000000
