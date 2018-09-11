@@ -23,7 +23,23 @@ plugins=(git ssh-agent capistrano bundler gem grb git-extras wd python pip npm l
 # ZSH_THEME="avit" # @caladan
 # ZSH_THEME="daveverwer" # @arrakis
 # ZSH_THEME="clean"  # @beleriand
-ZSH_THEME="steeef"  # @solaris
+# ZSH_THEME="steeef"  # @solaris
+
+ZSH_THEME="spaceship"
+# Customize spaceship THEME
+SPACESHIP_USER_SHOW="false"
+SPACESHIP_HOST_SHOW="always"
+SPACESHIP_HOST_COLOR="yellow"
+SPACESHIP_DIR_TRUNC=0
+SPACESHIP_DIR_COLOR="cyan"
+SPACESHIP_JOBS_SYMBOL="(!!bg-jobs!!)"
+SPACESHIP_JOBS_COLOR="red"
+SPACESHIP_EXIT_CODE_SHOW="true"
+SPACESHIP_EXIT_CODE_PREFIX="["
+SPACESHIP_EXIT_CODE_SUFFIX="]"
+SPACESHIP_EXIT_CODE_SYMBOL=""
+SPACESHIP_EXIT_CODE_COLOR="yellow"
+SPACESHIP_NODE_SHOW="false"
 
 
 #################
@@ -33,10 +49,12 @@ ZSH_THEME="steeef"  # @solaris
 #################
 
 # SSH to servers
+alias caladan='ssh -XA juan@caladan.local'
+alias numenor='ssh -XA juan@numenor.local'
 alias arrakis='ssh -A juan@arrakis.local'
-alias caladan='ssh -A juan@caladan.local'
-alias numenor='ssh -A juan@numenor.local'
-alias beleriand='ssh -A juan@beleriand.local'
+alias uqbar='ssh -A juan@uqbar.local'
+alias cluster1='ssh -XA juan@cluster1'
+alias cluster2='ssh -XA juan@cluster2'
 alias solaris='mosh juan@solaris'
 alias gondolin='ssh juan@gondolin'
 

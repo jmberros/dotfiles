@@ -16,7 +16,7 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 # exec --no-startup-id xflux -l -34.60 -g -58.38
 # exec --no-startup-id blueman-applet
 # exec --no-startup-id dropbox start
-# exec --no-startup-id ssh-add
+# exec --no-startup-id ssh-add # use ssh-agent in .zshrc instead!
 
 ## Startup in workspaces:
 # exec --no-startup-id i3-msg 'exec clementine'
@@ -36,8 +36,8 @@ set $mod Mod1
 # Mod1 = Alt; Mod4 = Windows key
 
 ## Simulate Alt-tab behavior
-bindsym Mod1+Tab focus right
-bindsym Mod1+Shift+Tab focus left
+# bindsym Mod1+Tab focus right
+# bindsym Mod1+Shift+Tab focus left
 
 ## Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
@@ -171,8 +171,8 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 ## switch between the current workspace and the previously focused one
-# bindsym $mod+Tab workspace back_and_forth
-# bindsym $mod+Shift+Tab move container to workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Shift+Tab move container to workspace back_and_forth
 
 ## next and prev workspaces
 bindsym $mod+n workspace next
@@ -219,7 +219,7 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+Shiftx mode "$mode_system"
 
 # Original bar
 # bar {
