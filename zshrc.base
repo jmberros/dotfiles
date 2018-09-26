@@ -131,7 +131,26 @@ alias igv='~/software/IGV_2.3.93/igv.sh'
 alias admixture='~/software/admixture_linux-1.3.0/admixture'
 alias plink='~/software/plink_linux_x86_64/plink'
 
+###############
+#
+# Less syntax highlighting
+# goes with installing source-hightlihgt
+#
+# The following adds syntax highlighting to various programming languages
+# Credit goes to Ter Smitten: https://goo.gl/64YU4u
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
 
+# The following adds syntax highlighting to man pages
+# Credit goes to Todd Weed: https://goo.gl/ZSbwZI
+export LESS_TERMCAP_mb=$'\e[01;31m'       # begin blinking
+export LESS_TERMCAP_md=$'\e[01;38;5;74m'  # begin bold
+export LESS_TERMCAP_me=$'\e[0m'           # end mode
+export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\E[37;44m'       # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\e[0m'           # end underline
+export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
+#
 #################
 #
 # Functions
