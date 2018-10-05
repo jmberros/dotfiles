@@ -71,7 +71,6 @@ alias grep='grep -i --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias ..='cs ..'
-# alias tmux="tmux -2"
 alias xclip="xclip -selection primary -f | xclip -selection clipboard"
 alias put="xsel -p"
 alias haploview='java -jar ~/software/Haploview.jar'
@@ -84,6 +83,10 @@ alias rawk,='ruby -F, -lane'
 alias rawk:='ruby -F: -lane'
 alias rawkt='ruby -F"\t" -lane'
 alias rawks='ruby -F"\s+" -lane'
+
+# TMUX
+alias tach='tmux attach-session -t'
+alias tnew='tmux new-session -s'
 
 # Do not run feature specs by default:
 alias rspec_no_feature='bundle exec rspec --exclude-pattern "spec/features/*"'
