@@ -4,7 +4,7 @@
 * Get dropbox
 * Install some stuff:
 ```
-sudo apt-get install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake xbacklight libfreetype6-dev xautolock latexmk gummi texlive-lang-spanish meld xdec dh-autoreconf keychain
+sudo apt install zsh git-core python3-pip radiotray clementine vlc vim-gnome i3 tig hplip-gui xclip curl transmission-cli transmission-daemon transmission-common mutt unattended-upgrades libncurses-dev python-dev build-essential cmake xbacklight libfreetype6-dev xautolock latexmk gummi texlive-lang-spanish meld xdec dh-autoreconf keychain tree
 ```
 
 * Set ssh-keys to clone repos:
@@ -20,8 +20,9 @@ ssh-add ~/.ssh/id_rsa
 xclip -sel clip < ~/.ssh/id_rsa.pub
 ```
 
-* Paste the copied key here:
+* Paste the copied key in github and gitlab:
   https://github.com/settings/ssh
+  https://gitlab.com/profile/keys
 
 * Oh my zsh!
 
@@ -55,10 +56,10 @@ cp .vimrc .i3pystatus.py .zshrc ~/
 
 ```
 sudo echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" >> /etc/apt/sources.list
-sudo apt-get update
-sudo apt-get --allow-unauthenticated install sur5r-keyring
-sudo apt-get update
-sudo apt-get install i3
+sudo apt update
+sudo apt --allow-unauthenticated install sur5r-keyring
+sudo apt update
+sudo apt install i3
 ```
 
 * Get rid of Nautilus desktop. (If this doesn't work, install dconf-tools and maybe libdconf1 and change that option manually from the dconf-editor.)
@@ -88,18 +89,18 @@ git config --global alias.dump 'cat-file -p'
 
 ## i3pystatus:
 ```
-sudo apt-get install libdbus-1-dev libdbus-glib-1-dev libiw-dev 
-pip install psutil i3pystatus netifaces colour basiciw dbus-python
-cp ~/repos/dotfiles/.i3pystatus.laptop.py ~
+sudo apt install libdbus-1-dev libdbus-glib-1-dev libiw-dev 
+cp ~/repos/dotfiles/.i3pystatus.laptop.py ~/.i3pystatus.py
 ```
+
+* Antes de irte de Unity, configurá por default Nautilus para que muestre listas
+  en lugar de íconos.
 
 ## Reiniciar y loguearse en i3:
 
 * After default creation of `~/.i3/config`, copy i3's config file: `cp ~/repos/dotfiles/.i3.config ~/.i3/config`
 
 * ((in case it's not in i3 config: `setxkbmap -option caps:swapescape`))
-
-* Choose (2) here to get dmenu with a reasonable font: `sudo update-alternatives --config dmenu`
 
 * Enable reboot and shutdown from i3:
 
@@ -109,7 +110,7 @@ sudo visudo
 juan     ALL = NOPASSWD: /sbin/reboot, /sbin/shutdown, /sbin/poweroff
 ```
 
-* Renew Fonts
+* Add and Renew Fonts
 ```
 cp -R ~/repos/dotfiles/.fonts ~/
 fc-cache -f -v
@@ -127,6 +128,7 @@ fc-cache -f -v
   and run ./install.sh
 
 * Copy fstab to automount HDDs. Use `sudo fdisk -l` or `sudo blkid` in case you need UUIDs:
+  (this applies to @beleriand)
 
 ```
 sudo nano /etc/fstab
@@ -144,17 +146,28 @@ And set your gnome-terminal profile to use Ubuntu mono for Powerline 12 and gray
 
 ## Python
 
-* Bajarse Anaconda e instalar Jupyter y R.
+* Bajarse Anaconda e instalar varias librerías. Esto va a hacer andar a i3pstatus:
 ```bash
-conda install jupyter numpy pandas biopython matplotlib scipy ternary lxml html5lib beautifulsoup4
-pip install html5lib q
+conda install jupyter numpy pandas biopython matplotlib scipy lxml html5lib beautifulsoup4
+pip install html5lib q i3pystatus psutil i3pystatus netifaces colour # basiciw dbus-python
 ```
+
+Recargar i3 (usualmente Mod+Shift+R) para ver bien la barra de status.
 
 * IPython startup:
 ```
 ipython profile create
 vi ~/.ipython/profile_default/ipython_config.py
 # ^ Add / uncomment stuff (pending)
+```
+
+## Clone ur repos
+
+```bash
+cs ~/repos
+for URL in `cat ~/repos/dotfiles/repo_urls_to_clone.list`; do
+    git clone ${URL}
+done
 ```
 
 ## Ruby
@@ -172,6 +185,22 @@ and create a juan user:
 > CREATE USER 'juan'@'localhost' IDENTIFIED BY 'password';
 > GRANT ALL PRIVILEGES ON * . * TO 'juan'@'localhost';
 ```
+
+## R
+
+[DigitalOcean guide](https://www.digitalocean.com/community/tutorials/how-to-install-r-on-ubuntu-16-04-2)
+
+```
+sudo apt get install libcurl4-openssl-dev libxml2-dev libssl-dev
+
+R
+
+> install.packages("tidyverse")
+```
+
+### R kernel for Jupyter
+
+https://irkernel.github.io/installation/
 
 ## Unattended-upgrades:
 
@@ -220,15 +249,15 @@ git clone git@github.com:jmberros/last-episode.git
 
 ```
 sudo add-apt-repository ppa:kilian/f.lux
-sudo apt-get update
-sudo apt-get install fluxgui
+sudo apt update
+sudo apt install fluxgui
 xflux -l -34.60 -g -58.38
 ```
 
 ## Bioinformatics:
 
 ```bash
-sudo apt-get install bioperl libbz2-dev liblzma-dev
+sudo apt install bioperl libbz2-dev liblzma-dev
 ```
 
 Install:
@@ -248,12 +277,14 @@ Install:
 cp ~/repos/dotfiles/_dot_jupyter/custom/* ~/.jupyter/custom
 ```
 
+## Varmilo Keyboard with Bluetooth stuff
+
 * To pair the Varmilo keyboard (After pluggin the Bluetooth dongle!), follow
   the instructions [here](http://markrages.tumblr.com/post/124253167608/set-up-the-varmilo-vb87m-bluetooth-4-keyboard-in).
 ```
 sudo add-apt-repository ppa:vidplace7/bluez5
-sudo apt-get update
-sudo apt-get install bluez bluetooth
+sudo apt update
+sudo apt install bluez bluetooth
 ```
   - Make sure the Varmilo Keyboard is turned on: Fn + Insert
   - Then start `bluetoothctl` for an interactive prompt. Try with these commands:
@@ -281,6 +312,8 @@ session / WM, not i3.
 
 While you do stuff on the GUI, keep an eye on `bluetoothctl` to check what happens.
 
+## More stuff
+
 * Command to backup `beleriand`'s music dir (run from `arrakis`!):
 ```
 nice -n 19 ionice -c3 rsync juan@beleriand.local:/media/600gb/music/ ~/ -avhz --delete
@@ -288,10 +321,39 @@ nice -n 19 ionice -c3 rsync juan@beleriand.local:/media/600gb/music/ ~/ -avhz --
 
 * Remove zsh theme `ls` alias in `~/.oh-my-zsh/lib/theme-and-appearance.zsh`.
 
+## Laptop
 
 * To remap keys in the Lenovo laptop (HOME, END, PAGE DOWN|UP), I used this https://radu.cotescu.com/remapping-keys-in-ubuntu-14.04/. Edit the file and change the keys and their mappings, it's intuitive enough to figure it out along the way:
+
 ```
 sudo vi /usr/share/X11/xkb/symbols/pc
+
+# The result at line 77 should look like this:
+
+    key <HOME> {	[  Prior			]	}; # Changed
+    key <PGUP> {	[  Home		]	};         # Changed
+    key <DELE> {	[  Delete		]	};
+    key  <END> {	[  Next			]	};     # Changed
+    key <PGDN> {	[  End			]	};     # Changed
+```
+
+This will work after a reboot.
+
+* To get the lenovo backlight keys to work I used [this](https://askubuntu.com/questions/468277/screen-brightness-isnt-taking-effect-on-a-lenovo-z570/509850#509850):
+
+```
+sudo gedit /usr/share/X11/xorg.conf.d/20-intel.conf
+
+# Add this:
+
+Section "Device"
+    Identifier  "card0"
+    Driver      "intel"
+    Option      "Backlight"  "intel_backlight"
+    BusID       "PCI:0:2:0"
+EndSection
+
+# Save & log out
 ```
 
 ## Biotools

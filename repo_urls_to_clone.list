@@ -1,0 +1,13 @@
+git@gitlab.com:biocodices/lab.git
+git@gitlab.com:biocodices/panels.git
+git@gitlab.com:biocodices/reports_generation.git
+git@gitlab.com:jmberros/affy94.git
+git@gitlab.com:biocodices/report_templates.git
+git@gitlab.com:jmberros/notebooks_biocodices.git
+git@github.com:biocodices/lab.git
+git@github.com:biocodices/vcf_to_dataframe.git
+git@github.com:biocodices/project.git
+git@github.com:biocodices/bed_to_tabix.git
+git@github.com:biocodices/anotamela.git
+git@github.com:biocodices/paip.git
+git@github.com:jmberros/last-episode.git
