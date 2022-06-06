@@ -6,7 +6,6 @@
 * Set ssh keys
 * Oh my zsh! + Spacechip + base16 + base16-shell-preview
 * juan in sudoers with no pass: `juan  ALL=(ALL) NOPASSWD: ALL`
-
 * Install some stuff:
 
 ```
@@ -36,10 +35,8 @@ sudo apt install libdbus-1-dev libdbus-glib-1-dev libiw-dev
 ```
 
 * Add and Renew Fonts
-```
-cp -R ~/repos/dotfiles/.fonts ~/
-fc-cache -f -v
-```
+* font manager is ok `sudo apt install font-manager` and add from there the
+  ones you need
 
 * Copy vim themes
 
