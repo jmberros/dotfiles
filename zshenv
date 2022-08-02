@@ -1,0 +1,36 @@
+export EDITOR=vim
+export BROWSER=firefox
+
+#################
+#
+# Theme
+#
+#################
+ZSH_THEME="spaceship"
+SPACESHIP_USER_SHOW="never"
+SPACESHIP_USER_COLOR="blue"
+SPACESHIP_HOST_SHOW="always"
+SPACESHIP_HOST_COLOR="yellow"
+SPACESHIP_HOST_COLOR_SSH="yellow"
+SPACESHIP_DIR_TRUNC=0
+SPACESHIP_DIR_COLOR="blue"
+SPACESHIP_JOBS_SYMBOL="(bg jobs)"
+SPACESHIP_JOBS_COLOR="red"
+SPACESHIP_EXIT_CODE_SHOW="true"
+SPACESHIP_EXIT_CODE_PREFIX="["
+SPACESHIP_EXIT_CODE_SUFFIX="]"
+SPACESHIP_EXIT_CODE_SYMBOL=""
+SPACESHIP_EXIT_CODE_COLOR="black"
+SPACESHIP_EXEC_TIME_COLOR="black"
+
+SPACESHIP_VENV_SYMBOL="🐍·"
+SPACESHIP_VENV_COLOR="magenta"
+
+# SPACESHIP_KUBECTL_SHOW="true" # Too slow
+
+#################
+# 
+# Grata
+#
+#################
+export AWS_PROFILE=juan
