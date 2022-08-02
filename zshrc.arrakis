@@ -7,32 +7,7 @@
 ZSH=$HOME/.oh-my-zsh
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git ssh-agent capistrano bundler gem git-extras web-search wd python pip npm last-working-dir)
-
-#################
-#
-# Theme
-#
-#################
-ZSH_THEME="spaceship"
-SPACESHIP_USER_SHOW="never"
-SPACESHIP_USER_COLOR="blue"
-SPACESHIP_HOST_SHOW="always"
-SPACESHIP_HOST_COLOR="yellow"
-SPACESHIP_HOST_COLOR_SSH="yellow"
-SPACESHIP_DIR_TRUNC=0
-SPACESHIP_DIR_COLOR="blue"
-SPACESHIP_JOBS_SYMBOL="(bg jobs)"
-SPACESHIP_JOBS_COLOR="red"
-SPACESHIP_EXIT_CODE_SHOW="true"
-SPACESHIP_EXIT_CODE_PREFIX="["
-SPACESHIP_EXIT_CODE_SUFFIX="]"
-SPACESHIP_EXIT_CODE_SYMBOL=""
-SPACESHIP_EXIT_CODE_COLOR="black"
-SPACESHIP_EXEC_TIME_COLOR="black"
-
-SPACESHIP_VENV_SYMBOL="🐍·"
-SPACESHIP_VENV_COLOR="magenta"
+plugins=(git ssh-agent capistrano bundler gem git-extras web-search wd python pip npm last-working-dir virtualenv autoswitch_virtualenv)
 
 #################
 #
@@ -42,6 +17,9 @@ SPACESHIP_VENV_COLOR="magenta"
 
 ssh () { command ssh "$@"; eval "$("$BASE16_SHELL/profile_helper.sh")"; }
 
+alias bat="batcat"
+alias cat="batcat --paging=never"
+
 # SSH to servers
 alias beleriand='ssh -XA juan@beleriand.local'
 alias motorhome='beleriand'
@@ -50,6 +28,46 @@ alias cluster='ssh -XA -p 2222 juan@biocodices.hopto.org'
 alias cluster1='ssh -XA -p 2222 juan@biocodices.hopto.org'
 alias cluster2='ssh -XA -p 2223 juan@biocodices.hopto.org'
 alias numenor='ssh -p 2224 -XA juan@biocodices.hopto.org'
+
+alias dc="docker-compose"
+alias startauthfront="cd ~/dev/grata-auth/web && npm run start"
+alias startauthback="cd ~/dev/grata-auth && dc up -d"
+alias startsearchfront="cd ~/dev/gsd-enterprise-search/web && npm run start"
+alias startsearchback="cd ~/dev/gsd-enterprise-search && dc up -d"
+alias searchshell="cd ~/dev/gsd-enterprise-search && dc run app python manage.py shell"
+alias gotodeploy="cd ~/dev/gsd-deploy"
+alias gotosearch="cd ~/dev/gsd-enterprise-search"
+alias appm="docker-compose run --rm app python manage.py"
+alias launchprod="gotodeploy && kubectl config use-context production.gratadata.com && source cluster/production_search_environment.sh && kubessh -s $STAGE"
+alias launchstaging="gotodeploy && kubectl config use-context staging.gratadata.com && source cluster/staging_search_environment.sh && kubessh -s $STAGE"
+
+alias xa='xrandr --auto'
+
+function swapescape() {
+    setxkbmap -option caps:swapescape;
+}
+function set_background() {
+    # feh --bg-fill /usr/share/backgrounds/warty-final-ubuntu.png;
+    feh --bg-fill /home/juan/Dropbox/Fotos/wpp/Claude_Monet,_Le_Grand_Canal.jpg;
+}
+function xu() {
+    xrandr --auto --output HDMI-1 --above eDP-1;
+    xrandr --auto --output DP-1 --above eDP-1;
+    /home/juan/Dropbox/scripts/keyboard_for_laptop.sh;
+    swapescape;
+    setbackground;
+}
+function xl() {
+    xrandr --auto --output HDMI-1 --left-of eDP-1;
+    xrandr --auto --output DP-1 --left-of eDP-1; 
+    ~/Dropbox/scripts/keyboard_for_desktop.sh;
+    swapescape;
+    set_background;
+}
+
+alias lap='~/Dropbox/scripts/keyboard_for_laptop.sh'
+alias desk='~/Dropbox/scripts/keyboard_for_desktop.sh'
+alias jewa="jekyll serve --watch"
 
 # Common operations
 alias sc='cs'
@@ -122,6 +140,15 @@ alias gadd='git add'
 #
 #################
 
+break_corto () {
+    sleep 300;
+    cvlc ~/Dropbox/Happyday.mp3
+}
+break_largo () {
+    sleep 900;
+    cvlc ~/Dropbox/Happyday.mp3
+}
+
 pswatch () {
   watch -n1 "ps aux | head -n1 && ps aux | grep '$1' | grep -v 'grep'"
 }
@@ -172,16 +199,15 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 #################
 #
 # PATH and variables
+# see ~/.zshenv
 #
 #################
 
-export EDITOR=vim
-export BROWSER=firefox
-
 # export PATH=~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
-export PATH="$HOME/.local/bin":$PATH
 export PATH=/home/juan/anaconda3/bin:$PATH  # Anaconda
 export PATH="$HOME/.rbenv/bin:$PATH"  # Rb Env
+export PATH="/home/juan/software/pycharm-2022.1.4/bin":$PATH # PyCharm
+export PATH="$HOME/.local/bin":$PATH
 
 eval "$(rbenv init -)"
 # https://github.com/rbenv/ruby-build/discussions/1940#discussioncomment-2663209
@@ -194,3 +220,10 @@ export STDERRED_ESC_CODE=`echo -e "$cyan"`
 # export LD_PRELOAD="/home/juan/software/stderred/build/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
 
 eval "$(dircolors ~/.dircolors)";
+
+# FZF and RG in Vim:
+# https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
+if type rg &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='rg --files'
+    export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi

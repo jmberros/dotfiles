@@ -37,7 +37,7 @@ class Pomodoro(IntervalModule):
     color_break = '#66ffb3'
     interval = 1
     short_break_count = 3
-    format = '⏰ {current_pomodoro}/{total_pomodoro} {time}'
+    format = '🍅 {current_pomodoro}/{total_pomodoro} {time}'
 
     pomodoro_duration = 25 * 60
     break_duration = 5 * 60
@@ -78,7 +78,7 @@ class Pomodoro(IntervalModule):
             color = self.color_running if self.state == 'running' else self.color_break
         else:
             self.output = {
-                'full_text': '⏰',
+                'full_text': '🍅',
                 'color': self.color_stopped
             }
             return
