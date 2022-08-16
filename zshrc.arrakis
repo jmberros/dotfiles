@@ -30,6 +30,10 @@ alias cluster2='ssh -XA -p 2223 juan@biocodices.hopto.org'
 alias numenor='ssh -p 2224 -XA juan@biocodices.hopto.org'
 
 alias dc="docker-compose"
+
+# Grata stuff
+alias launchprod="gotodeploy && kubectl config use-context production.gratadata.com && source cluster/production_search_environment.sh && kubessh -s $STAGE"
+alias launchstaging="gotodeploy && kubectl config use-context staging.gratadata.com && source cluster/staging_search_environment.sh && kubessh -s $STAGE"
 alias startauthfront="cd ~/dev/grata-auth/web && npm run start"
 alias startauthback="cd ~/dev/grata-auth && dc up -d"
 alias startsearchfront="cd ~/dev/gsd-enterprise-search/web && npm run start"
@@ -38,8 +42,11 @@ alias searchshell="cd ~/dev/gsd-enterprise-search && dc run app python manage.py
 alias gotodeploy="cd ~/dev/gsd-deploy"
 alias gotosearch="cd ~/dev/gsd-enterprise-search"
 alias appm="docker-compose run --rm app python manage.py"
-alias launchprod="gotodeploy && kubectl config use-context production.gratadata.com && source cluster/production_search_environment.sh && kubessh -s $STAGE"
-alias launchstaging="gotodeploy && kubectl config use-context staging.gratadata.com && source cluster/staging_search_environment.sh && kubessh -s $STAGE"
+function connect_to_search_user_pod() {
+    POD_NAME=`kubectl get pods --all-namespaces | grep "search-user-" | grep -v "interactions-" | head -n1 | awk '{ print $2 }'`
+    echo "Will run /bin/bash on pod '$POD_NAME'"
+    kubectl exec -it $POD_NAME --namespace=search -- /bin/bash
+}
 
 alias xa='xrandr --auto'
 
@@ -48,7 +55,8 @@ function swapescape() {
 }
 function set_background() {
     # feh --bg-fill /usr/share/backgrounds/warty-final-ubuntu.png;
-    feh --bg-fill /home/juan/Dropbox/Fotos/wpp/Claude_Monet,_Le_Grand_Canal.jpg;
+    # feh --bg-fill /home/juan/Dropbox/Fotos/wpp/Claude_Monet,_Le_Grand_Canal.jpg;
+    feh --bg-fill /home/juan/Dropbox/Fotos/wpp/david-hockney-woldgate-woods-2006.jpg 
 }
 function xu() {
     xrandr --auto --output HDMI-1 --above eDP-1;
@@ -76,7 +84,7 @@ alias cp='cp -iv'
 alias ls='ls --color=auto --group-directories-first'
 alias sl='ls --color=auto --group-directories-first'
 alias l='ls --color=auto --group-directories-first'
-alias ll='ls -alF --color=auto --group-directories-first'
+alias ll='ls -alhF --color=auto --group-directories-first'
 alias la='ls -A --color=auto --group-directories-first'
 alias grep='grep -i --color=auto'
 alias fgrep='fgrep --color=auto'

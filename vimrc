@@ -11,17 +11,17 @@ Plug 'psf/black', { 'branch': 'stable' }
 
 " Navigation
 Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Syntax
 " Plug 'scrooloose/syntastic' " Too slow, unbearable
 Plug 'dense-analysis/ale' " Linting async
-" Plug 'nvie/vim-flake8' " python spelling and style checker
+Plug 'nvie/vim-flake8' " python spelling and style checker
 Plug 'frazrepo/vim-rainbow'
 Plug 'chriskempson/base16-vim'
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'nathanaelkane/vim-indent-guides'
 " Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'vim-scripts/indentpython.vim' " Some Py specific fixes of autoindent
 Plug 'schickling/vim-bufonly'
@@ -46,10 +46,10 @@ Plug 'scrooloose/nerdcommenter'
 " Plug 'ervandew/supertab' " Tab for autocompletion
 Plug 'vim-scripts/LargeFile' " Disables some feats when editing large files
 Plug 'kshenoy/vim-signature' " Marks enhanced
-Plug 'tpope/vim-fugitive'
 
-" Integration
+" Git
 Plug 'airblade/vim-gitgutter' " Shows git diff +/-/~ besides the line number
+Plug 'tpope/vim-fugitive'
 
 call plug#end() " required
 
@@ -106,20 +106,15 @@ set incsearch             " Do highlight as you type your search.
 set ignorecase            " Make searches case-insensitive.
 set ruler                 " Always show info along bottom.
 set showmatch
-set shiftround            " always indent/outdent to te nearest tabstop
-set tabstop=4 shiftwidth=4 expandtab
-
-au BufRead *.vcf set ft=vcf
-autocmd FileType vcf setlocal noexpandtab 
-
-set softtabstop=4         " unify
-set shiftround            " always indent/outdent to the nearest tabstop
-set smarttab              " use tabs at the start of a line, spaces elsewhere
+set expandtab  " Insert spaces whenever TAB is pressed
+" set shiftround            " always indent/outdent to the nearest tabstop
 set mouse=a
 set showcmd
 set scrolloff=5
-set colorcolumn=119
+set colorcolumn=88
 set encoding=utf-8
+
+set textwidth=119
 
 " associate *.jinja templates with HTML for SparkUp Plug
 " au BufRead,BufNewFile *.jinja set filetype=html.jinja
@@ -127,10 +122,9 @@ set encoding=utf-8
 
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
-    \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=79 |
     \ set expandtab |
+    \ set softtabstop=4 |
     \ set autoindent |
     \ set fileformat=unix
 
@@ -179,6 +173,7 @@ nnoremap <C-T> :tabNext<CR>
 
 " Shortcuts for Find files (FZF) and Find IN files (Rg)
 nnoremap <C-G> :Files<CR>
+nnoremap <C-P> :Files<CR>
 nnoremap <C-F> :Rg<CR>
 
 " Shortcut to Black
@@ -226,14 +221,14 @@ endfunction
 let NERDTreeIgnore=['\.pyc$', '\~$', 'pycache', 'egg.info']
 
 " Hide files from CTRLP
-set wildignore+=public/system
-set wildignore+=software
-set wildignore+=*.pyc
-set wildignore+=*/tmp/*,*.zip,*/build/*,*/dist/*
-let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v[\/]\.(git|build|dist|tmp|anaconda|node_modules)$',
-    \ 'file': '\v\.(pyc|ipynb)$',
-    \ }
+" set wildignore+=public/system
+" set wildignore+=software
+" set wildignore+=*.pyc
+" set wildignore+=*/tmp/*,*.zip,*/build/*,*/dist/*
+" let g:ctrlp_custom_ignore = {
+    " \ 'dir': '\v[\/]\.(git|build|dist|tmp|anaconda|node_modules)$',
+    " \ 'file': '\v\.(pyc|ipynb)$',
+    " \ }
 
 augroup reload_vimrc {
   autocmd!
