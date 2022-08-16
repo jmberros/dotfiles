@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt install -y -qq tmux vim
-pip install -q ipython
+pip install --root-user-action=ignore -q ipython
 
 echo
 echo
