@@ -9,6 +9,6 @@ Color_Off='\033[0m'
 
 echo
 echo
-echo "🤖 : Welcome to the pod ${Purple}'`hostname`'${Color_Off}!"
+echo "    🤖 : Welcome to the pod '`hostname`'!"
 echo
 echo
