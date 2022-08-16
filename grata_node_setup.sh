@@ -1,6 +1,7 @@
 #!/bin/bash
 
-apt install -y -qq tmux vim
+apt update
+apt install -y -qq tmux vim htop bat
 pip install --root-user-action ignore --upgrade pip
 pip install --root-user-action ignore -q ipython
 
