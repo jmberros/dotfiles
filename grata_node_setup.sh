@@ -2,7 +2,7 @@
 
 apt update
 apt install -y -qq tmux vim htop
-pip install --upgrade pip
+# pip install --upgrade pip
 pip install -q ipython
 
 Purple='\033[0;35m'

@@ -42,9 +42,21 @@ alias searchshell="cd ~/dev/gsd-enterprise-search && dc run app python manage.py
 alias gotodeploy="cd ~/dev/gsd-deploy"
 alias gotosearch="cd ~/dev/gsd-enterprise-search"
 alias appm="docker-compose run --rm app python manage.py"
+function get_search_user_pod() {
+    kubectl get pods --all-namespaces | \
+        grep "search-user-" | \
+        grep -v "interactions-" | \
+        head -n1 | \
+        awk '{ print $2 }'
+}
 function connect_to_search_user_pod() {
-    POD_NAME=`kubectl get pods --all-namespaces | grep "search-user-" | grep -v "interactions-" | head -n1 | awk '{ print $2 }'`
-    kubectl exec -it $POD_NAME --namespace=search -- bash -c "curl -sL https://cutt.ly/tXjQlkO | bash && bash"
+    POD_NAME=`get_search_user_pod`
+    kubectl exec -it $POD_NAME --namespace search -- bash -c "curl -sL https://cutt.ly/tXjQlkO | bash && bash"
+}
+function deploy_file_to_search_user_pod()  {
+    POD_NAME=`get_search_user_pod`
+    echo "🚀 $1 🔜 ${POD_NAME}:$2"
+    kubectl cp $1 --namespace search ${POD_NAME}:$2
 }
 
 alias xa='xrandr --auto'
