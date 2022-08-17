@@ -62,7 +62,7 @@ function deploy_file_to_search_user_pod()  {
 function deploy_new_files_to_search_user_pod() {
     POD_NAME=`get_search_user_pod`
     CURRENT_DIR=`pwd`
-    cd ~/repos/grata-search/app
+    cd ~/repos/grata-search
     echo
     echo "📦 Deploying to $POD_NAME"
     echo
