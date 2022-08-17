@@ -42,6 +42,7 @@ alias searchshell="cd ~/dev/gsd-enterprise-search && dc run app python manage.py
 alias gotodeploy="cd ~/dev/gsd-deploy"
 alias gotosearch="cd ~/dev/gsd-enterprise-search"
 alias appm="docker-compose run --rm app python manage.py"
+
 function get_search_user_pod() {
     kubectl get pods --all-namespaces | \
         grep "search-user-" | \
@@ -55,8 +56,19 @@ function connect_to_search_user_pod() {
 }
 function deploy_file_to_search_user_pod()  {
     POD_NAME=`get_search_user_pod`
-    echo "🚀 $1 🔜 ${POD_NAME}:$2"
-    kubectl cp $1 --namespace search ${POD_NAME}:$2
+    echo "🚀 $1"
+    # kubectl cp $1 --namespace search ${POD_NAME}:$1
+}
+function deploy_new_files_to_search_user_pod() {
+    CURRENT_DIR=`pwd`
+    cd ~/repos/grata-search/app
+    echo
+    echo "📦 Deploying to $POD_NAME"
+    echo
+    for FILEPATH in `git diff --name-status main | grep "^A" | cut -f2`; do
+        deploy_file_to_search_user_pod $FILEPATH $FILEPATH
+    done
+    cd $CURRENT_DIR
 }
 
 alias xa='xrandr --auto'
