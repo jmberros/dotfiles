@@ -52,6 +52,10 @@ function get_search_user_pod() {
 }
 function connect_to_search_user_pod() {
     POD_NAME=`get_search_user_pod`
+    kubectl exec -it $POD_NAME --namespace search -- bash
+}
+function full_connect_to_search_user_pod() {
+    POD_NAME=`get_search_user_pod`
     kubectl exec -it $POD_NAME --namespace search -- bash -c "curl -sL https://cutt.ly/tXjQlkO | bash && bash"
 }
 function single_file_deploy_to_search_user_pod()  {
@@ -66,7 +70,7 @@ function deploy_new_files_to_search_user_pod() {
     echo
     echo "📦 Deploying to $POD_NAME"
     echo
-    for FILEPATH in `git diff --name-status main | grep "^A" | cut -f2 | sed "s:^app/::"`; do
+    for FILEPATH in `git diff --name-status main | grep "^A" | grep -v "/tests/" | cut -f2 | sed "s:^app/::"`; do
         single_file_deploy_to_search_user_pod app/$FILEPATH $FILEPATH
     done
     cd $CURRENT_DIR

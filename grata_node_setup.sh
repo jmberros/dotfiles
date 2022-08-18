@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt update
-apt install -y -qq tmux vim htop
+apt install -y -qq tmux vim htop parallel
 # pip install --upgrade pip
 pip install -q ipython
 
