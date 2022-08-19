@@ -3,7 +3,7 @@
 apt update
 apt install -y -qq tmux vim htop parallel tree zsh
 # pip install --upgrade pip
-pip install -q ipython jupyter jupyterlab
+pip install -q ipython jupyter jupyterlab seaborn tld
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -14,6 +14,6 @@ Color_Off='\033[0m'
 
 echo
 echo
-echo "    🤖 : Welcome to the pod '`hostname`'!"
+echo "    🤖 : You are now at '`hostname`'!"
 echo
 echo
