@@ -43,6 +43,9 @@ alias gotodeploy="cd ~/dev/gsd-deploy"
 alias gotosearch="cd ~/dev/gsd-enterprise-search"
 alias appm="docker-compose run --rm app python manage.py"
 
+dc_run_full() {
+    dc run -p 9999:9999 app bash -c "curl -sL https://cutt.ly/tXjQlkO | bash && zsh"
+}
 function get_search_user_pod() {
     kubectl get pods --all-namespaces | \
         grep "search-user-" | \
