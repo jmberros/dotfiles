@@ -46,6 +46,7 @@ alias appm="docker-compose run --rm app python manage.py"
 function get_search_user_pod() {
     kubectl get pods --all-namespaces | \
         grep "search-user-" | \
+        grep "Running" | \
         grep -v "interactions-" | \
         head -n1 | \
         awk '{ print $2 }'
