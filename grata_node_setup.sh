@@ -3,7 +3,7 @@
 apt update
 apt install -y -qq tmux vim htop parallel tree zsh
 # pip install --upgrade pip
-pip install -q ipython jupyter
+pip install -q ipython jupyter jupyterlab
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
