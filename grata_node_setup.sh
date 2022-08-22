@@ -6,6 +6,7 @@ apt install -y -qq tmux vim htop parallel tree zsh
 pip install -q ipython jupyter jupyterlab seaborn tld
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo "ZSH_THEME=bureau"
 
 echo "alias start_jupyter='jupyter lab --no-browser --port 9999 --ip 0.0.0.0 --allow-root'"
 

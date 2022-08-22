@@ -64,8 +64,9 @@ function full_connect_to_search_user_pod() {
 }
 function single_file_deploy_to_search_user_pod()  {
     POD_NAME=`get_search_user_pod`
-    echo "🚀 $1"
-    kubectl cp --namespace search $1 ${POD_NAME}:$2
+    FILEPATH=`echo $1 | sed "s:^app/::"`
+    echo "🚀 $FILEPATH"
+    kubectl cp --namespace search app/$FILEPATH ${POD_NAME}:$FILEPATH
 }
 function deploy_new_files_to_search_user_pod() {
     POD_NAME=`get_search_user_pod`
@@ -74,8 +75,8 @@ function deploy_new_files_to_search_user_pod() {
     echo
     echo "📦 Deploying to $POD_NAME"
     echo
-    for FILEPATH in `git diff --name-status main | grep "^A" | grep -v "/tests/" | cut -f2 | sed "s:^app/::"`; do
-        single_file_deploy_to_search_user_pod app/$FILEPATH $FILEPATH
+    for FILEPATH in `git diff --name-status main | grep "^A" | grep -v "/tests/" | grep -v "notebooks_Juan" | cut -f2 | sed "s:^app/::"`; do
+        single_file_deploy_to_search_user_pod $FILEPATH
     done
     cd $CURRENT_DIR
 }
