@@ -3,7 +3,8 @@
 apt update
 apt install -y -qq tmux vim htop parallel tree zsh
 # pip install --upgrade pip
-pip install -q ipython jupyter jupyterlab seaborn tld
+pip install -U -q pip ipython jupyter jupyterlab matplotlib seaborn more_itertools tldextract ipywidgets tqdm
+pip install -U -q emoji ftfy
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sed -i "s/robbyrussell/bureau/" ~/.zshrc

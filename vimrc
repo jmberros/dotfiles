@@ -114,7 +114,7 @@ set scrolloff=5
 set colorcolumn=88
 set encoding=utf-8
 
-set textwidth=119
+set textwidth=88
 
 " associate *.jinja templates with HTML for SparkUp Plug
 " au BufRead,BufNewFile *.jinja set filetype=html.jinja
@@ -138,10 +138,12 @@ au BufNewFile,BufRead *.html,*.jinja,*.css,*.scss,*.erb,*.yml
     \ set shiftwidth=2 |
     \ set softtabstop=2
 
-let base16colorspace=256
-set background=dark
-colorscheme Tomorrow-Night-Eighties
+" let base16colorspace=256
+" set background=dark
+" set background=light
+" colorscheme Tomorrow-Night-Eighties
 
+" Colorscheme set by CLI tool base16-shell-preview
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
@@ -269,7 +271,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 " Airline themes that look ok: bubblegum, tomorrow, wombat, molokai,
 " powerlineish, 
-let g:airline_theme = 'bubblegum'
+" let g:airline_theme = 'bubblegum'
+let g:airline_theme = 'papercolor'
 
 " tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
 " http://sourceforge.net/mailarchive/forum.php?thread_name=AANLkTinkbdoZ8eNR1X2UobLTeww1jFrvfJxTMfKSq-L%2B%40mail.gmail.com&forum_name=tmux-users

@@ -17,8 +17,8 @@ plugins=(git ssh-agent capistrano bundler gem git-extras web-search wd python pi
 
 ssh () { command ssh "$@"; eval "$("$BASE16_SHELL/profile_helper.sh")"; }
 
-alias bat="batcat"
-alias cat="batcat --paging=never"
+alias bat="batcat --theme=base16-256"
+alias cat="batcat --theme=base16-256 --paging=never"
 
 # SSH to servers
 alias beleriand='ssh -XA juan@beleriand.local'
@@ -32,6 +32,9 @@ alias numenor='ssh -p 2224 -XA juan@biocodices.hopto.org'
 alias dc="docker-compose"
 
 # Grata stuff
+alias dc_regular="ln -fs ~/repos/grata-search/docker-compose.regular.yml ~/repos/grata-search/docker-compose.yml"
+alias dc_jupyter='ln -fs ~/repos/grata-search/docker-compose.jupyter.yml ~/repos/grata-search/docker-compose.yml; docker-compose run -p 9999:9999 app bash -c "cd notebooks_Juan; pip install ipython; jupyter lab --no-browser --port 9999 --ip 0.0.0.0 --allow-root"'
+alias dc_stop_most='docker-compose stop search rabbitmq mongodb worker-beat location detect search-scope-suggestions bitmap-forwarder dead page nginx redis worker-search-jobs ddagent'
 alias launchprod="gotodeploy && kubectl config use-context production.gratadata.com && source cluster/production_search_environment.sh && kubessh -s $STAGE"
 alias launchstaging="gotodeploy && kubectl config use-context staging.gratadata.com && source cluster/staging_search_environment.sh && kubessh -s $STAGE"
 alias startauthfront="cd ~/dev/grata-auth/web && npm run start"
@@ -42,6 +45,8 @@ alias searchshell="cd ~/dev/gsd-enterprise-search && dc run app python manage.py
 alias gotodeploy="cd ~/dev/gsd-deploy"
 alias gotosearch="cd ~/dev/gsd-enterprise-search"
 alias appm="docker-compose run --rm app python manage.py"
+alias port_forwarding_beta="ssh -N -p80 -i ~/.ssh/staging.pem -L 5433:grata-search-staging-blue.cxmnmuyxrqly.us-east-1.rds.amazonaws.com:5432 forward@bastion-staging.devapp.grata.com"
+alias docker_for_jupyter
 
 dc_run_full() {
     dc run -p 9999:9999 app bash -c "curl -sL https://cutt.ly/tXjQlkO | bash && zsh"
@@ -66,7 +71,7 @@ function full_connect_to_search_user_pod() {
 function single_file_deploy_to_search_user_pod()  {
     POD_NAME=`get_search_user_pod`
     FILEPATH=`echo $1 | sed "s:^app/::"`
-    echo "🚀 $FILEPATH"
+    echo "($POD_NAME) 🚀 $FILEPATH"
     kubectl cp --namespace search app/$FILEPATH ${POD_NAME}:$FILEPATH
 }
 function deploy_new_files_to_search_user_pod() {
@@ -97,7 +102,7 @@ function xu() {
     xrandr --auto --output DP-1 --above eDP-1;
     /home/juan/Dropbox/scripts/keyboard_for_laptop.sh;
     swapescape;
-    setbackground;
+    set_background;
 }
 function xl() {
     xrandr --auto --output HDMI-1 --left-of eDP-1;
