@@ -174,12 +174,11 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-T> :tabNext<CR>
 
 " Shortcuts for Find files (FZF) and Find IN files (Rg)
-nnoremap <C-G> :Files<CR>
-nnoremap <C-P> :Files<CR>
+" nnoremap <C-G> :Files<CR> " I'm using Ctr+P now
+" nnoremap <C-P> :Files<CR> " The one below prevents file from being opened in the
+" NERDTree small window
+nnoremap <silent> <expr> <C-P> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<CR>"
 nnoremap <C-F> :Rg<CR>
-
-" Shortcut to Black
-nnoremap <C-B> :Black<CR>
 
 map <Tab> :bn<CR>
 map <S-Tab> :bp<CR>
@@ -257,9 +256,17 @@ hi Normal guibg=NONE ctermbg=NONE
 " \}
 " let g:ale_linters_explicit = 1
 " let g:ale_fix_on_save = 1
+
+" Navigate ALE errors
+nmap <C-n> :ALENextWrap<CR>
+nmap <C-m> :ALEPreviousWrap<CR>
+
 let g:ale_python_flake8_options = '--max-line-length=119'
+let g:ale_python_pylint_options = '--rcfile '.expand("~/.pylintrc")
 
 " Airline
+" ALE linter
+let g:airline#extensions#ale#enabled = 1
 let g:airline_powerline_fonts=1
 " enable/disable fugitive/lawrencium integration >
 let g:airline#extensions#branch#enabled = 0
