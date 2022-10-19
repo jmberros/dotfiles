@@ -32,6 +32,7 @@ alias numenor='ssh -p 2224 -XA juan@biocodices.hopto.org'
 alias dc="docker-compose"
 
 # Grata stuff
+alias aws_ls="aws s3 ls enterprise-search/outputs/export-name-refiner | sort | tac"
 alias dc_regular="ln -fs ~/repos/grata-search/docker-compose.regular.yml ~/repos/grata-search/docker-compose.yml"
 alias dc_jupyter_local='dc stop; ln -fs ~/repos/grata-search/docker-compose.regular.yml ~/repos/grata-search/docker-compose.yml; docker-compose run -p 9999:9999 app bash -c "cd notebooks_Juan; pip install ipython; jupyter lab --no-browser --port 9999 --ip 0.0.0.0 --allow-root"'
 alias dc_jupyter_beta='dc stop; ln -fs ~/repos/grata-search/docker-compose.jupyter.yml ~/repos/grata-search/docker-compose.yml; docker-compose run -p 9999:9999 app bash -c "cd notebooks_Juan; pip install ipython; jupyter lab --no-browser --port 9999 --ip 0.0.0.0 --allow-root"'
