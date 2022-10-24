@@ -211,12 +211,12 @@ au BufEnter *.py syn match error contained "\<set_trace\>"
 " noreabbrev __i  import ipdb; ipdb.set_trace()
 noreabbrev __i  import pdb; pdb.set_trace()
 
-autocmd VimEnter * call StartUp()
-function! StartUp()
-   if 0 == argc()
-       NERDTree
-   end
-endfunction
+" autocmd VimEnter * call StartUp()
+" function! StartUp()
+"    if 0 == argc()
+"        NERDTree
+"    end
+" endfunction
 
 " Hide files in nerdtree
 let NERDTreeIgnore=['\.pyc$', '\~$', 'pycache', 'egg.info']

@@ -32,7 +32,7 @@ alias numenor='ssh -p 2224 -XA juan@biocodices.hopto.org'
 alias dc="docker-compose"
 
 # Grata stuff
-alias aws_ls="aws s3 ls enterprise-search/outputs/export-name-refiner | sort | tac"
+alias aws_ls="aws s3 ls enterprise-search/outputs/export-name-refiner | sort | tac | head -n10"
 alias dc_regular="ln -fs ~/repos/grata-search/docker-compose.regular.yml ~/repos/grata-search/docker-compose.yml"
 alias dc_jupyter_local='dc stop; ln -fs ~/repos/grata-search/docker-compose.regular.yml ~/repos/grata-search/docker-compose.yml; docker-compose run -p 9999:9999 app bash -c "cd notebooks_Juan; pip install ipython; jupyter lab --no-browser --port 9999 --ip 0.0.0.0 --allow-root"'
 alias dc_jupyter_beta='dc stop; ln -fs ~/repos/grata-search/docker-compose.jupyter.yml ~/repos/grata-search/docker-compose.yml; docker-compose run -p 9999:9999 app bash -c "cd notebooks_Juan; pip install ipython; jupyter lab --no-browser --port 9999 --ip 0.0.0.0 --allow-root"'
@@ -56,6 +56,14 @@ alias docker_for_jupyter
 dc_run_full() {
     dc run -p 9999:9999 app bash -c "curl -sL https://cutt.ly/tXjQlkO | bash && zsh"
 }
+
+function aws_download_last_n() {
+    for FP in `aws s3 ls enterprise-search/outputs/export-name-refiner | sort | tac | awk '{ print $4 }' | head -n $1`; do
+        echo "AWS s3 downloading: $FP"
+        aws s3 cp s3://enterprise-search/outputs/$FP ~/repos/grata-search/app/notebooks_Juan/beta_results/
+    done
+}
+
 function get_search_user_pod() {
     kubectl get pods --all-namespaces | \
         grep "search-user-" | \
@@ -168,7 +176,7 @@ autoload pull_branch
 
 alias s='clear; git status'
 alias gpo='git push origin'
-alias gpom='git push origin master'
+alias gpom='git push origin main'
 alias gpob='push_branch origin'
 alias gfo='git fetch origin'
 alias gfu='git fetch upstream'
@@ -177,12 +185,12 @@ alias gfut='git fetch upstream --tags'
 alias gpot='git push origin --tags'
 alias gput='git push upstream --tags'
 alias gpu='git push upstream'
-alias gpum='git push upstream master'
+alias gpum='git push upstream main'
 alias gpub='push_branch upstream'
 alias glo='git pull origin'
-alias glom='git pull origin master'
+alias glom='git pull origin main'
 alias glob='pull_branch origin'
-alias glum='git pull upstream master'
+alias glum='git pull upstream main'
 alias glub='pull_branch upstream'
 alias gadd='git add'
 
