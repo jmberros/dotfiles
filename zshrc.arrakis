@@ -9,13 +9,13 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(git ssh-agent capistrano bundler gem git-extras web-search wd python pip npm last-working-dir virtualenv autoswitch_virtualenv)
 
+# NOTE: ENV variables for SPACESHIP are set in ~/.zshenv
+
 #################
 #
 # Aliases and Functions
 #
 #################
-
-ssh () { command ssh "$@"; eval "$("$BASE16_SHELL/profile_helper.sh")"; }
 
 alias bat="batcat --theme=base16-256"
 alias cat="batcat --theme=base16-256 --paging=never"
@@ -32,10 +32,11 @@ alias numenor='ssh -p 2224 -XA juan@biocodices.hopto.org'
 alias dc="docker-compose"
 
 # Grata stuff
-alias aws_ls="aws s3 ls enterprise-search/outputs/export-name-refiner | sort | tac | head -n10"
-alias dc_regular="ln -fs ~/repos/grata-search/docker-compose.regular.yml ~/repos/grata-search/docker-compose.yml"
-alias dc_jupyter_local='dc stop; ln -fs ~/repos/grata-search/docker-compose.regular.yml ~/repos/grata-search/docker-compose.yml; docker-compose run -p 9999:9999 app bash -c "cd notebooks_Juan; pip install ipython; jupyter lab --no-browser --port 9999 --ip 0.0.0.0 --allow-root"'
-alias dc_jupyter_beta='dc stop; ln -fs ~/repos/grata-search/docker-compose.jupyter.yml ~/repos/grata-search/docker-compose.yml; docker-compose run -p 9999:9999 app bash -c "cd notebooks_Juan; pip install ipython; jupyter lab --no-browser --port 9999 --ip 0.0.0.0 --allow-root"'
+alias aws_ls="aws s3 ls enterprise-search/outputs/export-name-refiner | sort | tac | head -n"
+alias aws_ls_choose="aws s3 ls enterprise-search/outputs/export-choose | sort | tac | head -n"
+alias dc_regular="/bin/cp -f ~/repos/grata-search/docker-compose.regular.yml ~/repos/grata-search/docker-compose.yml"
+alias dc_jupyter_local='dc stop; /bin/cp -f ~/repos/grata-search/docker-compose.regular.yml ~/repos/grata-search/docker-compose.yml; docker-compose run -p 9999:9999 app bash -c "cd notebooks_Juan; pip install ipython; jupyter lab --no-browser --port 9999 --ip 0.0.0.0 --allow-root"'
+alias dc_jupyter_beta='dc stop; /bin/cp -f ~/repos/grata-search/docker-compose.jupyter.yml ~/repos/grata-search/docker-compose.yml; docker-compose run -p 9999:9999 app bash -c "cd notebooks_Juan; pip install ipython; jupyter lab --no-browser --port 9999 --ip 0.0.0.0 --allow-root"'
 alias run_tests='dc_regular; dc stop; docker-compose run -e TEST_ENV="true" --rm app python manage.py test'
 alias test_name_refiner='./run_unit_tests.sh companies.tests.name_finder.test_name_refiner'
 alias test_name_utils='./run_unit_tests.sh companies.tests.name_finder.test_utils'
@@ -57,11 +58,19 @@ dc_run_full() {
     dc run -p 9999:9999 app bash -c "curl -sL https://cutt.ly/tXjQlkO | bash && zsh"
 }
 
-function aws_download_last_n() {
-    for FP in `aws s3 ls enterprise-search/outputs/export-name-refiner | sort | tac | awk '{ print $4 }' | head -n $1`; do
+function aws_download_last_n_prefix() {
+    for FP in `aws s3 ls enterprise-search/outputs/export-$1 | sort | tac | awk '{ print $4 }' | head -n $2`; do
         echo "AWS s3 downloading: $FP"
         aws s3 cp s3://enterprise-search/outputs/$FP ~/repos/grata-search/app/notebooks_Juan/beta_results/
     done
+}
+
+function aws_download_last_n_choose() {
+    aws_download_last_n_prefix "choose-company-names" $1
+}
+
+function aws_download_last_n() {
+    aws_download_last_n_prefix "name-refiner" $1
 }
 
 function get_search_user_pod() {
@@ -251,10 +260,14 @@ backup () {
 source $ZSH/oh-my-zsh.sh
 
 # Base16 Shell
+# ssh () { command ssh "$@"; eval "$("$BASE16_SHELL/profile_helper.sh")"; }
+# Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-    eval "$("$BASE16_SHELL/profile_helper.sh")"
+        source "$BASE16_SHELL/profile_helper.sh"
+
+# base16_default
 
 #################
 #

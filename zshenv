@@ -22,6 +22,7 @@ SPACESHIP_EXIT_CODE_SUFFIX="]"
 SPACESHIP_EXIT_CODE_SYMBOL=""
 SPACESHIP_EXIT_CODE_COLOR="black"
 SPACESHIP_EXEC_TIME_COLOR="black"
+SPACESHIP_AWS_SHOW="false"
 
 SPACESHIP_VENV_SYMBOL="🐍·"
 SPACESHIP_VENV_COLOR="magenta"
@@ -33,5 +34,5 @@ SPACESHIP_VENV_COLOR="magenta"
 # Grata
 #
 #################
-export AWS_PROFILE=juan
-. `which env_parallel.zsh`
+# export AWS_PROFILE=juan
+# . `which env_parallel.zsh`

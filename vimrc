@@ -138,15 +138,10 @@ au BufNewFile,BufRead *.html,*.jinja,*.css,*.scss,*.erb,*.yml
     \ set shiftwidth=2 |
     \ set softtabstop=2
 
-" let base16colorspace=256
-" set background=dark
-" set background=light
-" colorscheme Tomorrow-Night-Eighties
-
-" Colorscheme set by CLI tool base16-shell-preview
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
+if exists('$BASE16_THEME')
+      \ && (!exists('g:colors_name') || g:colors_name != 'base16-$BASE16_THEME')
+    let base16colorspace=256
+    colorscheme base16-$BASE16_THEME
 endif
 
 " No swap files
