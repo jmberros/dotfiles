@@ -2,6 +2,8 @@
 	email = juanmaberros@gmail.com
 	name = Juan Manuel Berros
 [alias]
+        lol = log --graph --decorate --pretty=oneline --abbrev-commit
+        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	co = checkout
 	ci = commit
 	st = status
