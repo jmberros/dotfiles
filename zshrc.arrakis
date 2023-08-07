@@ -144,8 +144,9 @@ function swapescape() {
 }
 function set_background() {
     # feh --bg-fill /usr/share/backgrounds/warty-final-ubuntu.png;
-    # feh --bg-fill /home/juan/Dropbox/Fotos/wpp/Claude_Monet,_Le_Grand_Canal.jpg;
-    feh --bg-fill /home/juan/Dropbox/Fotos/wpp/david-hockney-woldgate-woods-2006.jpg 
+    # feh --bg-fill /home/juan/Dropbox/Fotos/wpp/van-gogh-rhone.jpg
+    # feh --bg-fill /home/juan/Dropbox/Fotos/wpp/david-hockney-woldgate-woods-2006.jpg 
+    feh --bg-fill /home/juan/Dropbox/Fotos/wpp/kupka_babylon.jpg
 }
 function xu() {
     xrandr --auto --output HDMI-1 --above eDP-1;
@@ -155,8 +156,14 @@ function xu() {
     set_background;
 }
 function xl() {
-    xrandr --auto --output HDMI-1 --left-of eDP-1;
-    xrandr --auto --output DP-1 --left-of eDP-1; 
+    HOSTNAME="`hostname`"
+    if [ "$HOSTNAME" = "tlon" ]; then
+            xrandr --output eDP-2 --scale 0.5x0.5;  # Scales 200% the laptop display
+            xrandr --output HDMI-1-1 --left-of eDP-2;
+    elif [ "$HOSTNAME" = "arrakis" ]; then
+            xrandr --output HDMI-1 --left-of eDP-1;
+            xrandr --output DP-1 --left-of eDP-1; 
+    fi
     ~/Dropbox/scripts/keyboard_for_desktop.sh;
     swapescape;
     set_background;
@@ -303,7 +310,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         source "$BASE16_SHELL/profile_helper.sh"
 
-# base16_default
+base16_default-dark
 
 #################
 #
@@ -314,11 +321,11 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 
 # export PATH=~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 export PATH=/home/juan/anaconda3/bin:$PATH  # Anaconda
-export PATH="$HOME/.rbenv/bin:$PATH"  # Rb Env
+# export PATH="$HOME/.rbenv/bin:$PATH"  # Rb Env
 export PATH="/home/juan/software/pycharm-2022.1.4/bin":$PATH # PyCharm
 export PATH="$HOME/.local/bin":$PATH
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 # https://github.com/rbenv/ruby-build/discussions/1940#discussioncomment-2663209
 # Esto es porque Ubuntu 22.04 venía con un Open SSL incompatible con ruby 2.*
 # Así que tuve que hacer lo que dice ese comment
