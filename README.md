@@ -28,7 +28,7 @@ pip install lxml html5lib beautifulsoup4 tqdm i3pystatus psutil netifaces colour
 
 ## i3pystatus:
 
-* Copy i3pystatus modules to anaconda dir
+* Copy `Dropbox/scripts/i3pystatus_modules/*` to `anaconda/lib/python/site-packages/i3pyustatus`
 * Symlink `Dropbox/scripts/i3_config` to `~/.config/i3/config`
 * Symlink `Dropbox/scripts/i3_config.status-bar.arrakis` to `~/.config/i3/i3_config.status-bar`
 
@@ -49,6 +49,7 @@ sudo apt install libdbus-1-dev libdbus-glib-1-dev libiw-dev
 `vim +PlugInstall! +qall`
 
 * Install bat (a cat(1) clone ...), `sudo apt install bat`
+* Increase padding in gnome-terminal (google it)
 * Install rbenv ruby etc (digital ocean guides)
 * Install MySQL (digital ocean guides)
 

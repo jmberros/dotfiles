@@ -7,7 +7,8 @@
 ZSH=$HOME/.oh-my-zsh
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git ssh-agent capistrano bundler gem git-extras web-search wd python npm last-working-dir virtualenv autoswitch_virtualenv)
+plugins=(git ssh-agent capistrano bundler gem git-extras web-search wd python npm last-working-dir virtualenv)
+# autoswitch_virtualenv)
 
 # NOTE: ENV variables for SPACESHIP are set in ~/.zshenv
 
@@ -158,11 +159,11 @@ function xu() {
 function xl() {
     HOSTNAME="`hostname`"
     if [ "$HOSTNAME" = "tlon" ]; then
-            xrandr --output eDP-2 --scale 0.5x0.5;  # Scales 200% the laptop display
-            xrandr --output HDMI-1-1 --left-of eDP-2;
+            xrandr --auto --output HDMI-1-1 --left-of eDP-2;
+            xrandr --auto --output eDP-2 --scale 0.5x0.5;  # Scales 200% the laptop display
     elif [ "$HOSTNAME" = "arrakis" ]; then
-            xrandr --output HDMI-1 --left-of eDP-1;
-            xrandr --output DP-1 --left-of eDP-1; 
+            xrandr --auto --output HDMI-1 --left-of eDP-1;
+            xrandr --auto --output DP-1 --left-of eDP-1; 
     fi
     ~/Dropbox/scripts/keyboard_for_desktop.sh;
     swapescape;
