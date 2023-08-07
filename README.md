@@ -50,6 +50,7 @@ sudo apt install libdbus-1-dev libdbus-glib-1-dev libiw-dev
 
 * Install bat (a cat(1) clone ...), `sudo apt install bat`
 * Increase padding in gnome-terminal (google it)
+* Change the default locales to en_US.UTF-8 in `/etc/default/locale`
 * Install rbenv ruby etc (digital ocean guides)
 * Install MySQL (digital ocean guides)
 
