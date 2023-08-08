@@ -9,7 +9,7 @@
 * Install some stuff:
 
 ```
-sudo apt install zsh git vlc i3 tig xclip curl transmission-remote-gtk build-essential cmake tree
+sudo apt install zsh git vlc i3 tig xclip curl transmission-remote-gtk build-essential cmake tree pavucontrol htop polybar flameshot
 ```
 
 * Clone `dotfiles` repo
@@ -17,29 +17,27 @@ sudo apt install zsh git vlc i3 tig xclip curl transmission-remote-gtk build-ess
 * Copy git config from dotfiles
 * Install Vim, Vim-plug
 * Install i3 WM, put the config from the dotfiles
+* Install VSCode insiders
 * Install Latex `sudo apt install texlive-full # 3 Gb !`
 * Nautilus list view by deafult
 * Anaconda install Python 3 and pip packages:
-
 
 ```
 pip install lxml html5lib beautifulsoup4 tqdm i3pystatus psutil netifaces colour 
 ```
 
-## i3pystatus:
+## i3 + Polybar
 
-* Copy `Dropbox/scripts/i3pystatus_modules/*` to `anaconda/lib/python/site-packages/i3pyustatus`
 * Symlink `Dropbox/scripts/i3_config` to `~/.config/i3/config`
 * Symlink `Dropbox/scripts/i3_config.status-bar.arrakis` to `~/.config/i3/i3_config.status-bar`
+* [DEPRECATED-Using Polybar now] Copy `Dropbox/scripts/i3pystatus_modules/*` to `anaconda/lib/python/site-packages/i3pyustatus`
 
 ```
-sudo apt install libdbus-1-dev libdbus-glib-1-dev libiw-dev 
+# Was used for i3pystatus -- Not needed anymore?
+# sudo apt install libdbus-1-dev libdbus-glib-1-dev libiw-dev 
 ```
 
 * Nerdfonts from their repo, all fonts
-* font manager is ok `sudo apt install font-manager` and add from there the
-  ones you need
-
 * Copy vim themes
 
 `cp -r ~/repos/dotfiles/vim_colors ~/.vim/colors`
