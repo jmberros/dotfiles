@@ -159,21 +159,26 @@ function xu() {
 function xl() {
     HOSTNAME="`hostname`"
     if [ "$HOSTNAME" = "tlon" ]; then
+            # NOTE: this series of commands are meant to leave a functional 2-display
+            # setting with the Lenovo @tlon, which seems to be a PITA.
+            xrandr --auto
             xrandr --auto --output HDMI-1-1 --left-of eDP-2;
+            xrandr --auto --output eDP-2 --scale 0.5x0.5;  # Scales 200% the laptop display
+            xrandr --auto --output eDP-2 --scale 1.0x1.0;
             xrandr --auto --output eDP-2 --scale 0.5x0.5;  # Scales 200% the laptop display
     elif [ "$HOSTNAME" = "arrakis" ]; then
             xrandr --auto --output HDMI-1 --left-of eDP-1;
             xrandr --auto --output DP-1 --left-of eDP-1; 
-    fi
+    fi;
     ~/Dropbox/scripts/keyboard_for_desktop.sh;
-    swapescape;
+    # swapescape;  # ^ already does this
     set_background;
 }
 function xr() {
     xrandr --auto --output HDMI-1 --right-of eDP-1;
     xrandr --auto --output DP-1 --right-of eDP-1; 
     ~/Dropbox/scripts/keyboard_for_desktop.sh;
-    swapescape;
+    # swapescape;
     set_background;
 }
 
