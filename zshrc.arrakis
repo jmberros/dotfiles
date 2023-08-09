@@ -160,7 +160,9 @@ function xl() {
     HOSTNAME="`hostname`"
     if [ "$HOSTNAME" = "tlon" ]; then
             # NOTE: this series of commands are meant to leave a functional 2-display
-            # setting with the Lenovo @tlon, which seems to be a PITA.
+            # setting with the Lenovo @tlon, which seems to be a PITA. The
+            # back-and-forth between resolutions of the main monitor is the only
+            # way I found to make it work. x___x
             xrandr --auto
             xrandr --auto --output HDMI-1-1 --left-of eDP-2;
             xrandr --auto --output eDP-2 --scale 0.5x0.5;  # Scales 200% the laptop display
