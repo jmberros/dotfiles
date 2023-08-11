@@ -166,7 +166,7 @@ function leetcode() {
         echo "Done"
 }
 function sysdes() {
-        i3-msg workspace 7
+        i3-msg workspace 3
         sleep 1
         URL1="https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers"
         URL2="https://www.notion.so/jmberros/Coaching-Silver-dev-44fc06df16d8473b86ec503768f93ac2"
@@ -201,6 +201,8 @@ function prepare_to_work() {
         noisly
         sysdes
         leetcode
+
+        jobs | awk '{ print $1 }' | grep -o -e "[0-9]" | while read JOBN; do disown %$JOBN; done
 }
 
 #################
