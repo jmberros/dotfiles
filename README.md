@@ -1,15 +1,19 @@
 # After installing Ubuntu
 
-* Install firefox and google-chrome
-* Install dropbox
+Should take a couple of hours top.
+
+* Install firefox and google-chrome, sync profiles
+* Install Dropbox
 * Remove Ubuntu default home directories
-* Set ssh keys
+* Create ssh key and copy it to your profile in gituhb
 * Oh my zsh! + Spaceship prompt + base16 + base16-shell-preview
 * juan in sudoers with no pass: `juan  ALL=(ALL) NOPASSWD: ALL`
 * Install some stuff:
 
 ```
-sudo apt install zsh git vlc i3 tig xclip curl transmission-remote-gtk build-essential cmake tree pavucontrol htop polybar flameshot
+sudo apt install zsh git vlc i3 tig xclip curl transmission-remote-gtk build-essential cmake tree pavucontrol htop polybar flameshot fzf bat
+
+sudo snap install authy slack
 ```
 
 * Clone `dotfiles` repo
@@ -18,7 +22,6 @@ sudo apt install zsh git vlc i3 tig xclip curl transmission-remote-gtk build-ess
 * Install Vim, Vim-plug
 * Install i3 WM, put the config from the dotfiles
 * Install VSCode insiders
-* Install Latex `sudo apt install texlive-full # 3 Gb !`
 * Nautilus list view by deafult
 * Anaconda install Python 3 and pip packages:
 
@@ -26,33 +29,27 @@ sudo apt install zsh git vlc i3 tig xclip curl transmission-remote-gtk build-ess
 pip install lxml html5lib beautifulsoup4 tqdm i3pystatus psutil netifaces colour 
 ```
 
-## i3 + Polybar
-
+* install ripgrep: `https://github.com/BurntSushi/ripgrep#installation`
+* Symlink the Dunst notifications formatting: `ln -s ~/repos/dotfiles/dunstrc ~/.config/dunst/dunstrc`
 * Symlink `Dropbox/scripts/i3_config` to `~/.config/i3/config`
 * Symlink `Dropbox/scripts/i3_config.status-bar.arrakis` to `~/.config/i3/i3_config.status-bar`
+* Nerdfonts from their repo, all fonts
+* Copy vim themes: `cp -r ~/repos/dotfiles/vim_colors ~/.vim/colors`
+* Install Vim Plugins: `vim +PlugInstall! +qall`
+* Increase padding in gnome-terminal (google it, SO)
+* Change the default locales to `en_US.UTF-8` in `/etc/default/locale`
+
+# Old stuff
+
 * [DEPRECATED-Using Polybar now] Copy `Dropbox/scripts/i3pystatus_modules/*` to `anaconda/lib/python/site-packages/i3pyustatus`
 
 ```
 # Was used for i3pystatus -- Not needed anymore?
 # sudo apt install libdbus-1-dev libdbus-glib-1-dev libiw-dev 
 ```
-
-* Nerdfonts from their repo, all fonts
-* Copy vim themes
-
-`cp -r ~/repos/dotfiles/vim_colors ~/.vim/colors`
-
-* Install Vim Plugins
-
-`vim +PlugInstall! +qall`
-
-* Install bat (a cat(1) clone ...), `sudo apt install bat`
-* Increase padding in gnome-terminal (google it)
-* Change the default locales to en_US.UTF-8 in `/etc/default/locale`
+* [NOT NECESSARY] Install Latex `sudo apt install texlive-full # 3 Gb !`
 * Install rbenv ruby etc (digital ocean guides)
 * Install MySQL (digital ocean guides)
-
-# Old stuff
 
 ## Stuff for @beleriand
 
