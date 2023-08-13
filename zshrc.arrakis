@@ -196,13 +196,22 @@ function noisly() {
         sleep 1
         echo "Done"
 }
+function notion() {
+        i3-msg workspace 7
+        sleep 1
+        URL1="https://www.notion.so/jmberros/Coaching-Silver-dev"
+        nohup google-chrome --new-window $URL1 &
+        sleep 1
+}
 function prepare_to_work() {
         home
         noisly
+        notion
         sysdes
         leetcode
 
         jobs | awk '{ print $1 }' | grep -o -e "[0-9]" | while read JOBN; do disown %$JOBN; done
+        exit
 }
 
 #################
@@ -218,7 +227,7 @@ function set_background() {
     # feh --bg-fill /home/juan/Dropbox/Fotos/wpp/van-gogh-rhone.jpg
     # feh --bg-fill /home/juan/Dropbox/Fotos/wpp/david-hockney-woldgate-woods-2006.jpg 
     # feh --bg-fill /home/juan/Dropbox/Fotos/wpp/kupka_babylon.jpg
-    feh --bg-fill ~/Dropbox/Fotos/wpp/Cándido_Lopez_-_Trinchera_de_Curupaytí_1.jpg
+    feh --bg-fill ~/Dropbox/Fotos/wpp/candido_lopez_-_pasaje_del_arroyo_san_joaquin_el_16_de_agosto_de_1865.jpg
 }
 function xu() {
     xrandr --auto --output HDMI-1 --above eDP-1;
@@ -234,8 +243,8 @@ function xl() {
             # setting with the Lenovo @tlon, which seems to be a PITA. The
             # back-and-forth between resolutions of the main monitor is the only
             # way I found to make it work. x___x
-            xrandr --auto
-             xrandr --auto --output HDMI-1-1 --left-of eDP-2;  # Defaults to 2560x1440
+            # xrandr --auto
+            xrandr --auto --output HDMI-1-1 --left-of eDP-2;  # Defaults to 2560x1440
             # xrandr --auto --output HDMI-1-1 --left-of eDP-2 --mode 3840x2160;  # Everything too small
             # xrandr --auto --output HDMI-1-1 --left-of eDP-2 --mode 3840x2160 --scale 0.5x0.5;  # Looks ugly?
             xrandr --auto --output eDP-2 --scale 0.5x0.5;  # Scales 200% the laptop display
@@ -255,6 +264,9 @@ function xr() {
     ~/Dropbox/scripts/keyboard_for_desktop.sh;
     # swapescape;
     set_background;
+}
+function xsolo() {
+        xrandr --auto --output eDP-2 --scale 0.5x0.5
 }
 
 
@@ -400,6 +412,7 @@ base16_default-dark
 #
 #################
 
+export BROWSER=/usr/bin/google-chrome
 # export PATH=~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 export PATH=/home/juan/anaconda3/bin:$PATH  # Anaconda
 # export PATH="$HOME/.rbenv/bin:$PATH"  # Rb Env

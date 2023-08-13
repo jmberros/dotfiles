@@ -1,11 +1,8 @@
 #!/bin/bash
 
-# Terminate already running bar instances
-killall -q polybar
-
-# Wait until the processes have been shut down
-while pgrep -x polybar >/dev/null; do sleep 0.1; done
-
+# NOTE:
+# The script to launch the main monitor will take care
+# of killing other polybar instances (and waiting for them to die)
 ~/repos/dotfiles/polybar/launch_polybar_main.sh
 ~/repos/dotfiles/polybar/launch_polybar_aux.sh
 
