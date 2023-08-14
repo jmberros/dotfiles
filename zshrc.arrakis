@@ -151,7 +151,7 @@ function home() {
         sleep 1
         i3-msg '[workspace="1"]' move workspace to output eDP-2
         sleep 1
-        echo "Done"
+        exit
 }
 function leetcode() {
         i3-msg workspace 2
@@ -163,7 +163,7 @@ function leetcode() {
         sleep 1
         i3-msg '[workspace="2"]' move workspace to output HDMI-1-1
         sleep 1
-        echo "Done"
+        exit
 }
 function sysdes() {
         i3-msg workspace 3
@@ -179,7 +179,7 @@ function sysdes() {
         sleep 1
         i3-msg '[workspace="7"]' move workspace to output HDMI-1-1
         sleep 1
-        echo "Done"
+        exit
 }
 function noisly() {
         i3-msg workspace 8
@@ -194,7 +194,7 @@ function noisly() {
         sleep 1
         i3-msg '[workspace="8"]' move workspace to output eDP-2
         sleep 1
-        echo "Done"
+        exit
 }
 function notion() {
         i3-msg workspace 7
@@ -202,6 +202,7 @@ function notion() {
         URL1="https://www.notion.so/jmberros/Coaching-Silver-dev"
         nohup google-chrome --new-window $URL1 &
         sleep 1
+        exit
 }
 function prepare_to_work() {
         home
