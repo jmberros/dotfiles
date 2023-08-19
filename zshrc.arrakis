@@ -224,11 +224,7 @@ function swapescape() {
     setxkbmap -option caps:swapescape;
 }
 function set_background() {
-    # feh --bg-fill /usr/share/backgrounds/warty-final-ubuntu.png;
-    # feh --bg-fill /home/juan/Dropbox/Fotos/wpp/van-gogh-rhone.jpg
-    # feh --bg-fill /home/juan/Dropbox/Fotos/wpp/david-hockney-woldgate-woods-2006.jpg 
-    # feh --bg-fill /home/juan/Dropbox/Fotos/wpp/kupka_babylon.jpg
-    feh --bg-fill ~/Dropbox/Fotos/wpp/candido_lopez_-_pasaje_del_arroyo_san_joaquin_el_16_de_agosto_de_1865.jpg
+    feh --bg-fill ~/Dropbox/Fotos/wpp/Cándido_Lopez_-_Asalto_de_la_primera_columna_brasileña_a_Curupaytí_-_Google_Art_Project.jpg
 }
 function xu() {
     HOSTNAME="`hostname`"
