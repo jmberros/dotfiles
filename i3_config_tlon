@@ -49,7 +49,7 @@ bindsym --release Print exec --no-startup-id flameshot gui
 bindsym --release Shift+Print exec --no-startup-id flameshot gui
 
 # Window Titles font
-font pango: InconsoataGo Nerd Font 12
+font pango: InconsolataGo Nerd Font 12
 # font pango: Ubuntu Mono Nerd Font 14
 
 # enable window icons for all windows
@@ -81,9 +81,15 @@ bindsym $mod+Shift+q kill
 bindsym $mod+F2 exec i3-input -F 'rename workspace to "%s"'
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -i -nb '#ccff00' -nf '#0b216d' -l 10 -fn 'Ubuntu Mono-14'
+# Old colors, bright yellow background, very eye-catching:
+# bindsym $mod+d exec dmenu_run -i -nb '#ccff00' -nf '#0b216d' -l 10 -fn 'Ubuntu Mono-14'
+# New colors, dark background, yellowish letters
+bindsym $mod+d exec dmenu_run -i -nb '#282A2E' -nf '#60ce60' -l 10 -fn 'Terminess Nerd Font-20' -sb '#60ce60' -sf '#282A2E'
+
+# dmenu options:
 # -b bottom; -i case insensitive; -l number of lines; -fn font;
 # -nb color background color; -nf foreground color;
+# -sb selected backround color; -sf selected foreground color;
 
 # bindsym $mod+x exec /usr/bin/dmenu_extended_run
 

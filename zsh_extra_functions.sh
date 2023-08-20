@@ -1,0 +1,189 @@
+#################
+#
+# Utilities
+#
+#################
+
+break_corto () { sleep 300; cvlc ~/Dropbox/Happyday.mp3 }
+break_largo () { sleep 900; cvlc ~/Dropbox/Happyday.mp3 }
+pswatch () { watch -n1 "ps aux | head -n1 && ps aux | grep '$1' | grep -v 'grep'" }
+# Seems unnecessary if you have fzf:
+findhome () { find ~ -iname "*${1}*" }
+findhere () { find . -iname "*${1}" }
+
+cs () {
+  cd $1;
+
+  if [ $? -eq 0 ]; then  # If dir exists!
+    if [ `ls | wc -l` -ge 20 ]; then
+      # ls --color=auto --group-directories-first;
+      exa --group-directories-first
+    else
+      # ls -lh --color=auto --group-directories-first;
+      exa -l --group-directories-first
+    fi
+  fi
+}
+
+sd () {
+  # cs $(find * -maxdepth 1 -type d | fzf --reverse);
+  cd ~ && cs $(find * -type d | fzf --reverse);
+}
+vimfzf () {
+        # Search the contents of all files under this spot, and open the 
+        # file where the chosen match is with vim:
+        vim $(rg . | fzf | cut -d":" -f1)
+}
+
+backup () {
+  newname=$1.`date +%Y%m%d.%H%M.bak`;
+  mv $1 $newname;
+  echo "-> Backed up to '$newname'";
+  cp -p $newname $1;
+}
+
+#################
+#
+# Productivity setup
+#
+#################
+
+home() {
+        i3-msg workspace 1
+        sleep 1
+        URL1="https://mail.google.com"
+        URL2="https://calendar.google.com"
+        # URL2="https://web.whatsapp.com"
+        nohup google-chrome --new-window $URL1 &
+        sleep 1
+        nohup google-chrome $URL2 &
+        sleep 1
+        i3-msg '[workspace="1"]' move workspace to output eDP-1
+        sleep 1
+        exit
+}
+leetcode() {
+        i3-msg workspace 2
+        sleep 1
+        URL="https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/?vacRef=homebanner"
+        nohup google-chrome --new-window $URL &
+        sleep 1
+        nohup code-insiders ~/repos/leetcode &
+        sleep 1
+        i3-msg '[workspace="2"]' move workspace to output HDMI-1-3
+        sleep 1
+        exit
+}
+sysdes() {
+        i3-msg workspace 3
+        sleep 1
+        URL1="https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers"
+        URL2="https://www.notion.so/jmberros/Coaching-Silver-dev-44fc06df16d8473b86ec503768f93ac2"
+        URL3="https://www.notion.so/System-Design-e8174efce9ae442db0363f1d0695d4dd"
+        nohup google-chrome --new-window $URL1 &
+        sleep 1
+        nohup google-chrome --new-window $URL2 &
+        sleep 1
+        nohup google-chrome $URL3 &
+        sleep 1
+        i3-msg '[workspace="7"]' move workspace to output HDMI-1-3
+        sleep 1
+        exit
+}
+noisly() {
+        i3-msg workspace 8
+        sleep 1
+        URL1="https://music.youtube.com/"
+        URL2="https://www.noisli.com/playlists"
+        nohup google-chrome --new-window $URL1 &
+        sleep 1
+        nohup google-chrome $URL2 &
+        sleep 1
+        gnome-terminal -- /usr/bin/bashtop &
+        # nohup gnome-system-monitor &
+        sleep 1
+        i3-msg '[workspace="8"]' move workspace to output eDP-1
+        exit
+}
+notion() {
+        i3-msg workspace 7
+        sleep 1
+        URL1="https://www.notion.so/jmberros/Coaching-Silver-dev"
+        nohup google-chrome --new-window $URL1 &
+        sleep 1
+        exit
+}
+prepare_to_work() {
+        home
+        noisly
+        notion
+        sysdes
+        leetcode
+
+        jobs | awk '{ print $1 }' | grep -o -e "[0-9]" | while read JOBN; do disown %$JOBN; done
+        exit
+}
+
+
+#################
+#
+# Monitor and keyboard setup
+#
+#################
+
+swapescape() {
+    setxkbmap -option caps:swapescape;
+}
+set_background() {
+    feh --bg-fill ~/Dropbox/Fotos/wpp/Cándido_Lopez_-_Asalto_de_la_primera_columna_brasileña_a_Curupaytí_-_Google_Art_Project.jpg
+}
+xu() {
+    HOSTNAME="`hostname`"
+    if [ "$HOSTNAME" = "tlon" ]; then
+            xrandr --auto --output HDMI-1-3 --above eDP-1 --scale 0.5x0.5;  # Defaults to 2560x1440
+            xrandr --auto --output eDP-1 --scale 0.5x0.5;  # Scales 200% the laptop display
+            xrandr --auto --output eDP-1 --scale 1.0x1.0;
+            xrandr --auto --output eDP-1 --scale 0.5x0.5;  # Scales 200% the laptop display
+    elif [ "$HOSTNAME" = "arrakis" ]; then
+            xrandr --auto --output HDMI-1 --above eDP-1;
+            xrandr --auto --output DP-1 --above eDP-1;
+            /home/juan/Dropbox/scripts/keyboard_for_laptop.sh;
+            swapescape;
+            set_background;
+    fi;
+    set_background;
+    swapescape;
+}
+xl() {
+    HOSTNAME="`hostname`"
+    if [ "$HOSTNAME" = "tlon" ]; then
+            # NOTE: this series of commands are meant to leave a functional 2-display
+            # setting with the Lenovo @tlon, which seems to be a PITA. The
+            # back-and-forth between resolutions of the main monitor is the only
+            # way I found to make it work. x___x
+            # xrandr --auto
+            xrandr --auto --output HDMI-1-3 --left-of eDP-1;  # Defaults to 2560x1440
+            # xrandr --auto --output HDMI-1-3 --left-of eDP-1 --mode 3840x2160;  # Everything too small
+            # xrandr --auto --output HDMI-1-3 --left-of eDP-1 --mode 3840x2160 --scale 0.5x0.5;  # Looks ugly?
+            xrandr --auto --output eDP-1 --scale 0.5x0.5;  # Scales 200% the laptop display
+            xrandr --auto --output eDP-1 --scale 1.0x1.0;
+            xrandr --auto --output eDP-1 --scale 0.5x0.5;  # Scales 200% the laptop display
+    elif [ "$HOSTNAME" = "arrakis" ]; then
+            xrandr --auto --output HDMI-1 --left-of eDP-1;
+            xrandr --auto --output DP-1 --left-of eDP-1; 
+    fi;
+    set_background;
+    ~/Dropbox/scripts/keyboard_for_desktop.sh;
+    swapescape;
+}
+xr() {
+    xrandr --auto --output HDMI-1 --right-of eDP-1;
+    xrandr --auto --output DP-1 --right-of eDP-1; 
+    ~/Dropbox/scripts/keyboard_for_desktop.sh;
+    # swapescape;
+    set_background;
+}
+xsolo() {
+        xrandr --auto --output eDP-1 --scale 0.5x0.5;
+}
+

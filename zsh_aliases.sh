@@ -1,0 +1,88 @@
+alias bat="batcat --theme=base16-256"
+alias cat="batcat --theme=base16-256 --paging=never"
+alias exal="exa -l --group-directories-first"
+
+# Linux version of OSX pbcopy and pbpaste.
+alias pbcopy=’xsel — clipboard — input’
+alias pbpaste=’xsel — clipboard — output’
+
+alias fd=fdfind
+alias history=history -E  # Shows date + time of commands
+
+# SSH to servers
+# alias beleriand='ssh -XA juan@beleriand.local'
+# alias motorhome='beleriand'
+# alias bele='beleriand'
+# alias cluster='ssh -XA -p 2222 juan@biocodices.hopto.org'
+# alias cluster1='ssh -XA -p 2222 juan@biocodices.hopto.org'
+# alias cluster2='ssh -XA -p 2223 juan@biocodices.hopto.org'
+# alias numenor='ssh -p 2224 -XA juan@biocodices.hopto.org'
+
+alias dc="docker-compose"
+alias xa='xrandr --auto'
+alias lap='~/Dropbox/scripts/keyboard_for_laptop.sh'
+alias desk='~/Dropbox/scripts/keyboard_for_desktop.sh'
+alias jewa="jekyll serve --watch"
+
+alias sc='cs'
+alias mv='mv -i'
+alias cp='cp -iv'
+alias ls='ls --color=auto --group-directories-first'
+alias sl='ls --color=auto --group-directories-first'
+alias l='ls --color=auto --group-directories-first'
+alias ll='ls -alhF --color=auto --group-directories-first'
+alias la='ls -A --color=auto --group-directories-first'
+alias ..='cs ..'
+alias cs..='cs ..'
+alias xclip="xclip -selection primary -f | xclip -selection clipboard"
+alias tree='tree -F --dirsfirst --noreport'
+alias tree+='tree -hF --du --dirsfirst --noreport'
+
+# Tmux
+alias tnew="tmux new-session -s"
+alias tach="tmux attach-session -t"
+
+# replace AWK with Ruby
+alias rawk='/usr/bin/ruby2.3 -lane'
+alias rawk,='/usr/bin/ruby2.3 -F, -lane'
+alias rawk:='/usr/bin/ruby2.3 -F: -lane'
+alias rawkt='/usr/bin/ruby2.3 -F"\t" -lane'
+alias rawks='/usr/bin/ruby2.3 -F"\s+" -lane'
+
+# Bundler
+alias be='bundle exec'
+alias bi='bundle install'
+
+# Git related aliases
+push_branch() {
+    branch=`git rev-parse --symbolic-full-name --abbrev-ref HEAD`
+    git push $1 $branch
+}
+pull_branch() {
+    branch=`git rev-parse --symbolic-full-name --abbrev-ref HEAD`
+    git pull $1 $branch
+}
+autoload push_branch
+autoload pull_branch
+
+alias s='clear; git status'
+alias gpo='git push origin'
+alias gpom='git push origin main'
+alias gpob='push_branch origin'
+alias gfo='git fetch origin'
+alias gfu='git fetch upstream'
+alias gfot='git fetch origin --tags'
+alias gfut='git fetch upstream --tags'
+alias gpot='git push origin --tags'
+alias gput='git push upstream --tags'
+alias gpu='git push upstream'
+alias gpum='git push upstream main'
+alias gpub='push_branch upstream'
+alias glo='git pull origin'
+alias glom='git pull origin main'
+alias glob='pull_branch origin'
+alias glum='git pull upstream main'
+alias glub='pull_branch upstream'
+alias gadd='git add'
+
+

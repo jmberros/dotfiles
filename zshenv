@@ -37,3 +37,4 @@ SPACESHIP_VENV_COLOR="magenta"
 #################
 # export AWS_PROFILE=juan
 # . `which env_parallel.zsh`
+. "$HOME/.cargo/env"

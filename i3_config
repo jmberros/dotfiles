@@ -79,9 +79,13 @@ bindsym $mod+Shift+q kill
 bindsym $mod+F2 exec i3-input -F 'rename workspace to "%s"'
 
 # start dmenu (a program launcher)
+# Old colors, bright yellow background, very eye-catching:
 bindsym $mod+d exec dmenu_run -i -nb '#ccff00' -nf '#0b216d' -l 10 -fn 'Ubuntu Mono-14'
-# -b bottom; -i case insensitive; -l number of lines; -fn font;
+# New colors, dark background, yellowish letters
+# bindsym $mod+d exec dmenu_run -i -nb '#282A2E' -nf '#F0C674' -l 10 -fn 'GohuFont 14 Nerd Font-16'
+
 # -nb color background color; -nf foreground color;
+# -b bottom; -i case insensitive; -l number of lines; -fn font;
 
 # bindsym $mod+x exec /usr/bin/dmenu_extended_run
 
