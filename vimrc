@@ -120,6 +120,12 @@ set textwidth=88
 " au BufRead,BufNewFile *.jinja set filetype=html.jinja
 "au BufNewFile,BufRead *.jinja set ft=jinja.html
 
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set autoindent
+
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set shiftwidth=4 |
@@ -128,7 +134,7 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix
 
-au BufNewFile,BufRead *.rb,*.coffee,*.js
+au BufNewFile,BufRead *.rb,*.coffee,*.js,*.sh
     \ set tabstop=2 |
     \ set shiftwidth=2 |
     \ set softtabstop=2
