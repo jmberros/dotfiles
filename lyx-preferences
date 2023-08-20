@@ -1,0 +1,116 @@
+# LyX 2.3.6 generated this file. If you want to make your own
+# modifications you should do them from inside LyX and save.
+
+Format 24
+
+
+#
+# MISC SECTION ######################################
+#
+
+\user_name "Juan Manuel Berros"
+\user_email ""
+
+#
+# SCREEN & FONTS SECTION ############################
+#
+
+\screen_zoom 100
+\cursor_width 2
+\scroll_below_document true
+\paragraph_markers true
+\screen_font_roman "Noto Serif"
+\screen_font_sans "aakar"
+\screen_font_typewriter "Ubuntu Mono"
+\screen_font_sizes 5 7 8 9 10 12 14.4 17.26 20.74 24.88
+\fullscreen_limit true
+\single_instance false
+
+#
+# COLOR SECTION ###################################
+#
+
+\set_color "cursor" "#f8e237"
+\set_color "background" "#2b2b31"
+\set_color "foreground" "#acacac"
+\set_color "selection" "#9a954c"
+\set_color "latex" "#9cd18b"
+\set_color "comment" "#649faf"
+\set_color "commentbg" "#000000"
+\set_color "listingsbg" "#414f9f"
+\set_color "command" "#d88900"
+\set_color "commandbg" "#e8e8e8"
+\set_color "math" "#11fc21"
+\set_color "mathbg" "#26262b"
+\set_color "mathmacrobg" "#2b3b2f"
+\set_color "mathmacrolabel" "#aaff7f"
+\set_color "mathmacroframe" "#edffc2"
+\set_color "mathmacrooldarg" "#ff55ff"
+\set_color "mathcorners" "#595959"
+\set_color "mathline" "#94abff"
+\set_color "collapsible" "#9fca96"
+\set_color "collapsibleframe" "#666666"
+\set_color "insetbg" "#b9b9b9"
+\set_color "insetframe" "#9aafcd"
+\set_color "tabularline" "#d8d8d8"
+\set_color "buttonframe" "#262626"
+\set_color "buttonbg" "#1a1a1a"
+\set_color "buttonhoverbg" "#464647"
+
+#
+# PRINTER SECTION ###################################
+#
+
+
+#
+# TEX SECTION #######################################
+#
+
+
+#
+# FILE SECTION ######################################
+#
+
+\completion_inline_text true
+\completion_popup_text true
+
+#
+# PLAIN TEXT EXPORT SECTION ##############################
+#
+
+
+#
+# SPELLCHECKER SECTION ##############################
+#
+
+
+#
+# LANGUAGE SUPPORT SECTION ##########################
+#
+
+\language_package_selection 1
+\language_command_begin ""
+\mark_foreign_language false
+
+#
+# 2nd MISC SUPPORT SECTION ##########################
+#
+
+\gui_language english
+\export_overwrite all
+
+#
+# FORMATS SECTION ##########################
+#
+
+\default_otf_view_format dvi3
+
+#
+# CONVERTERS SECTION ##########################
+#
+
+
+#
+# COPIERS SECTION ##########################
+#
+

@@ -1,10 +1,9 @@
+dotfiles:~/repos/dotfiles
+dropbox:~/Dropbox
+leetcode:~/repos/leetcode
+polybar:~/repos/dotfiles/polybar
 coursera:~/Dropbox/code/Coursera-NNDL
 documents:~/Dropbox/Documents
-dotfiles:~/repos/dotfiles
 downloads:~/Downloads
-geos:~/repos/grata-geos
-grata-repo:~/repos/grata-search
 jmberros:~/repos/jmberros.github.io
-Kaggle:~/Dropbox/code/Kaggle
-notebooks-grata:~/Dropbox/code/notebooks_Juan
 repos:~/repos
