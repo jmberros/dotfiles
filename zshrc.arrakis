@@ -34,8 +34,8 @@ plugins=(
 
 DOTFILES=$HOME/repos/dotfiles
 source $ZSH/oh-my-zsh.sh
-source $DOTFILES/zsh_aliases.sh
-source $DOTFILES/zsh_extra_functions.sh
+source $DOTFILES/zsh_aliases
+source $DOTFILES/zsh_extra_functions
 source $HOME/.env  # Environment variables, secrets, etc.
 # source $DOTFILES/grata_helpers.sh
 
