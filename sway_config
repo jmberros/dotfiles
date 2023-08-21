@@ -23,6 +23,45 @@ set $mod Mod4
 # bindsym Mod1+Tab focus right
 # bindsym Mod1+Shift+Tab focus left
 
+###########################
+# START -- Sway Specific (not i3)
+###########################
+# gaps inner all set 10
+# gaps all top 10
+
+input "type:keyboard" {
+    xkb_layout us(altgr-intl)
+    xkb_options caps:swapescape
+}
+input "type:mouse" {
+    natural_scroll enable
+}
+bar {
+    workspace_buttons no
+	output XWAYLAND0
+	position top
+	height 40
+	colors {
+		background #00000000
+		statusline #00000000
+	}
+}
+bar {
+	workspace_buttons no
+	output XWAYLAND1
+	position top
+	height 40
+	colors {
+		background #00000000
+		statusline #00000000
+	}
+}
+#input "MX Vertical Mouse" {
+#}
+###########################
+# END -- Sway Specific
+###########################
+
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20
@@ -45,33 +84,32 @@ bindsym $mod+F1 exec DISPLAY=:0 xset dpms force on
 # Taking a screenshot
 # bindsym --release Print exec --no-startup-id gnome-screenshot
 # bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -a
-bindsym --release Print exec --no-startup-id flameshot gui
-bindsym --release Shift+Print exec --no-startup-id flameshot gui
-
+bindsym --release Print exec --no-startup-id flameshot gui bindsym --release Shift+Print exec --no-startup-id flameshot gui
 # Window Titles font
 font pango: InconsolataGo Nerd Font 12
 # font pango: Ubuntu Mono Nerd Font 14
+# enable window icons for all windows #for_window [all] title_window_icon on
+#for_window [all] title_window_icon padding 5px
 
-# enable window icons for all windows
-for_window [all] title_window_icon on
-for_window [all] title_window_icon padding 5px
+## Force "File Operations" window to float
+#for_window [class="Nautilus" instance="file_progress"] floating enable
+#for_window [class="gnome-calculator"] floating enable
 
-# Force "File Operations" window to float
-for_window [class="Nautilus" instance="file_progress"] floating enable
-for_window [class="gnome-calculator"] floating enable
-
-# https://stackoverflow.com/questions/74887471/floating-dunst-notification-in-i3
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [class="Dunst"] floating enable
+## https://stackoverflow.com/questions/74887471/floating-dunst-notification-in-i3
+#for_window [window_role="pop-up"] floating enable
+#for_window [window_role="task_dialog"] floating enable
+#for_window [class="Dunst"] floating enable
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+minus split v exec i3-sensible-terminal
-bindsym $mod+Shift+backslash split h exec i3-sensible-terminal
+#
+# ! FIXME This doesnt work in sway
+#
+# bindsym $mod+minus split v exec i3-sensible-terminal
+# bindsym $mod+Shift+backslash split h exec i3-sensible-terminal
 bindsym $mod+backslash split h exec i3-sensible-terminal
 
 # kill focused window
@@ -192,7 +230,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym $mod+b border toggle
-new_window pixel 4
+default_border pixel 4
+# new_window pixel 4
 
 # resize window
 mode "resize" {

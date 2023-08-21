@@ -1,0 +1,71 @@
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at errorOrDestroy (node:internal/streams/destroy:214:7)
+    at node:internal/fs/streams:258:9
+    at FSReqCallback.wrapper [as oncomplete] (node:fs:684:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+
+Node.js v18.15.0
+[11468:11468:0820/215803.802168:ERROR:password_sync_bridge.cc(1065)] Passwords datatype error was encountered: Failed to get encryption key during database cleanup.
+[11511:11511:0820/215841.826141:ERROR:shared_image_manager.cc(217)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+Fontconfig error: Cannot load default config file: No such file: (null)
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+[11511:11511:0820/215946.511842:ERROR:shared_image_manager.cc(217)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[11512:11516:0820/220041.426300:ERROR:ssl_client_socket_impl.cc(980)] handshake failed; returned -1, SSL error code 1, net_error -101
+[11511:11511:0820/220303.597986:ERROR:shared_image_manager.cc(217)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[11468:11468:0820/220309.024328:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.025627:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.030641:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.035984:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.038093:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11497:0820/220309.038222:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+[11468:11468:0820/220309.040953:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.043460:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.047317:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.049688:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.052460:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.055568:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.057066:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.059258:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.067473:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.068945:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.071546:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.072860:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.074926:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.078369:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.079546:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.080953:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.082455:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.085810:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.087073:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.088780:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.090726:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.092390:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.094248:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.099024:ERROR:network_service_instance_impl.cc(594)] Network service crashed, restarting service.
+[11468:11468:0820/220309.118552:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.124792:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.130947:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.134119:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.135428:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.139230:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.143175:ERROR:zygote_communication_linux.cc(291)] Failed to send GetTerminationStatus message to zygote
+[11468:11468:0820/220309.186953:ERROR:gpu_process_host.cc(946)] GPU process launch failed: error_code=1002
+[11468:11468:0820/220309.198961:ERROR:gpu_process_host.cc(946)] GPU process launch failed: error_code=1002
+[11468:11468:0820/220309.199976:ERROR:gpu_process_host.cc(946)] GPU process launch failed: error_code=1002
+[11468:11468:0820/220309.200846:ERROR:gpu_process_host.cc(946)] GPU process launch failed: error_code=1002
+[11468:11468:0820/220309.201415:ERROR:gpu_process_host.cc(946)] GPU process launch failed: error_code=1002
+[11468:11468:0820/220309.202038:ERROR:gpu_process_host.cc(946)] GPU process launch failed: error_code=1002
+[11468:11468:0820/220309.202712:ERROR:gpu_process_host.cc(946)] GPU process launch failed: error_code=1002
+[11468:11468:0820/220309.203269:ERROR:gpu_process_host.cc(946)] GPU process launch failed: error_code=1002
+[11468:11468:0820/220309.203857:ERROR:gpu_process_host.cc(946)] GPU process launch failed: error_code=1002
+[11468:11468:0820/220309.203864:FATAL:gpu_data_manager_impl_private.cc(431)] GPU process isn't usable. Goodbye.
+[0820/220309.217346:ERROR:elf_dynamic_array_reader.h(64)] tag not found
