@@ -10,7 +10,7 @@ Should take a couple of hours top.
 - juan in sudoers with no pass: `juan  ALL=(ALL) NOPASSWD: ALL`
 - Install some stuff:
 
-```
+```bash
 sudo apt install zsh git vlc i3 tig xclip curl transmission-remote-gtk build-essential cmake tree pavucontrol htop polybar flameshot fzf bat w3-img exa duf jq
 
 sudo snap install authy slack
@@ -25,13 +25,13 @@ sudo snap install authy slack
 - Nautilus list view by deafult
 - Anaconda install Python 3 and pip packages:
 
-```
+```bash
 pip install lxml html5lib beautifulsoup4 tqdm i3pystatus psutil netifaces colour ranger-fm tldr
 ```
 
 - Download + install Rust (via rustup, see their website) and cargo install:
 
-```
+```bash
 cargo install dua-cli dust
 ```
 
@@ -48,11 +48,15 @@ cargo install dua-cli dust
 - Change the default locales to `en_US.UTF-8` in `/etc/default/locale`
 - Install docker
 
+```bash
+ln -s ~/repos/dotfiles/scripts/notion ~/.local/bin/
+```
+
 # Old stuff
 
 - [DEPRECATED-Using Polybar now] Copy `Dropbox/scripts/i3pystatus_modules/*` to `anaconda/lib/python/site-packages/i3pyustatus`
 
-```
+```bash
 # Was used for i3pystatus -- Not needed anymore?
 # sudo apt install libdbus-1-dev libdbus-glib-1-dev libiw-dev
 ```
@@ -77,7 +81,7 @@ cargo install dua-cli dust
 
 - Get your scripts from github:
 
-```
+```bash
 cd ~/repos
 git clone git@github.com:jmberros/last-episode.git
 ```
@@ -87,7 +91,7 @@ git clone git@github.com:jmberros/last-episode.git
 - f.lux para atonar el monitor al momento del día:
   https://justgetflux.com/ y correr
 
-```
+```bash
 sudo add-apt-repository ppa:kilian/f.lux
 sudo apt update
 sudo apt install fluxgui

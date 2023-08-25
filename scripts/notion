@@ -1,0 +1,10 @@
+#!/bin/bash
+
+notion() {
+  i3-msg workspace 7
+  sleep 1
+  URL1="https://www.notion.so/jmberros/Coaching-Silver-dev"
+  nohup google-chrome --new-window $URL1 &
+  sleep 1
+  exit
+}

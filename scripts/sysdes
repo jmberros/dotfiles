@@ -1,0 +1,18 @@
+#!/bin/bash
+
+sysdes() {
+  i3-msg workspace 3
+  sleep 1
+  URL1="https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers"
+  URL2="https://www.notion.so/jmberros/Coaching-Silver-dev-44fc06df16d8473b86ec503768f93ac2"
+  URL3="https://www.notion.so/System-Design-e8174efce9ae442db0363f1d0695d4dd"
+  nohup google-chrome --new-window $URL1 &
+  sleep 1
+  nohup google-chrome --new-window $URL2 &
+  sleep 1
+  nohup google-chrome $URL3 &
+  sleep 1
+  i3-msg '[workspace="7"]' move workspace to output HDMI-1-1
+  sleep 1
+  exit
+}

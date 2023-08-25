@@ -49,74 +49,15 @@ backup () {
 #
 #################
 
-home() {
-  i3-msg workspace 1
-  sleep 1
-  URL1="https://mail.google.com"
-  URL2="https://calendar.google.com"
-  # URL2="https://web.whatsapp.com"
-  nohup google-chrome --new-window $URL1 &
-  sleep 1
-  nohup google-chrome $URL2 &
-  sleep 1
-  i3-msg '[workspace="1"]' move workspace to output eDP-1
-  sleep 1
-  exit
-}
-leetcode() {
-  i3-msg workspace 2
-  sleep 1
-  URL="https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/?vacRef=homebanner"
-  nohup google-chrome --new-window $URL &
-  sleep 1
-  nohup code-insiders ~/repos/leetcode &
-  sleep 1
-  i3-msg '[workspace="2"]' move workspace to output HDMI-1-1
-  sleep 1
-  exit
-}
-sysdes() {
-  i3-msg workspace 3
-  sleep 1
-  URL1="https://www.educative.io/courses/grokking-modern-system-design-interview-for-engineers-managers"
-  URL2="https://www.notion.so/jmberros/Coaching-Silver-dev-44fc06df16d8473b86ec503768f93ac2"
-  URL3="https://www.notion.so/System-Design-e8174efce9ae442db0363f1d0695d4dd"
-  nohup google-chrome --new-window $URL1 &
-  sleep 1
-  nohup google-chrome --new-window $URL2 &
-  sleep 1
-  nohup google-chrome $URL3 &
-  sleep 1
-  i3-msg '[workspace="7"]' move workspace to output HDMI-1-1
-  sleep 1
-  exit
-}
-noisly() {
-  i3-msg workspace 8
-  sleep 1
-  URL1="https://music.youtube.com/"
-  URL2="https://www.noisli.com/playlists"
-  nohup google-chrome --new-window $URL1 &
-  sleep 1
-  nohup google-chrome $URL2 &
-  sleep 1
-  gnome-terminal -- /usr/bin/bashtop &
-  # nohup gnome-system-monitor &
-  sleep 1
-  i3-msg '[workspace="8"]' move workspace to output eDP-1
-  exit
-}
-notion() {
-  i3-msg workspace 7
-  sleep 1
-  URL1="https://www.notion.so/jmberros/Coaching-Silver-dev"
-  nohup google-chrome --new-window $URL1 &
-  sleep 1
-  exit
-}
+source ~/repos/dotfiles/scripts/leetcode
+source ~/repos/dotfiles/scripts/notion
+source ~/repos/dotfiles/scripts/noisly
+source ~/repos/dotfiles/scripts/sysdes
+
 disown_everything() {
   jobs | awk '{ print $1 }' | grep -o -e "[0-9]" | while read JOBN; do disown %$JOBN; done
 }
+
 prepare_to_work() {
   home
   noisly
@@ -126,7 +67,6 @@ prepare_to_work() {
   disown_everything
   exit
 }
-
 
 #################
 #

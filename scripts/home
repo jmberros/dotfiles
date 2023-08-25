@@ -1,0 +1,16 @@
+#!/bin/bash
+
+home() {
+  i3-msg workspace 1
+  sleep 1
+  URL1="https://mail.google.com"
+  URL2="https://calendar.google.com"
+  # URL2="https://web.whatsapp.com"
+  nohup google-chrome --new-window $URL1 &
+  sleep 1
+  nohup google-chrome $URL2 &
+  sleep 1
+  i3-msg '[workspace="1"]' move workspace to output eDP-1
+  sleep 1
+  exit
+}

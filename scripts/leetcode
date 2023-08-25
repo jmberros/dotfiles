@@ -1,0 +1,14 @@
+#!/bin/bash
+
+leetcode() {
+  i3-msg workspace 2
+  sleep 1
+  URL="https://leetcode.com/explore/interview/card/leetcodes-interview-crash-course-data-structures-and-algorithms/?vacRef=homebanner"
+  nohup google-chrome --new-window $URL &
+  sleep 1
+  nohup code-insiders ~/repos/leetcode &
+  sleep 1
+  i3-msg '[workspace="2"]' move workspace to output HDMI-1-1
+  sleep 1
+  exit
+}
