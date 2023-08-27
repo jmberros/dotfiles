@@ -6,7 +6,6 @@
 
 ZSH=$HOME/.oh-my-zsh
 COMPLETION_WAITING_DOTS="true"
-
 plugins=(
         git
         fzf
@@ -26,34 +25,89 @@ plugins=(
         #zsh-fzf-history-search
         #autoswitch_virtualenv
 )
-
-export UID="$(id -u)"
-export GID="$(id -g)"
-
-#################
 #
-# Spaceship
-# NOTE: ENV variables for SPACESHIP are set in ~/.zshenv
+# Spaceship Theme
+# The vars need to be loaded before sourcing oh-my-zsh
 #
-#################
-
 DOTFILES=$HOME/repos/dotfiles
+source $DOTFILES/zsh_spaceship_vars
 source $ZSH/oh-my-zsh.sh
+
+export BROWSER=/usr/bin/google-chrome
+export EDITOR=/usr/bin/vim
+
+eval "$(dircolors $DOTFILES/dircolors)";
+
+#################
+#
+# Alias
+#
 source $DOTFILES/zsh_aliases
+#################
+#
+# Custom Functions
+#
 source $DOTFILES/zsh_extra_functions
-source $HOME/.env  # Environment variables, secrets, etc.
+# source $DOTFILES/grata_helpers.sh
+#################
+#
+# Secrets
+#
 source $HOME/.secrets/openai_api_key
 source $HOME/.secrets/hermeneuta_postgres
-# source $DOTFILES/grata_helpers.sh
+source $HOME/.env
+#################
+#
+# Base16 Shell
+#
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        source "$BASE16_SHELL/profile_helper.sh"
 
+# Restore theme when logging out:
+ssh () { command ssh "$@"; $BASE16_SHELL/profile_helper.sh; }
+
+#################
+#
+# PATH
+#
+export PATH="$HOME/anaconda3/bin":$PATH  # Anaconda
+export PATH="/home/juan/software/pycharm-2022.1.4/bin":$PATH # PyCharm
+export PATH="$HOME/.local/bin":$PATH
+source $HOME/.cargo/env  # Loads .cargo/bin binaries
+
+## export PATH="$HOME/.rbenv/bin:$PATH"  # Rb Env
+## export AWS_PROFILE=juan
+
+#################
+#
+# Conda
+#
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/juan/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/juan/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/juan/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/juan/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 #################
 #
 # FZF configs:
 #
-#################
+# From fzf fuzzy quick open extension in Vscode:
+# "For best performance you should set up fzf to use the amazingly fast fd"
+export FZF_DEFAULT_COMMAND='fd'
 
 # See: https://github.com/junegunn/fzf#key-bindings-for-command-line
-#
 # Preview file content using bat (https://github.com/sharkdp/bat)
 export FZF_COMPLETION_OPTS='--reverse'
 export FZF_CTRL_T_OPTS="
@@ -77,61 +131,9 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}'"
 #--color header:italic
 #--header 'Press CTRL-Y to copy command into clipboard'"
 
-#################
-#
-# Etc.
-#
-#################
-
-# Base16 Shell
-
-# Restore theme when logging out:
-ssh () { command ssh "$@"; $BASE16_SHELL/profile_helper.sh; }
-
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        source "$BASE16_SHELL/profile_helper.sh"
-
-#################
-#
-# PATH and variables
-# see ~/.zshenv
-#
-#################
-
-export BROWSER=/usr/bin/google-chrome
-export EDITOR=/usr/bin/vim
-
-export PATH="$HOME/anaconda3/bin":$PATH  # Anaconda
-# export PATH="$HOME/.rbenv/bin:$PATH"  # Rb Env
-export PATH="/home/juan/software/pycharm-2022.1.4/bin":$PATH # PyCharm
-export PATH="$HOME/.local/bin":$PATH
-export PATH="$HOME/.cargo/bin":$PATH
-
-# eval "$(rbenv init -)"
-# https://github.com/rbenv/ruby-build/discussions/1940#discussioncomment-2663209
-# Esto es porque Ubuntu 22.04 venía con un Open SSL incompatible con ruby 2.*
-# Así que tuve que hacer lo que dice ese comment
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/opt/openssl-1.1.1o/"
-
-# From fzf fuzzy quick open extension in Vscode:
-# "For best performance you should set up fzf to use the amazingly fast fd"
-export FZF_DEFAULT_COMMAND='fd'
-
-cyan=$(tput setaf 6)
-export STDERRED_ESC_CODE=`echo -e "$cyan"`
-# export LD_PRELOAD="/home/juan/software/stderred/build/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
-
 export FZF_PREVIEW_ADVANCED=true
 export FZF_PREVIEW_WINDOW='right:65%:nohidden'
 export FZF_DEFAULT_OPTS='--reverse'
-
-# https://github.com/wofr06/lesspipe
-export LESSOPEN="| /usr/bin/lesspipe %s";
-export LESSCLOSE="/usr/bin/lesspipe %s %s";
-
 
 # FZF and RG in Vim:
 # https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
@@ -140,35 +142,34 @@ if type rg &> /dev/null; then
     export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 
-# Tensorflow installation
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
+## . `which env_parallel.zsh`
+##
+## eval "$(rbenv init -)"
+## https://github.com/rbenv/ruby-build/discussions/1940#discussioncomment-2663209
+## Esto es porque Ubuntu 22.04 venía con un Open SSL incompatible con ruby 2.*
+## Así que tuve que hacer lo que dice ese comment
+## export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/opt/openssl-1.1.1o/"
 
-# JAX / Trax will sometimes complain if this is not set:
-# Point 5 in: https://github.com/google/jax#current-gotchas
-JAX_ENABLE_X64=True
-
-#################
+cyan=$(tput setaf 6)
+export STDERRED_ESC_CODE=`echo -e "$cyan"`
+# export LD_PRELOAD="/home/juan/software/stderred/build/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
 #
-# Initializations
-#
-#################
-
-eval "$(dircolors ~/.dircolors)";
+################
+# 
+# Lesspipe
+# 
+# https://github.com/wofr06/lesspipe
 eval "$(lesspipe)"
+export LESSOPEN="| /usr/bin/lesspipe %s";
+export LESSCLOSE="/usr/bin/lesspipe %s %s";
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/juan/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/juan/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/juan/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/juan/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+##################
+##
+## Tensorflow installation
+## export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
 
-source /home/juan/.config/broot/launcher/bash/br
+## JAX / Trax will sometimes complain if this is not set:
+## Point 5 in: https://github.com/google/jax#current-gotchas
+## JAX_ENABLE_X64=True
+
+#source /home/juan/.config/broot/launcher/bash/br

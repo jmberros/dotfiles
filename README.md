@@ -57,6 +57,9 @@ ln -s ~/repos/dotfiles/scripts/notion ~/.local/bin/
 
 ```bash
 sudo apt install postgresql postgresql-contrib
+
+# Removes (base) from the prompt:
+conda config --set auto_activate_base false
 ```
 
 # Old stuff
