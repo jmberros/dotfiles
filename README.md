@@ -11,7 +11,8 @@ Should take a couple of hours top.
 - Install some stuff:
 
 ```bash
-sudo apt install zsh git vlc i3 tig xclip curl transmission-remote-gtk build-essential cmake tree pavucontrol htop polybar flameshot fzf bat w3-img exa duf jq
+sudo apt install zsh git vlc i3 tig xclip curl transmission-remote-gtk build-essential
+cmake tree pavucontrol htop polybar flameshot fzf bat w3-img exa duf jq net-tools
 
 sudo snap install authy slack
 ```
@@ -50,6 +51,12 @@ cargo install dua-cli dust
 
 ```bash
 ln -s ~/repos/dotfiles/scripts/notion ~/.local/bin/
+```
+
+# Dev stuff
+
+```bash
+sudo apt install postgresql postgresql-contrib
 ```
 
 # Old stuff

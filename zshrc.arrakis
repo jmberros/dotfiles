@@ -21,9 +21,14 @@ plugins=(
         last-working-dir
         virtualenv
         wd
+        docker
+        base16-shell
         #zsh-fzf-history-search
         #autoswitch_virtualenv
 )
+
+export UID="$(id -u)"
+export GID="$(id -g)"
 
 #################
 #
@@ -37,6 +42,8 @@ source $ZSH/oh-my-zsh.sh
 source $DOTFILES/zsh_aliases
 source $DOTFILES/zsh_extra_functions
 source $HOME/.env  # Environment variables, secrets, etc.
+source $HOME/.secrets/openai_api_key
+source $HOME/.secrets/hermeneuta_postgres
 # source $DOTFILES/grata_helpers.sh
 
 #################
@@ -77,14 +84,15 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}'"
 #################
 
 # Base16 Shell
-# ssh () { command ssh "$@"; eval "$("$BASE16_SHELL/profile_helper.sh")"; }
+
+# Restore theme when logging out:
+ssh () { command ssh "$@"; $BASE16_SHELL/profile_helper.sh; }
+
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         source "$BASE16_SHELL/profile_helper.sh"
-
-base16_default-dark
 
 #################
 #

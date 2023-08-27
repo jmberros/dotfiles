@@ -1,6 +1,7 @@
 alias bat="batcat --theme=base16-256"
 alias cat="batcat --theme=base16-256 --paging=never"
 alias exal="exa -l --group-directories-first"
+alias exala="exa -la --group-directories-first"
 
 # Linux version of OSX pbcopy and pbpaste.
 alias pbcopy=’xsel — clipboard — input’
@@ -10,15 +11,10 @@ alias fd=fdfind
 alias history=history -E  # Shows date + time of commands
 
 # SSH to servers
-# alias beleriand='ssh -XA juan@beleriand.local'
-# alias motorhome='beleriand'
-# alias bele='beleriand'
-# alias cluster='ssh -XA -p 2222 juan@biocodices.hopto.org'
-# alias cluster1='ssh -XA -p 2222 juan@biocodices.hopto.org'
-# alias cluster2='ssh -XA -p 2223 juan@biocodices.hopto.org'
-# alias numenor='ssh -p 2224 -XA juan@biocodices.hopto.org'
+alias beleriand='ssh -XA juan@beleriand.local'
+alias bele='beleriand'
 
-alias dc="docker-compose"
+alias dc="docker compose"
 alias xa='xrandr --auto'
 alias lap='~/Dropbox/scripts/keyboard_for_laptop.sh'
 alias desk='~/Dropbox/scripts/keyboard_for_desktop.sh'
