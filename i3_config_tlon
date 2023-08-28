@@ -66,7 +66,7 @@ for_window [window_role="task_dialog"] floating enable
 for_window [class="Dunst"] floating enable
 
 # https://www.reddit.com/r/i3wm/comments/m27dwc/i3_settings_for_zoom/
-for_window [class="zoom"] floating enable
+# for_window [class="zoom"] floating enable
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

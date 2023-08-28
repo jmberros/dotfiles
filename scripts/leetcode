@@ -10,5 +10,5 @@ leetcode() {
   sleep 1
   i3-msg '[workspace="2"]' move workspace to output HDMI-1-1
   sleep 1
-  exit
+  # exit
 }

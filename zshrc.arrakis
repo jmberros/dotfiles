@@ -4,26 +4,42 @@
 #
 #################
 
+#################
+#
+# PATH
+#
+# Python binary needs to be in the PATH before plugins are loaded
+export PATH="$HOME/anaconda3/bin":$PATH  # Anaconda
+export PATH="/home/juan/software/pycharm-2022.1.4/bin":$PATH # PyCharm
+export PATH="$HOME/.local/bin":$PATH
+source $HOME/.cargo/env  # Loads .cargo/bin binaries
+
+## export PATH="$HOME/.rbenv/bin:$PATH"  # Rb Env
+## export AWS_PROFILE=juan
+
+#################
+
 ZSH=$HOME/.oh-my-zsh
 COMPLETION_WAITING_DOTS="true"
 plugins=(
         git
         fzf
         ssh-agent
-        capistrano
-        bundler
-        gem
+        # capistrano
+        # bundler
+        # gem
         git-extras
-        web-search
+        # web-search
         python
         npm
         last-working-dir
-        virtualenv
         wd
-        docker
         base16-shell
+        docker
+        docker-compose
+        dotenv  # Autoloads .env variables when cd'ing to a dir
+        autoswitch_virtualenv
         #zsh-fzf-history-search
-        #autoswitch_virtualenv
 )
 #
 # Spaceship Theme
@@ -54,8 +70,7 @@ source $DOTFILES/zsh_extra_functions
 # Secrets
 #
 source $HOME/.secrets/openai_api_key
-source $HOME/.secrets/hermeneuta_postgres
-source $HOME/.env
+# source $HOME/.env
 #################
 #
 # Base16 Shell
@@ -68,18 +83,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 
 # Restore theme when logging out:
 ssh () { command ssh "$@"; $BASE16_SHELL/profile_helper.sh; }
-
-#################
-#
-# PATH
-#
-export PATH="$HOME/anaconda3/bin":$PATH  # Anaconda
-export PATH="/home/juan/software/pycharm-2022.1.4/bin":$PATH # PyCharm
-export PATH="$HOME/.local/bin":$PATH
-source $HOME/.cargo/env  # Loads .cargo/bin binaries
-
-## export PATH="$HOME/.rbenv/bin:$PATH"  # Rb Env
-## export AWS_PROFILE=juan
 
 #################
 #

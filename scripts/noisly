@@ -8,10 +8,10 @@ noisly() {
   nohup google-chrome --new-window $URL1 &
   sleep 1
   nohup google-chrome $URL2 &
-  sleep 1
-  gnome-terminal -- /usr/bin/bashtop &
+  # sleep 1
+  # gnome-terminal -- /usr/bin/bashtop &
   # nohup gnome-system-monitor &
   sleep 1
   i3-msg '[workspace="8"]' move workspace to output eDP-1
-  exit
+  # exit
 }

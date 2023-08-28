@@ -50,6 +50,7 @@ backup () {
 #################
 
 source ~/repos/dotfiles/scripts/leetcode
+source ~/repos/dotfiles/scripts/home
 source ~/repos/dotfiles/scripts/notion
 source ~/repos/dotfiles/scripts/noisly
 source ~/repos/dotfiles/scripts/sysdes
@@ -62,7 +63,7 @@ prepare_to_work() {
   home
   noisly
   notion
-  sysdes
+  # sysdes
   leetcode
   disown_everything
   exit

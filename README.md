@@ -7,6 +7,7 @@ Should take a couple of hours top.
 - Remove Ubuntu default home directories
 - Create ssh key and copy it to your profile in gituhb
 - Oh my zsh! + Spaceship prompt + base16 + base16-shell-preview
+- evalcache for oh my zsh speedup: https://github.com/mroth/evalcache
 - juan in sudoers with no pass: `juan  ALL=(ALL) NOPASSWD: ALL`
 - Install some stuff:
 
