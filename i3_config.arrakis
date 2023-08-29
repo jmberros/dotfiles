@@ -1,0 +1,256 @@
+
+# --------- Startup applications and commands
+
+exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id gnome-screensaver
+exec --no-startup-id xset dpms 600
+exec --no-startup-id /home/juan/.dropbox-dist/dropboxd
+exec --no-startup-id dropbox start
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id compton
+exec --no-startup-id setxkbmap -option caps:swapescape
+exec --no-startup-id ssh-add
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+
+# For the authentication prompt:
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+
+# Mod4 = Win, Mod1 = Alt
+set $mod Mod4
+
+# Simulate Alt-tab behavior
+# bindsym Mod1+Tab focus right
+# bindsym Mod1+Shift+Tab focus left
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec /home/juan/Dropbox/scripts/brillo_cambia.py 0.1
+bindsym XF86MonBrightnessDown exec /home/juan/Dropbox/scripts/brillo_cambia.py 0.1 --down
+
+# Lock the screen
+bindsym $mod+Control+l exec "gnome-screensaver-command -l"
+
+# Swap outputs
+bindsym $mod+Shift+w exec "/home/juan/anaconda3/bin/python /home/juan/Dropbox/scripts/swap_workspaces_between_outputs.py"
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% # decrease sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% # increase sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+
+# bindsym F6 exec /home/juan/anaconda3/bin/spotifycli --prev
+# bindsym F7 exec /home/juan/anaconda3/bin/spotifycli --playpause
+# bindsym F8 exec /home/juan/anaconda3/bin/spotifycli --next
+
+# Old volume controls
+# bindsym F10 exec pactl set-sink-volume 0 -5% #decrease sound volume
+# bindsym F11 exec pactl set-sink-volume 0 +5% #increase sound volume
+# bindsym $mod+F12 exec pactl set-sink-mute 0 toggle # mute sound
+
+# To bring back the display after it went sleeping, a hack around smth that shouldn't happen.
+bindsym $mod+F1 exec DISPLAY=:0 xset dpms force on
+
+# Taking a screenshot
+# bindsym --release Print exec --no-startup-id gnome-screenshot
+# bindsym --release Shift+Print exec --no-startup-id gnome-screenshot -a
+bindsym --release Print exec --no-startup-id flameshot gui
+bindsym --release Shift+Print exec --no-startup-id flameshot gui
+
+# Window Titles font
+font pango: Ubuntu Mono derivative for Powerline 11
+
+# Force "File Operations" window to float
+for_window [class="Nautilus" instance="file_progress"] floating enable
+for_window [class="gnome-calculator"] floating enable
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+minus split v exec i3-sensible-terminal
+bindsym $mod+Shift+backslash split h exec i3-sensible-terminal
+bindsym $mod+backslash split h exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# rename current workspace with user input
+bindsym $mod+F2 exec i3-input -F 'rename workspace to "%s"'
+
+# start dmenu (a program launcher)
+# Old colors, bright yellow background, very eye-catching:
+bindsym $mod+d exec dmenu_run -i -nb '#ccff00' -nf '#0b216d' -l 10 -fn 'Ubuntu Mono-14'
+# New colors, dark background, yellowish letters
+# bindsym $mod+d exec dmenu_run -i -nb '#282A2E' -nf '#F0C674' -l 10 -fn 'GohuFont 14 Nerd Font-16'
+
+# -nb color background color; -nf foreground color;
+# -b bottom; -i case insensitive; -l number of lines; -fn font;
+
+# bindsym $mod+x exec /usr/bin/dmenu_extended_run
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# move whole workspace
+bindsym $mod+Shift+Left move workspace to output left
+bindsym $mod+Shift+Down move workspace to output down
+bindsym $mod+Shift+Up move workspace to output up
+bindsym $mod+Shift+Right move workspace to output right
+
+# split in horizontal orientation
+bindsym $mod+v split h
+
+# split in vertical orientation
+bindsym $mod+z split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+# bindsym $mod+e layout default
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+z focus child
+
+
+# switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# switch between the current workspace and the previously focused one
+bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Shift+Tab move container to workspace back_and_forth
+
+# next and prev workspaces
+bindsym $mod+n workspace next
+bindsym $mod+p workspace prev
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+b border toggle
+new_window pixel 4
+
+# resize window
+mode "resize" {
+        bindsym h resize shrink width 2 px or 2 ppt
+        bindsym k resize grow height 2 px or 2 ppt
+        bindsym j resize shrink height 2 px or 2 ppt
+        bindsym l resize grow width 2 px or 2 ppt
+
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Shutdown, logout, restart
+set $mode_system System (e) logout, (r) reboot, (s) shutdown, (l) lock
+mode "$mode_system" {
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    bindsym l exec --no-startup-id gnome-screensaver-command -l, mode "default"
+    # bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    # bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+Shift+x mode "$mode_system"
+
+include /home/juan/.config/i3/i3_config.status-bar.arrakis
+
+
+# Colors
+# Default values
+
+#class                  border  backgr. text    indicator
+# client.focused          #4285f4 #4285f4 #ffffff #2e9ef4
+# client.focused_inactive #333333 #5f676a #ffffff #484e50
+# client.unfocused        #333333 #222222 #888888 #292d2e
+# client.urgent           #2f343a #900000 #ffffff #900000
+# client.placeholder      #000000 #0c0c0c #ffffff #000000
+
+# Solarized colors
+set $yellow    #b58900
+set $orange    #cb4b16
+set $red       #dc322f
+set $magenta   #d33682
+set $violet    #6c71c4
+set $blue      #268bd2
+set $cyan      #2aa198
+set $green     #859900
+set $white     #ffffff
+
+client.focused          $blue $blue $white $white
+client.urgent          $red $red $white $white
+
+# Not working:
+exec_always --no-startup /usr/bin/feh --bg-fill '/usr/share/backgrounds/warty-final-ubuntu.png'
