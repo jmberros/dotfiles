@@ -46,7 +46,7 @@ status.register("load",
                 format="💻 {avg1}/{avg5}")
 
 status.register("network",
-                interface="enp0s25",
+                interface="wlp3s0",
                 format_up="{bytes_sent}↑ {bytes_recv}↓",
                 format_down="{interface} DOWN",
                 dynamic_color = True,
