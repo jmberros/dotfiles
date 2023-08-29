@@ -34,11 +34,8 @@ plugins=(
         npm
         last-working-dir
         wd
-        base16-shell
         docker
-        docker-compose
-        dotenv  # Autoloads .env variables when cd'ing to a dir
-        autoswitch_virtualenv
+        # base16-shell
         #zsh-fzf-history-search
 )
 #
@@ -70,7 +67,6 @@ source $DOTFILES/zsh_extra_functions
 # Secrets
 #
 source $HOME/.secrets/openai_api_key
-# source $HOME/.env
 #################
 #
 # Base16 Shell

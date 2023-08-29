@@ -7,20 +7,20 @@
 # i3bar
 
 bar {
-    status_command    ~/anaconda3/bin/python ~/Dropbox/scripts/i3pystatus.main.arrakis.py
+    status_command    ~/anaconda3/bin/python ~/repos/dotfiles/i3pystatus_config/i3pystatus.main.arrakis.py 
     position          top
     output eDP-1
     workspace_buttons yes
 }
 bar {
-    status_command    ~/anaconda3/bin/python ~/Dropbox/scripts/i3pystatus.aux.arrakis.py
+    status_command    ~/anaconda3/bin/python ~/repos/dotfiles/i3pystatus_config/i3pystatus.aux.arrakis.py 
     position          top
     output HDMI-1
     workspace_buttons yes
 }
- bar {
-     status_command    ~/anaconda3/bin/python ~/Dropbox/scripts/i3pystatus.aux.arrakis.py
-     position          top
-     output DP-1
-     workspace_buttons yes
- }
+bar {
+    status_command    ~/anaconda3/bin/python ~/repos/dotfiles/i3pystatus_config/i3pystatus.aux.arrakis.py 
+    position          top
+    output DP-1
+    workspace_buttons yes
+}
