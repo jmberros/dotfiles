@@ -14,6 +14,7 @@ Should take a couple of hours top.
 ```bash
 sudo apt install zsh git vlc i3 tig xclip curl transmission-remote-gtk build-essential
 cmake tree pavucontrol htop polybar flameshot fzf bat w3-img exa duf jq net-tools
+brightnessctl
 
 sudo snap install authy slack
 ```
@@ -28,7 +29,8 @@ sudo snap install authy slack
 - Anaconda install Python 3 and pip packages:
 
 ```bash
-pip install lxml html5lib beautifulsoup4 tqdm i3pystatus psutil netifaces colour ranger-fm tldr
+pip install lxml html5lib beautifulsoup4 tqdm i3pystatus psutil netifaces colour
+ranger-fm tldr ruff
 ```
 
 - Download + install Rust (via rustup, see their website) and cargo install:

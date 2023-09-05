@@ -16,6 +16,12 @@ exec --no-startup-id picom -CGb
 # For the authentication prompt:
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
+set $wpp /home/juan/Dropbox/Fotos/wpp/kupka_babylon.jpg
+exec_always --no-startup-id sleep 2 && /usr/bin/feh --bg-fill $wpp
+
+gaps inner 0px
+gaps outer 0px
+
 # Mod4 = Win, Mod1 = Alt
 set $mod Mod4
 
@@ -33,11 +39,15 @@ bindsym $mod+Control+l exec "gnome-screensaver-command -l"
 # Swap outputs
 bindsym $mod+Shift+w exec "/home/juan/anaconda3/bin/python /home/juan/Dropbox/scripts/swap_workspaces_between_outputs.py"
 
-# Pulse Audio controls
-### NOT WORKING ###
-#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +1% # decrease sound volume
-#bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -1% # increase sound volume
-#bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+# Works for EDIFIER speakers in bluetooth mode:
+set $sink bluez_sink.FC_E8_06_72_6A_FC.a2dp_sink
+bindsym XF86AudioMute exec pactl set-sink-mute $sink toggle
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume $sink -1%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $sink +1%
+
+# Used to work for Tlon, before the bluetooth speakers:
+# bindsym XF86AudioLowerVolume exec amixer sset 'Master' 1%-
+# bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 1%+
 
 # To bring back the display after it went sleeping, a hack around smth that shouldn't happen.
 bindsym $mod+F1 exec DISPLAY=:0 xset dpms force on
@@ -195,7 +205,6 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym $mod+b border toggle
-new_window pixel 4
 
 # resize window
 mode "resize" {
@@ -233,32 +242,25 @@ bindsym $mod+Shift+x mode "$mode_system"
 
 include ~/.config/i3/i3_config.status-bar
 
-# Colors
-# Default values
+# Border witdh:
+new_window pixel 3
 
-#class                  border  backgr. text    indicator
+set $black #282A2E
+
+# [Almost] Default Colors
+# #class                  border  backgr. text    indicator
+client.focused          #186ac9 #186ac9 #ffffff #2e9ef4
+client.focused_inactive $black $black #ffffff $black
+client.unfocused        $black $black #888888 $black
+client.urgent           #2f343a #f03131 #ffffff #e73030
+client.placeholder      #000000 #0c0c0c #ffffff #000000
+
+# # [Almost] Default Colors
+# # #class                  border  backgr. text    indicator
 # client.focused          #4285f4 #4285f4 #ffffff #2e9ef4
 # client.focused_inactive #333333 #5f676a #ffffff #484e50
 # client.unfocused        #333333 #222222 #888888 #292d2e
-# client.urgent           #2f343a #900000 #ffffff #900000
+# client.urgent           #2f343a #f03131 #ffffff #e73030
 # client.placeholder      #000000 #0c0c0c #ffffff #000000
 
-# Solarized colors
-set $yellow    #b58900
-set $orange    #cb4b16
-set $red       #dc322f
-set $magenta   #d33682
-set $violet    #6c71c4
-set $blue      #268bd2
-set $cyan      #2aa198
-set $green     #859900
-set $white     #ffffff
-
-client.focused          $blue $blue $white $white
-client.urgent          $red $red $white $white
-
-exec --no-startup-id /home/juan/Dropbox/scripts/xrandr_tlon_eDP2.sh
-exec_always --no-startup-id sleep 2 && /usr/bin/feh --bg-fill /home/juan/Dropbox/Fotos/wpp/candido_lopez_-_pasaje_del_arroyo_san_joaquin_el_16_de_agosto_de_1865.jpg
-
-# Not working:
-exec_always --no-startup-id /usr/bin/polybar -c /home/juan/repos/dotfiles/polybar/launch_polybar.sh
+# exec --no-startup-id /home/juan/Dropbox/scripts/xrandr_tlon_eDP2.sh

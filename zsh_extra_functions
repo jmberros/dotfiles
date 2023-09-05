@@ -31,7 +31,7 @@ sd () {
   cd ~ && cs $(find * -type d | fzf --reverse)
 }
 vimfzf () {
-  # Search the contents of all files under this spot, and open the 
+  # Search the contents of all files under this spot, and open the
   # file where the chosen match is with vim:
   vim $(rg . | fzf | cut -d":" -f1)
 }
@@ -88,7 +88,7 @@ xu() {
     xrandr --auto --output eDP-1 --mode 3840x2160 --scale 0.5x0.5
     #xrandr --auto --output eDP-2 --mode 3840x2160 --scale 1x1
     # xrandr --auto --output eDP-2 --mode 3840x2160 --scale 0.5x0.5
-   
+
     # autorandr for some reason it makes dmenu_run very small (!!!!)
     #autorandr vertical
     #xrandr --output HDMI-1-1 --above eDP-2
@@ -112,8 +112,8 @@ xl() {
     # back-and-forth between resolutions of the main monitor is the only
     # way I found to make it work. x___x
     # xrandr --auto
-    xrandr --auto --output eDP-1 --mode 1920x1080 # --scale 1x1 # seems more crispy than scaling a larger res
-    xrandr --output HDMI-1-3 --left-of eDP-1  # Defaults to 2560x1440
+    xrandr --auto --output eDP-2 --mode 1920x1080 # --scale 1x1 # seems more crispy than scaling a larger res
+    xrandr --output HDMI-1-1 --left-of eDP-2  # Defaults to 2560x1440
     # xrandr --auto --output HDMI-1-1 --left-of eDP-1 --mode 3840x2160;  # Everything too small
     # xrandr --auto --output HDMI-1-1 --left-of eDP-1 --mode 3840x2160 --scale 0.5x0.5;  # Looks ugly?
     #xrandr --auto --output eDP-1 --scale 0.5x0.5  # Scales 200% the laptop display
@@ -121,7 +121,7 @@ xl() {
     #xrandr --auto --output eDP-1 --scale 0.5x0.5  # Scales 200% the laptop display
   elif [ "$HOSTNAME" = "arrakis" ]; then
     xrandr --auto --output HDMI-1 --left-of eDP-1
-    xrandr --auto --output DP-1 --left-of eDP-1 
+    xrandr --auto --output DP-1 --left-of eDP-1
   fi
   set_background
   ~/Dropbox/scripts/keyboard_for_desktop.sh

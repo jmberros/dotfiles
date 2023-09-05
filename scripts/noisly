@@ -5,6 +5,7 @@ noisly() {
   sleep 1
   URL1="https://music.youtube.com/"
   URL2="https://www.noisli.com/playlists"
+  URL3="https://listen.tidal.com/"
   nohup google-chrome --new-window $URL1 &
   sleep 1
   nohup google-chrome $URL2 &

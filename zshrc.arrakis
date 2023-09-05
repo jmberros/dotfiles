@@ -31,11 +31,16 @@ plugins=(
         git-extras
         # web-search
         python
-        npm
+        # npm
         last-working-dir
         wd
-        docker
-        # base16-shell
+        base16-shell
+        # docker
+        # docker-compose
+        # docker-completion
+        dotenv  # Autoloads .env variables when cd'ing to a dir
+        autoswitch_virtualenv
+        poetry
         #zsh-fzf-history-search
 )
 #
