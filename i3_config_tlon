@@ -40,10 +40,15 @@ bindsym $mod+Control+l exec "gnome-screensaver-command -l"
 bindsym $mod+Shift+w exec "/home/juan/anaconda3/bin/python /home/juan/Dropbox/scripts/swap_workspaces_between_outputs.py"
 
 # Works for EDIFIER speakers in bluetooth mode:
-set $sink bluez_sink.FC_E8_06_72_6A_FC.a2dp_sink
-bindsym XF86AudioMute exec pactl set-sink-mute $sink toggle
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume $sink -1%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $sink +1%
+# set $sink bluez_sink.FC_E8_06_72_6A_FC.a2dp_sink
+# bindsym XF86AudioMute exec pactl set-sink-mute $sink toggle
+# bindsym XF86AudioLowerVolume exec pactl set-sink-volume $sink -1%
+# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $sink +1%
+
+# All outputs at the same time:
+bindsym XF86AudioMute exec /home/juan/repos/dotfiles/scripts/set_volume_mute.sh toggle
+bindsym XF86AudioLowerVolume exec /home/juan/repos/dotfiles/scripts/set_volume.sh -1%
+bindsym XF86AudioRaiseVolume exec /home/juan/repos/dotfiles/scripts/set_volume.sh +1%
 
 # Used to work for Tlon, before the bluetooth speakers:
 # bindsym XF86AudioLowerVolume exec amixer sset 'Master' 1%-
