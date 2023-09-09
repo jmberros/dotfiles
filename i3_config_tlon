@@ -113,8 +113,8 @@ bindsym ctrl+space exec dmenu_run -i -nb '#282A2E' -nf '#60ce60' -l 10 -fn 'Term
 # -nb color background color; -nf foreground color;
 # -sb selected backround color; -sf selected foreground color;
 
-bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
-bindsym $mod+c exec --no-stdartup-id rofi -show window
+bindsym $mod+d exec --no-startup-id rofi -show run
+# bindsym $mod+c exec --no-stdartup-id rofi -show window
 
 # bindsym $mod+x exec /usr/bin/dmenu_extended_run
 
