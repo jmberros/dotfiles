@@ -50,6 +50,8 @@ bindsym XF86AudioMute exec /home/juan/repos/dotfiles/scripts/set_volume_mute.sh 
 bindsym XF86AudioLowerVolume exec /home/juan/repos/dotfiles/scripts/set_volume.sh -1%
 bindsym XF86AudioRaiseVolume exec /home/juan/repos/dotfiles/scripts/set_volume.sh +1%
 
+bindsym $mod+shift+c exec qalculate-gtk
+
 # Used to work for Tlon, before the bluetooth speakers:
 # bindsym XF86AudioLowerVolume exec amixer sset 'Master' 1%-
 # bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 1%+
@@ -73,7 +75,8 @@ for_window [all] title_window_icon padding 5px
 
 # Force "File Operations" window to float
 for_window [class="Nautilus" instance="file_progress"] floating enable
-for_window [class="gnome-calculator"] floating enable
+for_window [class="Gnome-calculator"] floating enable
+for_window [class="Qalculate-gtk"] floating enable
 
 # https://stackoverflow.com/questions/74887471/floating-dunst-notification-in-i3
 for_window [window_role="pop-up"] floating enable
@@ -102,13 +105,16 @@ bindsym $mod+F2 exec i3-input -F 'rename workspace to "%s"'
 # Old colors, bright yellow background, very eye-catching:
 # bindsym $mod+d exec dmenu_run -i -nb '#ccff00' -nf '#0b216d' -l 10 -fn 'Ubuntu Mono-14'
 # New colors, dark background, yellowish letters
+bindsym ctrl+space exec dmenu_run -i -nb '#282A2E' -nf '#60ce60' -l 10 -fn 'Terminess Nerd Font-20' -sb '#60ce60' -sf '#282A2E'
 # bindsym $mod+d exec dmenu_run -i -nb '#282A2E' -nf '#60ce60' -l 10 -fn 'Terminess Nerd Font-16' -sb '#60ce60' -sf '#282A2E'
-bindsym $mod+d exec dmenu_run -i -nb '#282A2E' -nf '#60ce60' -l 10 -fn 'Terminess Nerd Font-16' -sb '#60ce60' -sf '#282A2E'
 
 # dmenu options:
 # -b bottom; -i case insensitive; -l number of lines; -fn font;
 # -nb color background color; -nf foreground color;
 # -sb selected backround color; -sf selected foreground color;
+
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
+bindsym $mod+c exec --no-stdartup-id rofi -show window
 
 # bindsym $mod+x exec /usr/bin/dmenu_extended_run
 
@@ -202,10 +208,10 @@ bindsym $mod+n workspace next
 bindsym $mod+p workspace prev
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+# bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
