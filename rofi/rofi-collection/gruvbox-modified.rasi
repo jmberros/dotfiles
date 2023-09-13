@@ -47,16 +47,21 @@ configuration {
   padding-left: 20px;
 
 
+  transparent: rgba(0, 0, 0, 0);
   background-color: @bg;
   text-color: @fg;
 }
 
 window {
+  display-name: "";
   transparency: "real";
 }
 
 mainbox {
   children: [inputbar, listview];
+  border-color: #888888;
+  border: 2px 2px 2px 2px;
+  border-radius: 5px;
 }
 
 inputbar {

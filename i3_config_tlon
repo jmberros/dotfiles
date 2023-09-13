@@ -77,6 +77,7 @@ for_window [all] title_window_icon padding 5px
 for_window [class="Nautilus" instance="file_progress"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="Qalculate-gtk"] floating enable
+for_window [class="Qalculate"] floating enable
 
 # https://stackoverflow.com/questions/74887471/floating-dunst-notification-in-i3
 for_window [window_role="pop-up"] floating enable
@@ -105,7 +106,7 @@ bindsym $mod+F2 exec i3-input -F 'rename workspace to "%s"'
 # Old colors, bright yellow background, very eye-catching:
 # bindsym $mod+d exec dmenu_run -i -nb '#ccff00' -nf '#0b216d' -l 10 -fn 'Ubuntu Mono-14'
 # New colors, dark background, yellowish letters
-bindsym ctrl+space exec dmenu_run -i -nb '#282A2E' -nf '#60ce60' -l 10 -fn 'Terminess Nerd Font-20' -sb '#60ce60' -sf '#282A2E'
+# bindsym ctrl+space exec dmenu_run -i -nb '#282A2E' -nf '#60ce60' -l 10 -fn 'Terminess Nerd Font-20' -sb '#60ce60' -sf '#282A2E'
 # bindsym $mod+d exec dmenu_run -i -nb '#282A2E' -nf '#60ce60' -l 10 -fn 'Terminess Nerd Font-16' -sb '#60ce60' -sf '#282A2E'
 
 # dmenu options:
@@ -113,7 +114,7 @@ bindsym ctrl+space exec dmenu_run -i -nb '#282A2E' -nf '#60ce60' -l 10 -fn 'Term
 # -nb color background color; -nf foreground color;
 # -sb selected backround color; -sf selected foreground color;
 
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id rofi -show drun
 # bindsym $mod+c exec --no-stdartup-id rofi -show window
 
 # bindsym $mod+x exec /usr/bin/dmenu_extended_run

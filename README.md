@@ -33,7 +33,7 @@ sudo snap install authy slack
 
 ```bash
 pip install lxml html5lib beautifulsoup4 tqdm i3pystatus psutil netifaces colour
-ranger-fm tldr ruff
+ranger-fm tldr ruff shell-gpt
 ```
 
 - Download + install Rust (via rustup, see their website) and cargo install:
