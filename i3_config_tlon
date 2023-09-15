@@ -116,7 +116,9 @@ bindsym $mod+F2 exec i3-input -F 'rename workspace to "%s"'
 
 bindsym $mod+d exec --no-startup-id rofi -show drun
 # bindsym $mod+c exec --no-stdartup-id rofi -show window
-bindsym $mod+p exec --no-startup-id /home/juan/repos/dotfiles/scripts/shell_gpt_rofi.sh
+bindsym $mod+p exec --no-startup-id /home/juan/repos/dotfiles/scripts/rofi_sgpt_query.sh
+bindsym $mod+o exec --no-startup-id /home/juan/repos/dotfiles/scripts/rofi_google_search.sh
+bindsym $mod+shift+o exec --no-startup-id /home/juan/repos/dotfiles/scripts/rofi_google_search_lucky.sh
 # bindsym $mod+p exec /home/juan/repos/dotfiles/scripts/notify_test.sh
 
 # bindsym $mod+x exec /usr/bin/dmenu_extended_run
