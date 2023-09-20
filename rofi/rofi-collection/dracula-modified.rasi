@@ -1,0 +1,71 @@
+/*
+ * ROFI color theme
+ *
+ * Based on Something Found in the Internet
+ *
+ * User: Contributors
+ * Copyright: *!
+ */
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+
+  bg: #1c1d1f;
+  fg: White;
+  blue: #05C3DD;
+  purple: #c8a1ff;
+  magenta: #ff00c1;
+  cyan: #00fff9;
+
+  background-color: @bg;
+  text-color: @fg;
+}
+
+window {
+  transparency: "real";
+}
+
+mainbox {
+  children: [inputbar, listview];
+  border: 10px solid;
+  border-radius: 5px;
+}
+
+inputbar {
+  background-color: Black;
+  children: [prompt, entry];
+}
+
+entry {
+  background-color: inherit;
+  padding: 5px;
+}
+
+prompt {
+  background-color: inherit;
+  padding: 5px;
+}
+
+listview {
+  lines: 8;
+}
+
+element {
+  children: [element-text];
+  text-color: @blue;
+}
+
+element-icon {
+  padding: 5px;
+}
+
+element-text {
+  padding: 5px;
+  text-color: Silver;
+}
+element-text selected {
+  text-color: @purple;
+}

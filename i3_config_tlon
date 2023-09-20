@@ -265,11 +265,18 @@ set $black #282A2E
 
 # [Almost] Default Colors
 # #class                  border  backgr. text    indicator
-client.focused          #186ac9 #186ac9 #ffffff #2e9ef4
+# client.focused          #186ac9 #186ac9 #ffffff #2e9ef4
+# client.focused_inactive $black $black #ffffff $black
+# client.unfocused        $black $black #888888 $black
+# client.urgent           #2f343a #f03131 #ffffff #e73030
+# client.placeholder      #000000 #0c0c0c #ffffff #000000
+# [Vaporwave] theme
+# #class                  border  backgr. text    indicator
+client.focused          #782a8b #782a8b #ffffff #05C3DD
 client.focused_inactive $black $black #ffffff $black
 client.unfocused        $black $black #888888 $black
-client.urgent           #2f343a #f03131 #ffffff #e73030
-client.placeholder      #000000 #0c0c0c #ffffff #000000
+client.urgent           #FFA500 #FFA500 #000000 #FFA500
+client.placeholder      #7760b1 #4900ff #ffffff #4900ff
 
 # # [Almost] Default Colors
 # # #class                  border  backgr. text    indicator
