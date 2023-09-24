@@ -3,5 +3,7 @@
     "editor.defaultFormatter": "ms-python.python"
   },
   "python.formatting.provider": "none",
-  "workbench.colorCustomizations": {}
+  "workbench.colorCustomizations": {},
+  "workbench.colorTheme": "Solarized Light",
+  "workbench.iconTheme": "material-icon-theme"
 }

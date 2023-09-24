@@ -13,8 +13,8 @@ fi
 # notify-send -i ~/Dropbox/openai.png -t=60000 --urgency=low "$ANSWER"
 OUTPUT_FILENAME=/tmp/sgpt-response.txt
 # notify-send "OUT FILE: $OUTPUT_FILENAME"
-ANSWER=$(~/anaconda3/bin/sgpt "$INPUT")
+ANSWER=$(~/anaconda3/bin/sgpt "$INPUT" | sed ':a;N;$!ba;s/\n/<br>/g')
 # notify-send "ANSWER: $ANSWER"
-echo "<span style='font-size: 26px;'>${ANSWER}</span>" > "$OUTPUT_FILENAME"
+echo "<span style='font-size: 14px; color: #444444'>${ANSWER}</span>" > "${OUTPUT_FILENAME//$'\n'/<br>}"
 zenity --text-info --width 600 --height 500 --html --filename="$OUTPUT_FILENAME"
 # zenity --info --text="$ANSWER" --icon="~/Dropbox/openai.png"
