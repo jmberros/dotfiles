@@ -1,5 +1,5 @@
 # SPACESHIP_PROMPT_ORDER=(user host dir git python exec_time node line_sep jobs exit_code char)
-SPACESHIP_PROMPT_ORDER=(user host dir git python venv)
+SPACESHIP_PROMPT_ORDER=(user host dir git python venv line_sep jobs exit_code char)
 SPACESHIP_CHAR_SYMBOL_ROOT="#"
 
 SPACESHIP_USER_SHOW="never"
