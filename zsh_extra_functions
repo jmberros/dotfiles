@@ -79,7 +79,7 @@ swapescape() {
   setxkbmap -option caps:swapescape
 }
 set_background() {
-  feh --bg-fill ~/Dropbox/Fotos/wpp/Cándido_Lopez_-_Asalto_de_la_primera_columna_brasileña_a_Curupaytí_-_Google_Art_Project.jpg
+  feh --bg-fill ~/Dropbox/Fotos/wpp/vaporwave-highway.jpeg
 }
 xu() {
   HOSTNAME="`hostname`"

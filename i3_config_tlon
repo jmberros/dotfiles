@@ -16,7 +16,7 @@ exec --no-startup-id picom -CGb
 # For the authentication prompt:
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
-set $wpp /home/juan/Dropbox/Fotos/wpp/kupka_babylon.jpg
+set $wpp feh --bg-fill ~/Dropbox/Fotos/wpp/vaporwave-highway.jpeg
 exec_always --no-startup-id sleep 2 && /usr/bin/feh --bg-fill $wpp
 
 gaps inner 0px
