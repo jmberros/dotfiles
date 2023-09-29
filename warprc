@@ -1,9 +1,12 @@
-dotfiles:~/repos/dotfiles
-dropbox:~/Dropbox
-leetcode:~/repos/leetcode
-polybar:~/repos/dotfiles/polybar
 coursera:~/Dropbox/code/Coursera-NNDL
 documents:~/Dropbox/Documents
+dotfiles:~/repos/dotfiles
 downloads:~/Downloads
+dropbox:~/Dropbox
 jmberros:~/repos/jmberros.github.io
+leetcode:~/repos/leetcode
+pelis:~/plex_media/pelis
+plex_media:~/plex_media
+polybar:~/repos/dotfiles/polybar
 repos:~/repos
+series:~/plex_media/series
