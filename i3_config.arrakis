@@ -258,4 +258,4 @@ client.focused          $blue $blue $white $white
 client.urgent          $red $red $white $white
 
 # Not working:
-exec_always --no-startup /usr/bin/feh --bg-fill '/usr/share/backgrounds/warty-final-ubuntu.png'
+exec_always --no-startup /usr/bin/feh --bg-fill ~/Dropbox/Fotos/wpp/vaporwave/vaporwave-nice-car.jpg 

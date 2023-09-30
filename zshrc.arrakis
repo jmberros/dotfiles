@@ -48,6 +48,7 @@ plugins=(
 # The vars need to be loaded before sourcing oh-my-zsh
 #
 DOTFILES=$HOME/repos/dotfiles
+ZSH_THEME="spaceship"
 source $DOTFILES/zsh_spaceship_vars
 source $ZSH/oh-my-zsh.sh
 
