@@ -4,6 +4,6 @@
   },
   "python.formatting.provider": "none",
   "workbench.colorCustomizations": {},
-  "workbench.colorTheme": "Solarized Light",
+  "workbench.colorTheme": "Solarized Dark",
   "workbench.iconTheme": "material-icon-theme"
 }

@@ -79,7 +79,7 @@ swapescape() {
   setxkbmap -option caps:swapescape
 }
 set_background() {
-  feh --bg-fill ~/Dropbox/Fotos/wpp/vaporwave-highway.jpeg
+  feh --bg-fill ~/Dropbox/Fotos/wpp/vaporwave/vaporwave-skyline.jpg
 }
 xu() {
   HOSTNAME="`hostname`"
