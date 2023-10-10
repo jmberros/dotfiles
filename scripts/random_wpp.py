@@ -6,8 +6,14 @@ from glob import glob
 import subprocess
 
 
-dir_ = "/home/juan/Dropbox/Fotos/wpp/vaporwave"
-pics = glob(os.path.join(dir_, "*"))
+dirs = [
+    "/home/juan/Dropbox/Fotos/wpp/vaporwave",
+    "/home/juan/Dropbox/Fotos/wpp/others",
+]
+pics = []
+for dir_ in dirs:
+    pics += glob(os.path.join(dir_, "*"))
+
 pic = random.choice(pics)
 command = ["feh", "--bg-fil", pic]
 output = subprocess.check_output(command)
