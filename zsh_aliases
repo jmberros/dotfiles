@@ -85,5 +85,3 @@ alias glob='pull_branch origin'
 alias glum='git pull upstream main'
 alias glub='pull_branch upstream'
 alias gadd='git add'
-
-

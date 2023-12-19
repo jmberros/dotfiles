@@ -26,9 +26,10 @@ plugins=(
         fzf
         ssh-agent
         # capistrano
-        # bundler
-        # gem
         git-extras
+        rbenv
+        bundler
+        gem
         # web-search
         python
         # npm
@@ -42,7 +43,11 @@ plugins=(
         autoswitch_virtualenv
         poetry
         #zsh-fzf-history-search
+        zsh-syntax-highlighting
 )
+# source ~/repos/dotfiles/antigen.zsh
+# antigen bundle zsh-users/zsh-syntax-highlighting
+# antigen apply
 #
 # Spaceship Theme
 # The vars need to be loaded before sourcing oh-my-zsh
@@ -196,3 +201,6 @@ export LESSCLOSE="/usr/bin/lesspipe %s %s";
 #zle -N _sgpt_zsh
 #bindkey ^i _sgpt_zsh
 # Shell-GPT integration ZSH v0.1
+#
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
