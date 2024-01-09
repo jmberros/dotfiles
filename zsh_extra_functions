@@ -3,6 +3,14 @@
 # Utilities
 #
 #################
+#
+
+slowly() {
+  while read LINE; do
+    echo $LINE;
+    sleep 0.5;
+  done
+}
 
 # break_corto () { sleep 300; cvlc ~/Dropbox/Happyday.mp3 }
 # break_largo () { sleep 900; cvlc ~/Dropbox/Happyday.mp3 }
