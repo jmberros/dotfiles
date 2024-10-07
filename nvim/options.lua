@@ -1,0 +1,19 @@
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set:
+-- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
+
+-- Blinking cursor, details provided by ChatGPT
+vim.opt.guicursor =
+  "n-v-c-sm:block-blinkwait500-blinkon250-blinkoff250,i-ci-ve:ver25-blinkwait500-blinkon250-blinkoff250,r-cr-o:hor20"
+
+-- Shows the name of the current file on top, useful when you have splits
+vim.opt.winbar = "%=%m %f"
+
+-- vim.opt.foldmethod = "indent" -- expr by default
+
+vim.opt.wrap = true
+vim.opt.linebreak = true -- break lines at rate boundaries
+
+
+vim.g.autoformat = false
