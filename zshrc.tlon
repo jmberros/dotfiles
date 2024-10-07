@@ -23,6 +23,7 @@ ZSH=$HOME/.oh-my-zsh
 COMPLETION_WAITING_DOTS="true"
 plugins=(
         git
+	gh
         fzf
         ssh-agent
         # capistrano
@@ -41,9 +42,10 @@ plugins=(
         # docker-completion
         dotenv  # Autoloads .env variables when cd'ing to a dir
         autoswitch_virtualenv
-        poetry
+        # poetry
         #zsh-fzf-history-search
         zsh-syntax-highlighting
+        aws
 )
 # source ~/repos/dotfiles/antigen.zsh
 # antigen bundle zsh-users/zsh-syntax-highlighting
@@ -61,11 +63,50 @@ source $DOTFILES/zsh_spaceship_vars  # Only used if the ZSH_THEME is spaceship
 source $ZSH/oh-my-zsh.sh
 
 export BROWSER=/usr/bin/google-chrome
-export EDITOR=/usr/bin/vim
+export EDITOR=vim
 
 eval "$(dircolors $DOTFILES/dircolors)";
 
-alias arrakis="ssh -XA juan@arrakis.local"
+function pytest_all() {
+    pytest -q tests/unit;
+    pytest -q -n auto tests/queries;
+}
+
+function wd() {
+        # This is a hack to force the correct loading of the .venv python environment
+        # in the destination folder, which seems to be hooked after cd but not after
+        # wd commands.
+        source '/home/juan/.oh-my-zsh/plugins/wd/wd.sh';
+        cd ~;
+        cs -;
+}
+
+# export AWS_PROFILE=juan
+# export AWS_REGION=us-east-1
+takeupenv() {
+  if [ "$1" = "prod" ]; then
+    FP=~/repos/TakeUp/takeup-prod.env
+    echo "Sourcing ${FP}:"
+    bat $FP
+    source $FP
+    asp prod  # zsh plugin aws, aws select profile
+    echo "Switched to PROD environment"
+  elif [ "$1" = "dev" ]; then
+    FP=~/repos/TakeUp/takeup-dev.env
+    echo "Sourcing ${FP}:"
+    bat $FP
+    source $FP
+    asp juan  # zsh plugin aws, aws select profile
+    echo "Switched to DEV environment"
+  else
+    echo "Usage: switch_env [prod|dev]"
+  fi
+}
+
+alias pf=prefect
+
+# Neovim path:
+export PATH="$PATH:/opt/nvim-linux64/bin"
 
 #################
 #

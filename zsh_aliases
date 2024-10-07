@@ -1,58 +1,67 @@
+# Work stuff
+alias triage=~/repos/TakeUp/takeupai-core/takeup_core/scripts/triage_cli.py
+alias onboarder=~/repos/TakeUp/takeupai-core/takeup_core/onboarding/onboarder.py
+# alias rq=~/repos/TakeUp/takeupai-core/takeup_core/scripts/rate_quality_cli.py
+alias rp=~/repos/TakeUp/takeupai-core/takeup_core/scripts/rate_propagation_cli.py
+
+# Wallpapers
+alias random_wpp=~/repos/dotfiles/scripts/random_wpp.py
+
+# Text editor
+alias vi=nvim
+alias vim=nvim
+
 alias bat="batcat --theme=base16-256"
 alias cat="batcat --theme=base16-256 --paging=never"
-alias exal="exa -l --group-directories-first"
-alias exala="exa -la --group-directories-first"
 
-# Linux version of OSX pbcopy and pbpaste.
-alias pbcopy=’xsel — clipboard — input’
-alias pbpaste=’xsel — clipboard — output’
+alias xclip="xclip -selection primary -f | xclip -selection clipboard"
 
 alias fd=fdfind
 alias history=history -E  # Shows date + time of commands
 
 # SSH to servers
-alias beleriand='ssh -XA juan@beleriand.local'
-alias bele='beleriand'
+alias beleriand="ssh -XA juan@beleriand.local"
+alias arrakis="ssh -XA juan@arrakis.local"
+alias bele="beleriand"
 
 alias dc="docker compose"
-alias xa='xrandr --auto'
-alias lap='~/Dropbox/scripts/keyboard_for_laptop.sh'
-alias desk='~/Dropbox/scripts/keyboard_for_desktop.sh'
+alias xa="xrandr --auto"
+alias lap="~/Dropbox/scripts/keyboard_for_laptop.sh"
+alias desk="~/Dropbox/scripts/keyboard_for_desktop.sh"
 alias jewa="jekyll serve --watch"
 
-alias sc='cs'
-alias mv='mv -i'
-alias cp='cp -iv'
-#alias ls='ls --color=auto --group-directories-first'
-#alias sl='ls --color=auto --group-directories-first'
-#alias l='ls --color=auto --group-directories-first'
-#alias ll='ls -alhF --color=auto --group-directories-first'
-#alias la='ls -A --color=auto --group-directories-first'
-alias ls='exa --group-directories-first'
-alias sl='exa --group-directories-first'
-alias l='exa --group-directories-first'
-alias ll='exa -l --group-directories-first'
-alias la='exa -la --group-directories-first'
-alias ..='cs ..'
-alias cs..='cs ..'
-alias xclip="xclip -selection primary -f | xclip -selection clipboard"
-alias tree='tree -F --dirsfirst --noreport'
-alias tree+='tree -hF --du --dirsfirst --noreport'
+# LS / Tree files directories
+EZA_COMMON="eza --group-directories-first --icons=auto "
+alias ls="$EZA_COMMON"
+alias sl="$EZA_COMMON"
+alias l="$EZA_COMMON"
+alias ll="$EZA_COMMON -lh"
+alias la="$EZA_COMMON -lha"
+alias lt="$EZA_COMMON -T"
+alias ..="cs .."
+alias cs..="cs .."
+alias sc="cs"
+alias mv="mv -i"
+alias cp="cp -iv"
+alias tree="tree -F --dirsfirst --noreport"
+alias tree+="tree -hF --du --dirsfirst --noreport"
+alias exal="exa -l --group-directories-first"
+alias exala="exa -la --group-directories-first"
 
 # Tmux
 alias tnew="tmux new-session -s"
 alias tach="tmux attach-session -t"
 
 # replace AWK with Ruby
-alias rawk='/usr/bin/ruby2.3 -lane'
-alias rawk,='/usr/bin/ruby2.3 -F, -lane'
-alias rawk:='/usr/bin/ruby2.3 -F: -lane'
-alias rawkt='/usr/bin/ruby2.3 -F"\t" -lane'
-alias rawks='/usr/bin/ruby2.3 -F"\s+" -lane'
+alias rawk="/usr/bin/ruby2.3 -lane"
+alias rawk,="/usr/bin/ruby2.3 -F, -lane"
+alias rawk:="/usr/bin/ruby2.3 -F: -lane"
+alias rawkt="/usr/bin/ruby2.3 -F"\t" -lane"
+alias rawks="/usr/bin/ruby2.3 -F"\s+" -lane"
 
 # Bundler
-alias be='bundle exec'
-alias bi='bundle install'
+alias be="bundle exec"
+alias bi="bundle install"
 
 # Git related aliases
 push_branch() {
@@ -66,22 +75,22 @@ pull_branch() {
 autoload push_branch
 autoload pull_branch
 
-alias s='clear; git status'
-alias gpo='git push origin'
-alias gpom='git push origin main'
-alias gpob='push_branch origin'
-alias gfo='git fetch origin'
-alias gfu='git fetch upstream'
-alias gfot='git fetch origin --tags'
-alias gfut='git fetch upstream --tags'
-alias gpot='git push origin --tags'
-alias gput='git push upstream --tags'
-alias gpu='git push upstream'
-alias gpum='git push upstream main'
-alias gpub='push_branch upstream'
-alias glo='git pull origin'
-alias glom='git pull origin main'
-alias glob='pull_branch origin'
-alias glum='git pull upstream main'
-alias glub='pull_branch upstream'
-alias gadd='git add'
+alias s="clear; git status"
+alias gpo="git push origin"
+alias gpom="git push origin main"
+alias gpob="push_branch origin"
+alias gfo="git fetch origin"
+alias gfu="git fetch upstream"
+alias gfot="git fetch origin --tags"
+alias gfut="git fetch upstream --tags"
+alias gpot="git push origin --tags"
+alias gput="git push upstream --tags"
+alias gpu="git push upstream"
+alias gpum="git push upstream main"
+alias gpub="push_branch upstream"
+alias glo="git pull origin"
+alias glom="git pull origin main"
+alias glob="pull_branch origin"
+alias glum="git pull upstream main"
+alias glub="pull_branch upstream"
+alias gadd="git add"

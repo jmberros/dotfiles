@@ -24,11 +24,9 @@ cs () {
 
   if [ $? -eq 0 ]; then  # If dir exists!
     if [ `ls | wc -l` -ge 20 ]; then
-      # ls --color=auto --group-directories-first
-      exa --group-directories-first
+      ll
     else
-      # ls -lh --color=auto --group-directories-first
-      exa -l --group-directories-first
+      ls
     fi
   fi
 }
@@ -120,8 +118,10 @@ xl() {
     # back-and-forth between resolutions of the main monitor is the only
     # way I found to make it work. x___x
     # xrandr --auto
-    xrandr --auto --output eDP-2 --mode 1920x1080 # --scale 1x1 # seems more crispy than scaling a larger res
-    xrandr --output HDMI-1-1 --left-of eDP-2  # Defaults to 2560x1440
+    DISPLAY_LAPTOP="eDP-1"
+    DISPLAY_MONITOR="HDMI-1-3"
+    xrandr --auto --output $DISPLAY_LAPTOP --mode 1920x1080 # --scale 1x1 # seems more crispy than scaling a larger res
+    xrandr --output $DISPLAY_MONITOR --left-of $DISPLAY_LAPTOP  # Defaults to 2560x1440
     # xrandr --auto --output HDMI-1-1 --left-of eDP-1 --mode 3840x2160;  # Everything too small
     # xrandr --auto --output HDMI-1-1 --left-of eDP-1 --mode 3840x2160 --scale 0.5x0.5;  # Looks ugly?
     #xrandr --auto --output eDP-1 --scale 0.5x0.5  # Scales 200% the laptop display

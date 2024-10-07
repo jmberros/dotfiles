@@ -1,5 +1,5 @@
 # SPACESHIP_PROMPT_ORDER=(user host dir git python exec_time node line_sep jobs exit_code char)
-SPACESHIP_PROMPT_ORDER=(user host dir git python venv line_sep jobs exit_code char exec_time)
+SPACESHIP_PROMPT_ORDER=(user host dir git python venv aws line_sep jobs exit_code char exec_time)
 SPACESHIP_CHAR_SYMBOL_ROOT="#"
 
 SPACESHIP_USER_SHOW="never"
@@ -32,12 +32,17 @@ SPACESHIP_VENV_COLOR="magenta"
 
 SPACESHIP_RUBY_SHOW=true
 
+SPACESHIP_AWS_SHOW="true"
+SPACESHIP_AWS_PREFIX="AWS: "
+# SPACESHIP_AWS_SYMBOL="☁️  "
+SPACESHIP_AWS_SYMBOL=""
+
 # Slows down startup:
-SPACESHIP_AWS_SHOW="false"
 SPACESHIP_DOCKER_SHOW="false"
 SPACESHIP_CONDA_SHOW="false"
 SPACESHIP_KUBECTL_SHOW="false"
 
+SPACESHIP_GIT_PREFIX=""
 SPACESHIP_GIT_STATUS_UNTRACKED="U"
 SPACESHIP_GIT_STATUS_MODIFIED="M"
 SPACESHIP_GIT_STATUS_SHOW=false

@@ -9,6 +9,8 @@ import subprocess
 dirs = [
     "/home/juan/Dropbox/Fotos/wpp/vaporwave",
     "/home/juan/Dropbox/Fotos/wpp/others",
+    "/home/juan/Dropbox/Fotos/wpp/art",
+    "/home/juan/Dropbox/Fotos/wpp/moebius",
 ]
 pics = []
 for dir_ in dirs:
