@@ -16,4 +16,5 @@ vim.opt.wrap = true
 vim.opt.linebreak = true -- break lines at rate boundaries
 
 
+vim.opt.colorcolumn = "100"
 vim.g.autoformat = false
