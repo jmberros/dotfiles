@@ -1,0 +1,156 @@
+# Exclude a variety of commonly ignored directories.
+exclude = [
+  ".bzr",
+  ".direnv",
+  ".eggs",
+  ".git",
+  ".git-rewrite",
+  ".hg",
+  ".ipynb_checkpoints",
+  ".mypy_cache",
+  ".nox",
+  ".pants.d",
+  ".pyenv",
+  ".pytest_cache",
+  ".pytype",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  ".vscode",
+  "__pypackages__",
+  "_build",
+  "buck-out",
+  "build",
+  "dist",
+  "node_modules",
+  "site-packages",
+  "venv",
+  ".github",
+]
+
+# Same as Black.
+line-length = 101
+indent-width = 4
+
+# Assume Python 3.8
+target-version = "py38"
+
+[lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
+# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
+# McCabe complexity (`C901`) by default.
+# select = ["E4", "E7", "E9", "F"]
+select = [
+  "A",  # lfake8-builtins
+  "ARG",  # unused args
+  # "ANN",  # flake8-annotations
+  "B", # flake8-bugbear
+  "BLE",  # Blind-except
+  "C4", # flake8-comprehensions
+  "COM",  # commas
+  "DTZ",  # datetimes
+  "DOC",  # docstrings
+  "ERA",  # forces erradication of commented-out code
+  "EM",  # error messages
+  "EXE",  # executables
+  "F", # Pyflakes
+  "FAST",  # FastAPI
+  "FBT",  # boolean trap
+  "FIX",   # fix me comments
+  "FLY",  # f-strings
+  "FURB",  # refurb
+  "I", # isort
+  "ICN",  # import conventions
+  "INP",  # implicit namespace package
+  "INT",  # get text
+  "ISC",  # implicit string concat
+  "LOG",  # logging
+  "N",  # pep8-naming
+  "NPY",  # NumPy
+  "PD",  # pandas rules
+  "PERF",  # Performance
+  "PIE",  # flake8-pie
+  "PL",  # pylint -- C, E, R, W
+  "PT",  # flake8-pytest-style
+  "PTH",  # forces Pathlib use
+  "PYI",  #
+  "Q",  # quotes
+  "R",  # refactor -- Included in PL
+  "RET",  # return
+  "RSE",  # raise
+  "RUF",  # Ruff-specific rules
+  "SIM",  # flake8-simplify
+  "SLF",  # self
+  "UP",  # pyupgrade
+  "T10",  # debugger
+  "T20",  # prints
+  "TCH",  # type checking
+  "TD",  # to dos
+  "TID",  # tidy imports
+  "TRY",  # exceptions
+  # "W",  # warnings -- Included in PL
+]
+ignore = [
+  "DTZ007",  # timezone naive
+  "C408",  # dict literal
+  "RUF012",  # ClassVar typing
+  "INP001",  # implicit namespace
+  "PD011",  # .values vs .to_numpy
+  "PD101",  # nunique
+  "PLR0913",  # Too many arguments in function def
+  "COM812",  # trailing comma missing
+  "PT011",  # raises with match=
+  "PLR2004",  # Magic value
+  "FBT001",
+  "FBT002",
+  "FBT003",  # Boolean positional value in call
+  "PD004",  # notnull vs notna
+  "PD901",  # df variable name
+  "DTZ011",  # No timezone, naive datetime
+  "DTZ003",  # utcnow
+  "SIM118",  # in dict not in dict.keys
+  "DTZ002",  #
+  "DTZ005",  #
+  "TRY003",  # long message in exception
+  "EM101",  # strin literals in exception
+  "EM102",
+  "RUF005",  # iterable unpacking
+  "TD002",
+  "TD003",
+  "FIX002",  # TODO author
+]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+# Enable auto-formatting of code examples in docstrings. Markdown,
+# reStructuredText code/literal blocks and doctests are all supported.
+#
+# This is currently disabled by default, but it is planned for this
+# to be opt-out in the future.
+docstring-code-format = false
+
+# Set the line length limit used when formatting code snippets in
+# docstrings.
+#
+# This only has an effect when the `docstring-code-format` setting is
+# enabled.
+docstring-code-line-length = "dynamic"

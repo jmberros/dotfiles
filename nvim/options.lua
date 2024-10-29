@@ -18,3 +18,4 @@ vim.opt.linebreak = true -- break lines at rate boundaries
 
 vim.opt.colorcolumn = "100"
 vim.g.autoformat = false
+vim.opt.cursorline = false  -- DONT Highlight current line
