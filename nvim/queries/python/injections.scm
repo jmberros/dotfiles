@@ -1,3 +1,6 @@
+; ((string_content) @injection.content
+;   (#match? injection.content "foobar")
+;   (#set! injection.language "sql"))
 ((string_content) @injection.content
-  (#lua-match? injection.content "^--sql")
+  (#match? @injection.content "^--sql.*")
   (#set! injection.language "sql"))

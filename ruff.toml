@@ -57,7 +57,7 @@ select = [
   "F", # Pyflakes
   "FAST",  # FastAPI
   "FBT",  # boolean trap
-  "FIX",   # fix me comments
+  # "FIX",   # fix me comments
   "FLY",  # f-strings
   "FURB",  # refurb
   "I", # isort
