@@ -86,17 +86,22 @@ select = [
   "T10",  # debugger
   "T20",  # prints
   "TCH",  # type checking
-  "TD",  # to dos
+  # "TD",  # to dos
   "TID",  # tidy imports
   "TRY",  # exceptions
   # "W",  # warnings -- Included in PL
 ]
 ignore = [
+  "BLE003",  # Do not catch blind exception
+  "N806",  # lowercase variables
   "DTZ007",  # timezone naive
+  "DTZ006",  # timezone naive
+  # "DTZ001",  # timezone naive
   "C408",  # dict literal
   "RUF012",  # ClassVar typing
   "INP001",  # implicit namespace
   "PD011",  # .values vs .to_numpy
+  "PD003",  # isnull
   "PD101",  # nunique
   "PLR0913",  # Too many arguments in function def
   "COM812",  # trailing comma missing
@@ -116,9 +121,15 @@ ignore = [
   "EM101",  # strin literals in exception
   "EM102",
   "RUF005",  # iterable unpacking
+  "TD001",
   "TD002",
   "TD003",
   "FIX002",  # TODO author
+  "N802",  # lowercase
+  "RUF015",
+  "RET504",  # unncessary assignment before return
+  "PT004",
+  # "ERA001",  # Commented out code
 ]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.

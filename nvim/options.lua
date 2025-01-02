@@ -19,3 +19,8 @@ vim.opt.linebreak = true -- break lines at rate boundaries
 vim.opt.colorcolumn = "100"
 vim.g.autoformat = false
 vim.opt.cursorline = false  -- DONT Highlight current line
+
+-- Using ripgrep
+-- https://www.reddit.com/r/neovim/comments/1c0bemk/using_ripgrep_as_grepprg_to_search_in_the_current/
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"

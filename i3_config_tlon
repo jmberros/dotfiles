@@ -1,4 +1,3 @@
-
 # --------- Startup applications and commands
 
 exec --no-startup-id gnome-settings-daemon
@@ -34,7 +33,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
 # Lock the screen
-bindsym $mod+Control+l exec "gnome-screensaver-command -l"
+bindsym $mod+Control+Shift+l exec "gnome-screensaver-command -l"
 
 # Swap outputs
 bindsym $mod+Shift+w exec "/home/juan/anaconda3/bin/python /home/juan/Dropbox/scripts/swap_workspaces_between_outputs.py"
@@ -221,6 +220,12 @@ bindsym $mod+Shift+r reload
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym $mod+b border toggle
+
+# resize direct shortcuts (no mode)
+bindsym $mod+Control+h resize shrink width 2 px or 2 ppt
+bindsym $mod+Control+k resize grow height 2 px or 2 ppt
+bindsym $mod+Control+j resize shrink height 2 px or 2 ppt
+bindsym $mod+Control+l resize grow width 2 px or 2 ppt
 
 # resize window
 mode "resize" {

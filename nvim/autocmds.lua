@@ -15,3 +15,11 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.textwidth = 99
   end,
 })
+
+-- Use internal formatting for bindings like gq.
+-- NOR WORKING, https://vi.stackexchange.com/a/39800
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   callback = function(args)
+--     vim.bo[args.buf].formatexpr = nil
+--   end,
+-- })

@@ -6,8 +6,9 @@
 #
 
 # CHeck the output of xrandr | grep "connected":
+# You have to change these here and in the polybar/*.ini files
 DISPLAY_LAPTOP="eDP-1"
-DISPLAY_MONITOR="HDMI-1-1"
+DISPLAY_MONITOR="HDMI-1-3"
 
 slowly() {
   while read LINE; do

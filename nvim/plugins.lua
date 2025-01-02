@@ -21,6 +21,11 @@ return {
   { "sainnhe/gruvbox-material", name = "gruvbox-material" },
   { "scottmckendry/cyberdream.nvim", name = "cyberdream" },
   { "Mofiqul/dracula.nvim", name = "dracula" },
+  { -- for themes
+    "rktjmp/lush.nvim",
+    -- if you wish to use your own colorscheme:
+    -- { dir = '/absolute/path/to/colorscheme', lazy = true },
+  },
   -- https://www.lazyvim.org/plugins/ui
   {
     "nvim-notify",
@@ -53,6 +58,18 @@ return {
   {
     "telescope.nvim",
     opts = {
+        extensions = {
+        fzf = {
+          fuzzy = true,                    -- false will only do exact matching
+          override_generic_sorter = true,  -- override the generic sorter
+          override_file_sorter = true,     -- override the file sorter
+          case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+          -- the default case_mode is "smart_case"
+        }
+      },
+      config = function()
+        require("telescope").load_extension("fzf")
+      end,
       -- NOTE: I couldn't make this remapping work:
       -- keys = {
         -- {
@@ -223,6 +240,12 @@ return {
       }
     }
   },
+  -- FZF
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    -- build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+    build = "make",
+  },
   -- LSP config:
   {
     "neovim/nvim-lspconfig",
@@ -247,19 +270,24 @@ return {
                   "takeup_core",
                   "command_center",
                   "rate_setting_guide",
+                  "src",
+                  "takeup_services",
+                  "takeup_model",
                 },
                 -- typeCheckingMode = "off",
                 diagnosticSeverityOverrides = {
                   -- see https://github.com/microsoft/pyright/blob/main/docs/configuration.md
                   reportArgumentType = "none",
-                  reportCallIssue = "none",
+                  -- reportCallIssue = "none", -- This is needed, e.g. a typo in an arg name
                   reportReturnType = "warning",
                   reportAttributeAccessIssue = "none",
                   reportOptionalSubscript = "none",
                   reportOptionalMemberAccess = "none",
                   reportOptionalOperand = "none",
+                  reportOptionalIterable = "none",
                   reportUnusedVariable = "none",
-                }
+                  reportIndexIssue = "none",
+                },
               }
             }
           }
