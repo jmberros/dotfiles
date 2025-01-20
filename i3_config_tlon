@@ -11,6 +11,7 @@ exec --no-startup-id compton
 exec --no-startup-id setxkbmap -option caps:swapescape
 exec --no-startup-id ssh-add
 exec --no-startup-id picom -CGb
+exec --no-startup-id /home/juan/Downloads/xflux -l -34.58854 -g -58.4264
 
 # For the authentication prompt:
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1

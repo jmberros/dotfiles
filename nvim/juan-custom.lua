@@ -11,7 +11,7 @@ local function set_theme_for_project()
     ["CORE"] = "tokyonight",
     ["INTEGRATIONS"] = "cyberdream",
     ["MODEL"] = "nightfox",
-    ["SERVICES"] = "dracula",
+    ["SERVICES"] = "rose-pine-main",
   }
   local chosen_theme = colortable[repo] or "tokyonight"
   vim.cmd("colorscheme " .. chosen_theme)

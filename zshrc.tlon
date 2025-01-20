@@ -67,6 +67,13 @@ export EDITOR=vim
 
 eval "$(dircolors $DOTFILES/dircolors)";
 
+# This replaces the dotenv plugin:
+# It should be git cloned into that directory first, of course
+# https://github.com/Tarrasch/zsh-autoenv
+# source ~/.dotfiles/lib/zsh-autoenv/autoenv.zsh
+# AUTOENV_FILE_ENTER=.env
+# AUTOENV_DEBUG=0
+
 function pytest_all() {
     pytest -q tests/unit;
     pytest -q -n auto tests/queries;
@@ -211,9 +218,9 @@ export STDERRED_ESC_CODE=`echo -e "$cyan"`
 # export LD_PRELOAD="/home/juan/software/stderred/build/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
 #
 ################
-# 
+#
 # Lesspipe
-# 
+#
 # https://github.com/wofr06/lesspipe
 eval "$(lesspipe)"
 export LESSOPEN="| /usr/bin/lesspipe %s";

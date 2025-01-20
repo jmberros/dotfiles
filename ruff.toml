@@ -92,7 +92,7 @@ select = [
   # "W",  # warnings -- Included in PL
 ]
 ignore = [
-  "BLE003",  # Do not catch blind exception
+  # "BLE03",  # Do not catch blind exception
   "N806",  # lowercase variables
   "DTZ007",  # timezone naive
   "DTZ006",  # timezone naive
@@ -165,3 +165,5 @@ docstring-code-format = false
 # This only has an effect when the `docstring-code-format` setting is
 # enabled.
 docstring-code-line-length = "dynamic"
+
+preview = true

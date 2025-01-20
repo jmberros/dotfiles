@@ -15,14 +15,15 @@ end
 
 -- Folding --
 vim.keymap.set("n", "<leader>f0", "zRzT", noremap_silent("Unfold everything"))
-vim.keymap.set("n", "<leader>f1", "zRzMzT", noremap_silent("Fold to level 1"))
-vim.keymap.set("n", "<leader>f2", "zRzMzrzT", noremap_silent("Fold to level 2"))
-vim.keymap.set("n", "<leader>f3", "zRzMzrzrzT", noremap_silent("Fold to level 3"))
+vim.keymap.set("n", "<leader>f1", "zRzMzOzT", noremap_silent("Fold to level 1"))
+vim.keymap.set("n", "<leader>f2", "zRzMzrzOzT", noremap_silent("Fold to level 2"))
+vim.keymap.set("n", "<leader>f3", "zRzMzrzrzOzT", noremap_silent("Fold to level 3"))
 
 -- Rename symbol
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename Symbol" })
 -- Insert Python debugger
 vim.keymap.set("n", "<leader>id", "<esc>oimport ipdb; ipdb.set_trace()<esc>:w<CR>", noremap_silent("Insert Python debugger"))
+vim.keymap.set("n", "<leader>it", "<esc>A  # type: ignore<esc>:w<CR>", noremap_silent("Append '# type: ignore'"))
 -- FZF search:
 -- vim.keymap.set("n", "<C-P>", require("telescope.builtin").git_files, noremap_silent("Search git files"))
 vim.keymap.set("n", "<C-P>", require("fzf-lua").git_files, noremap_silent("Fzf git files"))
