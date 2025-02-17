@@ -21,10 +21,24 @@ return {
   { "sainnhe/gruvbox-material", name = "gruvbox-material" },
   { "scottmckendry/cyberdream.nvim", name = "cyberdream" },
   { "Mofiqul/dracula.nvim", name = "dracula" },
+  -- Gid diff viewer:
+  {
+    "sindrets/diffview.nvim",
+  },
+  {
+    "ThePrimeagen/harpoon",
+  },
   { -- for themes
     "rktjmp/lush.nvim",
     -- if you wish to use your own colorscheme:
     -- { dir = '/absolute/path/to/colorscheme', lazy = true },
+  },
+  {
+    "echasnovski/mini.pairs",
+    event = "VeryLazy",
+    opts = {
+      modes = { insert = false, command = false, terminal = false },
+    },
   },
   -- https://www.lazyvim.org/plugins/ui
   {
@@ -202,7 +216,7 @@ return {
       -- If you want to load the plugin at startup, add something like event = "VeryLazy",
       -- or lazy = false. One of both options will work.
       opts = {
-          enabled = true,  -- if you want to enable the plugin
+          enabled = false,  -- if you want to enable the plugin
           message_template = " <author> • <summary> • <date> • <<sha>>",
           -- template for the blame message, check the Message template section for more options
           date_format = "%b %d, %Y", -- template for the date, check Date format section for more options
@@ -322,6 +336,7 @@ return {
             pyright = {
             },
             python = {
+              -- pythonPath = ".venv/bin/python",
               analysis = {
                 -- ignore = { "*" },  -- Use Ruff
                 ignore = {},
@@ -340,7 +355,7 @@ return {
                   reportArgumentType = "none",
                   -- reportCallIssue = "none", -- This is needed, e.g. a typo in an arg name
                   reportReturnType = "warning",
-                  reportAttributeAccessIssue = "none",
+                  reportAttributeAccessIssue = "warning",
                   reportOptionalSubscript = "none",
                   reportOptionalMemberAccess = "none",
                   reportOptionalOperand = "none",
@@ -355,6 +370,15 @@ return {
       }
     },
   },
+  -- Terminal management --
+  -- I'm using one that comes with lazyvim
+  -- {
+  --   -- amongst your other plugins
+  --   {
+  --     'akinsho/toggleterm.nvim', version = "*", config = true, opts = {
+  --     }
+  --   }
+  -- },
   {  -- For some reason, enabling this messes up Pyright??!
     "stevearc/conform.nvim",
     opts = {

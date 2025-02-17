@@ -11,7 +11,9 @@ local function set_theme_for_project()
     ["CORE"] = "tokyonight",
     ["INTEGRATIONS"] = "cyberdream",
     ["MODEL"] = "nightfox",
-    ["SERVICES"] = "rose-pine-main",
+    -- ["SERVICES"] = "rose-pine-main",
+    ["SERVICES"] = "catppuccin-macchiato",
+    ["WEBAPP"] = "carbonfox",
   }
   local chosen_theme = colortable[repo] or "tokyonight"
   vim.cmd("colorscheme " .. chosen_theme)
@@ -32,3 +34,5 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end
   end,
 })
+
+vim.wo.wrap = true

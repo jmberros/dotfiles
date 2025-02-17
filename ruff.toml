@@ -96,6 +96,7 @@ ignore = [
   "N806",  # lowercase variables
   "DTZ007",  # timezone naive
   "DTZ006",  # timezone naive
+  "DTZ001",
   # "DTZ001",  # timezone naive
   "C408",  # dict literal
   "RUF012",  # ClassVar typing
@@ -129,7 +130,7 @@ ignore = [
   "RUF015",
   "RET504",  # unncessary assignment before return
   "PT004",
-  # "ERA001",  # Commented out code
+  "ERA001",  # Commented out code
 ]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.

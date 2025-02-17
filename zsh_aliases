@@ -3,6 +3,9 @@ alias triage=~/repos/TakeUp/takeupai-core/takeup_core/scripts/triage_cli.py
 alias onboarder=~/repos/TakeUp/takeupai-core/takeup_core/onboarding/onboarder.py
 # alias rq=~/repos/TakeUp/takeupai-core/takeup_core/scripts/rate_quality_cli.py
 alias rp=~/repos/TakeUp/takeupai-core/takeup_core/scripts/rate_propagation_cli.py
+alias run-cc="streamlit run command_center/Command_Center.py --browser.gatherUsageStats=false --server.port=8503 --server.enableStaticServing=true"
+
+alias venv-source="source .venv/bin/activate"
 
 # Wallpapers
 alias random_wpp=~/repos/dotfiles/scripts/random_wpp.py
@@ -29,6 +32,13 @@ alias xa="xrandr --auto"
 alias lap="~/Dropbox/scripts/keyboard_for_laptop.sh"
 alias desk="~/Dropbox/scripts/keyboard_for_desktop.sh"
 alias jewa="jekyll serve --watch"
+
+# Projects
+alias edit-services="wd takeupai-services && REPO=SERVICES nvim ."
+alias edit-core="wd takeupai-core && REPO=CORE nvim ."
+alias edit-cc="wd takeupai-command-center && REPO=CC nvim ."
+alias edit-rsg="wd rate_setting_guide && REPO=RSG nvim ."
+alias edit-dbt="wd takeup-dbt && REPO=DBT nvim ."
 
 # LS / Tree files directories
 EZA_COMMON="eza --group-directories-first --icons=auto "
@@ -102,3 +112,6 @@ alias gcm="git commit -m"
 alias gdc="git diff --cached"
 alias grp="git restore -p"
 alias grs="git restore --staged"
+alias gsd="git switch develop"
+alias gsm="git switch main"
+alias gs-="git switch -"

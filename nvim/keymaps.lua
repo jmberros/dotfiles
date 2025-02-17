@@ -9,10 +9,32 @@
 --   { noremap = true, silent = true, desc = "Resume" }
 -- )
 
+-- Remove LazyVim's remapping of H and L to navigate buffers, this restores default Vim behavior
+-- to go to the high and low lines of the buffer:
+vim.keymap.del("n", "H")
+vim.keymap.del("n", "L")
+
 local function noremap_silent(desc)
   return { noremap = true, silent = true, desc=  desc }
 end
 
+
+-- Harpoon
+vim.keymap.set("n", "<leader>ha", function() require("harpoon.mark").add_file() end, { desc = "Harpoon add file" })
+vim.keymap.set("n", "<leader>hn", function() require("harpoon.ui").nav_next() end, { desc = "Harpoon add file" })
+vim.keymap.set("n", "<leader>hp", function() require("harpoon.ui").nav_prev() end, { desc = "Harpoon add file" })
+vim.keymap.set("n", "<leader>hl", function() require("harpoon.ui").toggle_quick_menu() end, { desc = "Harpoon toggle menu" })
+vim.keymap.set("n", "<leader>h1", function() require("harpoon.ui").nav_file(1) end, { desc = "Harpoon toggle menu" })
+vim.keymap.set("n", "<leader>h2", function() require("harpoon.ui").nav_file(2) end, { desc = "Harpoon toggle menu" })
+vim.keymap.set("n", "<leader>h3", function() require("harpoon.ui").nav_file(3) end, { desc = "Harpoon toggle menu" })
+vim.keymap.set("n", "<leader>h4", function() require("harpoon.ui").nav_file(4) end, { desc = "Harpoon toggle menu" })
+vim.keymap.set("n", "<leader>h5", function() require("harpoon.ui").nav_file(5) end, { desc = "Harpoon toggle menu" })
+-- Tabs
+vim.keymap.set("n", "<leader><Tab>n", "<cmd>tabnext<cr>", { desc = "Tab next" })
+vim.keymap.set("n", "<leader><Tab>p", "<cmd>tabprevious<cr>", { desc = "Tab previous" })
+-- Diffview, to user sindrets/diffview.nvim --
+vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<cr>", { desc = "Diffview Open" })
+vim.keymap.set("n", "<leader>dh", "<cmd>DiffviewFileHistory<cr>", { desc = "Diffview File History" })
 -- Folding --
 vim.keymap.set("n", "<leader>f0", "zRzT", noremap_silent("Unfold everything"))
 vim.keymap.set("n", "<leader>f1", "zRzMzOzT", noremap_silent("Fold to level 1"))
