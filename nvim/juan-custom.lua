@@ -9,10 +9,10 @@ local function set_theme_for_project()
     ["CC"] = "duskfox",
     ["RSG"] = "gruvbox",
     ["CORE"] = "tokyonight",
-    ["INTEGRATIONS"] = "cyberdream",
-    ["MODEL"] = "nightfox",
+    ["INTEGRATIONS"] = "everforest",
+    ["MODEL"] = "catppuccin-macchiato",
     -- ["SERVICES"] = "rose-pine-main",
-    ["SERVICES"] = "catppuccin-macchiato",
+    ["SERVICES"] = "nightfox",
     ["WEBAPP"] = "carbonfox",
   }
   local chosen_theme = colortable[repo] or "tokyonight"

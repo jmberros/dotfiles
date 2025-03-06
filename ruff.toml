@@ -118,6 +118,7 @@ ignore = [
   "SIM118",  # in dict not in dict.keys
   "DTZ002",  #
   "DTZ005",  #
+  "PT018",  # Assertion broken down
   "TRY003",  # long message in exception
   "EM101",  # strin literals in exception
   "EM102",

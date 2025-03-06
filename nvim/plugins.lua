@@ -21,10 +21,28 @@ return {
   { "sainnhe/gruvbox-material", name = "gruvbox-material" },
   { "scottmckendry/cyberdream.nvim", name = "cyberdream" },
   { "Mofiqul/dracula.nvim", name = "dracula" },
+  -- Tabline (the line with the buffers, improved):
+  -- {'romgrk/barbar.nvim',
+  --   dependencies = {
+  --     'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+  --     'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+  --   },
+  --   init = function() vim.g.barbar_auto_setup = false end,
+  --   opts = {
+  --     highlight_visible = false,
+  --     highlight_alternate = true,
+  --     -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+  --     -- animation = true,
+  --     -- insert_at_start = true,
+  --     -- …etc.
+  --   },
+  --   version = '^1.0.0', -- optional: only update when a new 1.x version is released
+  -- },
   -- Gid diff viewer:
   {
     "sindrets/diffview.nvim",
   },
+-- Tabline (actually the list of buffers, not tabs)
   {
     "ThePrimeagen/harpoon",
   },
@@ -352,16 +370,16 @@ return {
                 -- typeCheckingMode = "off",
                 diagnosticSeverityOverrides = {
                   -- see https://github.com/microsoft/pyright/blob/main/docs/configuration.md
-                  reportArgumentType = "none",
+                  -- reportArgumentType = "none",
                   -- reportCallIssue = "none", -- This is needed, e.g. a typo in an arg name
-                  reportReturnType = "warning",
-                  reportAttributeAccessIssue = "warning",
-                  reportOptionalSubscript = "none",
-                  reportOptionalMemberAccess = "none",
-                  reportOptionalOperand = "none",
-                  reportOptionalIterable = "none",
-                  reportUnusedVariable = "none",
-                  reportIndexIssue = "none",
+                  --reportReturnType = "warning",
+                  --reportAttributeAccessIssue = "warning",
+                  --reportOptionalSubscript = "none",
+                  --reportOptionalMemberAccess = "none",
+                  --reportOptionalOperand = "none",
+                  --reportOptionalIterable = "none",
+                  --reportUnusedVariable = "none",
+                  --reportIndexIssue = "none",
                 },
               }
             }

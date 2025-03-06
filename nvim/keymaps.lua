@@ -19,6 +19,71 @@ local function noremap_silent(desc)
 end
 
 
+-- =======
+-- Tabline == I didn't like it much
+-- local map = vim.api.nvim_set_keymap
+-- local opts = { noremap = true, silent = true }
+-- -- Move to previous/next
+-- map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
+-- map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
+--
+-- -- Re-order to previous/next
+-- map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', opts)
+-- map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', opts)
+--
+-- -- Goto buffer in position...
+-- map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
+-- map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
+-- map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
+-- map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts)
+-- map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', opts)
+-- map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', opts)
+-- map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts)
+-- map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
+-- map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
+-- -- map('n', '<leader>b0', '<Cmd>BufferLast<CR>', opts)
+--
+-- -- Pin/unpin buffer
+-- -- map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
+--
+-- -- Goto pinned/unpinned buffer
+-- --                 :BufferGotoPinned
+-- --                 :BufferGotoUnpinned
+--
+-- -- Close buffer
+-- map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
+-- map('n', '<leader>bc', '<Cmd>BufferClose<CR>', opts)
+-- map('n', '<leader>ba', '<Cmd>BufferCloseAllButPinned<CR>', opts)
+-- map('n', '<leader>bo', '<Cmd>BufferCloseAllButCurrentOrPinned<CR>', opts)
+--
+--
+-- -- Wipeout buffer
+-- --                 :BufferWipeout
+--
+-- -- Close commands
+-- --                 :BufferCloseAllButCurrent
+-- --                 :BufferCloseAllButPinned
+-- --                 :BufferCloseAllButCurrentOrPinned
+-- --                 :BufferCloseBuffersLeft
+-- --                 :BufferCloseBuffersRight
+--
+-- -- Magic buffer-picking mode
+-- map('n', '<leader>bb',   '<Cmd>BufferPick<CR>', opts)
+-- -- map('n', '<C-s-p>', '<Cmd>BufferPickDelete<CR>', opts)
+--
+-- -- Sort automatically by...
+-- -- map('n', '<leader>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
+-- -- map('n', '<Space>bn', '<Cmd>BufferOrderByName<CR>', opts)
+-- -- map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
+-- map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
+-- map('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
+--
+-- -- Other:
+-- -- :BarbarEnable - enables barbar (enabled by default)
+-- -- :BarbarDisable - very bad command, should never be used
+-- =======
+--
+--
 -- Harpoon
 vim.keymap.set("n", "<leader>ha", function() require("harpoon.mark").add_file() end, { desc = "Harpoon add file" })
 vim.keymap.set("n", "<leader>hn", function() require("harpoon.ui").nav_next() end, { desc = "Harpoon add file" })
@@ -29,9 +94,20 @@ vim.keymap.set("n", "<leader>h2", function() require("harpoon.ui").nav_file(2) e
 vim.keymap.set("n", "<leader>h3", function() require("harpoon.ui").nav_file(3) end, { desc = "Harpoon toggle menu" })
 vim.keymap.set("n", "<leader>h4", function() require("harpoon.ui").nav_file(4) end, { desc = "Harpoon toggle menu" })
 vim.keymap.set("n", "<leader>h5", function() require("harpoon.ui").nav_file(5) end, { desc = "Harpoon toggle menu" })
--- Tabs
+-- Tabs & Buffers
+-- Close buffers and keep neo-tree opened
+vim.keymap.set("n", "<leader>ba", "<cmd>%bd<cr><cmd>Neotree<cr>", noremap_silent("Delete all buffers, keep Neotree"))
+-- vim.keymap.set("n", "<leader>bp", "<cmd>bnext<cr>", noremap_silent("Buffer Next"))
+-- vim.keymap.set("n", "<leader>bn", "<cmd>bprevious<cr>", noremap_silent("Buffer Previous"))
 vim.keymap.set("n", "<leader><Tab>n", "<cmd>tabnext<cr>", { desc = "Tab next" })
 vim.keymap.set("n", "<leader><Tab>p", "<cmd>tabprevious<cr>", { desc = "Tab previous" })
+vim.keymap.set("n", "<leader><Tab>n", "<cmd>tabnext<cr>", { desc = "Tab next" })
+vim.keymap.set("n", "<leader><Tab>p", "<cmd>tabprevious<cr>", { desc = "Tab previous" })
+-- vim.keymap.set("n", "<Tab>", "<cmd>tabnext<cr>", { desc = "Tab next" })
+-- vim.keymap.set("n", "<S-Tab>", "<cmd>tabprevious<cr>", { desc = "Tab previous" })
+-- Tab to switch buffer
+vim.keymap.set("n", "<Tab>", "<cmd>bnext<cr>", noremap_silent("Next buffer"))
+vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<cr>", noremap_silent("Previous buffer"))
 -- Diffview, to user sindrets/diffview.nvim --
 vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<cr>", { desc = "Diffview Open" })
 vim.keymap.set("n", "<leader>dh", "<cmd>DiffviewFileHistory<cr>", { desc = "Diffview File History" })
@@ -44,7 +120,7 @@ vim.keymap.set("n", "<leader>f3", "zRzMzrzrzOzT", noremap_silent("Fold to level 
 -- Rename symbol
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename Symbol" })
 -- Insert Python debugger
-vim.keymap.set("n", "<leader>id", "<esc>oimport ipdb; ipdb.set_trace()<esc>:w<CR>", noremap_silent("Insert Python debugger"))
+vim.keymap.set("n", "<leader>id", "<esc>oimport ipdb; import rich; ipdb.set_trace()<esc>:w<CR>", noremap_silent("Insert Python debugger"))
 vim.keymap.set("n", "<leader>it", "<esc>A  # type: ignore<esc>:w<CR>", noremap_silent("Append '# type: ignore'"))
 -- FZF search:
 -- vim.keymap.set("n", "<C-P>", require("telescope.builtin").git_files, noremap_silent("Search git files"))
@@ -59,11 +135,6 @@ vim.keymap.set("n", "<leader>sS", require("fzf-lua").lsp_live_workspace_symbols,
 -- vim.keymap.set('n', '<leader>fg', require("fzf-lua").live_grep, { desc = 'FzF live grep' })
 -- vim.keymap.set('n', '<leader>fb', require("fzf-lua").buffers, { desc = 'FzF buffers' })
 -- vim.keymap.set('n', '<leader>fh', require("fzf-lua").help_tags, { desc = 'FzF help tags' })
--- Tab to switch buffer
-vim.keymap.set("n", "<Tab>", "<cmd>bnext<cr>", noremap_silent("Next buffer"))
-vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<cr>", noremap_silent("Previous buffer"))
--- Close buffers and keep neo-tree opened
-vim.keymap.set("n", "<leader>ba", "<cmd>%bd<cr><cmd>Neotree<cr>", noremap_silent("Delete all buffers, keep Neotree"))
 -- Close buffer without closing window
 -- ....
 -- -- Run Pytest
