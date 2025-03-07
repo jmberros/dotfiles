@@ -36,6 +36,7 @@ alias desk="~/Dropbox/scripts/keyboard_for_desktop.sh"
 alias jewa="jekyll serve --watch"
 
 # Projects
+alias edit-model="wd takeupai-model && REPO=\"MODEL\" nvim ."
 alias edit-integrations="wd takeupai-integrations && REPO=\"INTEGRATIONS\" nvim ."
 alias edit-services="wd takeupai-services && REPO=SERVICES nvim ."
 alias edit-webapp="wd takeupai-webapp && REPO=WEBAPP nvim ."

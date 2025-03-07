@@ -3,10 +3,50 @@
 # Utilities
 #
 #################
+# CHeck the output of xrandr | grep "connected":
+# You have to change these here and in the polybar/*.ini files
+DISPLAY_LAPTOP="eDP-1"
+DISPLAY_MONITOR="HDMI-1-3"
 #
 #
 #
 # TakeUp
+monitor-prefect-flow-runs () {
+  FLOW_NAME_ARGS=$1
+  while true; do
+    clear;
+    echo "Prefect flow-runs of '$FLOW_NAME_ARGS'\n";
+    export PREFECT_CMD="prefect flow-run ls $FLOW_NAME_ARGS \
+        --state-type PENDING \
+        --state-type RUNNING \
+        --state-type COMPLETED \
+        --state-type FAILED \
+        --limit 4
+    ";
+    eval $PREFECT_CMD | awk -F '│' '{
+      # Remove leading/trailing spaces from fields 2, 3, 4, and 5
+      gsub(/^ +| +$/, "", $2);
+      gsub(/^ +| +$/, "", $3);
+      gsub(/^ +| +$/, "", $4);
+      gsub(/^ +| +$/, "", $5);
+      # Only process lines where field 2 (the ID) is not empty
+      if ($2 != "") {
+        # Print columns: $3 (column 2), $4 (column 3), $5 (column 4), then $2 (column 1)
+        print $5 " | " $3 " | " $6 " | " $4
+      }
+    }' | sed -e 's/FAILED/❌/g' \
+    -e 's/COMPLETED/✅/g' \
+    -e 's/RUNNING/▶/g' \
+    -e 's/PENDING/⏳/g' | column -t -s "|" -o " ";
+    sleep 15;
+  done;
+}
+monitor-propagations () {
+  monitor-prefect-flow-runs "--flow-name propagate-flow";
+}
+monitor-inferences () {
+  monitor-prefect-flow-runs "--flow-name run-models-inferences-flow --flow-name rate_behavior --flow-name rate_quality";
+}
 monitor-build () {
   REPO_NAME=$1;
   LIMIT=$2
@@ -32,11 +72,6 @@ monitor-cc-build() {
 monitor-rsg-build() {
   wd rate_setting_guide && monitor-build "RSG" 3
 }
-
-# CHeck the output of xrandr | grep "connected":
-# You have to change these here and in the polybar/*.ini files
-DISPLAY_LAPTOP="eDP-1"
-DISPLAY_MONITOR="HDMI-1-1"
 
 slowly() {
   while read LINE; do
