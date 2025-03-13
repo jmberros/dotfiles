@@ -23,7 +23,8 @@ monitor-prefect-flow-runs () {
         --state-type FAILED \
         --limit 4
     ";
-    eval $PREFECT_CMD | awk -F '│' '{
+    eval $PREFECT_CMD | \
+    awk -F '│' '{
       # Remove leading/trailing spaces from fields 2, 3, 4, and 5
       gsub(/^ +| +$/, "", $2);
       gsub(/^ +| +$/, "", $3);
@@ -34,11 +35,14 @@ monitor-prefect-flow-runs () {
         # Print columns: $3 (column 2), $4 (column 3), $5 (column 4), then $2 (column 1)
         print $5 " | " $3 " | " $6 " | " $4
       }
-    }' | sed -e 's/FAILED/❌/g' \
-    -e 's/COMPLETED/✅/g' \
-    -e 's/RUNNING/▶/g' \
-    -e 's/PENDING/⏳/g' | column -t -s "|" -o " ";
-    sleep 15;
+    }' | \
+    sed -e 's/FAILED/❌/g' \
+    -e 's/COMPLETED/✔/g' \
+    -e 's/RUNNING/▶️/g' \
+    -e 's/PENDING/⏳/g' | \
+    column -t -s "|" -o " " | \
+    grep -vE "days? ago";
+    sleep 60;
   done;
 }
 monitor-propagations () {
@@ -46,6 +50,9 @@ monitor-propagations () {
 }
 monitor-inferences () {
   monitor-prefect-flow-runs "--flow-name run-models-inferences-flow --flow-name rate_behavior --flow-name rate_quality";
+}
+monitor-snowclone() {
+  monitor-prefect-flow-runs "--flow-name snowclone";
 }
 monitor-build () {
   REPO_NAME=$1;

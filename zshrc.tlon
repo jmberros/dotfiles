@@ -66,6 +66,8 @@ export BROWSER=/usr/bin/google-chrome
 export EDITOR=vim
 
 eval "$(dircolors $DOTFILES/dircolors)";
+# Autocomplete opts for Python uv
+eval "$(uv generate-shell-completion zsh)";
 
 # This replaces the dotenv plugin:
 # It should be git cloned into that directory first, of course
