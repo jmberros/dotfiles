@@ -12,7 +12,8 @@ local function set_theme_for_project()
     ["INTEGRATIONS"] = "everforest",
     ["MODEL"] = "catppuccin-macchiato",
     -- ["SERVICES"] = "rose-pine-main",
-    ["SERVICES"] = "nightfox",
+    ["SERVICES"] = "kanagawa",
+    -- ["SERVICES"] = "nightfox",
     ["WEBAPP"] = "carbonfox",
   }
   local chosen_theme = colortable[repo] or "tokyonight"
@@ -32,6 +33,16 @@ vim.api.nvim_create_autocmd("VimEnter", {
       -- Open Neo-tree
       vim.cmd("Neotree show")
     end
+  end,
+})
+
+-- Tab = 4 sapces for SQL
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "sql",
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+    vim.opt_local.expandtab = true
   end,
 })
 

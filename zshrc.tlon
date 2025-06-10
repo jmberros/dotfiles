@@ -66,8 +66,14 @@ export BROWSER=/usr/bin/google-chrome
 export EDITOR=vim
 
 eval "$(dircolors $DOTFILES/dircolors)";
+
 # Autocomplete opts for Python uv
+# https://docs.astral.sh/uv/getting-started/installation/#shell-autocompletion
 eval "$(uv generate-shell-completion zsh)";
+
+# Zoxide, needs installing first:
+# https://github.com/ajeetdsouza/zoxide
+eval "$(zoxide init zsh)"
 
 # This replaces the dotenv plugin:
 # It should be git cloned into that directory first, of course
@@ -254,3 +260,12 @@ export LESSCLOSE="/usr/bin/lesspipe %s %s";
 #
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Atuin magic shell history
+# https://docs.atuin.sh/
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"

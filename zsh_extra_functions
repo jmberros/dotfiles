@@ -41,7 +41,7 @@ monitor-prefect-flow-runs () {
     -e 's/RUNNING/▶️/g' \
     -e 's/PENDING/⏳/g' | \
     column -t -s "|" -o " " | \
-    grep -vE "days? ago";
+    grep -vE "(day|week|month)s? ago";
     sleep 60;
   done;
 }
@@ -50,6 +50,9 @@ monitor-propagations () {
 }
 monitor-inferences () {
   monitor-prefect-flow-runs "--flow-name run-models-inferences-flow --flow-name rate_behavior --flow-name rate_quality";
+}
+monitor-training () {
+  monitor-prefect-flow-runs "--flow-name train-global-model-flow --flow-name train-model-flow --flow-name train-safe-rates-classifier"
 }
 monitor-snowclone() {
   monitor-prefect-flow-runs "--flow-name snowclone";
@@ -79,6 +82,9 @@ monitor-cc-build() {
 monitor-rsg-build() {
   wd rate_setting_guide && monitor-build "RSG" 3
 }
+monitor-model-build() {
+  wd takeupai-model && monitor-build "MODEL" 3
+}
 
 slowly() {
   while read LINE; do
@@ -93,6 +99,12 @@ pswatch () { watch -n1 "ps aux | head -n1 && ps aux | grep '$1' | grep -v 'grep'
 # Seems unnecessary if you have fzf:
 # findhome () { find ~ -iname "*${1}*" }
 # findhere () { find . -iname "*${1}" }
+
+zl() {
+  z $1
+  cd ..
+  cd -  # triggers venv selection and maybe more zsh-plugins stuff that activate on dir change
+}
 
 cs () {
   cd $1
