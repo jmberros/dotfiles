@@ -3,8 +3,8 @@ alias triage=~/repos/TakeUp/takeupai-core/takeup_core/scripts/triage_cli.py
 alias onboarder=~/repos/TakeUp/takeupai-core/takeup_core/onboarding/onboarder.py
 # alias rq=~/repos/TakeUp/takeupai-core/takeup_core/scripts/rate_quality_cli.py
 alias rp=~/repos/TakeUp/takeupai-core/takeup_core/scripts/rate_propagation_cli.py
-alias run-cc="wd takeupai-command-center && streamlit run command_center/Command_Center.py --browser.gatherUsageStats=false --server.port=8503 --server.enableStaticServing=true"
-alias run-rsg="wd takeupai-oleo && streamlit run ./rate_setting_guide/Rate_Setting_Guide.py --server.fileWatcherType=poll --browser.gatherUsageStats=false --server.port=8501 --server.enableStaticServing=true"
+alias run-cc="wd takeupai-command-center && uv run streamlit run command_center/Command_Center.py --browser.gatherUsageStats=false --server.port=8503 --server.enableStaticServing=true"
+alias run-rsg="wd takeupai-oleo && uv run streamlit run ./rate_setting_guide/Rate_Setting_Guide.py --server.fileWatcherType=poll --browser.gatherUsageStats=false --server.port=8501 --server.enableStaticServing=true"
 alias run-api="wd takeupai-services && PYTHONPATH=. DEBUG=true uv run fastapi dev takeup_services/app.py"
 
 alias venv-source="source .venv/bin/activate"
